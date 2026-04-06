@@ -1,0 +1,1269 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Analyse Stratégique & Sitemap — MH Riviera Conciergerie</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --olive: #6B7F4E;
+    --gold: #C4A97D;
+    --offwhite: #F5F0E8;
+    --darkgreen: #3D4A2E;
+    --cream: #FDFBF7;
+    --black: #1A1A1A;
+    --darkgold: #A8895E;
+    --lightgold: #E8D5B0;
+    --border: #D9CEB8;
+  }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--cream);
+    color: var(--black);
+    font-size: 13px;
+    line-height: 1.6;
+  }
+
+  /* COVER */
+  .cover {
+    background: var(--darkgreen);
+    color: var(--cream);
+    padding: 60px 50px;
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cover::after {
+    content: '';
+    position: absolute;
+    right: -60px;
+    top: -60px;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    border: 60px solid rgba(196,169,125,0.15);
+  }
+
+  .cover::before {
+    content: '';
+    position: absolute;
+    right: 80px;
+    bottom: -80px;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    border: 40px solid rgba(196,169,125,0.08);
+  }
+
+  .cover-label {
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 500;
+    margin-bottom: 12px;
+  }
+
+  .cover h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 38px;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 10px;
+  }
+
+  .cover h1 span { color: var(--gold); }
+
+  .cover-sub {
+    font-size: 13px;
+    color: rgba(253,251,247,0.7);
+    max-width: 500px;
+    margin-top: 8px;
+  }
+
+  .cover-meta {
+    margin-top: 30px;
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+  }
+
+  .cover-meta-item {
+    font-size: 11px;
+    color: rgba(253,251,247,0.6);
+  }
+
+  .cover-meta-item span {
+    display: block;
+    font-size: 13px;
+    color: var(--gold);
+    font-weight: 600;
+    margin-top: 2px;
+  }
+
+  /* LAYOUT */
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 40px 30px;
+  }
+
+  /* SECTION TITLES */
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 24px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .section-number {
+    background: var(--darkgreen);
+    color: var(--gold);
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 700;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--darkgreen);
+  }
+
+  .section-subtitle {
+    font-size: 11px;
+    color: var(--gold);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+
+  /* CARDS */
+  .card {
+    background: white;
+    border-radius: 12px;
+    padding: 22px 24px;
+    border: 1px solid var(--border);
+    margin-bottom: 16px;
+  }
+
+  .card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--darkgreen);
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .card-title .dot {
+    width: 8px;
+    height: 8px;
+    background: var(--gold);
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* GRID */
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+
+  /* TAGS */
+  .tag {
+    display: inline-block;
+    background: var(--lightgold);
+    color: var(--darkgold);
+    font-size: 10px;
+    font-weight: 600;
+    padding: 3px 9px;
+    border-radius: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin: 2px 2px 2px 0;
+  }
+
+  .tag-green {
+    background: rgba(61,74,46,0.1);
+    color: var(--darkgreen);
+  }
+
+  .tag-red {
+    background: rgba(180,60,60,0.1);
+    color: #B43C3C;
+  }
+
+  .tag-blue {
+    background: rgba(60,100,180,0.1);
+    color: #3C64B4;
+  }
+
+  /* LISTS */
+  ul.styled { list-style: none; padding: 0; }
+  ul.styled li {
+    padding: 6px 0;
+    border-bottom: 1px solid var(--offwhite);
+    font-size: 12.5px;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  ul.styled li:last-child { border-bottom: none; }
+  ul.styled li::before {
+    content: '→';
+    color: var(--gold);
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  ul.check { list-style: none; padding: 0; }
+  ul.check li {
+    padding: 5px 0;
+    font-size: 12.5px;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  ul.check li::before {
+    content: '✓';
+    color: var(--olive);
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  ul.cross { list-style: none; padding: 0; }
+  ul.cross li {
+    padding: 5px 0;
+    font-size: 12.5px;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    color: #B43C3C;
+  }
+  ul.cross li::before {
+    content: '✗';
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  /* HIGHLIGHT BOX */
+  .highlight {
+    background: linear-gradient(135deg, var(--darkgreen), #4a5c35);
+    color: var(--cream);
+    border-radius: 12px;
+    padding: 24px 28px;
+    margin-bottom: 20px;
+  }
+
+  .highlight h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    color: var(--gold);
+    margin-bottom: 10px;
+  }
+
+  .highlight p { font-size: 13px; line-height: 1.7; opacity: 0.9; }
+
+  .highlight-gold {
+    background: linear-gradient(135deg, #B8935A, #C4A97D);
+    color: white;
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin-bottom: 16px;
+  }
+
+  .highlight-gold h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    margin-bottom: 8px;
+  }
+
+  /* PROPOSITION DE VALEUR */
+  .value-main {
+    background: var(--darkgreen);
+    color: var(--cream);
+    border-radius: 14px;
+    padding: 30px;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .value-main .label {
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 12px;
+  }
+
+  .value-main h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    line-height: 1.4;
+    font-style: italic;
+  }
+
+  .value-main h2 span { color: var(--gold); }
+
+  /* PILLAR CARDS */
+  .pillar {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 18px;
+    text-align: center;
+  }
+
+  .pillar-icon {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+
+  .pillar h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 14px;
+    color: var(--darkgreen);
+    margin-bottom: 6px;
+  }
+
+  .pillar p { font-size: 11.5px; color: #666; line-height: 1.5; }
+
+  /* TABLE */
+  .table-wrapper {
+    overflow-x: auto;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    margin-bottom: 24px;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 11.5px;
+    background: white;
+  }
+
+  thead {
+    background: var(--darkgreen);
+    color: var(--gold);
+  }
+
+  thead th {
+    padding: 12px 10px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 10px;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  tbody tr {
+    border-bottom: 1px solid var(--offwhite);
+  }
+
+  tbody tr:last-child { border-bottom: none; }
+
+  tbody tr:nth-child(even) { background: var(--cream); }
+
+  tbody td {
+    padding: 10px 10px;
+    vertical-align: top;
+    line-height: 1.5;
+  }
+
+  tbody td:first-child {
+    font-weight: 600;
+    color: var(--darkgreen);
+    white-space: nowrap;
+  }
+
+  /* PRIORITY BADGE */
+  .priority-fort {
+    background: rgba(61,74,46,0.15);
+    color: var(--darkgreen);
+    font-size: 10px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 20px;
+    white-space: nowrap;
+  }
+
+  .priority-moyen {
+    background: rgba(196,169,125,0.3);
+    color: #8B6F3E;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 20px;
+    white-space: nowrap;
+  }
+
+  .priority-faible {
+    background: rgba(150,150,150,0.15);
+    color: #777;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 20px;
+    white-space: nowrap;
+  }
+
+  /* COCON SÉMANTIQUE */
+  .cocon-tree {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 20px;
+  }
+
+  .cocon-pillar {
+    background: var(--darkgreen);
+    color: var(--gold);
+    font-family: 'Playfair Display', serif;
+    font-size: 14px;
+    font-weight: 700;
+    padding: 12px 18px;
+    border-radius: 8px;
+    text-align: center;
+    margin-bottom: 16px;
+  }
+
+  .cocon-children {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+    margin-bottom: 16px;
+  }
+
+  .cocon-child {
+    background: var(--lightgold);
+    color: var(--darkgold);
+    font-size: 11px;
+    font-weight: 600;
+    padding: 6px 14px;
+    border-radius: 20px;
+    border: 1px solid var(--gold);
+  }
+
+  .cocon-connector {
+    text-align: center;
+    color: var(--gold);
+    font-size: 18px;
+    margin-bottom: 8px;
+  }
+
+  .cocon-cluster {
+    background: var(--offwhite);
+    border-radius: 10px;
+    padding: 16px;
+    margin-bottom: 12px;
+  }
+
+  .cocon-cluster h4 {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--darkgreen);
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  /* DIVIDER */
+  .divider {
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--border), transparent);
+    margin: 40px 0;
+  }
+
+  /* PAGE BREAK for print */
+  @media print {
+    .page-break { page-break-before: always; }
+    body { font-size: 11px; }
+    .cover { padding: 40px; }
+    .cover h1 { font-size: 28px; }
+  }
+
+  /* INFO BOX */
+  .info-box {
+    background: rgba(196,169,125,0.12);
+    border-left: 3px solid var(--gold);
+    border-radius: 0 8px 8px 0;
+    padding: 14px 18px;
+    margin-bottom: 16px;
+    font-size: 12.5px;
+  }
+
+  .info-box strong { color: var(--darkgreen); }
+
+  /* MARKETING BLOCK */
+  .marketing-block {
+    background: linear-gradient(135deg, rgba(61,74,46,0.06), rgba(196,169,125,0.08));
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 22px;
+    margin-bottom: 16px;
+  }
+
+  .marketing-block h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 14px;
+    color: var(--darkgreen);
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  /* FOOTER */
+  .footer {
+    background: var(--darkgreen);
+    color: rgba(253,251,247,0.5);
+    text-align: center;
+    padding: 20px;
+    font-size: 11px;
+    margin-top: 50px;
+  }
+
+  .footer strong { color: var(--gold); }
+
+  /* PERSONA */
+  .persona-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+
+  .persona-avatar {
+    width: 56px;
+    height: 56px;
+    background: linear-gradient(135deg, var(--darkgreen), var(--olive));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    flex-shrink: 0;
+  }
+
+  .persona-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--darkgreen);
+  }
+
+  .persona-desc {
+    font-size: 11.5px;
+    color: #666;
+    margin-top: 2px;
+  }
+
+  .col-block {
+    background: var(--offwhite);
+    border-radius: 8px;
+    padding: 14px 16px;
+    margin-bottom: 10px;
+  }
+
+  .col-block h5 {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--gold);
+    margin-bottom: 8px;
+  }
+
+  /* CTA LINE */
+  .cta-badge {
+    display: inline-block;
+    background: var(--gold);
+    color: var(--darkgreen);
+    font-size: 11px;
+    font-weight: 700;
+    padding: 5px 12px;
+    border-radius: 20px;
+    margin: 3px;
+    letter-spacing: 0.5px;
+  }
+
+  .cta-badge-secondary {
+    display: inline-block;
+    background: transparent;
+    border: 1px solid var(--gold);
+    color: var(--darkgold);
+    font-size: 11px;
+    font-weight: 600;
+    padding: 5px 12px;
+    border-radius: 20px;
+    margin: 3px;
+  }
+
+  /* STATUS INDICATOR */
+  .status {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 11px;
+    font-weight: 600;
+  }
+
+  .status::before {
+    content: '';
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+  }
+
+  .status-ok::before { background: var(--olive); }
+  .status-warn::before { background: #E8A020; }
+  .status-risk::before { background: #C0392B; }
+
+  small { color: #888; font-size: 10.5px; }
+
+  b, strong { color: var(--darkgreen); }
+
+  .td-keywords { max-width: 160px; }
+  .td-content { max-width: 180px; }
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+  <div class="cover-label">Document Stratégique Confidentiel</div>
+  <h1>MH Riviera<br><span>Conciergerie</span></h1>
+  <p class="cover-sub">Analyse stratégique complète — Positionnement, SEO, Arborescence & Marketing intégré</p>
+  <div class="cover-meta">
+    <div class="cover-meta-item">Cliente<span>Manon Hovaguimian</span></div>
+    <div class="cover-meta-item">Zone prioritaire<span>Bandol → Côte d'Azur</span></div>
+    <div class="cover-meta-item">Étapes<span>1 & 2 — Stratégie + Sitemap</span></div>
+    <div class="cover-meta-item">Statut<span>En attente de validation</span></div>
+  </div>
+</div>
+
+<!-- ÉTAPE 1 -->
+<div class="container">
+
+  <div class="section-header" style="margin-top: 10px;">
+    <div class="section-number">1</div>
+    <div>
+      <div class="section-subtitle">Étape 1</div>
+      <div class="section-title">Analyse stratégique préalable</div>
+    </div>
+  </div>
+
+  <!-- 1.1 AVATAR -->
+  <div class="card">
+    <div class="card-title"><div class="dot"></div>1.1 — Avatar / Client idéal</div>
+
+    <div class="persona-header">
+      <div class="persona-avatar">🏠</div>
+      <div>
+        <div class="persona-name">Le propriétaire bailleur sur-débordé</div>
+        <div class="persona-desc">Propriétaire d'un ou plusieurs biens en location courte durée sur la Côte d'Azur / Var Est</div>
+      </div>
+    </div>
+
+    <div class="grid-2">
+      <div>
+        <div class="col-block">
+          <h5>Profil socio-démographique</h5>
+          <ul class="check">
+            <li>35–65 ans, actifs ou retraités aisés</li>
+            <li>Propriétaire d'un appartement ou villa en bord de mer</li>
+            <li>Réside souvent loin du bien (Paris, Lyon, étranger)</li>
+            <li>Loue en courte durée sur Airbnb, Abritel, Booking</li>
+            <li>1 à 3 biens en portefeuille</li>
+          </ul>
+        </div>
+        <div class="col-block">
+          <h5>Motivations principales</h5>
+          <ul class="check">
+            <li>Maximiser le rendement locatif sans effort</li>
+            <li>Déléguer 100% des contraintes opérationnelles</li>
+            <li>Avoir un interlocuteur local de confiance</li>
+            <li>Protéger leur bien et leur réputation en ligne</li>
+            <li>Gagner du temps sur les aspects logistiques</li>
+          </ul>
+        </div>
+      </div>
+      <div>
+        <div class="col-block">
+          <h5>Freins & objections</h5>
+          <ul class="cross">
+            <li>"Et si quelque chose se passe mal dans mon bien ?"</li>
+            <li>"Je ne connais pas cette conciergerie, pas de référence."</li>
+            <li>"20% de commission, c'est beaucoup."</li>
+            <li>"Est-ce que mes voyageurs seront bien accueillis ?"</li>
+            <li>"Comment suivre la gestion à distance ?"</li>
+          </ul>
+        </div>
+        <div class="col-block">
+          <h5>Critères de décision</h5>
+          <ul class="check">
+            <li>Proximité géographique et connaissance du terrain</li>
+            <li>Réactivité (urgences, pannes, check-in tardif)</li>
+            <li>Sérieux et fiabilité (photos, témoignages, site pro)</li>
+            <li>Services complets tout-en-un</li>
+            <li>Tarif transparent et compréhensible</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="info-box" style="margin-top: 10px;">
+      <strong>Niveau de maturité :</strong> Variable. Certains cherchent activement une conciergerie (intention transactionnelle forte). D'autres découvrent la possibilité de déléguer et ont besoin d'être éduqués sur le modèle (intention informationnelle à nourrir). Le site doit parler aux deux profils.
+    </div>
+  </div>
+
+  <!-- 1.2 MARCHÉ -->
+  <div class="card">
+    <div class="card-title"><div class="dot"></div>1.2 — Analyse du marché</div>
+    <div class="grid-3">
+      <div class="col-block">
+        <h5>Nature du marché</h5>
+        <ul class="styled">
+          <li>Location courte durée en pleine expansion sur la Côte Var-PACA</li>
+          <li>Marché très saisonnier (pic juin–sept) mais demande croissante toute l'année</li>
+          <li>Forte demande propriétaire pour externaliser la gestion</li>
+          <li>Tourisme premium sur Bandol, Cassis, Nice, Cannes</li>
+        </ul>
+      </div>
+      <div class="col-block">
+        <h5>Attentes dominantes</h5>
+        <ul class="styled">
+          <li>Fiabilité et réactivité absolues</li>
+          <li>Couverture complète des services (ménage, linge, check-in/out)</li>
+          <li>Gestion des plateformes (annonces optimisées)</li>
+          <li>Interlocuteur local et disponible</li>
+        </ul>
+      </div>
+      <div class="col-block">
+        <h5>Opportunités identifiées</h5>
+        <ul class="styled">
+          <li>Bandol = ville peu couverte par les grandes enseignes nationales</li>
+          <li>Angle "ancrage local" très valorisé par les propriétaires</li>
+          <li>Petite structure = plus réactive qu'un grand groupe</li>
+          <li>De Bandol à Cannes = axe peu structuré en SEO local</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 1.3 CONCURRENCE -->
+  <div class="card">
+    <div class="card-title"><div class="dot"></div>1.3 — Analyse concurrentielle</div>
+    <div class="grid-2">
+      <div>
+        <div class="col-block">
+          <h5>Types de concurrents</h5>
+          <ul class="styled">
+            <li><strong>Nationales :</strong> Welkeys, Bnbsitter, Hometime, GuestReady — présence sur tout le territoire</li>
+            <li><strong>Régionales :</strong> Conciergeries locales sur Nice, Cannes, Marseille</li>
+            <li><strong>Individuelles :</strong> Auto-entrepreneurs locaux sur Var / Alpes-Maritimes</li>
+            <li><strong>Agences immobilières :</strong> qui proposent parfois la gestion locative</li>
+          </ul>
+        </div>
+        <div class="col-block">
+          <h5>Codes éditoriaux récurrents chez les concurrents</h5>
+          <ul class="styled">
+            <li>Promesses génériques ("on s'occupe de tout")</li>
+            <li>Tarifs souvent opaques ou absents</li>
+            <li>Témoignages clients rares ou peu crédibles</li>
+            <li>Sites froids, corporatifs, sans personnalité</li>
+            <li>Peu de contenu local ou ancrage géographique faible</li>
+          </ul>
+        </div>
+      </div>
+      <div>
+        <div class="col-block">
+          <h5>Points faibles exploitables</h5>
+          <ul class="cross">
+            <li>Grandes structures = peu de contact humain, sentiment d'être "un dossier"</li>
+            <li>Sites peu optimisés SEO local (Bandol, Sanary, La Ciotat…)</li>
+            <li>Absence d'ancrage "originaire de la région" comme preuve de confiance</li>
+            <li>Commission parfois plus élevée (25–30%) sans service linge inclus</li>
+          </ul>
+        </div>
+        <div class="col-block">
+          <h5>Espaces de différenciation pour Manon</h5>
+          <ul class="check">
+            <li>Originaire de Bandol → crédibilité locale absolue</li>
+            <li>20% tout inclus (ménage + linge) → tarif compétitif et transparent</li>
+            <li>Gestion humaine et personnalisée → 1 interlocutrice, pas un call center</li>
+            <li>Couverture Bandol → Cannes = axe SEO local unique</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 1.4 LIGNE DIRECTRICE -->
+  <div class="highlight">
+    <h3>1.4 — Ligne directrice de communication</h3>
+    <div class="grid-2" style="margin-top: 14px; gap: 20px;">
+      <div>
+        <p><strong style="color: var(--gold);">Ton éditorial :</strong><br>Premium mais chaleureux. Confiant sans être arrogant. Précis et concret. Aucune promesse floue. Parler propriétaire à propriétaire, avec la transparence d'une personne qui connaît vraiment le terrain.</p>
+        <p style="margin-top: 12px;"><strong style="color: var(--gold);">Hiérarchie des messages :</strong><br>1. Je suis d'ici, je connais vraiment votre marché. 2. Vous ne gérez plus rien. 3. Vos voyageurs sont entre de bonnes mains. 4. 20% tout inclus, transparent.</p>
+      </div>
+      <div>
+        <p><strong style="color: var(--gold);">Registre visuel :</strong><br>Élégant, épuré, noir / blanc / or. Évoque le luxe balnéaire méditerranéen sans être clinquant. Photos lumineuses de la côte varoise. Typographie serif pour les titres.</p>
+        <p style="margin-top: 12px;"><strong style="color: var(--gold);">CTA dominants :</strong><br>"Confier mon bien" / "Obtenir une estimation gratuite" / "Parler à Manon". Proximité humaine affirmée dans les calls to action.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 1.5 OBJECTIFS -->
+  <div class="card">
+    <div class="card-title"><div class="dot"></div>1.5 — Objectifs du site (priorisés)</div>
+    <div class="grid-3">
+      <div class="pillar">
+        <div class="pillar-icon">🎯</div>
+        <h4>Priorité 1 — Lead</h4>
+        <p>Générer des contacts qualifiés de propriétaires cherchant une conciergerie sur la zone Bandol–Cannes.</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-icon">🔍</div>
+        <h4>Priorité 2 — SEO local</h4>
+        <p>Capter les recherches locales sur chaque ville de la côte varoise et azuréenne.</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-icon">🤝</div>
+        <h4>Priorité 3 — Réassurance</h4>
+        <p>Convaincre les propriétaires sceptiques via la transparence, la personnalité et les preuves sociales.</p>
+      </div>
+    </div>
+    <div class="grid-2" style="margin-top: 12px;">
+      <div class="pillar">
+        <div class="pillar-icon">🗓️</div>
+        <h4>Priorité 4 — Prise de RDV</h4>
+        <p>Faciliter le passage à l'action via un formulaire ou un lien de réservation d'appel.</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-icon">📣</div>
+        <h4>Priorité 5 — Notoriété</h4>
+        <p>Asseoir la crédibilité de Manon comme experte locale de la gestion locative courte durée.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 1.6 PROPOSITION DE VALEUR -->
+  <div class="value-main">
+    <div class="label">Proposition de valeur principale</div>
+    <h2>« La conciergerie <span>ancrée sur la Riviera</span> qui gère tout,<br>pour que vous n'ayez plus qu'à <span>encaisser</span>. »</h2>
+  </div>
+
+  <div class="grid-3">
+    <div class="pillar">
+      <div class="pillar-icon">🌊</div>
+      <h4>Ancrage local authentique</h4>
+      <p>Originaire de Bandol, Manon connaît chaque recoin de la côte, ses prestataires, ses saisonnalités et ses voyageurs.</p>
+    </div>
+    <div class="pillar">
+      <div class="pillar-icon">✅</div>
+      <h4>Tout inclus à 20%</h4>
+      <p>Ménage et linge inclus dans la commission. Pas de surprise, pas de surcoût. Un seul interlocutrice, une seule ligne.</p>
+    </div>
+    <div class="pillar">
+      <div class="pillar-icon">🔑</div>
+      <h4>Gestion 360° sans friction</h4>
+      <p>Check-in, check-out, gestion des annonces, intervention rapide en cas de problème. Vous ne gérez plus rien.</p>
+    </div>
+    <div class="pillar">
+      <div class="pillar-icon">💬</div>
+      <h4>Relation humaine & directe</h4>
+      <p>Pas de call center. Manon est votre interlocutrice unique, disponible et réactive.</p>
+    </div>
+    <div class="pillar">
+      <div class="pillar-icon">📈</div>
+      <h4>Optimisation des revenus</h4>
+      <p>Annonces optimisées, tarification adaptée à la saisonnalité varoise pour maximiser votre taux d'occupation.</p>
+    </div>
+    <div class="pillar">
+      <div class="pillar-icon">🛡️</div>
+      <h4>Protection de votre bien</h4>
+      <p>Vérification des états des lieux, gestion des imprévus, prestataires locaux fiables mobilisables rapidement.</p>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ÉTAPE 2 -->
+  <div class="section-header">
+    <div class="section-number">2</div>
+    <div>
+      <div class="section-subtitle">Étape 2</div>
+      <div class="section-title">Arborescence stratégique, SEO & Cocon sémantique</div>
+    </div>
+  </div>
+
+  <!-- SITEMAP TABLE -->
+  <p style="font-size: 12px; color: #666; margin-bottom: 14px;">Le tableau ci-dessous structure l'intégralité des pages du site. Chaque entrée est pensée pour maximiser la pertinence SEO, la couverture sémantique et le tunnel de conversion.</p>
+
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th>Page</th>
+          <th>Rôle UX</th>
+          <th>Objectif stratégique</th>
+          <th>Intention</th>
+          <th>Framework</th>
+          <th>Mot-clé principal</th>
+          <th class="td-keywords">Mots-clés secondaires</th>
+          <th>Entités SEO/GEO</th>
+          <th class="td-content">Angle de contenu</th>
+          <th>CTA Principal</th>
+          <th>CTA Secondaire</th>
+          <th>Cocon</th>
+          <th>Priorité SEO</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- HOME -->
+        <tr>
+          <td>🏠 Accueil</td>
+          <td>Porte d'entrée principale, hub de navigation, 1re impression</td>
+          <td>Capter l'intention, convaincre en 10 secondes, orienter vers la conversion</td>
+          <td><span class="tag tag-blue">Commerciale</span></td>
+          <td>AIDA</td>
+          <td>conciergerie Bandol location courte durée</td>
+          <td>gestion locative Bandol, conciergerie airbnb Var, déléguer location saisonnière côte d'azur</td>
+          <td>Bandol, Var, Côte d'Azur, MH Riviera, Manon Hovaguimian, Airbnb, Booking</td>
+          <td>Promesse directe, bénéfices clés, présentation services, réassurance, CTA fort</td>
+          <td>Confier mon bien</td>
+          <td>Découvrir les services</td>
+          <td>Page Pilier. Lie toutes les pages</td>
+          <td><span class="priority-fort">Fort</span></td>
+        </tr>
+        <!-- SERVICES -->
+        <tr>
+          <td>⚙️ Services</td>
+          <td>Détail complet de l'offre, page de réassurance et de décision</td>
+          <td>Convertir les propriétaires en phase de comparaison</td>
+          <td><span class="tag tag-blue">Commerciale</span></td>
+          <td>PAS + 4P</td>
+          <td>services conciergerie location courte durée</td>
+          <td>gestion check-in check-out, ménage et linge location saisonnière, conciergerie airbnb tout inclus</td>
+          <td>Check-in, Check-out, ménage, linge, annonces Airbnb, Abritel, gestion à distance</td>
+          <td>Liste claire des services inclus au taux de 20%, comparaison avec gestion en solo</td>
+          <td>Obtenir un devis gratuit</td>
+          <td>Voir les zones couvertes</td>
+          <td>Pilier. Enfants : pages services détaillées</td>
+          <td><span class="priority-fort">Fort</span></td>
+        </tr>
+        <!-- SERVICE MENAGE -->
+        <tr>
+          <td>🧹 Service — Ménage & Linge</td>
+          <td>Page service détaillée, capture d'intention spécifique</td>
+          <td>SEO sur requête spécifique, réassurance opérationnelle</td>
+          <td><span class="tag tag-blue">Commerciale</span></td>
+          <td>PAS</td>
+          <td>ménage linge conciergerie location saisonnière</td>
+          <td>pressing linge location airbnb, ménage entre deux locations, service ménage propriétaire absent</td>
+          <td>Rotation linge, ménage professionnel, protocole de nettoyage, linge hôtelier</td>
+          <td>Ménage + linge inclus à 20%, pas de prestataire supplémentaire à gérer</td>
+          <td>Confier mon bien</td>
+          <td>Voir tous les services</td>
+          <td>Enfant de Services</td>
+          <td><span class="priority-moyen">Moyen</span></td>
+        </tr>
+        <!-- SERVICE CHECK-IN -->
+        <tr>
+          <td>🔑 Service — Check-in & Check-out</td>
+          <td>Page service détaillée, rassure sur l'accueil voyageur</td>
+          <td>Capturer les propriétaires préoccupés par l'accueil à distance</td>
+          <td><span class="tag tag-blue">Commerciale</span></td>
+          <td>PAS</td>
+          <td>check-in check-out location saisonnière Bandol</td>
+          <td>accueil voyageur location courte durée, remise des clés airbnb, gestion arrivée départ locataire</td>
+          <td>Accueil physique, remise des clés, livret d'accueil, état des lieux</td>
+          <td>Accueil personnalisé de chaque voyageur, même en soirée ou week-end</td>
+          <td>Confier mon bien</td>
+          <td>Retour aux services</td>
+          <td>Enfant de Services</td>
+          <td><span class="priority-moyen">Moyen</span></td>
+        </tr>
+        <!-- SERVICE GESTION ANNONCES -->
+        <tr>
+          <td>📱 Service — Gestion des annonces</td>
+          <td>Page service, attire les propriétaires voulant mieux se positionner sur les plateformes</td>
+          <td>Capter intention "optimiser annonce airbnb"</td>
+          <td><span class="tag tag-blue">Commerciale</span><span class="tag">Informationnelle</span></td>
+          <td>AIDA</td>
+          <td>gestion annonce airbnb location saisonnière</td>
+          <td>optimiser annonce airbnb, gérer calendrier réservation, tarification saisonnière location</td>
+          <td>Airbnb, Abritel, Booking.com, calendrier de réservation, taux d'occupation, revenus locatifs</td>
+          <td>Plus de visibilité = plus de revenus. Manon optimise vos annonces selon la saison</td>
+          <td>Confier la gestion de mon annonce</td>
+          <td>Voir la commission</td>
+          <td>Enfant de Services</td>
+          <td><span class="priority-moyen">Moyen</span></td>
+        </tr>
+        <!-- ZONES -->
+        <tr>
+          <td>📍 Zones d'intervention</td>
+          <td>Carte et liste des villes couvertes. Sécurise les propriétaires hors Bandol</td>
+          <td>Couverture SEO locale multi-villes, hub vers les pages locales</td>
+          <td><span class="tag tag-green">Navigationnelle</span><span class="tag tag-blue">Locale</span></td>
+          <td>4P</td>
+          <td>conciergerie Côte d'Azur Var gestion locative</td>
+          <td>conciergerie Bandol, conciergerie Sanary-sur-Mer, conciergerie La Ciotat, conciergerie Toulon, gestion locative côte varoise</td>
+          <td>Bandol, Sanary, La Ciotat, Toulon, Hyères, Sainte-Maxime, Saint-Tropez, Cannes, Côte d'Azur, Var</td>
+          <td>De Bandol à Cannes : toutes les villes couvertes. Hub vers les pages locales SEO</td>
+          <td>Vérifier ma zone</td>
+          <td>Me contacter</td>
+          <td>Pilier local. Parent des pages villes</td>
+          <td><span class="priority-fort">Fort</span></td>
+        </tr>
+        <!-- PAGES LOCALES -->
+        <tr>
+          <td>📍 Page locale — Bandol</td>
+          <td>Atterrissage SEO local ultra-ciblé, conversion directe</td>
+          <td>Dominer la requête "conciergerie Bandol" — ville prioritaire</td>
+          <td><span class="tag tag-blue">Locale / Transactionnelle</span></td>
+          <td>PAS</td>
+          <td>conciergerie Bandol</td>
+          <td>gestion locative Bandol, location saisonnière Bandol, airbnb Bandol propriétaire</td>
+          <td>Bandol, Var 83, plages Bandol, vignoble Bandol, port de Bandol</td>
+          <td>Manon est native de Bandol. Connaissance intime du marché local. Votre bien mérite un expert local.</td>
+          <td>Confier mon bien à Bandol</td>
+          <td>Voir tous les services</td>
+          <td>Enfant de Zones. Liée à Accueil</td>
+          <td><span class="priority-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td>📍 Page locale — Sanary-sur-Mer</td>
+          <td>Atterrissage SEO local</td>
+          <td>Capter propriétaires Sanary</td>
+          <td><span class="tag tag-blue">Locale</span></td>
+          <td>PAS</td>
+          <td>conciergerie Sanary-sur-Mer</td>
+          <td>gestion location saisonnière Sanary, airbnb Sanary</td>
+          <td>Sanary-sur-Mer, Var, Provence</td>
+          <td>Proximité Bandol, même niveau de service, même commission</td>
+          <td>Confier mon bien à Sanary</td>
+          <td>Zones couvertes</td>
+          <td>Enfant de Zones</td>
+          <td><span class="priority-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td>📍 Page locale — La Ciotat</td>
+          <td>Atterrissage SEO local</td>
+          <td>Capter propriétaires La Ciotat</td>
+          <td><span class="tag tag-blue">Locale</span></td>
+          <td>PAS</td>
+          <td>conciergerie La Ciotat</td>
+          <td>gestion location courte durée La Ciotat, conciergerie airbnb La Ciotat</td>
+          <td>La Ciotat, Bouches-du-Rhône, Calanques</td>
+          <td>À 15 min de Bandol, mêmes services, même réactivité</td>
+          <td>Confier mon bien à La Ciotat</td>
+          <td>Zones couvertes</td>
+          <td>Enfant de Zones</td>
+          <td><span class="priority-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td>📍 Page locale — Toulon</td>
+          <td>Atterrissage SEO local</td>
+          <td>Élargir la zone de captation SEO vers l'est</td>
+          <td><span class="tag tag-blue">Locale</span></td>
+          <td>PAS</td>
+          <td>conciergerie Toulon location saisonnière</td>
+          <td>gestion locative Toulon, airbnb Toulon propriétaire</td>
+          <td>Toulon, Var, Méditerranée</td>
+          <td>Gestion professionnelle à Toulon et alentours</td>
+          <td>Confier mon bien à Toulon</td>
+          <td>Zones couvertes</td>
+          <td>Enfant de Zones</td>
+          <td><span class="priority-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td>📍 Page locale — Hyères / Les Îles</td>
+          <td>Atterrissage SEO local</td>
+          <td>Captation propriétaires zone Hyères</td>
+          <td><span class="tag tag-blue">Locale</span></td>
+          <td>PAS</td>
+          <td>conciergerie Hyères location saisonnière</td>
+          <td>gestion airbnb Hyères, conciergerie Porquerolles, location île Var</td>
+          <td>Hyères, Îles d'Or, Porquerolles, Presqu'île de Giens</td>
+          <td>Destination premium, gestion exigeante, Manon maîtrise ce marché</td>
+          <td>Confier mon bien à Hyères</td>
+          <td>Zones couvertes</td>
+          <td>Enfant de Zones</td>
+          <td><span class="priority-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td>📍 Page locale — Saint-Tropez / Golfe</td>
+          <td>Atterrissage SEO local premium</td>
+          <td>Positionnement sur marché luxe du Golfe</td>
+          <td><span class="tag tag-blue">Locale</span></td>
+          <td>AIDA</td>
+          <td>conciergerie Saint-Tropez location courte durée</td>
+          <td>gestion villa Saint-Tropez, conciergerie luxe Golfe de Saint-Tropez</td>
+          <td>Saint-Tropez, Ramatuelle, Sainte-Maxime, Golfe de Saint-Tropez</td>
+          <td>Propriétés d'exception, gestion premium, discrétion et réactivité</td>
+          <td>Confier ma villa</td>
+          <td>Voir nos services</td>
+          <td>Enfant de Zones</td>
+          <td><span class="priority-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td>📍 Page locale — Cannes / Antibes</td>
+          <td>Atterrissage SEO local, borne est du territoire</td>
+          <td>Étendre la couverture jusqu'à la cible maximale annoncée</td>
+          <td><span class="tag tag-blue">Locale</span></td>
+          <td>AIDA</td>
+          <td>conciergerie Cannes location saisonnière</td>
+          <td>gestion airbnb Cannes, conciergerie Antibes, location courte durée Alpes-Maritimes</td>
+          <td>Cannes, Antibes, Juan-les-Pins, Croisette, Festival de Cannes</td>
+          <td>Marché tendu, forte demande, expertise locale indispensable</td>
+          <td>Confier mon bien à Cannes</td>
+          <td>Zones couvertes</td>
+          <td>Enfant de Zones</td>
+          <td><span class="priority-moyen">Moyen</span></td>
+        </tr>
+        <!-- À PROPOS -->
+        <tr>
+          <td>👩 À propos — Manon</td>
+          <td>Réassurance humaine, crédibilité, connexion émotionnelle</td>
+          <td>Briser le doute "qui est cette personne ?" et humaniser la marque</td>
+          <td><span class="tag">Navigationnelle</span></td>
+          <td>BAB (Before / After / Bridge)</td>
+          <td>conciergerie airbnb Bandol originaire</td>
+          <td>qui est MH riviera conciergerie, manon hovaguimian bandol, formation conciergerie</td>
+          <td>Bandol, Var, formation conciergerie, gestion locative, Riviera française</td>
+          <td>Son histoire, sa formation, son ancrage local, sa vision de la gestion locative</td>
+          <td>Prendre contact avec Manon</td>
+          <td>Voir les services</td>
+          <td>Liée à Accueil, Services, Contact</td>
+          <td><span class="priority-moyen">Moyen</span></td>
+        </tr>
+        <!-- TARIFS / COMMISSION -->
+        <tr>
+          <td>💰 Tarifs & Commission</td>
+          <td>Transparence tarifaire, objection levée proactivement</td>
+          <td>Convaincre via la clarté et la compétitivité de l'offre</td>
+          <td><span class="tag tag-blue">Commerciale</span></td>
+          <td>4P</td>
+          <td>commission conciergerie location courte durée</td>
+          <td>tarif conciergerie airbnb, prix gestion locative saisonnière, 20% commission conciergerie</td>
+          <td>Commission, ménage inclus, linge inclus, gestion annonce, sans surprise</td>
+          <td>Tout inclus à 20%. Ce que vous payez, ce que vous gagnez. Simulation de revenus potentiels</td>
+          <td>Obtenir une estimation de mes revenus</td>
+          <td>Comparer les services</td>
+          <td>Liée à Services, Contact. Soutien fort SEO</td>
+          <td><span class="priority-fort">Fort</span></td>
+        </tr>
+        <!-- FAQ -->
+        <tr>
+          <td>❓ FAQ</td>
+          <td>Lever les objections résiduelles, soutien SEO longue traîne</td>
+          <td>Améliorer le taux de conversion des indécis + visibilité GEO (featured snippets)</td>
+          <td><span class="tag">Informationnelle</span></td>
+          <td>Q&A structuré</td>
+          <td>questions conciergerie location saisonnière</td>
+          <td>comment fonctionne une conciergerie airbnb, que comprend la commission 20%, puis-je résilier</td>
+          <td>Commission, contrat conciergerie, gestion à distance, durée d'engagement, sinistre</td>
+          <td>Questions réelles des propriétaires, réponses directes, honnêtes, sans jargon</td>
+          <td>Me lancer maintenant</td>
+          <td>Lire la page tarifs</td>
+          <td>Liée à Tarifs, Services, Contact</td>
+          <td><span class="priority-moyen">Moyen</span></td>
+        </tr>
+        <!-- BLOG -->
+        <tr>
+          <td>📝 Blog / Conseils</td>
+          <td>Captation SEO longue traîne, nurturing, autorité éditoriale</td>
+          <td>Attirer des propriétaires en phase de recherche informationnelle</td>
+          <td><span class="tag">Informationnelle</span></td>
+          <td>Éditorial</td>
+          <td>conseils location saisonnière côte d'azur propriétaire</td>
+          <td>comment rentabiliser son bien en location courte durée, que mettre dans un livret d'accueil</td>
+          <td>Airbnb, location saisonnière, Var, Côte d'Azur, saisonnalité, voyageur</td>
+          <td>Conseils pratiques, guides, erreurs à éviter — positionnement d'experte locale</td>
+          <td>Confier mon bien à MH Riviera</td>
+          <td>Lire d'autres articles</td>
+          <td>Hub blog. Enfants = articles. Liés aux pages services et locales</td>
+          <td><span class="priority-moyen">Moyen</span></td>
+        </tr>
+        <!-- ARTICLES BLOG -->
+        <tr>
+          <td>📄 Article — Comment rentabiliser son bien à Bandol</td>
+          <td>Article de blog, longue traîne SEO</td>
+          <td>Captation intention informationnelle forte, conversion en lead</td>
+          <td><span class="tag">Informationnelle</span></td>
+          <td>Éditorial + CTA intégré</td>
+          <td>rentabiliser location saisonnière Bandol</td>
+          <td>rendement airbnb Bandol, taux occupation location courte durée Var</td>
+          <td>Bandol, saison estivale, taux d'occupation, revenus locatifs</td>
+          <td>Guide pratique avec chiffres locaux, lien naturel vers la conciergerie</td>
+          <td>Déléguer la gestion à Manon</td>
+          <td>Lire la page services</td>
+          <td>Enfant Blog. Liée à page Bandol</td>
+          <td><span class="priority-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td>📄 Article — Pourquoi confier son bien à une conciergerie</td>
+          <td>Article éducatif, haut de tunnel</td>
+          <td>Éduquer + convertir les propriétaires qui gèrent encore seuls</td>
+          <td><span class="tag">Informationnelle</span></td>
+          <td>Éditorial</td>
+          <td>pourquoi confier son logement à une conciergerie airbnb</td>
+          <td>avantages conciergerie location saisonnière, gérer seul vs conciergerie</td>
+          <td>Gain de temps, revenus, voyageurs, plateformes, gestion à distance</td>
+          <td>Avant / après. Ce que vous gagnez en déléguant. Témoignage type</td>
+          <td>Découvrir MH Riviera Conciergerie</td>
+          <td>Voir nos tarifs</td>
+          <td>Enfant Blog. Liée à Services, Tarifs</td>
+          <td><span class="priority-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td>📄 Article — Guide : la saisonnalité sur la Côte Varoise</td>
+          <td>Article de fond, autorité locale</td>
+          <td>SEO informationnelle + positionnement expert local</td>
+          <td><span class="tag">Informationnelle</span></td>
+          <td>Éditorial</td>
+          <td>saisonnalité location saisonnière Var côte d'azur</td>
+          <td>meilleure période location Bandol, quand louer son bien à Sanary, haute saison côte d'azur</td>
+          <td>Var, Côte d'Azur, saisonnalité, festivals, événements locaux, Cannes, Hyères</td>
+          <td>Guide chiffré des saisons, événements qui boostent la demande, conseils de tarification</td>
+          <td>Me faire accompagner par Manon</td>
+          <td>Voir les zones couvertes</td>
+          <td>Enfant Blog. Liée à Zones, Tarifs</td>
+          <td><span class="priority-faible">Faible</span></td>
+        </tr>
+        <!-- CONTACT -->
+        <tr>
+          <td>📩 Contact</td>
+          <td>Page de conversion finale</td>
+          <td>Générer un lead qualifié ou une prise de RDV directe</td>
+          <td><span class="tag tag-blue">Transactionnelle</span></td>
+          <td>AIDA simplifié</td>
+          <td>contacter conciergerie Bandol</td>
+          <td>devis conciergerie location saisonnière, prendre rendez-vous conciergerie airbnb
