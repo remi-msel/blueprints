@@ -1,0 +1,1218 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blueprint Stratégique — Jo le Chauve Conciergerie</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --rouge: #C8102E;
+    --encre: #1A1A1A;
+    --washi: #F5F0E8;
+    --sable: #C4A97D;
+    --blanc: #FFFFFF;
+    --gris-texte: #4A4A4A;
+    --gris-light: #888888;
+    --border: #E8E2D8;
+  }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    line-height: 1.8;
+    color: var(--encre);
+    background: var(--washi);
+  }
+
+  /* ── COUVERTURE ── */
+  .cover {
+    min-height: 100vh;
+    background: linear-gradient(145deg, #1A1A1A 0%, #2a1a1a 40%, #3d0d15 75%, #C8102E 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 60px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cover::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23C4A97D' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    opacity: 0.3;
+  }
+
+  .cover-torii {
+    width: 3px;
+    height: 60px;
+    background: linear-gradient(to bottom, var(--rouge), transparent);
+    margin-bottom: 32px;
+    opacity: 0.7;
+  }
+
+  .cover-client {
+    font-family: 'Playfair Display', serif;
+    font-size: 68px;
+    font-weight: 700;
+    color: #FFFFFF;
+    letter-spacing: 2px;
+    line-height: 1.1;
+    margin-bottom: 16px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .cover-subtitle {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    font-weight: 300;
+    color: var(--sable);
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin-bottom: 48px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .cover-meta {
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+    flex-wrap: wrap;
+    position: relative;
+    z-index: 1;
+  }
+
+  .cover-meta-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .cover-meta-label {
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--sable);
+    opacity: 0.7;
+  }
+
+  .cover-meta-value {
+    font-size: 13px;
+    color: rgba(255,255,255,0.85);
+    font-weight: 500;
+  }
+
+  .cover-line {
+    width: 60px;
+    height: 1px;
+    background: var(--sable);
+    margin: 40px auto 0;
+    opacity: 0.4;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ── SECTIONS ── */
+  .section {
+    padding: 70px 60px;
+    background: var(--washi);
+    page-break-inside: avoid;
+  }
+
+  .section:nth-child(even) {
+    background: #FFFFFF;
+  }
+
+  .section-badge {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--rouge);
+    margin-bottom: 12px;
+    padding: 6px 14px;
+    border: 1px solid rgba(200,16,46,0.2);
+    border-radius: 4px;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 34px;
+    font-weight: 700;
+    color: var(--encre);
+    margin-bottom: 40px;
+    line-height: 1.2;
+  }
+
+  /* ── CARDS ── */
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px; }
+
+  .card {
+    background: #FFFFFF;
+    border-radius: 14px;
+    padding: 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    border: 1px solid var(--border);
+  }
+
+  .card-icon {
+    font-size: 22px;
+    margin-bottom: 12px;
+    display: block;
+  }
+
+  .card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--encre);
+    margin-bottom: 10px;
+  }
+
+  .card-text {
+    font-size: 14px;
+    color: var(--gris-texte);
+    line-height: 1.7;
+  }
+
+  /* ── HIGHLIGHT BOX ── */
+  .highlight-box {
+    background: linear-gradient(135deg, var(--encre) 0%, #2a1a1a 60%, #3d0d15 100%);
+    border-radius: 16px;
+    padding: 40px 44px;
+    margin-bottom: 40px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .highlight-box::after {
+    content: '鳥居';
+    position: absolute;
+    right: 30px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 80px;
+    color: rgba(196,169,125,0.08);
+    font-family: serif;
+  }
+
+  .highlight-box .label {
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--sable);
+    opacity: 0.8;
+    margin-bottom: 14px;
+    display: block;
+  }
+
+  .highlight-box .promesse {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 600;
+    color: #FFFFFF;
+    line-height: 1.5;
+    max-width: 700px;
+  }
+
+  .highlight-box .accent {
+    color: var(--sable);
+  }
+
+  /* ── TAGS & BADGES ── */
+  .tag {
+    display: inline-block;
+    padding: 5px 13px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 500;
+    margin: 4px 4px 4px 0;
+  }
+
+  .tag-rouge { background: rgba(200,16,46,0.1); color: var(--rouge); }
+  .tag-encre { background: rgba(26,26,26,0.08); color: var(--encre); }
+  .tag-sable { background: rgba(196,169,125,0.18); color: #8a6f3e; }
+
+  .badge-fort { background: rgba(39,174,96,0.12); color: #27AE60; border-radius: 20px; padding: 3px 12px; font-size: 11px; font-weight: 600; }
+  .badge-moyen { background: rgba(243,156,18,0.12); color: #D68910; border-radius: 20px; padding: 3px 12px; font-size: 11px; font-weight: 600; }
+  .badge-faible { background: rgba(149,165,166,0.15); color: #7F8C8D; border-radius: 20px; padding: 3px 12px; font-size: 11px; font-weight: 600; }
+
+  .badge-prioritaire { background: rgba(200,16,46,0.12); color: var(--rouge); border-radius: 20px; padding: 3px 12px; font-size: 11px; font-weight: 600; }
+  .badge-moyen-prio { background: rgba(243,156,18,0.12); color: #D68910; border-radius: 20px; padding: 3px 12px; font-size: 11px; font-weight: 600; }
+  .badge-faible-prio { background: rgba(149,165,166,0.15); color: #7F8C8D; border-radius: 20px; padding: 3px 12px; font-size: 11px; font-weight: 600; }
+
+  /* ── LISTE STYLED ── */
+  .styled-list {
+    list-style: none;
+    padding: 0;
+  }
+
+  .styled-list li {
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 14px;
+    color: var(--gris-texte);
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .styled-list li:last-child { border-bottom: none; }
+
+  .styled-list li::before {
+    content: '—';
+    color: var(--sable);
+    font-weight: 600;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  /* ── TABLEAU ── */
+  .table-wrap {
+    overflow-x: auto;
+    border-radius: 14px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    border: 1px solid var(--border);
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #FFFFFF;
+  }
+
+  thead tr {
+    background: var(--encre);
+  }
+
+  thead th {
+    color: var(--sable);
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 600;
+    padding: 16px 20px;
+    text-align: left;
+  }
+
+  tbody tr {
+    border-bottom: 1px solid var(--border);
+    transition: background 0.15s;
+  }
+
+  tbody tr:last-child { border-bottom: none; }
+  tbody tr:hover { background: rgba(245,240,232,0.5); }
+
+  tbody td {
+    padding: 16px 20px;
+    font-size: 13px;
+    color: var(--gris-texte);
+    vertical-align: middle;
+  }
+
+  tbody td:first-child {
+    font-weight: 600;
+    color: var(--encre);
+    font-size: 14px;
+  }
+
+  /* ── TUNNEL ── */
+  .tunnel-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    border: 1px solid var(--border);
+  }
+
+  .tunnel-step {
+    background: #FFFFFF;
+    padding: 28px 24px;
+    border-right: 1px solid var(--border);
+    position: relative;
+  }
+
+  .tunnel-step:last-child { border-right: none; }
+
+  .tunnel-step-num {
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--sable);
+    margin-bottom: 10px;
+    display: block;
+  }
+
+  .tunnel-step-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--encre);
+    margin-bottom: 14px;
+  }
+
+  .tunnel-step-item {
+    font-size: 12px;
+    color: var(--gris-texte);
+    margin-bottom: 8px;
+    line-height: 1.6;
+  }
+
+  .tunnel-step-item span {
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--sable);
+    display: block;
+    margin-bottom: 2px;
+  }
+
+  .tunnel-cta {
+    margin-top: 16px;
+    padding: 8px 14px;
+    background: var(--rouge);
+    color: #FFFFFF;
+    border-radius: 8px;
+    font-size: 11px;
+    font-weight: 600;
+    text-align: center;
+  }
+
+  .tunnel-step:nth-child(1) .tunnel-step-title { color: #7F8C8D; }
+  .tunnel-step:nth-child(2) .tunnel-step-title { color: var(--sable); }
+  .tunnel-step:nth-child(3) .tunnel-step-title { color: #C4A97D; }
+  .tunnel-step:nth-child(4) .tunnel-step-title { color: var(--rouge); }
+
+  /* ── COCON ── */
+  .cluster-card {
+    background: #FFFFFF;
+    border-radius: 14px;
+    padding: 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    border: 1px solid var(--border);
+  }
+
+  .cluster-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--encre);
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--rouge);
+    display: inline-block;
+  }
+
+  .cluster-main {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--rouge);
+    margin-bottom: 10px;
+  }
+
+  .cluster-pages {
+    list-style: none;
+    padding: 0;
+  }
+
+  .cluster-pages li {
+    font-size: 13px;
+    color: var(--gris-texte);
+    padding: 6px 0;
+    border-bottom: 1px solid rgba(232,226,216,0.6);
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .cluster-pages li:last-child { border-bottom: none; }
+
+  .cluster-pages li .arrow {
+    color: var(--sable);
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  /* ── COULEURS ── */
+  .palette-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    justify-content: center;
+  }
+
+  .color-swatch {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .color-square {
+    width: 80px;
+    height: 80px;
+    border-radius: 14px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+    border: 1px solid rgba(0,0,0,0.06);
+  }
+
+  .color-name {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--encre);
+    text-align: center;
+  }
+
+  .color-hex {
+    font-size: 11px;
+    color: var(--gris-light);
+    font-family: monospace;
+  }
+
+  /* ── MAILLAGE ── */
+  .maillage-block {
+    background: #FFFFFF;
+    border-radius: 14px;
+    padding: 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    border: 1px solid var(--border);
+  }
+
+  .maillage-row {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 13px;
+  }
+
+  .maillage-row:last-child { border-bottom: none; }
+
+  .maillage-source {
+    font-weight: 600;
+    color: var(--rouge);
+    background: rgba(200,16,46,0.06);
+    padding: 3px 10px;
+    border-radius: 6px;
+    flex-shrink: 0;
+  }
+
+  .maillage-arrow {
+    color: var(--sable);
+    font-weight: 700;
+    font-size: 16px;
+    flex-shrink: 0;
+  }
+
+  .maillage-dest {
+    color: var(--gris-texte);
+  }
+
+  /* ── LEVIER CARDS ── */
+  .levier-label {
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--sable);
+    font-weight: 600;
+    margin-bottom: 8px;
+    display: block;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--encre);
+    padding: 40px 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  footer .footer-brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: #FFFFFF;
+  }
+
+  footer .footer-meta {
+    font-size: 12px;
+    color: rgba(255,255,255,0.35);
+    text-align: right;
+  }
+
+  footer .footer-confidentiel {
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--sable);
+    opacity: 0.6;
+  }
+
+  /* ── PRINT ── */
+  @media print {
+    .cover { min-height: auto; padding: 60px; page-break-after: always; }
+    .section { page-break-inside: avoid; }
+    .tunnel-grid { grid-template-columns: 1fr 1fr; }
+  }
+
+  /* ── RESPONSIVE MOBILE ── */
+  @media (max-width: 768px) {
+    .cover { padding: 60px 24px; }
+    .cover-client { font-size: 38px; }
+    .cover-subtitle { font-size: 12px; letter-spacing: 2px; }
+    .cover-meta { gap: 24px; }
+
+    .section { padding: 48px 24px; }
+    .section-title { font-size: 26px; }
+
+    .grid-2, .grid-3 { grid-template-columns: 1fr; }
+
+    .tunnel-grid { grid-template-columns: 1fr; }
+    .tunnel-step { border-right: none; border-bottom: 1px solid var(--border); }
+    .tunnel-step:last-child { border-bottom: none; }
+
+    .table-wrap { overflow-x: auto; }
+    table { min-width: 600px; }
+
+    .highlight-box { padding: 28px 24px; }
+    .highlight-box .promesse { font-size: 17px; }
+    .highlight-box::after { display: none; }
+
+    .palette-grid { gap: 16px; }
+
+    footer { padding: 32px 24px; flex-direction: column; align-items: flex-start; }
+    footer .footer-meta { text-align: left; }
+
+    .maillage-row { flex-direction: row; flex-wrap: wrap; }
+
+    .cluster-pages li { flex-wrap: wrap; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════ -->
+<!-- COUVERTURE -->
+<!-- ══════════════════════════════════════════════ -->
+<div class="cover">
+  <div class="cover-torii"></div>
+  <div class="cover-client">Jo le Chauve</div>
+  <div class="cover-subtitle">Blueprint Stratégique — Site Web</div>
+  <div class="cover-meta">
+    <div class="cover-meta-item">
+      <span class="cover-meta-label">Client</span>
+      <span class="cover-meta-value">Rémi MEDJAHED</span>
+    </div>
+    <div class="cover-meta-item">
+      <span class="cover-meta-label">Secteur</span>
+      <span class="cover-meta-value">Conciergerie Courte Durée</span>
+    </div>
+    <div class="cover-meta-item">
+      <span class="cover-meta-label">Zones</span>
+      <span class="cover-meta-value">Tokyo · Kyoto · Osaka</span>
+    </div>
+  </div>
+  <div class="cover-line"></div>
+</div>
+
+<!-- ══════════════════════════════════════════════ -->
+<!-- 01 — POSITIONNEMENT -->
+<!-- ══════════════════════════════════════════════ -->
+<div class="section">
+  <span class="section-badge">01 — Positionnement</span>
+  <h2 class="section-title">Identité & différenciation</h2>
+
+  <div class="highlight-box">
+    <span class="label">Promesse de valeur principale</span>
+    <div class="promesse">Votre bien au Japon, géré <span class="accent">de l'intérieur</span> — par un expert qui vit, parle et respire la culture nippone.</div>
+  </div>
+
+  <div class="grid-2" style="margin-bottom: 32px;">
+    <div class="card">
+      <span class="card-icon">🧭</span>
+      <div class="card-title">Ligne directrice de communication</div>
+      <div class="card-text">Expertise de terrain unique + proximité culturelle japonaise + gestion sereine pour des propriétaires distants. Le message central : <em>"Vous êtes loin, nous sommes là."</em></div>
+    </div>
+    <div class="card">
+      <span class="card-icon">✍️</span>
+      <div class="card-title">Ton éditorial</div>
+      <div class="card-text"><strong>Précis · Rassurant · Authentique</strong><br>Un discours de praticien — jamais pompeux. Jo parle vrai, avec la rigueur d'un professionnel terrain et la chaleur de quelqu'un qui aime vraiment ce qu'il fait.</div>
+    </div>
+  </div>
+
+  <h3 style="font-family:'Playfair Display',serif; font-size:20px; margin-bottom:24px; color:var(--encre);">Piliers de différenciation</h3>
+  <div class="grid-3">
+    <div class="card">
+      <span class="card-icon">🗾</span>
+      <div class="card-title">Ancrage local réel</div>
+      <div class="card-text">Jo vit au Japon depuis 15 ans. Pas un gestionnaire à distance : un expert sur le terrain, dans les trois villes.</div>
+    </div>
+    <div class="card">
+      <span class="card-icon">🌐</span>
+      <div class="card-title">Maîtrise multilingue & multiculturelle</div>
+      <div class="card-text">Communication en japonais, français et anglais. Compréhension fine des codes culturels pour des voyageurs et propriétaires du monde entier.</div>
+    </div>
+    <div class="card">
+      <span class="card-icon">⚖️</span>
+      <div class="card-title">Conformité loi Minpaku</div>
+      <div class="card-text">Veille réglementaire active sur un cadre légal complexe que beaucoup ignorent. Un atout rassurant pour tout investisseur étranger.</div>
+    </div>
+    <div class="card">
+      <span class="card-icon">🏮</span>
+      <div class="card-title">Offre tout-en-un premium</div>
+      <div class="card-text">Un seul interlocuteur, un forfait unique à 22% — de la photo professionnelle au cadeau de bienvenue japonais. Zéro friction pour le propriétaire.</div>
+    </div>
+    <div class="card">
+      <span class="card-icon">📊</span>
+      <div class="card-title">Transparence & reporting</div>
+      <div class="card-text">Rapport mensuel détaillé. Le propriétaire garde la visibilité sans supporter la charge opérationnelle.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════ -->
+<!-- 02 — CLIENT CIBLE -->
+<!-- ══════════════════════════════════════════════ -->
+<div class="section">
+  <span class="section-badge">02 — Client Cible</span>
+  <h2 class="section-title">Profil du propriétaire idéal</h2>
+
+  <div class="grid-2" style="margin-bottom:24px;">
+    <div class="card">
+      <span class="card-icon">👤</span>
+      <div class="card-title">Profil type</div>
+      <div class="card-text">Français ou Européen, 35–60 ans, propriétaire d'un bien au Japon (héritage, achat investissement ou coup de cœur). Vit hors du Japon, souvent peu ou pas japonophone. Cherche à rentabiliser son bien sans y consacrer du temps.</div>
+    </div>
+    <div class="card">
+      <span class="card-icon">💡</span>
+      <div class="card-title">Motivations principales</div>
+      <ul class="styled-list">
+        <li>Rentabiliser un bien immobilier au Japon sans y résider</li>
+        <li>Déléguer à quelqu'un de confiance, sur place, qui parle la langue</li>
+        <li>Éviter les erreurs légales (loi Minpaku)</li>
+        <li>Préserver ou valoriser un bien affectif ou patrimonial</li>
+        <li>Profiter de l'essor du tourisme inbound au Japon</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <span class="card-icon">🚧</span>
+      <div class="card-title">Freins & objections</div>
+      <ul class="styled-list">
+        <li>Difficulté à contrôler la gestion à distance</li>
+        <li>Crainte de ne pas comprendre la réglementation japonaise</li>
+        <li>Manque de confiance dans un gestionnaire inconnu</li>
+        <li>Incertitude sur la rentabilité réelle</li>
+        <li>Peur d'une mauvaise représentation de leur bien</li>
+      </ul>
+    </div>
+    <div class="card">
+      <span class="card-icon">✅</span>
+      <div class="card-title">Critères de décision</div>
+      <ul class="styled-list">
+        <li>Preuve que le gestionnaire est bien présent localement</li>
+        <li>Clarté de l'offre et de la commission</li>
+        <li>Témoignages de propriétaires satisfaits</li>
+        <li>Maîtrise des aspects légaux (Minpaku)</li>
+        <li>Facilité de communication et reporting régulier</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════ -->
+<!-- 03 — OBJECTIFS DU SITE -->
+<!-- ══════════════════════════════════════════════ -->
+<div class="section">
+  <span class="section-badge">03 — Objectifs du site</span>
+  <h2 class="section-title">Ce que le site doit accomplir</h2>
+
+  <div class="grid-3">
+    <div class="card">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px;">
+        <div style="width:32px;height:32px;background:var(--rouge);border-radius:8px;display:flex;align-items:center;justify-content:center;color:white;font-size:13px;font-weight:700;flex-shrink:0;">1</div>
+        <div class="card-title" style="margin:0;">Génération de leads</div>
+      </div>
+      <div class="card-text">Capter des propriétaires de biens au Japon via formulaire qualifiant ou prise de RDV directe.</div>
+    </div>
+    <div class="card">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px;">
+        <div style="width:32px;height:32px;background:var(--rouge);border-radius:8px;display:flex;align-items:center;justify-content:center;color:white;font-size:13px;font-weight:700;flex-shrink:0;">2</div>
+        <div class="card-title" style="margin:0;">Réassurance & confiance</div>
+      </div>
+      <div class="card-text">Prouver l'expertise terrain de Jo à travers la page À propos, les témoignages et les contenus culturels.</div>
+    </div>
+    <div class="card">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px;">
+        <div style="width:32px;height:32px;background:var(--rouge);border-radius:8px;display:flex;align-items:center;justify-content:center;color:white;font-size:13px;font-weight:700;flex-shrink:0;">3</div>
+        <div class="card-title" style="margin:0;">Prise de RDV</div>
+      </div>
+      <div class="card-text">Faciliter le passage à l'action : un bouton de prise de RDV visible sur toutes les pages clés.</div>
+    </div>
+    <div class="card">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px;">
+        <div style="width:32px;height:32px;background:#8a6f3e;border-radius:8px;display:flex;align-items:center;justify-content:center;color:white;font-size:13px;font-weight:700;flex-shrink:0;">4</div>
+        <div class="card-title" style="margin:0;">SEO ciblé niche</div>
+      </div>
+      <div class="card-text">Se positionner sur des requêtes très spécifiques : gestion locative Japon, conciergerie Tokyo propriétaire, Minpaku.</div>
+    </div>
+    <div class="card">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px;">
+        <div style="width:32px;height:32px;background:#8a6f3e;border-radius:8px;display:flex;align-items:center;justify-content:center;color:white;font-size:13px;font-weight:700;flex-shrink:0;">5</div>
+        <div class="card-title" style="margin:0;">Conversion visiteur → prospect</div>
+      </div>
+      <div class="card-text">Maximiser le taux de transformation via un parcours fluide de la découverte à la prise de contact.</div>
+    </div>
+    <div class="card">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px;">
+        <div style="width:32px;height:32px;background:var(--gris-light);border-radius:8px;display:flex;align-items:center;justify-content:center;color:white;font-size:13px;font-weight:700;flex-shrink:0;">6</div>
+        <div class="card-title" style="margin:0;">Nurturing & notoriété</div>
+      </div>
+      <div class="card-text">Blog et newsletter pour éduquer les propriétaires sur la gestion locative au Japon et rester top of mind.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════ -->
+<!-- 04 — ARBORESCENCE -->
+<!-- ══════════════════════════════════════════════ -->
+<div class="section">
+  <span class="section-badge">04 — Arborescence du site</span>
+  <h2 class="section-title">Structure des pages</h2>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Page</th>
+          <th>Framework</th>
+          <th>Mot-clé principal</th>
+          <th>Potentiel SEO</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Accueil</td>
+          <td>AIDA</td>
+          <td>conciergerie location courte durée Japon</td>
+          <td><span class="badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td>Notre offre (page unique)</td>
+          <td>PAS</td>
+          <td>gestion locative Airbnb Japon propriétaire</td>
+          <td><span class="badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td>À propos — Jo le Chauve</td>
+          <td>BAB</td>
+          <td>conciergerie Japon expert local français</td>
+          <td><span class="badge-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td>SEO Local — Tokyo & Osaka</td>
+          <td>AIDA</td>
+          <td>gestion locative courte durée Tokyo / Osaka</td>
+          <td><span class="badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td>SEO Local — Kyoto</td>
+          <td>AIDA</td>
+          <td>conciergerie Airbnb Kyoto propriétaire</td>
+          <td><span class="badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td>Guide Minpaku & Réglementation</td>
+          <td>PAS</td>
+          <td>loi Minpaku location courte durée Japon</td>
+          <td><span class="badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td>Témoignages & Résultats</td>
+          <td>BAB</td>
+          <td>avis conciergerie Japon propriétaire étranger</td>
+          <td><span class="badge-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td>Blog</td>
+          <td>—</td>
+          <td>investissement immobilier Japon location</td>
+          <td><span class="badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td>Contact & Simulation de revenus</td>
+          <td>AIDA</td>
+          <td>estimer revenus Airbnb Japon</td>
+          <td><span class="badge-moyen">Moyen</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p style="font-size:12px;color:var(--gris-light);margin-top:16px;padding-left:4px;">⚠ Tous les services (photos, ménage, check-in, reporting, etc.) sont détaillés à l'intérieur de la page "Notre offre" — pas de page individuelle par service.</p>
+</div>
+
+<!-- ══════════════════════════════════════════════ -->
+<!-- 05 — COCON SÉMANTIQUE -->
+<!-- ══════════════════════════════════════════════ -->
+<div class="section">
+  <span class="section-badge">05 — Cocon Sémantique</span>
+  <h2 class="section-title">Clusters thématiques & maillage</h2>
+
+  <div class="grid-3" style="margin-bottom:32px;">
+    <div class="cluster-card">
+      <div class="cluster-title">Cluster 1 — Gestion locative Japon</div>
+      <div class="cluster-main">Page pilier : Notre offre</div>
+      <ul class="cluster-pages">
+        <li>Accueil</li>
+        <li>SEO Tokyo & Osaka</li>
+        <li>SEO Kyoto</li>
+        <li>Témoignages & Résultats</li>
+        <li>Contact</li>
+      </ul>
+    </div>
+    <div class="cluster-card">
+      <div class="cluster-title">Cluster 2 — Réglementation Minpaku</div>
+      <div class="cluster-main">Page pilier : Guide Minpaku</div>
+      <ul class="cluster-pages">
+        <li>Notre offre</li>
+        <li>À propos</li>
+        <li>Articles blog réglementation</li>
+        <li>Contact</li>
+      </ul>
+    </div>
+    <div class="cluster-card">
+      <div class="cluster-title">Cluster 3 — Expertise & confiance</div>
+      <div class="cluster-main">Page pilier : À propos</div>
+      <ul class="cluster-pages">
+        <li>Témoignages & Résultats</li>
+        <li>Articles blog culture & conseils</li>
+        <li>Notre offre</li>
+        <li>Contact</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3 style="font-family:'Playfair Display',serif; font-size:20px; margin-bottom:20px; color:var(--encre);">Logique de maillage interne</h3>
+  <div class="maillage-block">
+    <div class="maillage-row">
+      <span class="maillage-source">Accueil</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-dest">Notre offre · À propos · SEO locales · Contact</span>
+    </div>
+    <div class="maillage-row">
+      <span class="maillage-source">Notre offre</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-dest">Guide Minpaku · Témoignages · Contact · Pages locales</span>
+    </div>
+    <div class="maillage-row">
+      <span class="maillage-source">Guide Minpaku</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-dest">Notre offre · Contact · Articles blog réglementation</span>
+    </div>
+    <div class="maillage-row">
+      <span class="maillage-source">Pages locales SEO</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-dest">Notre offre · Contact · Témoignages</span>
+    </div>
+    <div class="maillage-row">
+      <span class="maillage-source">Articles blog</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-dest">Notre offre · Guide Minpaku · Contact</span>
+    </div>
+    <div class="maillage-row">
+      <span class="maillage-source">À propos</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-dest">Notre offre · Témoignages · Contact</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════ -->
+<!-- 06 — TUNNEL DE CONVERSION -->
+<!-- ══════════════════════════════════════════════ -->
+<div class="section">
+  <span class="section-badge">06 — Tunnel de Conversion</span>
+  <h2 class="section-title">Du premier contact à la signature</h2>
+
+  <div class="tunnel-grid">
+    <div class="tunnel-step">
+      <span class="tunnel-step-num">Étape 01</span>
+      <div class="tunnel-step-title">Découverte</div>
+      <div class="tunnel-step-item">
+        <span>Source de trafic</span>
+        Google SEO, LinkedIn, bouche-à-oreille, groupes Facebook expatriés Japon
+      </div>
+      <div class="tunnel-step-item">
+        <span>Page concernée</span>
+        Accueil, Articles blog, Pages locales SEO
+      </div>
+      <div class="tunnel-cta">Lire un article → Accueil</div>
+    </div>
+    <div class="tunnel-step">
+      <span class="tunnel-step-num">Étape 02</span>
+      <div class="tunnel-step-title">Intérêt</div>
+      <div class="tunnel-step-item">
+        <span>Source de trafic</span>
+        Navigation interne, pages locales, guide Minpaku
+      </div>
+      <div class="tunnel-step-item">
+        <span>Page concernée</span>
+        Notre offre, Guide Minpaku, À propos
+      </div>
+      <div class="tunnel-cta">Télécharger le guide gratuit</div>
+    </div>
+    <div class="tunnel-step">
+      <span class="tunnel-step-num">Étape 03</span>
+      <div class="tunnel-step-title">Confiance</div>
+      <div class="tunnel-step-item">
+        <span>Source de trafic</span>
+        Séquence email nurturing, retargeting
+      </div>
+      <div class="tunnel-step-item">
+        <span>Page concernée</span>
+        Témoignages & Résultats, À propos
+      </div>
+      <div class="tunnel-cta">Voir les résultats propriétaires</div>
+    </div>
+    <div class="tunnel-step">
+      <span class="tunnel-step-num">Étape 04</span>
+      <div class="tunnel-step-title">Conversion</div>
+      <div class="tunnel-step-item">
+        <span>Source de trafic</span>
+        CTA pages offre, email de relance
+      </div>
+      <div class="tunnel-step-item">
+        <span>Page concernée</span>
+        Contact & Simulation de revenus
+      </div>
+      <div class="tunnel-cta">Prendre un RDV gratuit →</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════ -->
+<!-- 07 — LEVIERS MARKETING -->
+<!-- ══════════════════════════════════════════════ -->
+<div class="section">
+  <span class="section-badge">07 — Leviers Marketing Intégrés</span>
+  <h2 class="section-title">Outils & mécaniques de conversion</h2>
+
+  <div class="grid-2" style="margin-bottom:24px;">
+    <div class="card">
+      <span class="levier-label">🎁 Lead Magnet</span>
+      <div class="card-title">Guide PDF : "Louer son bien au Japon — Ce que la loi Minpaku ne vous pardonne pas"</div>
+      <div class="card-text">Un guide pratique de 8 à 12 pages sur la réglementation, les pièges à éviter et les étapes pour démarrer. Téléchargeable en échange d'un email + ville du bien.</div>
+    </div>
+    <div class="card">
+      <span class="levier-label">📅 Prise de RDV</span>
+      <div class="card-title">Outil recommandé : Calendly</div>
+      <div class="card-text">Intégration d'un lien Calendly pour un appel découverte de 30 min. CTA présent sur l'offre, la page contact et en fin d'articles de blog.</div>
+    </div>
+    <div class="card">
+      <span class="levier-label">⭐ Preuve sociale</span>
+      <div class="card-title">Témoignages propriétaires + chiffres clés</div>
+      <div class="card-text">Citations courtes de propriétaires (prénom + ville), taux d'occupation moyen, revenu mensuel type généré. Format card sur la page témoignages et en bloc sur l'accueil.</div>
+    </div>
+    <div class="card">
+      <span class="levier-label">📋 Formulaire qualifiant</span>
+      <div class="card-title">Champs recommandés</div>
+      <ul class="styled-list">
+        <li>Prénom · Email · Téléphone</li>
+        <li>Ville du bien (Tokyo / Kyoto / Osaka / Autre)</li>
+        <li>Type de bien (appartement / maison / autre)</li>
+        <li>Situation actuelle (déjà loué / jamais loué)</li>
+        <li>Message libre (optionnel)</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <span class="levier-label">📧 Newsletter</span>
+      <div class="card-title">Angle éditorial : "Le Carnet de Jo"</div>
+      <div class="card-text">1 email mensuel : actualité de la location courte durée au Japon, conseil pratique propriétaire, retour terrain de Jo. Ton humain, concret, pas commercial.</div>
+    </div>
+    <div class="card">
+      <span class="levier-label">⚙️ Automatisation email</span>
+      <div class="card-title">Séquence post-téléchargement guide</div>
+      <ul class="styled-list">
+        <li>J+0 — Envoi du guide PDF + mot de Jo</li>
+        <li>J+3 — Email : "Les 3 erreurs des propriétaires étrangers au Japon"</li>
+        <li>J+7 — Étude de cas : un appartement à Kyoto géré par Jo</li>
+        <li>J+14 — Invitation à un appel découverte gratuit</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════ -->
+<!-- 08 — DIRECTION VISUELLE & ÉDITORIALE -->
+<!-- ══════════════════════════════════════════════ -->
+<div class="section">
+  <span class="section-badge">08 — Direction Visuelle & Éditoriale</span>
+  <h2 class="section-title">Identité visuelle du site</h2>
+
+  <h3 style="font-family:'Playfair Display',serif; font-size:20px; margin-bottom:28px; color:var(--encre);">Palette de couleurs</h3>
+
+  <div class="palette-grid" style="margin-bottom:48px;">
+    <div class="color-swatch">
+      <div class="color-square" style="background:#C8102E;"></div>
+      <div class="color-name">Rouge Torii</div>
+      <div class="color-hex">#C8102E</div>
+    </div>
+    <div class="color-swatch">
+      <div class="color-square" style="background:#1A1A1A;border:1px solid #333;"></div>
+      <div class="color-name">Encre de Chine</div>
+      <div class="color-hex">#1A1A1A</div>
+    </div>
+    <div class="color-swatch">
+      <div class="color-square" style="background:#F5F0E8;border:1px solid #ddd;"></div>
+      <div class="color-name">Washi</div>
+      <div class="color-hex">#F5F0E8</div>
+    </div>
+    <div class="color-swatch">
+      <div class="color-square" style="background:#C4A97D;"></div>
+      <div class="color-name">Sable Doré</div>
+      <div class="color-hex">#C4A97D</div>
+    </div>
+    <div class="color-swatch">
+      <div class="color-square" style="background:#FFFFFF;border:1px solid #e0ddd6;"></div>
+      <div class="color-name">Blanc Pur</div>
+      <div class="color-hex">#FFFFFF</div>
+    </div>
+  </div>
+
+  <h3 style="font-family:'Playfair Display',serif; font-size:20px; margin-bottom:24px; color:var(--encre);">Univers visuel recommandé</h3>
+  <div class="grid-3">
+    <div class="card">
+      <span class="card-icon">📐</span>
+      <div class="card-title">Esthétique wabi-sabi & minimalisme</div>
+      <div class="card-text">Grands espaces blancs, typographie aérée, peu d'éléments par écran. Inspiration des éditeurs japonais haut de gamme.</div>
+    </div>
+    <div class="card">
+      <span class="card-icon">🏯</span>
+      <div class="card-title">Photographies authentiques du Japon</div>
+      <div class="card-text">Photos de biens gérés, rues de Kyoto, intérieurs traditionnels. Eviter les clichés touristiques — privilégier l'authenticité locale.</div>
+    </div>
+    <div class="card">
+      <span class="card-icon">✦</span>
+      <div class="card-title">Éléments graphiques discrets d'inspiration nippone</div>
+      <div class="card-text">Lignes fines, motifs géométriques issus du kamon ou de l'origami en filigrane. Jamais envahissants, toujours subtils.</div>
+    </div>
+    <div class="card">
+      <span class="card-icon">🔤</span>
+      <div class="card-title">Typographie contrastée</div>
+      <div class="card-text">Playfair Display pour les titres (élégance, noblesse), Inter pour le corps (clarté, lisibilité). Pas plus de 2 polices sur le site.</div>
+    </div>
+    <div class="card">
+      <span class="card-icon">🌸</span>
+      <div class="card-title">Touches rouges comme accent stratégique</div>
+      <div class="card-text">Le rouge Torii (#C8102E) réservé aux CTA, badges et éléments de mise en valeur. Jamais utilisé en fond de page entière.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════ -->
+<!-- 09 — ARTICLES BLOG RECOMMANDÉS -->
+<!-- ══════════════════════════════════════════════ -->
+<div class="section">
+  <span class="section-badge">09 — Articles Blog Recommandés</span>
+  <h2 class="section-title">Stratégie de contenu SEO</h2>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Titre de l'article</th>
+          <th>Cluster</th>
+          <th>Intention de recherche</th>
+          <th>Priorité</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Loi Minpaku : tout ce qu'un propriétaire étranger doit savoir avant de louer au Japon</td>
+          <td><span class="tag tag-rouge">Réglementation</span></td>
+          <td>Informationnelle — compréhension légale</td>
+          <td><span class="badge-prioritaire">Prioritaire</span></td>
+        </tr>
+        <tr>
+          <td>Combien peut rapporter un Airbnb à Tokyo en 2025 ? Nos chiffres réels</td>
+          <td><span class="tag tag-encre">Gestion locative</span></td>
+          <td>Commerciale — estimation rentabilité</td>
+          <td><span class="badge-prioritaire">Prioritaire</span></td>
+        </tr>
+        <tr>
+          <td>Gérer un appartement à Kyoto à distance : témoignage d'un propriétaire français</td>
+          <td><span class="tag tag-sable">Expertise & confiance</span></td>
+          <td>Navigationnelle — preuve sociale</td>
+          <td><span class="badge-prioritaire">Prioritaire</span></td>
+        </tr>
+        <tr>
+          <td>Airbnb vs plateformes japonaises (Rakuten Travel, JapanStay) : laquelle choisir pour votre bien ?</td>
+          <td><span class="tag tag-encre">Gestion locative</span></td>
+          <td>Informationnelle — comparatif</td>
+          <td><span class="badge-moyen-prio">Moyen</span></td>
+        </tr>
+        <tr>
+          <td>5 erreurs à éviter quand on loue son bien au Japon depuis l'étranger</td>
+          <td><span class="tag tag-rouge">Réglementation</span></td>
+          <td>Informationnelle — prévention</td>
+          <td><span class="badge-moyen-prio">Moyen</span></td>
+        </tr>
+        <tr>
+          <td>Osaka, Tokyo ou Kyoto : où investir pour la location courte durée au Japon ?</td>
+          <td><span class="tag tag-encre">Gestion locative</span></td>
+          <td>Commerciale — aide à la décision</td>
+          <td><span class="badge-moyen-prio">Moyen</span></td>
+        </tr>
+        <tr>
+          <td>Comment accueillir des voyageurs japonais : les codes culturels essentiels à connaître</td>
+          <td><span class="tag tag-sable">Expertise & confiance</span></td>
+          <td>Informationnelle — valeur ajoutée culturelle</td>
+          <td><span class="badge-faible-prio">Faible</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════ -->
+<!-- FOOTER -->
+<!-- ══════════════════════════════════════════════ -->
+<footer>
+  <div class="footer-brand">Jo le Chauve — Conciergerie</div>
+  <div class="footer-confidentiel">Document confidentiel</div>
+  <div class="footer-meta">
+    Blueprint réalisé par AR Digital<br>
+    Rémi MEDJAHED · jo-le-chauve.fr
+  </div>
+</footer>
+
+</body>
+</html>
