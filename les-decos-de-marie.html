@@ -4,1216 +4,1186 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Rapport de Refonte Stratégique — Les Décos de Marie</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-:root {
---noir: #2D2D2D;
---terracotta: #A0674B;
---terracotta-light: #C4896D;
---rose-nude: #D4B8A0;
---beige-clair: #F2E8DF;
---beige-pale: #FAF6F2;
---teal-logo: #3D6B5E;
---blanc: #FFFFFF;
---gris-texte: #4A4A4A;
---gris-clair: #8A8A8A;
---rouge-prio: #D94F4F;
---orange-prio: #E8913A;
---jaune-prio: #D4B84F;
---vert-seo: #4A9B7F;
---bleu-moyen: #5B8DB8;
-}
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
-* { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+    --primary: #8B5E3C;
+    --primary-light: rgba(139, 94, 60, 0.08);
+    --primary-medium: rgba(139, 94, 60, 0.15);
+    --secondary: #C4956A;
+    --accent: #D4A574;
+    --dark: #2C1810;
+    --warm-beige: #E8D5C4;
+    --soft-pink: #D4B5A0;
+    --charcoal: #1a1a2e;
+    --text: #2d3748;
+    --text-light: #4a5568;
+    --bg: #f8f9fa;
+    --white: #ffffff;
+    --border: #e2e8f0;
+}
 
 body {
-font-family: 'Inter', sans-serif;
-font-size: 15px;
-line-height: 1.8;
-color: var(--gris-texte);
-background: var(--blanc);
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    line-height: 1.8;
+    color: var(--text);
+    background: var(--bg);
 }
 
-h1, h2, h3, h4 {
-font-family: 'Playfair Display', serif;
-color: var(--noir);
+h1, h2, h3 {
+    font-family: 'Playfair Display', serif;
+    color: var(--charcoal);
 }
 
-h2 {
-font-size: 34px;
-margin-bottom: 12px;
-}
+h1 { font-size: 40px; font-weight: 700; }
+h2 { font-size: 32px; font-weight: 700; margin-bottom: 20px; }
+h3 { font-size: 22px; font-weight: 700; margin-bottom: 14px; }
 
-h3 {
-font-size: 24px;
-margin-bottom: 10px;
-}
-
-h4 {
-font-size: 19px;
-margin-bottom: 6px;
-}
-
-/* ========== COVER PAGE ========== */
+/* COVER */
 .cover {
-min-height: 100vh;
-display: flex;
-flex-direction: column;
-align-items: center;
-justify-content: center;
-text-align: center;
-background: linear-gradient(160deg, #1a1210 0%, #3a2218 30%, #5e3a28 60%, #A0674B 100%);
-color: var(--blanc);
-padding: 60px 40px;
-position: relative;
-overflow: hidden;
-page-break-after: always;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(160deg, #1a0f08 0%, #2C1810 30%, #5C3A24 60%, #8B5E3C 100%);
+    text-align: center;
+    padding: 60px 40px;
+    position: relative;
+    overflow: hidden;
 }
 
 .cover::before {
-content: '';
-position: absolute;
-top: -50%;
-left: -50%;
-width: 200%;
-height: 200%;
-background: radial-gradient(ellipse at 30% 50%, rgba(212,184,160,0.08) 0%, transparent 60%),
-radial-gradient(ellipse at 70% 30%, rgba(160,103,75,0.06) 0%, transparent 50%);
-pointer-events: none;
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(ellipse at 30% 50%, rgba(196, 149, 106, 0.12) 0%, transparent 60%);
+    pointer-events: none;
 }
 
-.cover-badge {
-font-family: 'Inter', sans-serif;
-font-size: 11px;
-font-weight: 600;
-letter-spacing: 4px;
-text-transform: uppercase;
-color: var(--rose-nude);
-margin-bottom: 40px;
-position: relative;
-z-index: 1;
+.cover-client {
+    font-family: 'Playfair Display', serif;
+    font-size: 68px;
+    font-weight: 700;
+    color: #ffffff;
+    letter-spacing: 2px;
+    margin-bottom: 16px;
+    position: relative;
+    z-index: 1;
 }
 
-.cover h1 {
-font-family: 'Playfair Display', serif;
-font-size: 68px;
-font-weight: 700;
-line-height: 1.15;
-margin-bottom: 16px;
-position: relative;
-z-index: 1;
-}
-
-.cover .subtitle {
-font-family: 'Playfair Display', serif;
-font-size: 26px;
-font-weight: 400;
-font-style: italic;
-color: var(--rose-nude);
-margin-bottom: 50px;
-position: relative;
-z-index: 1;
+.cover-subtitle {
+    font-family: 'Inter', sans-serif;
+    font-size: 18px;
+    color: rgba(255,255,255,0.75);
+    font-weight: 400;
+    letter-spacing: 1px;
+    margin-bottom: 50px;
+    position: relative;
+    z-index: 1;
 }
 
 .cover-meta {
-display: flex;
-flex-direction: column;
-gap: 8px;
-font-size: 13px;
-font-weight: 300;
-letter-spacing: 1px;
-color: rgba(255,255,255,0.65);
-position: relative;
-z-index: 1;
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+    position: relative;
+    z-index: 1;
 }
 
-.cover-meta span { display: block; }
+.cover-meta span {
+    font-size: 13px;
+    color: rgba(255,255,255,0.55);
+    font-weight: 400;
+    letter-spacing: 0.5px;
+}
 
-/* ========== SECTIONS GLOBALES ========== */
+/* SECTIONS */
 .section {
-padding: 70px 60px;
-max-width: 1200px;
-margin: 0 auto;
-page-break-inside: avoid;
+    padding: 70px 60px;
+    max-width: 1240px;
+    margin: 0 auto;
 }
 
 .section-phase {
-padding: 50px 60px 20px;
-max-width: 1200px;
-margin: 0 auto;
-}
-
-.phase-badge {
-display: inline-block;
-font-family: 'Inter', sans-serif;
-font-size: 11px;
-font-weight: 700;
-letter-spacing: 3px;
-text-transform: uppercase;
-color: var(--terracotta);
-background: var(--beige-clair);
-padding: 8px 20px;
-border-radius: 30px;
-margin-bottom: 20px;
-}
-
-.phase-intro {
-font-size: 16px;
-color: var(--gris-clair);
-max-width: 750px;
-margin-bottom: 40px;
-line-height: 1.8;
+    display: inline-block;
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: var(--primary);
+    margin-bottom: 10px;
 }
 
 .section-divider {
-width: 100%;
-max-width: 1200px;
-margin: 0 auto;
-height: 1px;
-background: linear-gradient(90deg, transparent, var(--rose-nude), transparent);
+    width: 60px;
+    height: 3px;
+    background: var(--primary);
+    border-radius: 2px;
+    margin: 16px 0 30px 0;
 }
 
-/* ========== CARDS ========== */
+/* CARDS */
 .card {
-background: var(--blanc);
-border-radius: 14px;
-padding: 32px;
-box-shadow: 0 2px 12px rgba(0,0,0,0.06);
-margin-bottom: 24px;
+    background: var(--white);
+    border-radius: 14px;
+    padding: 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
 }
 
-.card h4 {
-color: var(--terracotta);
+.grid-2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    margin-top: 24px;
 }
 
-.card-grid {
-display: grid;
-grid-template-columns: repeat(2, 1fr);
-gap: 24px;
-margin-bottom: 30px;
+.grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 24px;
 }
 
-.card-grid-3 {
-display: grid;
-grid-template-columns: repeat(3, 1fr);
-gap: 24px;
-margin-bottom: 30px;
+/* BADGES */
+.badge {
+    display: inline-block;
+    border-radius: 20px;
+    padding: 3px 12px;
+    font-size: 12px;
+    font-weight: 600;
+    font-family: 'Inter', sans-serif;
 }
 
-/* ========== ANALYSE ITEMS ========== */
-.analyse-item {
-margin-bottom: 12px;
-padding: 10px 0;
-font-size: 15px;
-line-height: 1.8;
+.badge-fort { background: #d4edda; color: #155724; }
+.badge-positif { background: #d4edda; color: #155724; }
+.badge-moyen { background: #fff3cd; color: #856404; }
+.badge-faible { background: #f8d7da; color: #721c24; }
+
+.badge-nouvelle { background: #d4edda; color: #155724; }
+.badge-amelioree { background: #cce5ff; color: #004085; }
+.badge-retiree { background: #e2e3e5; color: #383d41; }
+
+.badge-prioritaire { background: #f8d7da; color: #721c24; }
+.badge-important { background: #ffe5d0; color: #c85000; }
+.badge-secondaire { background: #fff3cd; color: #856404; }
+
+.badge-bonus { background: #e8daef; color: #4a235a; }
+.badge-utile { background: #d5f5e3; color: #1e8449; }
+
+/* EVAL BADGES */
+.eval {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 500;
+    margin: 4px 4px 4px 0;
 }
 
-.analyse-item strong {
-color: var(--noir);
+.eval-fort { background: rgba(21, 87, 36, 0.08); color: #155724; }
+.eval-dev { background: rgba(0, 64, 133, 0.08); color: #004085; }
+.eval-opp { background: rgba(74, 35, 90, 0.08); color: #4a235a; }
+
+/* TABLE */
+.reco-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 24px;
+    font-size: 14px;
 }
 
-.tag-fort { color: #2e7d5b; font-weight: 600; }
-.tag-dev { color: var(--terracotta); font-weight: 600; }
-.tag-opp { color: #5B8DB8; font-weight: 600; }
-
-/* ========== TABLEAU RECOMMANDATIONS ========== */
-.table-wrap {
-overflow-x: auto;
-margin: 30px 0;
-border-radius: 14px;
-box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+.reco-table thead th {
+    background: var(--primary-light);
+    color: var(--primary);
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 14px 16px;
+    text-align: left;
+    border: 1px solid var(--border);
 }
 
-table.reco-table {
-width: 100%;
-border-collapse: collapse;
-font-size: 14px;
-background: var(--blanc);
-border-radius: 14px;
-overflow: hidden;
+.reco-table td {
+    padding: 14px 16px;
+    border: 1px solid var(--border);
+    vertical-align: top;
+    line-height: 1.7;
 }
 
-table.reco-table thead {
-background: var(--noir);
-color: var(--blanc);
+.reco-table tbody tr:nth-child(even) {
+    background: #fafafa;
 }
 
-table.reco-table th {
-padding: 18px 16px;
-text-align: left;
-font-weight: 600;
-font-size: 12px;
-letter-spacing: 1px;
-text-transform: uppercase;
-}
-
-table.reco-table td {
-padding: 18px 16px;
-border-bottom: 1px solid #f0ebe6;
-vertical-align: top;
-line-height: 1.7;
-}
-
-table.reco-table tr:last-child td { border-bottom: none; }
-
-table.reco-table tr:hover { background: var(--beige-pale); }
-
-.badge-prio {
-display: inline-block;
-padding: 4px 12px;
-border-radius: 20px;
-font-size: 12px;
-font-weight: 600;
-white-space: nowrap;
-}
-.badge-prio.rouge { background: #fdeaea; color: var(--rouge-prio); }
-.badge-prio.orange { background: #fef3e2; color: var(--orange-prio); }
-.badge-prio.jaune { background: #fdf8e3; color: #a08b30; }
-
-/* ========== NOTE D'INTENTION ========== */
-.note-intention {
-background: linear-gradient(135deg, var(--beige-clair) 0%, var(--beige-pale) 100%);
-border-left: 4px solid var(--terracotta);
-padding: 36px 40px;
-border-radius: 0 14px 14px 0;
-margin-top: 40px;
-}
-
-.note-intention h3 {
-color: var(--terracotta);
-margin-bottom: 12px;
-}
-
-/* ========== BLUEPRINT SECTIONS ========== */
-.bp-section {
-padding: 60px;
-max-width: 1200px;
-margin: 0 auto;
-page-break-inside: avoid;
-}
-
-.bp-number {
-display: inline-block;
-font-family: 'Inter', sans-serif;
-font-size: 11px;
-font-weight: 700;
-letter-spacing: 3px;
-text-transform: uppercase;
-color: var(--blanc);
-background: var(--terracotta);
-padding: 6px 18px;
-border-radius: 30px;
-margin-bottom: 18px;
-}
-
-.bp-section h2 {
-margin-bottom: 8px;
-}
-
-.bp-desc {
-font-size: 15px;
-color: var(--gris-clair);
-margin-bottom: 32px;
-max-width: 750px;
-}
-
-.pillar-title {
-font-family: 'Playfair Display', serif;
-font-size: 18px;
-color: var(--terracotta);
-margin-bottom: 6px;
-}
-
-.pillar-text {
-font-size: 14px;
-line-height: 1.7;
-}
-
-/* ========== ARBO TABLE ========== */
-table.arbo-table {
-width: 100%;
-border-collapse: collapse;
-font-size: 14px;
-background: var(--blanc);
-border-radius: 14px;
-overflow: hidden;
-box-shadow: 0 2px 12px rgba(0,0,0,0.06);
-}
-
-table.arbo-table thead {
-background: var(--noir);
-color: var(--blanc);
-}
-
-table.arbo-table th {
-padding: 16px 14px;
-text-align: left;
-font-weight: 600;
-font-size: 12px;
-letter-spacing: 1px;
-text-transform: uppercase;
-}
-
-table.arbo-table td {
-padding: 14px;
-border-bottom: 1px solid #f0ebe6;
-vertical-align: top;
-line-height: 1.6;
-}
-
-table.arbo-table tr:last-child td { border-bottom: none; }
-
-.badge-seo {
-display: inline-block;
-padding: 3px 10px;
-border-radius: 20px;
-font-size: 11px;
-font-weight: 600;
-}
-.badge-seo.fort { background: #e6f5ee; color: var(--vert-seo); }
-.badge-seo.moyen { background: #e8f1f8; color: var(--bleu-moyen); }
-.badge-seo.faible { background: #f5f0e6; color: #a08b30; }
-
-.badge-statut {
-display: inline-block;
-padding: 3px 10px;
-border-radius: 20px;
-font-size: 11px;
-font-weight: 600;
-}
-.badge-statut.nouvelle { background: #e6f5ee; color: #2e7d5b; }
-.badge-statut.amelioree { background: #e8f1f8; color: var(--bleu-moyen); }
-.badge-statut.retiree { background: #f5f0e6; color: #a08b30; }
-
-/* ========== TUNNEL CONVERSION ========== */
+/* TUNNEL */
 .tunnel-step {
-display: flex;
-align-items: flex-start;
-gap: 20px;
-margin-bottom: 24px;
+    position: relative;
+    padding-left: 30px;
+    margin-bottom: 28px;
 }
 
-.tunnel-num {
-flex-shrink: 0;
-width: 44px;
-height: 44px;
-background: var(--terracotta);
-color: var(--blanc);
-border-radius: 50%;
-display: flex;
-align-items: center;
-justify-content: center;
-font-weight: 700;
-font-size: 16px;
+.tunnel-step::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 8px;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--primary);
 }
 
-.tunnel-content {
-flex: 1;
+.tunnel-step::after {
+    content: '';
+    position: absolute;
+    left: 6px;
+    top: 26px;
+    width: 2px;
+    height: calc(100% + 4px);
+    background: var(--warm-beige);
 }
 
-/* ========== PALETTE COULEURS ========== */
-.palette-grid {
-display: flex;
-flex-wrap: wrap;
-gap: 28px;
-justify-content: center;
-margin: 30px 0;
+.tunnel-step:last-child::after { display: none; }
+
+/* NOTE INTENTION */
+.note-intention {
+    background: linear-gradient(135deg, var(--primary-light), rgba(196, 149, 106, 0.08));
+    border-left: 4px solid var(--primary);
+    border-radius: 0 14px 14px 0;
+    padding: 28px 32px;
+    margin-top: 40px;
+    font-size: 15.5px;
+    line-height: 1.9;
 }
 
-.palette-item {
-text-align: center;
+/* COLOR SWATCHES */
+.color-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    justify-content: center;
+    margin-top: 20px;
 }
 
-.palette-swatch {
-width: 80px;
-height: 80px;
-border-radius: 16px;
-margin-bottom: 10px;
-box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+.color-swatch {
+    text-align: center;
 }
 
-.palette-name {
-font-size: 13px;
-font-weight: 600;
-color: var(--noir);
+.color-swatch-box {
+    width: 80px;
+    height: 80px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    margin-bottom: 8px;
 }
 
-.palette-hex {
-font-size: 12px;
-color: var(--gris-clair);
-font-family: 'Inter', monospace;
+.color-swatch-name {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text);
 }
 
-/* ========== BLOG IDEAS ========== */
-.blog-item {
-padding: 20px 0;
-border-bottom: 1px solid #f0ebe6;
-}
-.blog-item:last-child { border-bottom: none; }
-
-.blog-title {
-font-family: 'Playfair Display', serif;
-font-size: 17px;
-color: var(--noir);
-margin-bottom: 4px;
+.color-swatch-hex {
+    font-size: 12px;
+    color: var(--text-light);
 }
 
-.blog-meta {
-font-size: 13px;
-color: var(--gris-clair);
+/* MAILLAGE */
+.maillage {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 16px;
 }
 
-.badge-blog {
-display: inline-block;
-padding: 2px 10px;
-border-radius: 20px;
-font-size: 11px;
-font-weight: 600;
-margin-left: 8px;
+.maillage-item {
+    background: var(--white);
+    border: 2px solid var(--warm-beige);
+    border-radius: 10px;
+    padding: 10px 18px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--primary);
 }
-.badge-blog.prioritaire { background: #fdeaea; color: var(--rouge-prio); }
-.badge-blog.utile { background: #e8f1f8; color: var(--bleu-moyen); }
-.badge-blog.bonus { background: #f5f0e6; color: #a08b30; }
 
-/* ========== FOOTER ========== */
+.maillage-arrow {
+    font-size: 20px;
+    color: var(--secondary);
+}
+
+/* FOOTER */
 .footer {
-background: var(--noir);
-color: rgba(255,255,255,0.5);
-text-align: center;
-padding: 40px 60px;
-font-size: 13px;
-line-height: 1.8;
+    background: var(--primary-light);
+    border-top: 2px solid var(--primary);
+    padding: 30px 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 13px;
+    color: var(--text-light);
 }
 
-.footer strong {
-color: var(--rose-nude);
-font-weight: 600;
+/* BLOG ITEM */
+.blog-item {
+    margin-bottom: 6px;
 }
 
-/* ========== RESPONSIVE ========== */
-@media (max-width: 768px) {
-.cover h1 { font-size: 40px; }
-.cover .subtitle { font-size: 20px; }
-h2 { font-size: 26px; }
-.section, .section-phase, .bp-section { padding: 40px 24px; }
-.card { padding: 24px; }
-.card-grid, .card-grid-3 { grid-template-columns: 1fr; }
-.table-wrap { border-radius: 10px; }
-table.reco-table, table.arbo-table { font-size: 13px; min-width: 700px; }
-.note-intention { padding: 24px; }
-.palette-grid { gap: 16px; }
-.palette-swatch { width: 60px; height: 60px; }
-.footer { padding: 30px 24px; }
+.blog-item strong {
+    color: var(--charcoal);
 }
 
+/* PRINT */
 @media print {
-.cover { page-break-after: always; }
-.section, .bp-section { page-break-inside: avoid; }
-.card { page-break-inside: avoid; }
-body { font-size: 12px; }
+    .section { page-break-inside: avoid; }
+    .cover { page-break-after: always; }
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .section { padding: 30px 20px; }
+    .cover { padding: 40px 20px; }
+    .cover-client { font-size: 36px; }
+    h2 { font-size: 26px; }
+    .grid-2, .grid-3 { grid-template-columns: 1fr; }
+    .reco-table { display: block; overflow-x: auto; }
+    .footer { flex-direction: column; gap: 10px; text-align: center; padding: 20px 24px; }
+    .cover-meta { flex-direction: column; gap: 10px; }
+    .maillage { flex-direction: column; }
+}
+
+.list-item { margin-bottom: 10px; padding-left: 8px; }
+.list-item::before { content: ''; }
+
+.card h3 .emoji { margin-right: 8px; }
+
+.sub-section { margin-bottom: 40px; }
+
+.inspi-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; margin-top: 24px; }
+
+@media (max-width: 768px) {
+    .inspi-grid { grid-template-columns: 1fr; }
+}
+
+.card ul {
+    padding-left: 0;
+    list-style: none;
+}
+
+.card ul li {
+    padding: 4px 0 4px 20px;
+    position: relative;
+}
+
+.card ul li::before {
+    content: '•';
+    color: var(--primary);
+    font-weight: 700;
+    position: absolute;
+    left: 4px;
+}
+
+.pillar-num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--primary);
+    color: white;
+    font-size: 13px;
+    font-weight: 600;
+    margin-right: 10px;
+    flex-shrink: 0;
 }
 </style>
 </head>
 <body>
 
-<!-- ============================== -->
-<!-- PAGE DE COUVERTURE -->
-<!-- ============================== -->
+<!-- ═══════════ COUVERTURE ═══════════ -->
 <div class="cover">
-<div class="cover-badge">Rapport de refonte stratégique</div>
-<h1>Les Décos de Marie</h1>
-<div class="subtitle">Agencement &amp; Décoration d'intérieur — Mulhouse</div>
-<div class="cover-meta">
-<span>Avril 2026</span>
-<span>lesdecosdemarie.fr</span>
-<span>Préparé par AR Digital</span>
-</div>
-</div>
-
-<!-- ============================== -->
-<!-- PHASE 1 — ANALYSE -->
-<!-- ============================== -->
-<div class="section-phase">
-<span class="phase-badge">Phase 1</span>
-<h2>Analyse de votre site actuel</h2>
-<p class="phase-intro">Nous avons pris le temps d'explorer votre site actuel avec attention. L'objectif de cette analyse est de valoriser ce qui fonctionne déjà bien et d'identifier les belles opportunités qui s'offrent à vous pour aller encore plus loin.</p>
+    <div class="cover-client">Les Décos de Marie</div>
+    <div class="cover-subtitle">Rapport de Refonte Stratégique</div>
+    <div class="cover-meta">
+        <span>Avril 2026</span>
+        <span>lesdecosdemarie.fr</span>
+        <span>AR Digital</span>
+    </div>
 </div>
 
-<!-- A. STRUCTURE & ARBORESCENCE -->
-<div class="section">
-<h3>A. Structure &amp; Arborescence</h3>
-<div class="card">
-<div class="analyse-item">
-<span class="tag-fort">✅ Point fort</span> — Votre site présente déjà une structure claire avec les pages essentielles : <strong>Accueil, Nos prestations, Nos réalisations, À propos</strong> et <strong>Contact</strong>. C'est une base solide qui permet à vos visiteurs de comprendre rapidement votre univers et vos services d'agencement et de décoration intérieure à Mulhouse.
-</div>
-<div class="analyse-item">
-<span class="tag-fort">✅ Point fort</span> — La page <strong>Nos réalisations</strong> est un vrai atout : dans le secteur de la décoration d'intérieur, montrer ses projets est le meilleur argument de vente. Vous avez eu l'excellente idée de mettre en avant vos réalisations concrètes.
-</div>
-<div class="analyse-item">
-<span class="tag-dev">💡 À développer</span> — La navigation pourrait gagner en fluidité en ajoutant des sous-sections plus détaillées sur vos prestations (conseil déco, agencement, réalisation 3D, suivi de chantier) pour que chaque visiteur trouve immédiatement ce qu'il cherche.
-</div>
-<div class="analyse-item">
-<span class="tag-opp">🚀 Belle opportunité</span> — L'ajout d'une page <strong>Blog / Inspirations</strong> serait un formidable levier pour attirer de nouveaux visiteurs via les moteurs de recherche, en partageant vos conseils déco et tendances d'aménagement. Une page dédiée à votre <strong>zone d'intervention</strong> (Mulhouse, Haut-Rhin, Sud Alsace) renforcerait aussi considérablement votre visibilité locale.
-</div>
-</div>
-</div>
-
-<!-- B. DESIGN & UX -->
-<div class="section">
-<h3>B. Design &amp; Expérience Utilisateur</h3>
-<div class="card">
-<div class="analyse-item">
-<span class="tag-fort">✅ Point fort</span> — Votre identité visuelle possède déjà une personnalité chaleureuse et reconnaissable. Le logo manuscrit <strong>"Les Décos de Marie"</strong> reflète parfaitement votre approche humaine et artisanale de la décoration. Les teintes terracotta et nude de votre univers sont très en phase avec les tendances actuelles du secteur déco.
-</div>
-<div class="analyse-item">
-<span class="tag-fort">✅ Point fort</span> — L'utilisation d'illustrations de type dessin apporte une touche d'authenticité et de chaleur qui vous distingue immédiatement des sites de décorateurs plus « corporate ».
-</div>
-<div class="analyse-item">
-<span class="tag-dev">💡 À développer</span> — La hiérarchie visuelle entre les sections pourrait être renforcée pour guider l'œil du visiteur de manière plus fluide. Des espaces de respiration plus généreux et une typographie plus structurée donneraient encore plus de prestance à vos contenus.
-</div>
-<div class="analyse-item">
-<span class="tag-opp">🚀 Belle opportunité</span> — L'expérience mobile représente un axe de progression magnifique. La majorité de vos futurs clients vous découvriront sur leur téléphone (via Instagram, Facebook ou une recherche Google). Un site parfaitement optimisé pour mobile transformerait ces visiteurs en contacts qualifiés.
-</div>
-<div class="analyse-item">
-<span class="tag-dev">💡 À développer</span> — L'ajout d'éléments de réassurance (avis clients visibles, logos de partenaires comme Zuiver, Dekton, Mutina que vous mentionnez dans votre moodboard, certifications éventuelles) renforcerait considérablement la confiance de vos visiteurs.
-</div>
-</div>
-</div>
-
-<!-- C. COPYWRITING & MESSAGING -->
-<div class="section">
-<h3>C. Copywriting &amp; Messaging</h3>
-<div class="card">
-<div class="analyse-item">
-<span class="tag-fort">✅ Point fort</span> — Votre positionnement est clair : on comprend que vous proposez des services d'agencement et de décoration d'intérieur. Le sous-titre « Agencements et décorations » positionne bien votre cœur de métier.
-</div>
-<div class="analyse-item">
-<span class="tag-dev">💡 À développer</span> — La promesse de valeur pourrait être encore plus percutante en expliquant le bénéfice concret pour vos clients dès la première phrase visible. Par exemple, au lieu de simplement décrire ce que vous faites, montrer le résultat que vos clients obtiennent : un intérieur qui leur ressemble, un espace repensé pour mieux vivre au quotidien.
-</div>
-<div class="analyse-item">
-<span class="tag-opp">🚀 Belle opportunité</span> — Votre parcours client (rencontre → projet → devis → réalisation 3D → travaux) visible sur votre moodboard est un véritable argument de différenciation. Le mettre en avant sur le site rassurerait immédiatement vos prospects en leur montrant un processus clair et structuré.
-</div>
-<div class="analyse-item">
-<span class="tag-dev">💡 À développer</span> — Les textes gagneraient à intégrer davantage de vocabulaire émotionnel lié à l'univers de la décoration : « cocon », « harmonie », « sur-mesure », « bien-être chez soi », « intérieur qui vous ressemble ». Ce vocabulaire parle directement au cœur de votre cible.
-</div>
-</div>
-</div>
-
-<!-- D. SEO & VISIBILITÉ -->
-<div class="section">
-<h3>D. SEO &amp; Visibilité en ligne</h3>
-<div class="card">
-<div class="analyse-item">
-<span class="tag-fort">✅ Point fort</span> — Votre nom de domaine <strong>lesdecosdemarie.fr</strong> est mémorable et en parfaite cohérence avec votre marque. C'est un excellent fondement pour votre présence en ligne.
-</div>
-<div class="analyse-item">
-<span class="tag-dev">💡 À développer</span> — Les mots-clés stratégiques de votre secteur et de votre zone géographique (« décoratrice d'intérieur Mulhouse », « agencement intérieur Haut-Rhin », « conseil décoration 68 ») mériteraient d'être davantage intégrés dans vos titres et contenus pour que Google vous positionne plus haut dans les résultats locaux.
-</div>
-<div class="analyse-item">
-<span class="tag-opp">🚀 Belle opportunité</span> — La structuration des titres (H1, H2, H3) pourrait être optimisée pour envoyer des signaux plus clairs aux moteurs de recherche. C'est un levier technique simple mais très efficace pour gagner en visibilité.
-</div>
-<div class="analyse-item">
-<span class="tag-opp">🚀 Belle opportunité</span> — L'absence de blog représente un immense potentiel inexploité. Dans le secteur de la décoration, les articles de type « tendances déco 2026 », « comment aménager un petit espace » ou « avant/après d'un projet d'agencement » sont extrêmement recherchés et vous positionneraient comme experte dans votre domaine.
-</div>
-<div class="analyse-item">
-<span class="tag-dev">💡 À développer</span> — Les meta descriptions (ces petits textes qui apparaissent sous votre site dans les résultats Google) pourraient être rédigées de manière plus attractive pour inciter au clic. L'intégration de Google Maps et de vos avis Google renforcerait vos signaux de référencement local.
-</div>
-</div>
-</div>
-
-<!-- E. TUNNEL DE CONVERSION -->
-<div class="section">
-<h3>E. Tunnel de Conversion</h3>
-<div class="card">
-<div class="analyse-item">
-<span class="tag-fort">✅ Point fort</span> — Vous disposez d'une page Contact, ce qui est essentiel. Vos réseaux sociaux (Facebook, Instagram, TikTok) sont également mentionnés, ce qui crée plusieurs points de contact avec vos prospects.
-</div>
-<div class="analyse-item">
-<span class="tag-dev">💡 À développer</span> — Les boutons d'appel à l'action (les boutons qui invitent le visiteur à vous contacter) pourraient être plus visibles et plus engageants. Un bouton « Demander un devis gratuit » ou « Réserver votre consultation découverte » placé stratégiquement sur chaque page multiplierait vos demandes de contact.
-</div>
-<div class="analyse-item">
-<span class="tag-opp">🚀 Belle opportunité</span> — La mise en place d'un « cadeau de bienvenue » (par exemple un guide PDF « 10 astuces pour repenser votre intérieur ») permettrait de capter les coordonnées de visiteurs intéressés mais pas encore prêts à vous contacter. C'est un outil puissant pour alimenter votre carnet de contacts.
-</div>
-<div class="analyse-item">
-<span class="tag-opp">🚀 Belle opportunité</span> — Les témoignages clients et les photos avant/après sont les éléments les plus convaincants dans le secteur de la décoration. Les intégrer de manière visible (avec de vraies citations de clients satisfaits) transformerait considérablement votre taux de conversion.
-</div>
-</div>
-</div>
-
-<!-- F. ANALYSE DES SITES D'INSPIRATION -->
-<div class="section">
-<h3>F. Analyse des Sites d'Inspiration</h3>
-
-<div class="card-grid">
-<div class="card">
-<h4>thann-menuiserie.fr</h4>
-<div class="analyse-item">
-<strong>Palette de couleurs :</strong> Tons chauds naturels (bois, beige, crème), avec des touches de noir pour la structure. Ambiance artisanale et authentique.
-</div>
-<div class="analyse-item">
-<strong>Typographies :</strong> Titres en serif élégant, corps de texte en sans-serif lisible. Bel équilibre entre tradition et modernité.
-</div>
-<div class="analyse-item">
-<strong>Ambiance générale :</strong> Chaleureuse, professionnelle, ancrée dans le savoir-faire artisanal local. Un univers qui met en avant la qualité du travail et la proximité humaine.
-</div>
-<div class="analyse-item">
-<strong>Éléments remarquables :</strong> Belle mise en valeur des réalisations avec galeries photos soignées, navigation simple et efficace, mise en avant des témoignages.
-</div>
-<div class="analyse-item">
-<strong>Ce qui vous plaît probablement :</strong> L'authenticité artisanale, la chaleur des matériaux naturels, la clarté de la présentation des services et la mise en avant du savoir-faire local — des valeurs très proches de votre propre univers.
-</div>
-</div>
-
-<div class="card">
-<h4>valdoisehomeconciergerie.com</h4>
-<div class="analyse-item">
-<strong>Palette de couleurs :</strong> Tons neutres et raffinés (blanc, gris clair, touches dorées ou cuivrées). Ambiance haut de gamme et soignée.
-</div>
-<div class="analyse-item">
-<strong>Typographies :</strong> Combinaison serif/sans-serif moderne. Titres impactants avec un corps de texte aéré et élégant.
-</div>
-<div class="analyse-item">
-<strong>Ambiance générale :</strong> Moderne, épurée, professionnelle avec une touche de luxe accessible. Le design inspire immédiatement confiance et sérieux.
-</div>
-<div class="analyse-item">
-<strong>Éléments remarquables :</strong> Sections bien délimitées, boutons d'action visibles, présentation claire du processus de travail, intégration de preuves sociales.
-</div>
-<div class="analyse-item">
-<strong>Ce qui vous plaît probablement :</strong> La clarté de l'organisation, le parcours client bien expliqué étape par étape, l'aspect professionnel et rassurant — des éléments que nous pourrons intégrer à votre futur site tout en conservant votre touche chaleureuse et artisanale.
-</div>
-</div>
-</div>
-
-<div class="card">
-<p><strong>Synthèse inspiration :</strong> Ces deux sites partagent des qualités communes que nous retrouverons dans votre futur site : une mise en valeur authentique du savoir-faire, une navigation claire, des galeries de réalisations soignées et un parcours client rassurant. Nous conserverons votre identité unique — les illustrations dessinées, la chaleur du terracotta, la personnalité de Marie — tout en nous inspirant de la structure professionnelle et de la clarté de ces références.</p>
-</div>
-</div>
-
-<div class="section-divider"></div>
-
-<!-- ============================== -->
-<!-- PHASE 2 — RECOMMANDATIONS -->
-<!-- ============================== -->
-<div class="section-phase">
-<span class="phase-badge">Phase 2</span>
-<h2>Nos recommandations personnalisées</h2>
-<p class="phase-intro">Voici notre vision pour faire évoluer votre site. Chaque recommandation est pensée spécifiquement pour votre activité de décoratrice d'intérieur à Mulhouse et pour les attentes de vos clients.</p>
-</div>
+<!-- ═══════════════════════════════════════ -->
+<!-- PHASE 1 — ANALYSE DU SITE ACTUEL       -->
+<!-- ═══════════════════════════════════════ -->
 
 <div class="section">
-<div class="table-wrap">
-<table class="reco-table">
-<thead>
-<tr>
-<th>Axe</th>
-<th>Ce qui fonctionne déjà bien</th>
-<th>Opportunité d'amélioration</th>
-<th>Priorité</th>
-<th>Notre recommandation</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Structure &amp; navigation</strong></td>
-<td>Pages essentielles présentes (Accueil, Prestations, Réalisations, À propos, Contact). Arborescence logique et compréhensible.</td>
-<td>Enrichir la structure avec des pages dédiées au blog, aux témoignages et à la zone d'intervention locale pour mieux servir vos visiteurs et Google.</td>
-<td><span class="badge-prio rouge">🔴 Prioritaire</span></td>
-<td>Créer une arborescence enrichie avec un blog inspirations, une page dédiée à votre processus de travail et un renforcement du maillage entre vos réalisations et vos prestations.</td>
-</tr>
-<tr>
-<td><strong>Design &amp; identité visuelle</strong></td>
-<td>Identité chaleureuse et reconnaissable. Logo manuscrit unique. Palette terracotta/nude en phase avec les tendances déco actuelles. Illustrations type dessin distinctives.</td>
-<td>Harmoniser la hiérarchie visuelle, amplifier les espaces de respiration et monter en gamme sur la qualité perçue globale du site.</td>
-<td><span class="badge-prio rouge">🔴 Prioritaire</span></td>
-<td>Conserver votre ADN visuel chaleureux tout en le sublimant : typographies plus structurées, palette affinée autour de vos teintes signatures, illustrations intégrées avec plus de cohérence pour un rendu professionnel et premium.</td>
-</tr>
-<tr>
-<td><strong>Confort mobile</strong></td>
-<td>Le site est consultable sur mobile, ce qui est une base indispensable.</td>
-<td>Optimiser l'expérience tactile : taille des boutons, fluidité de navigation, temps de chargement des images, espacement des éléments cliquables.</td>
-<td><span class="badge-prio rouge">🔴 Prioritaire</span></td>
-<td>Concevoir le nouveau site en « mobile-first » : vos futurs clients vous trouvent majoritairement depuis leur smartphone via Instagram ou Google. Chaque interaction doit être fluide et agréable sur petit écran.</td>
-</tr>
-<tr>
-<td><strong>Message &amp; promesse de valeur</strong></td>
-<td>Positionnement clair sur l'agencement et la décoration. Le nom de marque est mémorable et personnel.</td>
-<td>Formuler une promesse de valeur plus émotionnelle et orientée bénéfice client, qui exprime le résultat concret de votre accompagnement.</td>
-<td><span class="badge-prio orange">🟠 Important</span></td>
-<td>Mettre en avant dès la page d'accueil le bénéfice ultime : « Un intérieur qui vous ressemble, pensé pour votre bien-être au quotidien ». Votre parcours client (rencontre → projet → réalisation) doit devenir un pilier de communication visible.</td>
-</tr>
-<tr>
-<td><strong>Visibilité SEO</strong></td>
-<td>Nom de domaine pertinent et mémorable. Présence en ligne existante.</td>
-<td>Intégrer les mots-clés stratégiques locaux, optimiser la structure des titres, créer du contenu régulier pour capter le trafic de recherche sur la décoration à Mulhouse et dans le Haut-Rhin.</td>
-<td><span class="badge-prio rouge">🔴 Prioritaire</span></td>
-<td>Déployer une stratégie SEO locale ciblée : « décoratrice intérieur Mulhouse », « agencement intérieur Haut-Rhin », blog de contenus inspirationnels, pages locales et optimisation technique complète.</td>
-</tr>
-<tr>
-<td><strong>Parcours de conversion</strong></td>
-<td>Page contact existante. Réseaux sociaux mentionnés (Facebook, Instagram, TikTok).</td>
-<td>Multiplier les points de contact et rendre les appels à l'action plus visibles et plus engageants sur chaque page du site.</td>
-<td><span class="badge-prio rouge">🔴 Prioritaire</span></td>
-<td>Intégrer un CTA principal « Demander votre consultation découverte » visible en permanence, un formulaire de contact qualifiant et un système de prise de rendez-vous en ligne pour simplifier le premier contact.</td>
-</tr>
-<tr>
-<td><strong>Confiance &amp; preuve sociale</strong></td>
-<td>Partenaires de qualité (Zuiver, Dekton, Mutina, Métamorphose). Réalisations visibles.</td>
-<td>Mettre davantage en lumière les témoignages clients, les logos partenaires et les projets avant/après pour créer un effet de réassurance immédiat.</td>
-<td><span class="badge-prio orange">🟠 Important</span></td>
-<td>Créer une section « Ils nous ont fait confiance » avec témoignages clients, intégrer une galerie avant/après sur les réalisations, et afficher les logos de vos marques partenaires en bonne position.</td>
-</tr>
-<tr>
-<td><strong>Leviers de croissance</strong></td>
-<td>Présence active sur les réseaux sociaux (Instagram, Facebook, TikTok) — excellente base de notoriété.</td>
-<td>Créer un écosystème digital complet : lead magnet, newsletter, séquence email automatisée pour nourrir la relation avec vos prospects entre la découverte et la signature.</td>
-<td><span class="badge-prio jaune">🟡 Secondaire</span></td>
-<td>Mettre en place un guide téléchargeable « Les 10 erreurs à éviter avant de refaire sa déco », une newsletter mensuelle d'inspirations et une séquence email de bienvenue pour convertir vos abonnés en clients.</td>
-</tr>
-</tbody>
-</table>
+    <span class="section-phase">Phase 1</span>
+    <h2>Analyse de votre site actuel</h2>
+    <div class="section-divider"></div>
+    <p style="margin-bottom: 30px; font-size: 16px; color: var(--text-light);">
+        Nous avons analysé votre site <strong>lesdecosdemarie.fr</strong> avec un regard d'expert, en nous mettant à la place de vos futurs clients. Voici notre lecture, avec d'abord ce qui fait déjà la force de votre présence en ligne, puis les belles opportunités qui s'offrent à vous.
+    </p>
+
+    <!-- A. STRUCTURE & ARBORESCENCE -->
+    <div class="sub-section">
+        <h3>A. Structure &amp; Arborescence</h3>
+        <div class="grid-2">
+            <div class="card">
+                <p><span class="eval eval-fort">✅ Point fort</span></p>
+                <p style="margin-top:10px;">Votre site présente les pages essentielles : une page d'accueil, une présentation de vos services (agencement et décoration), une page dédiée à vos réalisations et un formulaire de contact. La structure est simple et permet à vos visiteurs de comprendre votre activité.</p>
+            </div>
+            <div class="card">
+                <p><span class="eval eval-fort">✅ Point fort</span></p>
+                <p style="margin-top:10px;">La navigation reste claire et intuitive. Un visiteur arrive sur le site et sait rapidement comment accéder à vos réalisations ou vous contacter, ce qui est un très bon point de départ.</p>
+            </div>
+            <div class="card">
+                <p><span class="eval eval-opp">🚀 Belle opportunité</span></p>
+                <p style="margin-top:10px;">Certaines pages clés pourraient venir compléter votre site pour mieux rassurer vos visiteurs et capter davantage de demandes : une page « À propos » racontant votre parcours, une page de témoignages clients, et éventuellement un espace blog pour partager votre expertise déco.</p>
+            </div>
+            <div class="card">
+                <p><span class="eval eval-dev">💡 À développer</span></p>
+                <p style="margin-top:10px;">L'arborescence gagnerait à être enrichie avec des pages dédiées au référencement local (ex : « Décoratrice d'intérieur à Mulhouse ») pour mieux apparaître dans les recherches Google de votre secteur géographique.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- B. DESIGN & UX -->
+    <div class="sub-section">
+        <h3>B. Design &amp; Expérience Utilisateur</h3>
+        <div class="grid-2">
+            <div class="card">
+                <p><span class="eval eval-fort">✅ Point fort</span></p>
+                <p style="margin-top:10px;">Votre identité visuelle est déjà marquée par un univers chaleureux avec des tons terreux (brun, beige, terre cuite) qui reflètent parfaitement votre sensibilité déco. Le logo manuscrit « Les Décos de Marie » est attachant et mémorable, et transmet une touche personnelle très appréciable.</p>
+            </div>
+            <div class="card">
+                <p><span class="eval eval-fort">✅ Point fort</span></p>
+                <p style="margin-top:10px;">Les visuels de vos réalisations sont de qualité et montrent votre savoir-faire. Les photos d'agencement en 3D sont un vrai atout différenciant qui témoigne de votre rigueur professionnelle.</p>
+            </div>
+            <div class="card">
+                <p><span class="eval eval-opp">🚀 Belle opportunité</span></p>
+                <p style="margin-top:10px;">La hiérarchie visuelle pourrait être renforcée : des titres plus grands et contrastés, des espaces plus généreux entre les sections, et un système de cartes visuelles rendraient la lecture plus fluide et moderne. Le moodboard que vous nous avez partagé va dans cette direction — un vrai potentiel à exploiter !</p>
+            </div>
+            <div class="card">
+                <p><span class="eval eval-dev">💡 À développer</span></p>
+                <p style="margin-top:10px;">L'expérience sur mobile mériterait une attention particulière : tailles de texte adaptées, boutons facilement cliquables au pouce, et images optimisées pour un chargement rapide sur réseau mobile. Un nombre croissant de vos clients potentiels vous découvrira sur smartphone.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- C. COPYWRITING -->
+    <div class="sub-section">
+        <h3>C. Copywriting &amp; Messaging</h3>
+        <div class="grid-2">
+            <div class="card">
+                <p><span class="eval eval-fort">✅ Point fort</span></p>
+                <p style="margin-top:10px;">Le ton est naturel, accessible et sympathique — on sent la personnalité de Marie derrière les mots. Cela crée un lien humain immédiat avec le visiteur, essentiel dans un métier aussi personnel que la décoration d'intérieur.</p>
+            </div>
+            <div class="card">
+                <p><span class="eval eval-dev">💡 À développer</span></p>
+                <p style="margin-top:10px;">La promesse de valeur pourrait être plus percutante dès les premières secondes. En arrivant sur le site, un visiteur doit comprendre immédiatement : « qu'est-ce que Marie peut faire pour moi, et pourquoi elle ? ». Un titre accrocheur dès la section héro ferait toute la différence.</p>
+            </div>
+            <div class="card">
+                <p><span class="eval eval-opp">🚀 Belle opportunité</span></p>
+                <p style="margin-top:10px;">Vos éléments différenciants (réalisations 3D, approche sur-mesure, partenariats avec des marques reconnues comme Dekton, Mutina, Zuiver) mériteraient d'être mis davantage en avant. Ce sont de vrais arguments de confiance qui vous distinguent des autres décoratrices de la région.</p>
+            </div>
+            <div class="card">
+                <p><span class="eval eval-dev">💡 À développer</span></p>
+                <p style="margin-top:10px;">Détailler votre processus de travail (rencontre → projet → devis → réalisation) de façon visuelle et narrative aiderait vos prospects à se projeter et à franchir le pas. Le moodboard montre que vous avez déjà cette logique — reste à la rendre bien lisible sur le site.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- D. SEO -->
+    <div class="sub-section">
+        <h3>D. SEO &amp; Visibilité en ligne</h3>
+        <div class="grid-2">
+            <div class="card">
+                <p><span class="eval eval-fort">✅ Point fort</span></p>
+                <p style="margin-top:10px;">Le nom de domaine <strong>lesdecosdemarie.fr</strong> est facile à retenir et mémorisable. Votre site existe, il est indexé, et il constitue une base solide sur laquelle construire une vraie stratégie de visibilité.</p>
+            </div>
+            <div class="card">
+                <p><span class="eval eval-opp">🚀 Belle opportunité</span></p>
+                <p style="margin-top:10px;">Un immense potentiel SEO reste à exploiter ! Les mots-clés stratégiques comme « décoratrice d'intérieur Mulhouse », « agencement intérieur Haut-Rhin », ou « home staging 68 » ne sont pas encore ciblés dans les titres et contenus. En les intégrant, votre site pourra se positionner sur les recherches locales de vos futurs clients.</p>
+            </div>
+            <div class="card">
+                <p><span class="eval eval-dev">💡 À développer</span></p>
+                <p style="margin-top:10px;">Les balises titres (H1, H2) et les méta-descriptions méritent une optimisation pour que Google comprenne parfaitement votre offre et votre zone d'intervention. C'est un levier très puissant et relativement simple à mettre en place.</p>
+            </div>
+            <div class="card">
+                <p><span class="eval eval-opp">🚀 Belle opportunité</span></p>
+                <p style="margin-top:10px;">La création d'un blog avec des articles ciblés (tendances déco, conseils d'agencement, inspirations couleurs…) serait un formidable accélérateur de trafic et de crédibilité. C'est aussi un excellent contenu à partager sur vos réseaux sociaux (Facebook, Instagram, TikTok) que vous utilisez déjà.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- E. TUNNEL DE CONVERSION -->
+    <div class="sub-section">
+        <h3>E. Tunnel de Conversion</h3>
+        <div class="grid-2">
+            <div class="card">
+                <p><span class="eval eval-fort">✅ Point fort</span></p>
+                <p style="margin-top:10px;">Un formulaire de contact est présent et fonctionnel. La page de contact existe, ce qui est essentiel pour transformer un visiteur intéressé en client potentiel.</p>
+            </div>
+            <div class="card">
+                <p><span class="eval eval-dev">💡 À développer</span></p>
+                <p style="margin-top:10px;">Les boutons d'appel à l'action (CTA) pourraient être plus visibles, plus engageants et mieux répartis sur l'ensemble du site. Un CTA comme « Demander votre consultation déco gratuite » ou « Parlons de votre projet » serait bien plus attractif qu'un simple « Contact ».</p>
+            </div>
+            <div class="card">
+                <p><span class="eval eval-opp">🚀 Belle opportunité</span></p>
+                <p style="margin-top:10px;">Intégrer des témoignages clients, des avis Google et des chiffres clés (nombre de projets réalisés, années d'expérience) viendrait considérablement renforcer la confiance et accélérer la décision de vos prospects.</p>
+            </div>
+            <div class="card">
+                <p><span class="eval eval-opp">🚀 Belle opportunité</span></p>
+                <p style="margin-top:10px;">Un lead magnet (par exemple : « Guide gratuit : 10 erreurs à éviter pour réussir votre aménagement intérieur ») permettrait de capter les emails de visiteurs pas encore prêts à vous contacter, pour les nourrir ensuite par email.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- F. ANALYSE DES SITES D'INSPIRATION -->
+    <div class="sub-section">
+        <h3>F. Analyse des sites d'inspiration</h3>
+        <p style="margin-bottom:20px; color: var(--text-light);">Voici notre analyse des deux sites que vous avez choisis comme sources d'inspiration :</p>
+
+        <div class="inspi-grid">
+            <div class="card">
+                <h3 style="font-size:18px; color: var(--primary);">🔗 thann-menuiserie.fr</h3>
+                <ul style="margin-top: 14px;">
+                    <li><strong>Palette :</strong> Tons bois naturels, noir/anthracite et blanc — ambiance artisanale et premium</li>
+                    <li><strong>Typographies :</strong> Titres en serif élégant, corps de texte sans-serif épuré — équilibre entre tradition et modernité</li>
+                    <li><strong>Ambiance :</strong> Professionnelle et chaleureuse, mettant en avant le savoir-faire artisanal avec des visuels de grande qualité</li>
+                    <li><strong>Structure accueil :</strong> Héro visuel impactant → présentation des services → réalisations en galerie → contact</li>
+                    <li><strong>Éléments UX remarquables :</strong> Galerie de réalisations soignée, navigation claire, mise en avant du local et du sur-mesure</li>
+                    <li><strong>Ce qui vous plaît (notre lecture) :</strong> L'alliance du côté artisanal et du rendu professionnel, la mise en valeur du savoir-faire local et des matériaux nobles</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3 style="font-size:18px; color: var(--primary);">🔗 valdoisehomeconciergerie.com</h3>
+                <ul style="margin-top: 14px;">
+                    <li><strong>Palette :</strong> Tons doux et naturels (beige, crème, touches dorées) — ambiance cocooning et premium</li>
+                    <li><strong>Typographies :</strong> Titres élégants avec empattements, textes sobres — raffinement et lisibilité</li>
+                    <li><strong>Ambiance :</strong> Chaleureuse et haut de gamme, inspirant confiance et sérénité — esprit « comme à la maison » en version soignée</li>
+                    <li><strong>Structure accueil :</strong> Héro avec promesse forte → services détaillés → témoignages → formulaire de contact</li>
+                    <li><strong>Éléments UX remarquables :</strong> Sections bien découpées, CTA visibles, preuve sociale intégrée, parcours utilisateur fluide</li>
+                    <li><strong>Ce qui vous plaît (notre lecture) :</strong> L'ambiance cocooning, le ton chaleureux et personnalisé, la sensation de confiance et de proximité que dégage le site</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card" style="margin-top:24px; background: var(--primary-light); border-left: 4px solid var(--primary);">
+            <p><strong>🎨 Synthèse de l'inspiration :</strong> Les deux sites partagent une esthétique chaleureuse, un ancrage local fort et une mise en avant du savoir-faire artisanal. Combiné à votre moodboard (tons terre cuite, beige, noir, illustrations type croquis), cela dessine une direction visuelle claire : un site <em>chaleureux, convivial, artisanal et raffiné</em>, avec un supplément d'âme apporté par vos illustrations manuscrites.</p>
+        </div>
+    </div>
 </div>
 
-<div class="note-intention">
-<h3>💫 Notre vision pour votre futur site</h3>
-<p>Marie, votre site actuel pose déjà de très belles bases : une identité visuelle chaleureuse et reconnaissable, un positionnement clair dans le secteur de la décoration d'intérieur et un portfolio de réalisations qui témoigne de votre talent. La refonte que nous vous proposons va sublimer tout cela. Votre futur site deviendra votre meilleur ambassadeur : il attirera naturellement des prospects qualifiés à Mulhouse et dans tout le Haut-Rhin grâce au SEO local, il les rassurera grâce à vos témoignages et vos avant/après, et il les convertira en clients grâce à un parcours fluide et des appels à l'action engageants. L'ambiance chaleureuse et conviviale que vous souhaitez, avec vos illustrations type dessin, sera au cœur de chaque page — pour un site à votre image, qui donne envie de pousser la porte de votre univers.</p>
-</div>
+<!-- ═══════════════════════════════════════ -->
+<!-- PHASE 2 — RECOMMANDATIONS                -->
+<!-- ═══════════════════════════════════════ -->
+
+<div class="section">
+    <span class="section-phase">Phase 2</span>
+    <h2>Recommandations personnalisées</h2>
+    <div class="section-divider"></div>
+    <p style="margin-bottom: 30px; font-size: 16px; color: var(--text-light);">
+        Votre site actuel a de vraies qualités sur lesquelles construire. Les recommandations ci-dessous sont pensées comme des leviers de croissance concrets pour votre activité de décoratrice d'intérieur à Mulhouse.
+    </p>
+
+    <div style="overflow-x: auto;">
+    <table class="reco-table">
+        <thead>
+            <tr>
+                <th style="width:14%;">Axe</th>
+                <th style="width:20%;">Ce qui fonctionne déjà bien</th>
+                <th style="width:22%;">Opportunité d'amélioration</th>
+                <th style="width:12%;">Priorité</th>
+                <th style="width:32%;">Notre recommandation</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Structure &amp; navigation</strong></td>
+                <td>Pages essentielles présentes, navigation simple et compréhensible</td>
+                <td>Enrichir l'arborescence pour mieux répondre aux attentes des visiteurs et des moteurs de recherche</td>
+                <td><span class="badge badge-prioritaire">🔴 Prioritaire</span></td>
+                <td>Ajouter une page « À propos » racontant votre parcours, une page « Témoignages », et une page locale SEO « Décoratrice Mulhouse ». Créer un espace Blog pour partager votre expertise.</td>
+            </tr>
+            <tr>
+                <td><strong>Design &amp; identité visuelle</strong></td>
+                <td>Palette chaleureuse terre cuite/beige, logo manuscrit attachant, photos de qualité</td>
+                <td>Monter en gamme graphique pour refléter la qualité de vos réalisations</td>
+                <td><span class="badge badge-prioritaire">🔴 Prioritaire</span></td>
+                <td>Intégrer des illustrations « type dessin » comme sur votre moodboard, renforcer les espaces blancs, adopter une typographie serif élégante pour les titres. Créer un univers visuel unique qui vous ressemble.</td>
+            </tr>
+            <tr>
+                <td><strong>Confort mobile</strong></td>
+                <td>Le site est consultable sur mobile</td>
+                <td>Optimiser l'expérience tactile et la vitesse de chargement sur smartphone</td>
+                <td><span class="badge badge-important">🟠 Important</span></td>
+                <td>Repenser la navigation mobile avec un menu hamburger fluide, des CTA bien dimensionnés et des images optimisées. Plus de 60% de vos visiteurs viendront probablement de leur téléphone.</td>
+            </tr>
+            <tr>
+                <td><strong>Message &amp; promesse de valeur</strong></td>
+                <td>Ton naturel et sympathique, on sent la personnalité de Marie</td>
+                <td>Clarifier et renforcer la promesse dès les premières secondes</td>
+                <td><span class="badge badge-prioritaire">🔴 Prioritaire</span></td>
+                <td>Créer un titre héro percutant (ex : « Votre intérieur, votre histoire — Agencement &amp; décoration sur-mesure à Mulhouse ») suivi d'un sous-titre mettant en avant vos réalisations 3D et votre accompagnement personnalisé.</td>
+            </tr>
+            <tr>
+                <td><strong>Visibilité SEO</strong></td>
+                <td>Nom de domaine mémorable, site indexé par Google</td>
+                <td>Exploiter le potentiel SEO local considérable de votre zone</td>
+                <td><span class="badge badge-prioritaire">🔴 Prioritaire</span></td>
+                <td>Optimiser chaque page autour d'un mot-clé principal (« décoratrice intérieur Mulhouse », « agencement Haut-Rhin »…), structurer les titres H1/H2, rédiger des méta-descriptions attractives et lancer un blog SEO.</td>
+            </tr>
+            <tr>
+                <td><strong>Parcours de conversion &amp; CTA</strong></td>
+                <td>Formulaire de contact fonctionnel</td>
+                <td>Multiplier et rendre plus attractifs les points de conversion</td>
+                <td><span class="badge badge-important">🟠 Important</span></td>
+                <td>Placer des CTA engageants sur chaque page (« Parlons de votre projet », « Demandez votre consultation »), intégrer un système de prise de rendez-vous en ligne et un formulaire qualifiant avec des questions sur le type de projet.</td>
+            </tr>
+            <tr>
+                <td><strong>Confiance &amp; preuve sociale</strong></td>
+                <td>Partenariats avec des marques reconnues (Dekton, Mutina, Zuiver…)</td>
+                <td>Mettre en scène la preuve sociale de manière plus visible</td>
+                <td><span class="badge badge-important">🟠 Important</span></td>
+                <td>Intégrer les avis Google, créer des avant/après de vos projets, afficher vos partenaires marques en bonne place, ajouter des chiffres clés (projets réalisés, années d'expérience, clients satisfaits).</td>
+            </tr>
+            <tr>
+                <td><strong>Leviers de croissance marketing</strong></td>
+                <td>Présence active sur les réseaux sociaux (Facebook, Instagram, TikTok)</td>
+                <td>Créer un écosystème digital complet pour convertir vos abonnés en clients</td>
+                <td><span class="badge badge-secondaire">🟡 Secondaire</span></td>
+                <td>Mettre en place un lead magnet déco (guide d'inspiration), une newsletter mensuelle « Les Tendances de Marie », et une séquence email de bienvenue pour transformer vos followers en demandes de devis.</td>
+            </tr>
+        </tbody>
+    </table>
+    </div>
+
+    <!-- NOTE D'INTENTION -->
+    <div class="note-intention">
+        <h3 style="color: var(--primary); margin-bottom: 14px;">✨ Note d'intention</h3>
+        <p>Marie, votre site actuel a de vraies qualités : une identité de marque chaleureuse, des réalisations de qualité et une personnalité qui transparaît. La refonte que nous envisageons va transformer cette base solide en un véritable outil de croissance pour votre activité. En combinant une esthétique à votre image (chaleureuse, illustrée, conviviale), un référencement local ciblé sur Mulhouse et le Haut-Rhin, et un parcours visiteur pensé pour convertir, votre nouveau site va devenir votre meilleur commercial — celui qui travaille 24h/24 pour vous faire connaître et vous ramener des projets.</p>
+        <p style="margin-top: 12px;">Nous sommes enthousiastes à l'idée de donner vie à cette vision, et les pages qui suivent détaillent le plan sur-mesure que nous avons conçu pour vous. 🤎</p>
+    </div>
 </div>
 
-<div class="section-divider"></div>
+<!-- ═══════════════════════════════════════ -->
+<!-- PHASE 3 — BLUEPRINT STRATÉGIQUE          -->
+<!-- ═══════════════════════════════════════ -->
 
-<!-- ============================== -->
-<!-- PHASE 3 — BLUEPRINT STRATÉGIQUE -->
-<!-- ============================== -->
-<div class="section-phase">
-<span class="phase-badge">Phase 3</span>
-<h2>Blueprint Stratégique de Refonte</h2>
-<p class="phase-intro">Voici la feuille de route sur-mesure de votre nouveau site. Chaque section a été pensée pour répondre aux opportunités identifiées et pour refléter votre univers unique de décoratrice d'intérieur à Mulhouse.</p>
+<div class="section">
+    <span class="section-phase">Phase 3</span>
+    <h2>Blueprint Stratégique de Refonte</h2>
+    <div class="section-divider"></div>
+    <p style="margin-bottom: 40px; font-size: 16px; color: var(--text-light);">
+        Voici le plan détaillé de votre futur site, pensé sur-mesure pour votre activité de décoratrice et agenceur d'intérieur à Mulhouse. Chaque section a été conçue pour répondre aux opportunités identifiées et vous donner un vrai avantage concurrentiel.
+    </p>
+
+    <!-- 01 — POSITIONNEMENT -->
+    <div class="sub-section">
+        <span class="section-phase">01 — Positionnement</span>
+        <h3>Votre identité de marque</h3>
+        <div class="section-divider"></div>
+
+        <div class="card" style="margin-bottom: 24px;">
+            <h3 style="color: var(--primary); font-size: 20px;">🎯 Promesse de valeur</h3>
+            <p style="font-size: 20px; font-family: 'Playfair Display', serif; color: var(--charcoal); margin-top: 12px; line-height: 1.6;">
+                « Des intérieurs qui vous ressemblent — Agencement &amp; décoration sur-mesure à Mulhouse, avec le souci du détail et le goût du beau. »
+            </p>
+        </div>
+
+        <div class="grid-2">
+            <div class="card">
+                <h3 style="font-size: 18px;">📣 Ligne directrice de communication</h3>
+                <p style="margin-top: 10px;">Donner envie de transformer son intérieur en mettant en avant l'accompagnement personnalisé de Marie, du premier croquis à la réalisation finale. Montrer que la décoration n'est pas un luxe mais un investissement dans son bien-être quotidien.</p>
+            </div>
+            <div class="card">
+                <h3 style="font-size: 18px;">🖊️ Ton éditorial</h3>
+                <p style="margin-top: 10px;"><strong>Chaleureux • Inspirant • Accessible</strong></p>
+                <p style="margin-top: 8px;">Un ton qui parle comme une amie experte : bienveillant et passionné, jamais prétentieux. On partage des conseils, des inspirations et on guide sans jargon. Le visiteur doit se sentir en confiance, compris et inspiré.</p>
+            </div>
+        </div>
+
+        <h3 style="margin-top: 30px; font-size: 20px;">Piliers de différenciation</h3>
+        <div class="grid-2" style="margin-top: 16px;">
+            <div class="card">
+                <p><span class="pillar-num">1</span><strong>Visualisation 3D avant travaux</strong></p>
+                <p style="margin-top: 8px; padding-left: 38px;">Grâce à vos réalisations 3D, vos clients se projettent concrètement dans leur futur intérieur avant le moindre coup de pinceau. Un avantage rare et très rassurant.</p>
+            </div>
+            <div class="card">
+                <p><span class="pillar-num">2</span><strong>Accompagnement sur-mesure de A à Z</strong></p>
+                <p style="margin-top: 8px; padding-left: 38px;">De la première rencontre au choix des matériaux, en passant par le suivi des travaux : Marie accompagne chaque projet dans sa globalité, sans sous-traitance impersonnelle.</p>
+            </div>
+            <div class="card">
+                <p><span class="pillar-num">3</span><strong>Réseau de partenaires premium</strong></p>
+                <p style="margin-top: 8px; padding-left: 38px;">Dekton, Mutina, Zuiver, Nuance de Grège… Vos partenariats avec des marques de qualité garantissent des matériaux et du mobilier au-dessus du lot.</p>
+            </div>
+            <div class="card">
+                <p><span class="pillar-num">4</span><strong>Ancrage local &amp; proximité</strong></p>
+                <p style="margin-top: 8px; padding-left: 38px;">Basée à Mulhouse, Marie connaît les artisans locaux, les contraintes des habitations alsaciennes et les goûts de la région. Une décoratrice de proximité, disponible et réactive.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 02 — CLIENT CIBLE -->
+    <div class="sub-section">
+        <span class="section-phase">02 — Client cible</span>
+        <h3>À qui s'adresse votre site</h3>
+        <div class="section-divider"></div>
+
+        <div class="grid-2">
+            <div class="card">
+                <h3 style="font-size: 18px;">👤 Profil type</h3>
+                <ul style="margin-top: 12px;">
+                    <li>Propriétaires ou locataires de 30 à 55 ans, en couple ou en famille</li>
+                    <li>Résidant dans l'agglomération de Mulhouse et le Haut-Rhin (68)</li>
+                    <li>En phase de rénovation, d'emménagement ou simplement envie de renouveau</li>
+                    <li>Sensibles à la déco, suivent des comptes déco sur Instagram et Pinterest</li>
+                    <li>Budget moyen à confortable, prêts à investir dans leur cadre de vie</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h3 style="font-size: 18px;">💭 Ce qui les motive</h3>
+                <ul style="margin-top: 12px;">
+                    <li>Envie d'un intérieur qui leur ressemble mais manque de temps ou d'idées</li>
+                    <li>Peur de faire des erreurs coûteuses (couleurs, agencement, mobilier)</li>
+                    <li>Besoin d'un regard expert pour optimiser un espace atypique ou petit</li>
+                    <li>Désir de se sentir bien chez eux au quotidien</li>
+                    <li>Envie de confier le projet à quelqu'un de confiance plutôt que de tout gérer seul</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h3 style="font-size: 18px;">❓ Leurs questions habituelles</h3>
+                <ul style="margin-top: 12px;">
+                    <li>« Combien ça coûte de faire appel à une décoratrice ? »</li>
+                    <li>« Est-ce que ça vaut le coup pour une seule pièce ? »</li>
+                    <li>« Comment ça se passe concrètement ? »</li>
+                    <li>« Est-ce qu'elle va vraiment comprendre ce que je veux ? »</li>
+                    <li>« Faut-il tout refaire ou peut-elle travailler avec l'existant ? »</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h3 style="font-size: 18px;">🏆 Ce qui fait choisir</h3>
+                <ul style="margin-top: 12px;">
+                    <li>La qualité et la variété des réalisations présentées (portfolio)</li>
+                    <li>Les avis positifs d'anciens clients</li>
+                    <li>La transparence sur le processus et les tarifs</li>
+                    <li>Le contact humain et la proximité géographique</li>
+                    <li>La possibilité de voir le résultat en 3D avant de s'engager</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- 03 — OBJECTIFS -->
+    <div class="sub-section">
+        <span class="section-phase">03 — Objectifs du site refondu</span>
+        <h3>Ce que votre site doit accomplir</h3>
+        <div class="section-divider"></div>
+
+        <div class="grid-3">
+            <div class="card" style="border-top: 3px solid var(--primary);">
+                <p style="font-size: 13px; color: var(--primary); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px;">Objectif n°1</p>
+                <h3 style="font-size: 19px;">Générer des demandes de devis qualifiées</h3>
+                <p style="margin-top: 10px;">Transformer vos visiteurs en prospects chauds grâce à un parcours fluide, des CTA engageants et un formulaire intelligent. C'est la réponse directe au besoin de conversion identifié.</p>
+            </div>
+            <div class="card" style="border-top: 3px solid var(--secondary);">
+                <p style="font-size: 13px; color: var(--secondary); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px;">Objectif n°2</p>
+                <h3 style="font-size: 19px;">Dominer le SEO local « déco / agencement Mulhouse »</h3>
+                <p style="margin-top: 10px;">Être la décoratrice que Google recommande quand quelqu'un cherche de l'aide pour son intérieur à Mulhouse et dans le Haut-Rhin.</p>
+            </div>
+            <div class="card" style="border-top: 3px solid var(--accent);">
+                <p style="font-size: 13px; color: var(--accent); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px;">Objectif n°3</p>
+                <h3 style="font-size: 19px;">Inspirer confiance et crédibilité</h3>
+                <p style="margin-top: 10px;">Montrer la qualité de votre travail, vos partenaires, vos témoignages et votre processus pour que chaque visiteur se dise : « C'est elle qu'il me faut. »</p>
+            </div>
+        </div>
+        <div class="grid-2" style="margin-top: 0;">
+            <div class="card" style="border-top: 3px solid var(--warm-beige);">
+                <p style="font-size: 13px; color: var(--primary); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px;">Objectif n°4</p>
+                <h3 style="font-size: 19px;">Renforcer votre image de marque</h3>
+                <p style="margin-top: 10px;">Créer un site qui reflète la qualité et la chaleur de votre travail, en cohérence avec votre moodboard et votre univers visuel unique.</p>
+            </div>
+            <div class="card" style="border-top: 3px solid var(--soft-pink);">
+                <p style="font-size: 13px; color: var(--primary); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px;">Objectif n°5</p>
+                <h3 style="font-size: 19px;">Capter et nourrir une communauté</h3>
+                <p style="margin-top: 10px;">Via le blog et la newsletter, fidéliser votre audience et créer un vivier de futurs clients qui pensent à vous le jour où ils ont un projet.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 04 — ARBORESCENCE -->
+    <div class="sub-section">
+        <span class="section-phase">04 — Arborescence du site refondu</span>
+        <h3>La structure de votre futur site</h3>
+        <div class="section-divider"></div>
+
+        <div style="overflow-x: auto;">
+        <table class="reco-table">
+            <thead>
+                <tr>
+                    <th>Page</th>
+                    <th>Framework rédactionnel</th>
+                    <th>Mot-clé principal</th>
+                    <th>Potentiel SEO</th>
+                    <th>Statut</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Accueil</strong></td>
+                    <td>AIDA</td>
+                    <td>Décoration intérieur Mulhouse</td>
+                    <td><span class="badge badge-fort">Fort</span></td>
+                    <td><span class="badge badge-amelioree">Améliorée</span></td>
+                </tr>
+                <tr>
+                    <td><strong>Nos prestations</strong><br><small style="color:var(--text-light);">Agencement, décoration, réalisation 3D</small></td>
+                    <td>PAS</td>
+                    <td>Agencement intérieur Haut-Rhin</td>
+                    <td><span class="badge badge-fort">Fort</span></td>
+                    <td><span class="badge badge-amelioree">Améliorée</span></td>
+                </tr>
+                <tr>
+                    <td><strong>Réalisations</strong><br><small style="color:var(--text-light);">Portfolio avec avant/après et 3D</small></td>
+                    <td>BAB</td>
+                    <td>Réalisations décoratrice Mulhouse</td>
+                    <td><span class="badge badge-moyen">Moyen</span></td>
+                    <td><span class="badge badge-amelioree">Améliorée</span></td>
+                </tr>
+                <tr>
+                    <td><strong>À propos — Marie</strong></td>
+                    <td>AIDA</td>
+                    <td>Décoratrice d'intérieur Mulhouse</td>
+                    <td><span class="badge badge-fort">Fort</span></td>
+                    <td><span class="badge badge-nouvelle">Nouvelle</span></td>
+                </tr>
+                <tr>
+                    <td><strong>Témoignages clients</strong></td>
+                    <td>BAB</td>
+                    <td>Avis décoratrice Mulhouse</td>
+                    <td><span class="badge badge-moyen">Moyen</span></td>
+                    <td><span class="badge badge-nouvelle">Nouvelle</span></td>
+                </tr>
+                <tr>
+                    <td><strong>Blog</strong></td>
+                    <td>AIDA</td>
+                    <td>Conseils décoration intérieur</td>
+                    <td><span class="badge badge-fort">Fort</span></td>
+                    <td><span class="badge badge-nouvelle">Nouvelle</span></td>
+                </tr>
+                <tr>
+                    <td><strong>Contact &amp; Devis</strong></td>
+                    <td>PAS</td>
+                    <td>Devis décoration Mulhouse</td>
+                    <td><span class="badge badge-moyen">Moyen</span></td>
+                    <td><span class="badge badge-amelioree">Améliorée</span></td>
+                </tr>
+                <tr>
+                    <td><strong>Décoratrice d'intérieur à Mulhouse</strong><br><small style="color:var(--text-light);">Page locale SEO</small></td>
+                    <td>PAS</td>
+                    <td>Décoratrice intérieur Mulhouse 68</td>
+                    <td><span class="badge badge-fort">Fort</span></td>
+                    <td><span class="badge badge-nouvelle">Nouvelle</span></td>
+                </tr>
+                <tr>
+                    <td><strong>Agencement &amp; Déco dans le Haut-Rhin</strong><br><small style="color:var(--text-light);">Page locale SEO</small></td>
+                    <td>AIDA</td>
+                    <td>Agencement décoration Haut-Rhin</td>
+                    <td><span class="badge badge-fort">Fort</span></td>
+                    <td><span class="badge badge-nouvelle">Nouvelle</span></td>
+                </tr>
+                <tr>
+                    <td><strong>Mentions légales / CGV</strong></td>
+                    <td>—</td>
+                    <td>—</td>
+                    <td><span class="badge badge-faible">Faible</span></td>
+                    <td><span class="badge badge-amelioree">Améliorée</span></td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+    </div>
+
+    <!-- 05 — COCON SÉMANTIQUE -->
+    <div class="sub-section">
+        <span class="section-phase">05 — Cocon sémantique</span>
+        <h3>Comment vos pages se renforcent entre elles</h3>
+        <div class="section-divider"></div>
+
+        <div class="grid-2">
+            <div class="card">
+                <h3 style="font-size: 18px; color: var(--primary);">🏠 Cluster 1 — Décoration &amp; Agencement d'intérieur</h3>
+                <p style="margin-top: 10px;"><strong>Pages liées :</strong> Accueil → Nos prestations → Réalisations → Page locale Mulhouse</p>
+                <p style="margin-top: 8px;">Ce cluster regroupe tout ce qui concerne votre cœur de métier. Chaque page renvoie vers les autres pour montrer à Google (et à vos visiteurs) que vous êtes LA référence en décoration dans votre zone.</p>
+            </div>
+            <div class="card">
+                <h3 style="font-size: 18px; color: var(--primary);">💡 Cluster 2 — Inspiration &amp; Conseils déco</h3>
+                <p style="margin-top: 10px;"><strong>Pages liées :</strong> Blog → Réalisations → Nos prestations → Contact</p>
+                <p style="margin-top: 8px;">Les articles de blog attirent du trafic via Google, inspirent les visiteurs, et les renvoient naturellement vers vos services et votre formulaire de contact. C'est votre moteur de visibilité à long terme.</p>
+            </div>
+        </div>
+
+        <div class="card" style="margin-top: 24px;">
+            <h3 style="font-size: 18px; color: var(--primary);">🔗 Cluster 3 — Confiance &amp; Passage à l'action</h3>
+            <p style="margin-top: 10px;"><strong>Pages liées :</strong> À propos → Témoignages → Nos prestations → Contact &amp; Devis</p>
+            <p style="margin-top: 8px;">Ce cluster rassure le visiteur indécis : il découvre Marie, lit les avis d'anciens clients, comprend les prestations et peut facilement demander un devis. C'est le chemin de la confiance vers l'action.</p>
+        </div>
+
+        <h3 style="margin-top: 30px; font-size: 18px;">Logique de maillage simplifié</h3>
+        <div class="maillage" style="margin-top: 16px;">
+            <span class="maillage-item">Blog (trafic)</span>
+            <span class="maillage-arrow">→</span>
+            <span class="maillage-item">Prestations (intérêt)</span>
+            <span class="maillage-arrow">→</span>
+            <span class="maillage-item">Réalisations (preuve)</span>
+            <span class="maillage-arrow">→</span>
+            <span class="maillage-item">Témoignages (confiance)</span>
+            <span class="maillage-arrow">→</span>
+            <span class="maillage-item">Contact (conversion)</span>
+        </div>
+    </div>
+
+    <!-- 06 — TUNNEL DE CONVERSION -->
+    <div class="sub-section">
+        <span class="section-phase">06 — Tunnel de conversion</span>
+        <h3>Le parcours de vos visiteurs vers la demande de devis</h3>
+        <div class="section-divider"></div>
+
+        <div class="card">
+            <div class="tunnel-step">
+                <h3 style="font-size: 18px; color: var(--primary);">1. Découverte</h3>
+                <p><strong>Sources de trafic :</strong> Recherche Google (« décoratrice Mulhouse »), Instagram, TikTok, bouche-à-oreille</p>
+                <p><strong>Page concernée :</strong> Accueil / Blog / Page locale SEO</p>
+                <p><strong>CTA :</strong> « Découvrez nos réalisations » · « Inspirez-vous »</p>
+            </div>
+            <div class="tunnel-step">
+                <h3 style="font-size: 18px; color: var(--primary);">2. Intérêt</h3>
+                <p><strong>Sources de trafic :</strong> Navigation interne, articles de blog, réseaux sociaux</p>
+                <p><strong>Page concernée :</strong> Nos prestations / Réalisations (avant-après &amp; 3D)</p>
+                <p><strong>CTA :</strong> « Voir comment Marie transforme vos espaces » · « Téléchargez notre guide déco gratuit »</p>
+            </div>
+            <div class="tunnel-step">
+                <h3 style="font-size: 18px; color: var(--primary);">3. Confiance</h3>
+                <p><strong>Sources de trafic :</strong> Navigation interne, liens depuis prestations</p>
+                <p><strong>Page concernée :</strong> Témoignages / À propos Marie</p>
+                <p><strong>CTA :</strong> « Lire les avis de nos clients » · « Découvrir le parcours de Marie »</p>
+            </div>
+            <div class="tunnel-step">
+                <h3 style="font-size: 18px; color: var(--primary);">4. Action</h3>
+                <p><strong>Sources de trafic :</strong> CTA présents sur toutes les pages</p>
+                <p><strong>Page concernée :</strong> Contact &amp; Devis</p>
+                <p><strong>CTA :</strong> « Parlons de votre projet » · « Réservez votre consultation déco »</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 07 — LEVIERS DE CROISSANCE -->
+    <div class="sub-section">
+        <span class="section-phase">07 — Leviers de croissance</span>
+        <h3>Les outils qui vont booster votre activité</h3>
+        <div class="section-divider"></div>
+
+        <div class="grid-2">
+            <div class="card">
+                <h3 style="font-size: 18px;">🎁 Lead magnet</h3>
+                <p style="margin-top: 10px;"><strong>« Le Guide des 10 erreurs déco à éviter quand on aménage son intérieur »</strong></p>
+                <p style="margin-top: 8px;">Un petit guide PDF illustré, téléchargeable gratuitement en échange d'une adresse email. Parfaitement aligné avec les questions que se posent vos clients potentiels. Format court (8-10 pages), avec vos photos et conseils concrets.</p>
+            </div>
+            <div class="card">
+                <h3 style="font-size: 18px;">📅 Prise de rendez-vous</h3>
+                <p style="margin-top: 10px;"><strong>Calendly ou Cal.com</strong> intégré directement sur le site</p>
+                <p style="margin-top: 8px;">Vos visiteurs peuvent réserver un créneau de « consultation découverte » (15-20 min, gratuite) sans échange d'emails. Cela réduit les frictions et vous amène des prospects déjà engagés dans leur démarche.</p>
+            </div>
+            <div class="card">
+                <h3 style="font-size: 18px;">⭐ Preuve sociale</h3>
+                <p style="margin-top: 10px;">Contenu recommandé pour votre secteur :</p>
+                <ul style="margin-top: 8px;">
+                    <li>Avant / Après en photos et 3D (votre plus grand atout !)</li>
+                    <li>Avis Google intégrés dynamiquement</li>
+                    <li>Logos des marques partenaires (Dekton, Mutina, Zuiver…)</li>
+                    <li>Chiffres clés : nombre de projets, années d'expérience</li>
+                    <li>Mini-témoignages vidéo de clients (bonus futur)</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h3 style="font-size: 18px;">📝 Formulaire qualifiant</h3>
+                <p style="margin-top: 10px;">Champs recommandés :</p>
+                <ul style="margin-top: 8px;">
+                    <li>Nom &amp; prénom, email, téléphone</li>
+                    <li>Type de projet : décoration / agencement / les deux</li>
+                    <li>Pièce(s) concernée(s) : salon, chambre, cuisine, salle de bain, bureau…</li>
+                    <li>Superficie approximative</li>
+                    <li>Budget envisagé (fourchette)</li>
+                    <li>Message / description du projet</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h3 style="font-size: 18px;">💌 Newsletter</h3>
+                <p style="margin-top: 10px;"><strong>« Les Inspirations de Marie »</strong> — mensuelle</p>
+                <p style="margin-top: 8px;">Angle éditorial : une sélection d'inspirations déco du mois, un avant/après d'un projet récent, une astuce d'agencement pratique, et une tendance couleur ou matériau. Ton léger, visuels soignés, lien vers le blog. Format court, 3 min de lecture maximum.</p>
+            </div>
+            <div class="card">
+                <h3 style="font-size: 18px;">📧 Séquence email automatisée</h3>
+                <p style="margin-top: 10px;">Scénario en 4 emails après téléchargement du guide :</p>
+                <ul style="margin-top: 8px;">
+                    <li><strong>J+0 :</strong> Bienvenue + lien du guide + présentation de Marie</li>
+                    <li><strong>J+3 :</strong> Avant/après d'un projet marquant + « Et si c'était votre intérieur ? »</li>
+                    <li><strong>J+7 :</strong> 3 questions à se poser avant de refaire sa déco + lien article blog</li>
+                    <li><strong>J+14 :</strong> Invitation à réserver une consultation découverte gratuite</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- 08 — DIRECTION VISUELLE -->
+    <div class="sub-section">
+        <span class="section-phase">08 — Direction visuelle</span>
+        <h3>L'univers graphique de votre nouveau site</h3>
+        <div class="section-divider"></div>
+
+        <div class="card" style="margin-bottom: 24px;">
+            <p style="margin-bottom: 20px;">En nous inspirant de votre magnifique moodboard et des sites de référence que vous avez sélectionnés, voici la direction visuelle que nous recommandons pour votre site — une montée en gamme naturelle qui sublime ce qui fait déjà votre identité.</p>
+
+            <h3 style="font-size: 18px; color: var(--primary);">🎨 Palette de couleurs recommandée</h3>
+            <div class="color-grid" style="margin-top: 20px; margin-bottom: 30px;">
+                <div class="color-swatch">
+                    <div class="color-swatch-box" style="background: #2C1810;"></div>
+                    <div class="color-swatch-name">Brun profond</div>
+                    <div class="color-swatch-hex">#2C1810</div>
+                </div>
+                <div class="color-swatch">
+                    <div class="color-swatch-box" style="background: #8B5E3C;"></div>
+                    <div class="color-swatch-name">Terre cuite</div>
+                    <div class="color-swatch-hex">#8B5E3C</div>
+                </div>
+                <div class="color-swatch">
+                    <div class="color-swatch-box" style="background: #C4956A;"></div>
+                    <div class="color-swatch-name">Caramel doux</div>
+                    <div class="color-swatch-hex">#C4956A</div>
+                </div>
+                <div class="color-swatch">
+                    <div class="color-swatch-box" style="background: #D4B5A0;"></div>
+                    <div class="color-swatch-name">Rose poudré</div>
+                    <div class="color-swatch-hex">#D4B5A0</div>
+                </div>
+                <div class="color-swatch">
+                    <div class="color-swatch-box" style="background: #E8D5C4;"></div>
+                    <div class="color-swatch-name">Beige chaud</div>
+                    <div class="color-swatch-hex">#E8D5C4</div>
+                </div>
+                <div class="color-swatch">
+                    <div class="color-swatch-box" style="background: #1A1A1A;"></div>
+                    <div class="color-swatch-name">Noir encre</div>
+                    <div class="color-swatch-hex">#1A1A1A</div>
+                </div>
+            </div>
+            <p style="font-size: 14px; color: var(--text-light);">Cette palette reprend fidèlement les couleurs de votre moodboard : les tons terre cuite et caramel en accents chaleureux, le beige chaud en fond apaisant, le brun profond et le noir pour l'ancrage et l'élégance. Elle évoque la chaleur du bois, la douceur des matières naturelles et le cocon que vous créez pour vos clients.</p>
+        </div>
+
+        <div class="card">
+            <h3 style="font-size: 18px; color: var(--primary);">🖼️ Univers visuel recommandé</h3>
+            <div class="grid-2" style="margin-top: 16px;">
+                <div>
+                    <ul>
+                        <li><strong>Illustrations « type croquis » :</strong> Des dessins au trait fin et élégant (comme sur votre moodboard) pour illustrer votre processus de travail et ajouter une touche artisanale unique à votre site</li>
+                        <li><strong>Photographies en lumière naturelle :</strong> Vos réalisations mises en valeur avec des cadrages soignés, des ambiances chaleureuses et une dominante de tons chauds</li>
+                        <li><strong>Textures et matières :</strong> Intégration subtile de textures papier, lin ou bois en arrière-plan pour renforcer l'atmosphère cocooning</li>
+                    </ul>
+                </div>
+                <div>
+                    <ul>
+                        <li><strong>Formes organiques et arrondies :</strong> Coins arrondis, formes douces et arcs (inspirés de l'arche visible dans votre moodboard) pour adoucir le design et renforcer la convivialité</li>
+                        <li><strong>Typographie mixte :</strong> Un titre en serif élégant (type Playfair Display) combiné à une écriture manuscrite pour certains accents, créant un mélange de professionnalisme et de personnalité</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 09 — IDÉES DE CONTENUS BLOG -->
+    <div class="sub-section">
+        <span class="section-phase">09 — Idées de contenus blog</span>
+        <h3>Des articles pour attirer et inspirer vos futurs clients</h3>
+        <div class="section-divider"></div>
+
+        <div style="overflow-x: auto;">
+        <table class="reco-table">
+            <thead>
+                <tr>
+                    <th style="width:35%;">Titre de l'article</th>
+                    <th style="width:18%;">Thématique</th>
+                    <th style="width:30%;">Intention de recherche</th>
+                    <th style="width:17%;">Priorité</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Comment bien aménager un petit salon : 7 astuces de décoratrice</strong></td>
+                    <td>Conseils agencement</td>
+                    <td>Informationnelle — lecteur cherche des idées concrètes pour optimiser son espace</td>
+                    <td><span class="badge badge-prioritaire">Prioritaire</span></td>
+                </tr>
+                <tr>
+                    <td><strong>Tendances déco 2026 : les couleurs et matériaux qui font la différence</strong></td>
+                    <td>Tendances &amp; inspiration</td>
+                    <td>Informationnelle — lecteur curieux des nouveautés déco pour son intérieur</td>
+                    <td><span class="badge badge-prioritaire">Prioritaire</span></td>
+                </tr>
+                <tr>
+                    <td><strong>Faire appel à une décoratrice d'intérieur à Mulhouse : comment ça se passe ?</strong></td>
+                    <td>Processus &amp; réassurance</td>
+                    <td>Transactionnelle — lecteur envisage de faire appel à un professionnel</td>
+                    <td><span class="badge badge-prioritaire">Prioritaire</span></td>
+                </tr>
+                <tr>
+                    <td><strong>Avant / Après : la transformation complète d'un appartement mulhousien</strong></td>
+                    <td>Étude de cas</td>
+                    <td>Informationnelle &amp; inspirationnelle — lecteur veut voir des résultats concrets</td>
+                    <td><span class="badge badge-important">Utile</span></td>
+                </tr>
+                <tr>
+                    <td><strong>Quelle couleur choisir pour sa chambre ? Guide complet par ambiance</strong></td>
+                    <td>Conseils couleur</td>
+                    <td>Informationnelle — lecteur hésite sur les teintes pour une pièce</td>
+                    <td><span class="badge badge-important">Utile</span></td>
+                </tr>
+                <tr>
+                    <td><strong>Rénovation cuisine ouverte : les erreurs à éviter et nos meilleures idées</strong></td>
+                    <td>Agencement cuisine</td>
+                    <td>Informationnelle — lecteur en phase de projet cuisine</td>
+                    <td><span class="badge badge-important">Utile</span></td>
+                </tr>
+                <tr>
+                    <td><strong>Décoration éco-responsable : comment meubler son intérieur avec style et conscience</strong></td>
+                    <td>Déco responsable</td>
+                    <td>Informationnelle — lecteur sensible à l'éco-responsabilité</td>
+                    <td><span class="badge badge-bonus">Bonus</span></td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+    </div>
 </div>
 
-<!-- 01 — POSITIONNEMENT -->
-<div class="bp-section">
-<span class="bp-number">01 — Positionnement</span>
-<h2>Votre identité de marque, amplifiée</h2>
-<p class="bp-desc">Ce positionnement traduit votre ADN et vos ambitions en une direction claire et différenciante sur le marché de la décoration d'intérieur en Alsace.</p>
-
-<div class="card" style="margin-bottom: 30px;">
-<h4>Promesse de valeur</h4>
-<p style="font-family: 'Playfair Display', serif; font-size: 22px; color: var(--terracotta); font-style: italic; line-height: 1.5; margin: 12px 0;">« Nous transformons votre intérieur en un espace unique qui vous ressemble — avec créativité, chaleur humaine et un accompagnement sur-mesure de A à Z. »</p>
-</div>
-
-<div class="card" style="margin-bottom: 30px;">
-<h4>Ligne directrice de communication</h4>
-<p>Chaque contenu du site exprimera l'idée que la décoration intérieure n'est pas un luxe mais un acte de bien-être. Marie accompagne ses clients comme une amie experte : avec écoute, enthousiasme et un œil créatif qui transforme chaque espace en lieu de vie inspirant.</p>
-</div>
-
-<div class="card" style="margin-bottom: 30px;">
-<h4>Ton éditorial</h4>
-<p><strong>Chaleureux, créatif, accessible</strong> — Comme une conversation entre amies passionnées de déco, le ton du site mêle expertise et simplicité. On parle d'intérieurs, de couleurs, de matières avec enthousiasme et sans jargon, pour que chaque visiteur se sente bienvenu et compris.</p>
-</div>
-
-<div class="card-grid">
-<div class="card">
-<div class="pillar-title">🎨 Créativité sur-mesure</div>
-<p class="pillar-text">Chaque projet est unique. Pas de solutions toutes faites : Marie imagine des intérieurs pensés autour de votre personnalité, de vos habitudes et de vos envies.</p>
-</div>
-<div class="card">
-<div class="pillar-title">🤝 Accompagnement humain</div>
-<p class="pillar-text">De la première rencontre à la livraison finale, un suivi bienveillant et transparent. Votre projet avance avec vous, à votre rythme, sans mauvaise surprise.</p>
-</div>
-<div class="card">
-<div class="pillar-title">🖥️ Visualisation 3D</div>
-<p class="pillar-text">Grâce à la modélisation 3D, vous voyez votre futur intérieur avant même le début des travaux. Une façon rassurante et enthousiasmante de valider chaque choix.</p>
-</div>
-<div class="card">
-<div class="pillar-title">📍 Ancrage local Alsace</div>
-<p class="pillar-text">Basée à Mulhouse, Marie connaît les artisans locaux, les fournisseurs de confiance et les spécificités des intérieurs alsaciens. Un réseau de proximité au service de votre projet.</p>
-</div>
-<div class="card">
-<div class="pillar-title">✨ Partenaires d'excellence</div>
-<p class="pillar-text">Un réseau de marques sélectionnées (Zuiver, Dekton, Mutina, Métamorphose) pour vous garantir des matériaux et du mobilier de qualité, durables et tendance.</p>
-</div>
-</div>
-</div>
-
-<!-- 02 — CLIENT CIBLE -->
-<div class="bp-section">
-<span class="bp-number">02 — Client cible</span>
-<h2>Qui sont vos futurs clients ?</h2>
-<p class="bp-desc">Comprendre votre cible permet de concevoir un site qui leur parle directement et répond à leurs besoins réels.</p>
-
-<div class="card-grid">
-<div class="card">
-<h4>Profil type</h4>
-<p>Propriétaires ou locataires de 30 à 55 ans, résidant dans l'agglomération de Mulhouse et le Haut-Rhin. Couples ou familles qui viennent d'emménager, qui rénovent ou qui souhaitent simplement redonner vie à leur intérieur. Sensibles à la déco, ils suivent les tendances sur Instagram et Pinterest mais manquent de temps ou de confiance pour se lancer seuls.</p>
-</div>
-<div class="card">
-<h4>Ce qui les motive à faire appel à vous</h4>
-<ul style="list-style: none; padding: 0;">
-<li style="padding: 6px 0;">→ Ils rêvent d'un intérieur qui leur ressemble mais ne savent pas par où commencer</li>
-<li style="padding: 6px 0;">→ Ils viennent d'acheter un bien et veulent le personnaliser avant d'emménager</li>
-<li style="padding: 6px 0;">→ Ils sont lassés de leur déco actuelle et souhaitent un regard neuf et expert</li>
-<li style="padding: 6px 0;">→ Ils ont peur de faire des erreurs coûteuses en achetant les mauvais meubles ou couleurs</li>
-<li style="padding: 6px 0;">→ Ils manquent de temps pour gérer un projet d'aménagement de A à Z</li>
-</ul>
-</div>
-<div class="card">
-<h4>Leurs questions et hésitations</h4>
-<ul style="list-style: none; padding: 0;">
-<li style="padding: 6px 0;">→ « Combien ça coûte de faire appel à une décoratrice ? Est-ce accessible ? »</li>
-<li style="padding: 6px 0;">→ « Est-ce qu'elle va comprendre mes goûts et mon budget ? »</li>
-<li style="padding: 6px 0;">→ « Est-ce que ça vaut le coup pour une seule pièce ? »</li>
-<li style="padding: 6px 0;">→ « Comment ça se passe concrètement ? C'est quoi les étapes ? »</li>
-<li style="padding: 6px 0;">→ « Est-ce qu'elle travaille dans ma zone géographique ? »</li>
-</ul>
-</div>
-<div class="card">
-<h4>Ce qui les fait choisir un prestataire</h4>
-<ul style="list-style: none; padding: 0;">
-<li style="padding: 6px 0;">→ Un portfolio de réalisations qui correspond à leurs goûts</li>
-<li style="padding: 6px 0;">→ Des avis et témoignages de clients satisfaits</li>
-<li style="padding: 6px 0;">→ La clarté du processus et des tarifs</li>
-<li style="padding: 6px 0;">→ Le feeling humain — une personne accessible et à l'écoute</li>
-<li style="padding: 6px 0;">→ La proximité géographique et la connaissance du terrain local</li>
-</ul>
-</div>
-</div>
-</div>
-
-<!-- 03 — OBJECTIFS DU SITE REFONDU -->
-<div class="bp-section">
-<span class="bp-number">03 — Objectifs du site refondu</span>
-<h2>Ce que votre nouveau site va accomplir</h2>
-<p class="bp-desc">Chaque objectif est directement lié aux opportunités identifiées dans notre analyse et adapté à votre modèle d'activité.</p>
-
-<div class="card">
-<div class="analyse-item"><strong>🥇 Objectif n°1 — Génération de contacts qualifiés</strong><br>Transformer les visiteurs en prospects concrets grâce à des appels à l'action clairs (demande de consultation, devis en ligne) et un parcours de conversion fluide. C'est la priorité absolue pour alimenter votre activité.</div>
-<div class="analyse-item"><strong>🥈 Objectif n°2 — Visibilité SEO locale</strong><br>Positionner « Les Décos de Marie » en tête des résultats Google pour les recherches liées à la décoration d'intérieur à Mulhouse et dans le Haut-Rhin. Le blog et les pages locales seront vos meilleurs alliés.</div>
-<div class="analyse-item"><strong>🥉 Objectif n°3 — Réassurance et image de marque</strong><br>Projeter une image professionnelle, chaleureuse et premium qui rassure immédiatement vos visiteurs et les convainc que vous êtes LA décoratrice qu'il leur faut. Témoignages, galerie avant/après et partenaires seront mis en lumière.</div>
-<div class="analyse-item"><strong>4. Notoriété et présence digitale</strong><br>Créer un écosystème cohérent entre votre site, vos réseaux sociaux et votre newsletter pour devenir la référence déco incontournable de la région mulhousienne.</div>
-<div class="analyse-item"><strong>5. Nurturing des prospects</strong><br>Mettre en place un système de lead magnet + séquence email pour nourrir la relation avec les visiteurs qui ne sont pas encore prêts à passer le pas, et les convertir dans les semaines suivantes.</div>
-</div>
-</div>
-
-<!-- 04 — ARBORESCENCE -->
-<div class="bp-section">
-<span class="bp-number">04 — Arborescence du site refondu</span>
-<h2>La structure de votre futur site</h2>
-<p class="bp-desc">Une arborescence pensée pour guider vos visiteurs naturellement vers la prise de contact, tout en optimisant votre visibilité sur Google.</p>
-
-<div class="table-wrap">
-<table class="arbo-table">
-<thead>
-<tr>
-<th>Page</th>
-<th>Framework</th>
-<th>Mot-clé principal</th>
-<th>Potentiel SEO</th>
-<th>Statut</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Accueil</strong></td>
-<td>AIDA</td>
-<td>décoratrice intérieur Mulhouse</td>
-<td><span class="badge-seo fort">Fort</span></td>
-<td><span class="badge-statut amelioree">Améliorée</span></td>
-</tr>
-<tr>
-<td><strong>Nos prestations</strong></td>
-<td>PAS</td>
-<td>conseil décoration agencement intérieur Alsace</td>
-<td><span class="badge-seo fort">Fort</span></td>
-<td><span class="badge-statut amelioree">Améliorée</span></td>
-</tr>
-<tr>
-<td><strong>Nos réalisations</strong></td>
-<td>BAB</td>
-<td>réalisations décoration intérieur Mulhouse</td>
-<td><span class="badge-seo moyen">Moyen</span></td>
-<td><span class="badge-statut amelioree">Améliorée</span></td>
-</tr>
-<tr>
-<td><strong>À propos — L'histoire de Marie</strong></td>
-<td>AIDA</td>
-<td>décoratrice d'intérieur passionnée Haut-Rhin</td>
-<td><span class="badge-seo moyen">Moyen</span></td>
-<td><span class="badge-statut amelioree">Améliorée</span></td>
-</tr>
-<tr>
-<td><strong>Blog / Inspirations</strong></td>
-<td>AIDA</td>
-<td>idées déco intérieur tendances aménagement</td>
-<td><span class="badge-seo fort">Fort</span></td>
-<td><span class="badge-statut nouvelle">Nouvelle</span></td>
-</tr>
-<tr>
-<td><strong>Contact &amp; Devis</strong></td>
-<td>PAS</td>
-<td>devis décoration intérieur Mulhouse gratuit</td>
-<td><span class="badge-seo moyen">Moyen</span></td>
-<td><span class="badge-statut amelioree">Améliorée</span></td>
-</tr>
-<tr>
-<td><strong>Décoratrice intérieur Mulhouse</strong> <em>(page locale)</em></td>
-<td>PAS</td>
-<td>décoratrice intérieur Mulhouse 68</td>
-<td><span class="badge-seo fort">Fort</span></td>
-<td><span class="badge-statut nouvelle">Nouvelle</span></td>
-</tr>
-<tr>
-<td><strong>Agencement intérieur Haut-Rhin</strong> <em>(page locale)</em></td>
-<td>PAS</td>
-<td>agencement intérieur Haut-Rhin Alsace</td>
-<td><span class="badge-seo fort">Fort</span></td>
-<td><span class="badge-statut nouvelle">Nouvelle</span></td>
-</tr>
-<tr>
-<td><strong>Mentions légales / CGV</strong></td>
-<td>—</td>
-<td>—</td>
-<td><span class="badge-seo faible">Faible</span></td>
-<td><span class="badge-statut nouvelle">Nouvelle</span></td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-
-<!-- 05 — COCON SÉMANTIQUE -->
-<div class="bp-section">
-<span class="bp-number">05 — Cocon sémantique</span>
-<h2>Comment vos pages se renforcent entre elles</h2>
-<p class="bp-desc">Un cocon sémantique, c'est comme un réseau de liens intelligents entre vos pages. Quand Google comprend que toutes vos pages parlent du même univers de façon complémentaire, il vous positionne plus haut dans les résultats.</p>
-
-<div class="card-grid">
-<div class="card">
-<h4>🏠 Cluster 1 — Décoration &amp; Agencement d'intérieur</h4>
-<p><strong>Page pilier :</strong> Nos prestations</p>
-<p><strong>Pages satellites :</strong> Page locale « Décoratrice intérieur Mulhouse », articles blog sur les tendances déco, astuces d'aménagement, erreurs à éviter.</p>
-<p style="margin-top: 10px; font-size: 14px; color: var(--gris-clair);">Ce cluster positionne votre expertise métier. Chaque article de blog renvoie vers la page Prestations, et la page Prestations renvoie vers vos réalisations et votre page contact.</p>
-</div>
-<div class="card">
-<h4>✨ Cluster 2 — Projets &amp; Réalisations</h4>
-<p><strong>Page pilier :</strong> Nos réalisations</p>
-<p><strong>Pages satellites :</strong> Page locale « Agencement intérieur Haut-Rhin », articles blog avant/après, études de cas, inspirations par pièce.</p>
-<p style="margin-top: 10px; font-size: 14px; color: var(--gris-clair);">Ce cluster met en valeur votre savoir-faire concret. Les réalisations renvoient vers les prestations correspondantes, et les articles blog alimentent le trafic vers la galerie.</p>
-</div>
-<div class="card">
-<h4>💡 Cluster 3 — Conseils &amp; Inspirations déco</h4>
-<p><strong>Page pilier :</strong> Blog / Inspirations</p>
-<p><strong>Pages satellites :</strong> Tous les articles de blog, guide téléchargeable, newsletter.</p>
-<p style="margin-top: 10px; font-size: 14px; color: var(--gris-clair);">Ce cluster capte le trafic informationnel (les gens qui cherchent des idées déco) et les amène progressivement vers vos pages de conversion. Chaque article contient un lien vers vos prestations et un CTA vers la demande de consultation.</p>
-</div>
-</div>
-
-<div class="card">
-<h4>🔗 Logique de maillage interne</h4>
-<p>Concrètement, voici comment vos pages se connectent entre elles : chaque article de blog contient un lien vers la page Prestations et un bouton « Demander une consultation ». La page Prestations renvoie vers les Réalisations pour prouver votre expertise. Les Réalisations contiennent des liens vers le Contact. Les pages locales renvoient vers les Prestations et les Réalisations. Ce maillage crée un cercle vertueux qui guide vos visiteurs et plaît à Google.</p>
-</div>
-</div>
-
-<!-- 06 — TUNNEL DE CONVERSION -->
-<div class="bp-section">
-<span class="bp-number">06 — Tunnel de conversion</span>
-<h2>Le parcours de vos visiteurs, de la découverte à la prise de contact</h2>
-<p class="bp-desc">Voici comment chaque visiteur sera naturellement guidé vers l'action, étape par étape.</p>
-
-<div class="card">
-<div class="tunnel-step">
-<div class="tunnel-num">1</div>
-<div class="tunnel-content">
-<h4>🔍 Découverte</h4>
-<p><strong>Sources de trafic :</strong> Recherche Google (« décoratrice intérieur Mulhouse »), Instagram, Facebook, Pinterest, bouche-à-oreille, TikTok.</p>
-<p><strong>Pages concernées :</strong> Accueil, articles de blog, pages locales SEO.</p>
-<p><strong>CTA :</strong> « Découvrez nos réalisations » / « Explorez nos inspirations »</p>
-</div>
-</div>
-<div class="tunnel-step">
-<div class="tunnel-num">2</div>
-<div class="tunnel-content">
-<h4>💡 Intérêt</h4>
-<p><strong>Sources de trafic :</strong> Navigation interne depuis la page d'accueil, liens depuis les articles blog.</p>
-<p><strong>Pages concernées :</strong> Nos prestations, Nos réalisations (galerie avant/après).</p>
-<p><strong>CTA :</strong> « Voir comment ça se passe » / « Téléchargez notre guide déco gratuit »</p>
-</div>
-</div>
-<div class="tunnel-step">
-<div class="tunnel-num">3</div>
-<div class="tunnel-content">
-<h4>🤝 Confiance</h4>
-<p><strong>Sources de trafic :</strong> Navigation interne, retour newsletter, retour email automatisé.</p>
-<p><strong>Pages concernées :</strong> À propos (histoire de Marie), témoignages clients, section partenaires.</p>
-<p><strong>CTA :</strong> « Lire les avis de nos clients » / « Découvrir notre processus »</p>
-</div>
-</div>
-<div class="tunnel-step">
-<div class="tunnel-num">4</div>
-<div class="tunnel-content">
-<h4>✅ Action</h4>
-<p><strong>Sources de trafic :</strong> Navigation interne, CTA depuis toutes les pages.</p>
-<p><strong>Pages concernées :</strong> Contact &amp; Devis.</p>
-<p><strong>CTA :</strong> « Réserver votre consultation découverte gratuite » / « Demander un devis personnalisé »</p>
-</div>
-</div>
-</div>
-</div>
-
-<!-- 07 — LEVIERS DE CROISSANCE -->
-<div class="bp-section">
-<span class="bp-number">07 — Leviers de croissance</span>
-<h2>Les outils qui vont booster votre activité</h2>
-<p class="bp-desc">Au-delà du site lui-même, voici les leviers marketing qui vont alimenter votre croissance durablement.</p>
-
-<div class="card-grid">
-<div class="card">
-<h4>🎁 Lead magnet (cadeau de bienvenue)</h4>
-<p>Un guide PDF téléchargeable : <strong>« Les 10 erreurs déco à éviter quand on aménage son intérieur »</strong>. Ce guide pratique et visuellement soigné (à votre image) sera proposé en échange de l'adresse email du visiteur. Il positionne votre expertise et crée un premier lien de confiance.</p>
-</div>
-<div class="card">
-<h4>📅 Prise de rendez-vous en ligne</h4>
-<p>Intégration d'un outil de type <strong>Calendly ou Cal.com</strong> permettant à vos prospects de réserver directement un créneau pour une consultation découverte de 30 minutes. Fini les allers-retours d'emails pour trouver une date — vos clients apprécieront cette simplicité.</p>
-</div>
-<div class="card">
-<h4>⭐ Preuve sociale</h4>
-<p><strong>Témoignages clients</strong> avec photo du projet réalisé, <strong>galeries avant/après</strong> pour montrer concrètement l'impact de votre travail, <strong>logos partenaires</strong> (Zuiver, Dekton, Mutina, etc.) pour ancrer votre crédibilité, et <strong>chiffres clés</strong> (nombre de projets réalisés, années d'expérience, clients satisfaits).</p>
-</div>
-<div class="card">
-<h4>📝 Formulaire qualifiant</h4>
-<p>Champs recommandés : nom, email, téléphone, type de projet (décoration / agencement / les deux), pièces concernées, budget envisagé (fourchette), adresse ou ville, message libre. Ce formulaire vous permet de qualifier vos prospects avant même le premier appel.</p>
-</div>
-<div class="card">
-<h4>💌 Newsletter</h4>
-<p>Angle éditorial : <strong>« L'inspiration déco du mois par Marie »</strong>. Un envoi mensuel mêlant tendances déco, coulisses de vos projets en cours, astuces d'aménagement et nouveautés de vos marques partenaires. Un rendez-vous attendu qui entretient le lien avec votre communauté.</p>
-</div>
-<div class="card">
-<h4>📧 Séquence d'emails automatisée</h4>
-<p><strong>Email 1 (J+0) :</strong> Bienvenue + envoi du guide déco gratuit.<br>
-<strong>Email 2 (J+3) :</strong> Votre histoire, votre approche — pour créer le lien humain.<br>
-<strong>Email 3 (J+7) :</strong> Vos plus belles réalisations avant/après — pour inspirer et convaincre.<br>
-<strong>Email 4 (J+14) :</strong> Témoignages clients + FAQ — pour lever les dernières hésitations.<br>
-<strong>Email 5 (J+21) :</strong> Invitation à réserver une consultation découverte — l'appel à l'action final.</p>
-</div>
-</div>
-</div>
-
-<!-- 08 — DIRECTION VISUELLE -->
-<div class="bp-section">
-<span class="bp-number">08 — Direction visuelle</span>
-<h2>L'univers graphique de votre nouveau site</h2>
-<p class="bp-desc">Votre moodboard nous a énormément inspirés. L'ambiance chaleureuse, les illustrations dessinées et les teintes terracotta que vous avez choisies sont magnifiques. Voici comment nous allons les sublimer.</p>
-
-<div class="card" style="margin-bottom: 30px;">
-<h4>Palette de couleurs recommandée</h4>
-<p style="margin-bottom: 20px;">Directement inspirée de votre moodboard, cette palette conserve l'essence de votre univers tout en offrant une cohérence renforcée et une montée en gamme visuelle.</p>
-
-<div class="palette-grid">
-<div class="palette-item">
-<div class="palette-swatch" style="background: #2D2D2D;"></div>
-<div class="palette-name">Charbon</div>
-<div class="palette-hex">#2D2D2D</div>
-</div>
-<div class="palette-item">
-<div class="palette-swatch" style="background: #A0674B;"></div>
-<div class="palette-name">Terracotta</div>
-<div class="palette-hex">#A0674B</div>
-</div>
-<div class="palette-item">
-<div class="palette-swatch" style="background: #C4896D;"></div>
-<div class="palette-name">Terre de Sienne</div>
-<div class="palette-hex">#C4896D</div>
-</div>
-<div class="palette-item">
-<div class="palette-swatch" style="background: #D4B8A0;"></div>
-<div class="palette-name">Rose Nude</div>
-<div class="palette-hex">#D4B8A0</div>
-</div>
-<div class="palette-item">
-<div class="palette-swatch" style="background: #F2E8DF;"></div>
-<div class="palette-name">Lin Naturel</div>
-<div class="palette-hex">#F2E8DF</div>
-</div>
-<div class="palette-item">
-<div class="palette-swatch" style="background: #3D6B5E;"></div>
-<div class="palette-name">Vert Sauge</div>
-<div class="palette-hex">#3D6B5E</div>
-</div>
-</div>
-</div>
-
-<div class="card">
-<h4>Univers visuel recommandé</h4>
-<div class="card-grid" style="margin-top: 16px;">
-<div class="card">
-<div class="pillar-title">✏️ Illustrations dessinées</div>
-<p class="pillar-text">Fidèles à votre souhait, des illustrations de type « croquis à la main » seront intégrées en éléments décoratifs : icônes de prestations, séparateurs de sections, éléments d'ambiance. Elles apportent une touche d'authenticité et de chaleur unique qui vous différencie.</p>
-</div>
-<div class="card">
-<div class="pillar-title">📸 Photos de réalisations soignées</div>
-<p class="pillar-text">Vos photos de projets seront mises en valeur avec des cadres arrondis, des effets d'ombre douce et un format galerie moderne. Les avant/après seront présentés avec un slider interactif.</p>
-</div>
-<div class="card">
-<div class="pillar-title">🪵 Textures naturelles</div>
-<p class="pillar-text">Fonds texturés subtils (lin, papier kraft, bois clair) pour renforcer l'ambiance chaleureuse et artisanale. Ces textures rappellent les matériaux que vous utilisez dans vos projets déco.</p>
-</div>
-<div class="card">
-<div class="pillar-title">🔤 Typographie mixte</div>
-<p class="pillar-text">Combinaison d'une police serif élégante pour les titres (esprit Playfair Display) et d'une police manuscrite/script pour les accroches et citations, rappelant votre logo. Le corps de texte restera clair et lisible.</p>
-</div>
-<div class="card">
-<div class="pillar-title">🌿 Éléments botaniques</div>
-<p class="pillar-text">Des touches végétales dessinées (feuillages, branches) viendront ponctuer le design, en écho aux plantes présentes dans vos réalisations et sur votre moodboard. Un clin d'œil à la nature qui renforce l'atmosphère organique et bienveillante.</p>
-</div>
-</div>
-</div>
-</div>
-
-<!-- 09 — IDÉES DE CONTENUS BLOG -->
-<div class="bp-section">
-<span class="bp-number">09 — Idées de contenus blog</span>
-<h2>Vos futurs articles pour attirer et inspirer</h2>
-<p class="bp-desc">Ces sujets répondent aux vraies questions que se posent vos futurs clients. Chaque article sera un aimant à visiteurs qualifiés et positionnera votre expertise.</p>
-
-<div class="card">
-<div class="blog-item">
-<div class="blog-title">« Avant / Après : comment nous avons transformé un salon de 25m² à Mulhouse »</div>
-<div class="blog-meta">Thématique : Réalisations &amp; Inspirations — Intention : informationnelle / inspirationnelle <span class="badge-blog prioritaire">Prioritaire</span></div>
-</div>
-<div class="blog-item">
-<div class="blog-title">« Les 5 erreurs déco que tout le monde fait (et comment les éviter) »</div>
-<div class="blog-meta">Thématique : Conseils déco pratiques — Intention : informationnelle <span class="badge-blog prioritaire">Prioritaire</span></div>
-</div>
-<div class="blog-item">
-<div class="blog-title">« Tendances déco 2026 : les couleurs, matières et styles qui vont marquer l'année »</div>
-<div class="blog-meta">Thématique : Tendances &amp; Inspirations — Intention : informationnelle <span class="badge-blog prioritaire">Prioritaire</span></div>
-</div>
-<div class="blog-item">
-<div class="blog-title">« Pourquoi faire appel à une décoratrice d'intérieur à Mulhouse ? Le guide complet »</div>
-<div class="blog-meta">Thématique : Expertise locale — Intention : transactionnelle / informationnelle <span class="badge-blog prioritaire">Prioritaire</span></div>
-</div>
-<div class="blog-item">
-<div class="blog-title">« Comment aménager un petit espace : nos astuces de pro pour gagner en confort »</div>
-<div class="blog-meta">Thématique : Conseils agencement — Intention : informationnelle <span class="badge-blog utile">Utile</span></div>
-</div>
-<div class="blog-item">
-<div class="blog-title">« Bien choisir ses couleurs murales : le guide pour ne plus hésiter »</div>
-<div class="blog-meta">Thématique : Conseils déco pratiques — Intention : informationnelle <span class="badge-blog utile">Utile</span></div>
-</div>
-<div class="blog-item">
-<div class="blog-title">« Rénovation en Alsace : comment allier charme traditionnel et déco contemporaine »</div>
-<div class="blog-meta">Thématique : Expertise locale &amp; Tendances — Intention : informationnelle <span class="badge-blog bonus">Bonus</span></div>
-</div>
-</div>
-</div>
-
-<!-- ============================== -->
 <!-- FOOTER -->
-<!-- ============================== -->
 <div class="footer">
-<strong>Les Décos de Marie</strong> — Agencement &amp; Décoration d'intérieur — Mulhouse, Haut-Rhin (68)<br>
-Site actuel : lesdecosdemarie.fr<br><br>
-Document confidentiel préparé par <strong>AR Digital</strong> — Avril 2026<br>
-Ce document est strictement réservé au client et ne peut être diffusé sans autorisation.
+    <span><strong>Les Décos de Marie</strong> — Marie Scwindenhammer</span>
+    <span>Décoration &amp; Agencement d'intérieur — Mulhouse, Haut-Rhin (68)</span>
+    <span>Document confidentiel — AR Digital</span>
 </div>
 
 </body>
