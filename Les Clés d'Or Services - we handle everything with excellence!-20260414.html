@@ -1,0 +1,1230 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blueprint Stratégique — Les Clés d'Or Services</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    line-height: 1.8;
+    color: #1a1a1a;
+    background: #f9f8f5;
+  }
+
+  /* COVER */
+  .cover {
+    min-height: 100vh;
+    background: linear-gradient(145deg, #0f1f0f 0%, #1a3a1a 40%, #2d5a2d 70%, #b8960c 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 60px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cover::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 60% 40%, rgba(184,150,12,0.18) 0%, transparent 65%);
+    pointer-events: none;
+  }
+
+  .cover-badge {
+    display: inline-block;
+    border: 1px solid rgba(184,150,12,0.5);
+    color: rgba(184,150,12,0.9);
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    padding: 8px 20px;
+    border-radius: 40px;
+    margin-bottom: 40px;
+  }
+
+  .cover h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 68px;
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    letter-spacing: -1px;
+  }
+
+  .cover h1 span {
+    color: #c9a227;
+  }
+
+  .cover-subtitle {
+    font-size: 17px;
+    color: rgba(255,255,255,0.65);
+    font-weight: 300;
+    margin-bottom: 56px;
+    max-width: 480px;
+    letter-spacing: 0.3px;
+  }
+
+  .cover-meta {
+    display: flex;
+    gap: 48px;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .cover-meta-item {
+    text-align: center;
+  }
+
+  .cover-meta-item .label {
+    font-size: 10px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: rgba(201,162,39,0.7);
+    display: block;
+    margin-bottom: 4px;
+    font-weight: 500;
+  }
+
+  .cover-meta-item .value {
+    font-size: 14px;
+    color: rgba(255,255,255,0.85);
+    font-weight: 400;
+  }
+
+  /* SECTION */
+  .section {
+    padding: 80px 80px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .section-inner {
+    padding: 80px 80px;
+  }
+
+  .section-wrapper {
+    background: #f9f8f5;
+    page-break-inside: avoid;
+  }
+
+  .section-wrapper.alt {
+    background: #ffffff;
+  }
+
+  .section-badge {
+    display: inline-block;
+    font-size: 10px;
+    letter-spacing: 3.5px;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: #c9a227;
+    background: rgba(201,162,39,0.1);
+    padding: 6px 14px;
+    border-radius: 40px;
+    margin-bottom: 14px;
+  }
+
+  .section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    font-weight: 700;
+    color: #0f1f0f;
+    margin-bottom: 10px;
+    line-height: 1.2;
+  }
+
+  .section-intro {
+    font-size: 15px;
+    color: #666;
+    margin-bottom: 48px;
+    max-width: 560px;
+    font-weight: 300;
+  }
+
+  /* CARDS */
+  .card-grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  .card-grid-3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px;
+  }
+
+  .card {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 28px 30px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    page-break-inside: avoid;
+  }
+
+  .card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    font-weight: 600;
+    color: #0f1f0f;
+    margin-bottom: 10px;
+  }
+
+  .card p {
+    font-size: 14px;
+    color: #555;
+    line-height: 1.75;
+  }
+
+  .card ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 6px;
+  }
+
+  .card ul li {
+    font-size: 14px;
+    color: #555;
+    padding: 5px 0;
+    padding-left: 16px;
+    position: relative;
+    line-height: 1.6;
+  }
+
+  .card ul li::before {
+    content: '–';
+    position: absolute;
+    left: 0;
+    color: #c9a227;
+    font-weight: 600;
+  }
+
+  /* HIGHLIGHT BOX */
+  .highlight-box {
+    background: linear-gradient(135deg, #1a3a1a 0%, #2d5a2d 100%);
+    border-radius: 16px;
+    padding: 40px 44px;
+    margin-bottom: 40px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .highlight-box::after {
+    content: '';
+    position: absolute;
+    right: -30px;
+    top: -30px;
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    background: rgba(201,162,39,0.12);
+    pointer-events: none;
+  }
+
+  .highlight-box p {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    color: #ffffff;
+    font-weight: 400;
+    line-height: 1.55;
+    position: relative;
+    z-index: 1;
+  }
+
+  .highlight-box p span {
+    color: #c9a227;
+    font-weight: 600;
+  }
+
+  .highlight-box .label {
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: rgba(201,162,39,0.7);
+    font-weight: 600;
+    margin-bottom: 14px;
+    display: block;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* TAG INLINE */
+  .tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 4px 12px;
+    border-radius: 40px;
+    letter-spacing: 0.5px;
+  }
+
+  .tag-green { background: #d4edda; color: #1a5c2a; }
+  .tag-gold { background: rgba(201,162,39,0.15); color: #8a6a00; }
+  .tag-gray { background: #ebebeb; color: #555; }
+
+  /* TABLE */
+  .table-wrapper {
+    overflow-x: auto;
+    border-radius: 14px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #ffffff;
+    font-size: 14px;
+  }
+
+  thead tr {
+    background: linear-gradient(90deg, #1a3a1a, #2d5a2d);
+  }
+
+  thead th {
+    padding: 16px 20px;
+    text-align: left;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.85);
+  }
+
+  tbody tr {
+    border-bottom: 1px solid #f0f0f0;
+  }
+
+  tbody tr:last-child { border-bottom: none; }
+
+  tbody tr:hover { background: #fafaf7; }
+
+  tbody td {
+    padding: 16px 20px;
+    color: #333;
+    vertical-align: top;
+    line-height: 1.6;
+  }
+
+  /* COCON */
+  .cluster-card {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 28px 30px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    margin-bottom: 24px;
+    page-break-inside: avoid;
+  }
+
+  .cluster-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: #0f1f0f;
+    margin-bottom: 16px;
+  }
+
+  .cluster-pages {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+
+  .cluster-page-tag {
+    background: rgba(201,162,39,0.1);
+    color: #7a5800;
+    font-size: 12px;
+    font-weight: 500;
+    padding: 5px 14px;
+    border-radius: 40px;
+  }
+
+  .maillage-row {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    font-size: 13px;
+    color: #444;
+    padding: 8px 0;
+    border-bottom: 1px solid #f0f0f0;
+  }
+
+  .maillage-row:last-child { border-bottom: none; }
+
+  .maillage-source {
+    font-weight: 600;
+    color: #1a3a1a;
+    white-space: nowrap;
+  }
+
+  .maillage-arrow {
+    color: #c9a227;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .maillage-dest {
+    color: #555;
+  }
+
+  /* TUNNEL */
+  .tunnel-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  .tunnel-step {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 28px 30px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    position: relative;
+    page-break-inside: avoid;
+  }
+
+  .tunnel-step-number {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #1a3a1a, #2d5a2d);
+    color: #c9a227;
+    font-size: 14px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 14px;
+    font-family: 'Playfair Display', serif;
+  }
+
+  .tunnel-step h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    font-weight: 600;
+    color: #0f1f0f;
+    margin-bottom: 12px;
+  }
+
+  .tunnel-row {
+    font-size: 13px;
+    color: #555;
+    margin-bottom: 6px;
+    display: flex;
+    gap: 8px;
+  }
+
+  .tunnel-row strong {
+    color: #1a3a1a;
+    font-weight: 600;
+    min-width: 80px;
+    flex-shrink: 0;
+  }
+
+  .cta-pill {
+    display: inline-block;
+    margin-top: 12px;
+    background: rgba(201,162,39,0.12);
+    color: #7a5800;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 6px 16px;
+    border-radius: 40px;
+    border: 1px solid rgba(201,162,39,0.3);
+  }
+
+  /* LEVIERS */
+  .levier-card {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 28px 30px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    page-break-inside: avoid;
+  }
+
+  .levier-icon {
+    font-size: 22px;
+    margin-bottom: 10px;
+    display: block;
+  }
+
+  .levier-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: #0f1f0f;
+    margin-bottom: 8px;
+  }
+
+  .levier-card p {
+    font-size: 13.5px;
+    color: #555;
+    line-height: 1.7;
+  }
+
+  /* PALETTE */
+  .palette-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    justify-content: center;
+    margin-bottom: 40px;
+  }
+
+  .palette-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .palette-swatch {
+    width: 80px;
+    height: 80px;
+    border-radius: 14px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.12);
+  }
+
+  .palette-name {
+    font-size: 12px;
+    font-weight: 500;
+    color: #333;
+    text-align: center;
+  }
+
+  .palette-hex {
+    font-size: 11px;
+    color: #aaa;
+    font-family: 'Inter', monospace;
+  }
+
+  /* BLOG */
+  .blog-card {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 24px 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    page-break-inside: avoid;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .blog-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: #0f1f0f;
+    line-height: 1.4;
+  }
+
+  .blog-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+  }
+
+  .blog-meta span {
+    font-size: 12px;
+    color: #777;
+  }
+
+  /* TONALITÉ */
+  .ton-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 24px;
+  }
+
+  .ton-item {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 22px 24px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    text-align: center;
+  }
+
+  .ton-item .adj {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: #1a3a1a;
+    display: block;
+    margin-bottom: 6px;
+  }
+
+  .ton-item .def {
+    font-size: 12.5px;
+    color: #777;
+    line-height: 1.6;
+  }
+
+  /* OBJECTIFS */
+  .obj-list {
+    list-style: none;
+    padding: 0;
+  }
+
+  .obj-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 16px 20px;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+    margin-bottom: 12px;
+    page-break-inside: avoid;
+  }
+
+  .obj-num {
+    width: 30px;
+    height: 30px;
+    min-width: 30px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #1a3a1a, #2d5a2d);
+    color: #c9a227;
+    font-size: 12px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2px;
+  }
+
+  .obj-text strong {
+    display: block;
+    font-size: 14px;
+    color: #0f1f0f;
+    font-weight: 600;
+    margin-bottom: 2px;
+  }
+
+  .obj-text span {
+    font-size: 13px;
+    color: #666;
+  }
+
+  /* FOOTER */
+  footer {
+    background: #0f1f0f;
+    padding: 40px 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  footer .footer-brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    color: #c9a227;
+    font-weight: 600;
+  }
+
+  footer .footer-mention {
+    font-size: 12px;
+    color: rgba(255,255,255,0.35);
+    letter-spacing: 0.5px;
+  }
+
+  footer .footer-agency {
+    font-size: 12px;
+    color: rgba(255,255,255,0.5);
+  }
+
+  /* DIVIDER */
+  .divider {
+    width: 48px;
+    height: 3px;
+    background: linear-gradient(90deg, #c9a227, rgba(201,162,39,0.2));
+    border-radius: 2px;
+    margin: 14px 0 36px 0;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    .cover h1 { font-size: 38px; }
+    .cover-meta { gap: 28px; }
+
+    .section { padding: 48px 24px; }
+    .section-inner { padding: 48px 24px; }
+    .section h2 { font-size: 26px; }
+
+    .card-grid-2,
+    .card-grid-3,
+    .tunnel-grid,
+    .ton-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .highlight-box { padding: 28px 24px; }
+    .highlight-box p { font-size: 17px; }
+
+    footer { padding: 30px 24px; flex-direction: column; align-items: flex-start; }
+  }
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+  <span class="cover-badge">Blueprint Stratégique</span>
+  <h1>Les Clés<br><span>d'Or</span> Services</h1>
+  <p class="cover-subtitle">Document de cadrage stratégique — Confidentiel</p>
+  <div class="cover-meta">
+    <div class="cover-meta-item">
+      <span class="label">Client</span>
+      <span class="value">Alexandre Petit</span>
+    </div>
+    <div class="cover-meta-item">
+      <span class="label">Secteur</span>
+      <span class="value">Conciergerie Locative</span>
+    </div>
+    <div class="cover-meta-item">
+      <span class="label">Territoire</span>
+      <span class="value">East Coast — USA</span>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 01 -->
+<div class="section-wrapper">
+<div class="section">
+  <span class="section-badge">01 — Positionnement</span>
+  <h2>Positionnement & Identité</h2>
+  <div class="divider"></div>
+
+  <div class="highlight-box">
+    <span class="label">Promesse de valeur principale</span>
+    <p>Une gestion locative <span>haut de gamme</span>, fluide et sans faille — pour que chaque propriétaire de la East Coast retrouve la sérénité et la performance, dès le premier jour.</p>
+  </div>
+
+  <div style="margin-bottom: 40px;">
+    <div class="card">
+      <h3>Ligne directrice de communication</h3>
+      <p>Excellence opérationnelle + présence terrain réactive + accompagnement premium de bout en bout. Le discours positionne Les Clés d'Or comme le partenaire de confiance des propriétaires ambitieux, pas comme un simple prestataire.</p>
+    </div>
+  </div>
+
+  <div class="ton-grid" style="margin-bottom: 40px;">
+    <div class="ton-item">
+      <span class="adj">Expert</span>
+      <span class="def">Maîtrise complète des rouages de la gestion locative courte durée</span>
+    </div>
+    <div class="ton-item">
+      <span class="adj">Premium</span>
+      <span class="def">Chaque détail est soigné — du vocabulaire au rendu visuel du site</span>
+    </div>
+    <div class="ton-item">
+      <span class="adj">Rassurant</span>
+      <span class="def">Le propriétaire se sent entre de bonnes mains, sans avoir à tout contrôler</span>
+    </div>
+  </div>
+  <div style="margin-bottom: 10px; padding: 0 4px;">
+    <p style="font-size: 13px; color: #777; margin-bottom: 32px;">Ton éditorial en pratique : phrases directes, vocabulaire sophistiqué sans jargon, orientation bénéfice systématique — jamais de promesses creuses.</p>
+  </div>
+
+  <div class="card-grid-2">
+    <div class="card">
+      <h3>🔑 Gestion tout-inclus à taux fixe</h3>
+      <p>Une commission unique de 10 % — claire, compétitive, sans frais cachés. Le propriétaire sait exactement ce qu'il paie et ce qu'il reçoit en retour.</p>
+    </div>
+    <div class="card">
+      <h3>🚨 Réponse d'urgence 24/7</h3>
+      <p>Un service d'intervention réactif disponible à tout moment — urgences techniques, problèmes locataires, imprévu de dernière minute. La tranquillité d'esprit comme engagement contractuel.</p>
+    </div>
+    <div class="card">
+      <h3>🧹 Coordination logistique maîtrisée</h3>
+      <p>Ménage, états des lieux, coordination des prestataires — tout est orchestré en coulisses pour que le bien soit toujours impeccable entre chaque séjour.</p>
+    </div>
+    <div class="card">
+      <h3>📋 Suivi administratif complet</h3>
+      <p>Déclarations, contrats, communications locataires — Les Clés d'Or prend en charge l'intégralité des tâches administratives chronophages.</p>
+    </div>
+    <div class="card">
+      <h3>🌎 Déploiement multi-métropoles</h3>
+      <p>Une conciergerie pensée pour l'échelle — présente de Boston à Miami, capable d'accompagner les propriétaires détenant des biens dans plusieurs grandes villes de la East Coast.</p>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- SECTION 02 -->
+<div class="section-wrapper alt">
+<div class="section">
+  <span class="section-badge">02 — Client Cible</span>
+  <h2>Portrait du Client Idéal</h2>
+  <div class="divider"></div>
+
+  <div class="card-grid-2">
+    <div class="card">
+      <h3>Profil type</h3>
+      <ul>
+        <li>Propriétaire entre 35 et 60 ans, actif professionnellement</li>
+        <li>Détient 1 à 5 biens sur la East Coast (Boston, New York, Miami, etc.)</li>
+        <li>A tenté de gérer seul ou via une agence classique — insatisfait du résultat</li>
+        <li>Cherche un partenaire fiable, pas un simple exécutant</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Motivations principales</h3>
+      <ul>
+        <li>Maximiser la rentabilité sans y passer du temps personnel</li>
+        <li>Déléguer entièrement sans perdre le contrôle ni la visibilité</li>
+        <li>Sécuriser ses revenus locatifs avec un interlocuteur unique</li>
+        <li>Protéger son patrimoine immobilier grâce à une gestion rigoureuse</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Freins & Objections</h3>
+      <ul>
+        <li>Peur de confier son bien à une conciergerie inconnue sans références</li>
+        <li>Doute sur la réactivité en cas d'urgence à distance</li>
+        <li>Interrogation sur la valeur réelle justifiant les 10 % de commission</li>
+        <li>Méfiance vis-à-vis des promesses marketing non étayées</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Critères de Décision</h3>
+      <ul>
+        <li>Transparence tarifaire et périmètre d'intervention clairement défini</li>
+        <li>Témoignages clients vérifiables et résultats chiffrés</li>
+        <li>Couverture géographique adaptée à leur portefeuille de biens</li>
+        <li>Facilité de prise de contact et réactivité commerciale</li>
+      </ul>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- SECTION 03 -->
+<div class="section-wrapper">
+<div class="section">
+  <span class="section-badge">03 — Objectifs du Site</span>
+  <h2>Priorités Stratégiques du Site</h2>
+  <div class="divider"></div>
+
+  <ul class="obj-list">
+    <li>
+      <div class="obj-num">1</div>
+      <div class="obj-text">
+        <strong>Génération de leads qualifiés</strong>
+        <span>Capturer les coordonnées de propriétaires actifs cherchant une conciergerie sur la East Coast via formulaire qualifiant et lead magnet.</span>
+      </div>
+    </li>
+    <li>
+      <div class="obj-num">2</div>
+      <div class="obj-text">
+        <strong>Réassurance & crédibilité</strong>
+        <span>Lever les doutes via preuve sociale, détail des services, transparence sur les tarifs et la méthode de travail.</span>
+      </div>
+    </li>
+    <li>
+      <div class="obj-num">3</div>
+      <div class="obj-text">
+        <strong>Prise de rendez-vous</strong>
+        <span>Faciliter le passage à l'action avec un système de réservation de consultation en ligne intégré.</span>
+      </div>
+    </li>
+    <li>
+      <div class="obj-num">4</div>
+      <div class="obj-text">
+        <strong>SEO local multi-villes</strong>
+        <span>Positionner le site sur les requêtes de conciergerie locative dans les grandes métropoles ciblées (Boston, Miami en priorité).</span>
+      </div>
+    </li>
+    <li>
+      <div class="obj-num">5</div>
+      <div class="obj-text">
+        <strong>Conversion</strong>
+        <span>Transformer les visiteurs informés en prospects chauds grâce à un tunnel de conversion structuré et des CTA contextuels.</span>
+      </div>
+    </li>
+    <li>
+      <div class="obj-num">6</div>
+      <div class="obj-text">
+        <strong>Nurturing & notoriété</strong>
+        <span>Entretenir la relation via une newsletter et du contenu blog positionnant Les Clés d'Or comme référence sectorielle sur la East Coast.</span>
+      </div>
+    </li>
+  </ul>
+</div>
+</div>
+
+<!-- SECTION 04 -->
+<div class="section-wrapper alt">
+<div class="section">
+  <span class="section-badge">04 — Arborescence du Site</span>
+  <h2>Structure & Architecture</h2>
+  <div class="divider"></div>
+
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th>Page</th>
+          <th>Framework</th>
+          <th>Mot-clé principal</th>
+          <th>Potentiel SEO</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Accueil</strong></td>
+          <td>AIDA</td>
+          <td>conciergerie location courte durée East Coast</td>
+          <td><span class="tag tag-green">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>Nos Services</strong><br><small style="color:#888;">(gestion, ménage, urgences, admin — tout en 1 page)</small></td>
+          <td>PAS</td>
+          <td>gestion locative courte durée propriétaire</td>
+          <td><span class="tag tag-green">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>Tarifs & Commission</strong></td>
+          <td>BAB</td>
+          <td>commission conciergerie Airbnb 10%</td>
+          <td><span class="tag tag-gold">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>À Propos</strong></td>
+          <td>AIDA</td>
+          <td>conciergerie locative fiable East Coast</td>
+          <td><span class="tag tag-gold">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>SEO Local — Boston</strong></td>
+          <td>PAS</td>
+          <td>conciergerie Airbnb Boston</td>
+          <td><span class="tag tag-green">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>SEO Local — Miami</strong></td>
+          <td>PAS</td>
+          <td>conciergerie location courte durée Miami</td>
+          <td><span class="tag tag-green">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>Blog</strong></td>
+          <td>—</td>
+          <td>gestion locative courte durée conseils</td>
+          <td><span class="tag tag-gold">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>Contact & Prise de RDV</strong></td>
+          <td>AIDA</td>
+          <td>contacter conciergerie locative</td>
+          <td><span class="tag tag-gray">Faible</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+</div>
+
+<!-- SECTION 05 -->
+<div class="section-wrapper">
+<div class="section">
+  <span class="section-badge">05 — Cocon Sémantique</span>
+  <h2>Architecture de Contenu & Maillage</h2>
+  <div class="divider"></div>
+
+  <div class="cluster-card">
+    <h3>Cluster 1 — Gestion Locative Premium</h3>
+    <div class="cluster-pages">
+      <span class="cluster-page-tag">Accueil</span>
+      <span class="cluster-page-tag">Nos Services</span>
+      <span class="cluster-page-tag">Tarifs & Commission</span>
+      <span class="cluster-page-tag">Blog : articles services</span>
+    </div>
+    <p style="font-size: 13.5px; color: #555;">Ce cluster traite de la valeur de la délégation complète et de la gestion sans friction. Il cible les propriétaires en phase de décision active.</p>
+  </div>
+
+  <div class="cluster-card">
+    <h3>Cluster 2 — Implantation Locale East Coast</h3>
+    <div class="cluster-pages">
+      <span class="cluster-page-tag">SEO Local Boston</span>
+      <span class="cluster-page-tag">SEO Local Miami</span>
+      <span class="cluster-page-tag">Accueil (ancre géo)</span>
+      <span class="cluster-page-tag">Blog : articles locaux</span>
+    </div>
+    <p style="font-size: 13.5px; color: #555;">Ce cluster cible les recherches géolocalisées par ville. Les pages locales renvoient vers les Services et la prise de RDV pour convertir le trafic organique.</p>
+  </div>
+
+  <div class="cluster-card">
+    <h3>Cluster 3 — Confiance & Crédibilité</h3>
+    <div class="cluster-pages">
+      <span class="cluster-page-tag">À Propos</span>
+      <span class="cluster-page-tag">Blog : conseils propriétaires</span>
+      <span class="cluster-page-tag">Contact</span>
+    </div>
+    <p style="font-size: 13.5px; color: #555;">Ce cluster nourrit la réassurance et accompagne les prospects hésitants. Il travaille la notoriété et réduit le temps de décision.</p>
+  </div>
+
+  <div class="card" style="margin-top: 10px;">
+    <h3>Logique de Maillage Interne</h3>
+    <div style="margin-top: 14px;">
+      <div class="maillage-row">
+        <span class="maillage-source">Accueil</span>
+        <span class="maillage-arrow">→</span>
+        <span class="maillage-dest">Nos Services · Tarifs · Boston · Miami · Contact</span>
+      </div>
+      <div class="maillage-row">
+        <span class="maillage-source">Nos Services</span>
+        <span class="maillage-arrow">→</span>
+        <span class="maillage-dest">Tarifs · À Propos · Contact (CTA)</span>
+      </div>
+      <div class="maillage-row">
+        <span class="maillage-source">Boston / Miami</span>
+        <span class="maillage-arrow">→</span>
+        <span class="maillage-dest">Nos Services · Contact · Articles blog locaux</span>
+      </div>
+      <div class="maillage-row">
+        <span class="maillage-source">Blog</span>
+        <span class="maillage-arrow">→</span>
+        <span class="maillage-dest">Nos Services · Tarifs · Pages locales · Contact</span>
+      </div>
+      <div class="maillage-row">
+        <span class="maillage-source">À Propos</span>
+        <span class="maillage-arrow">→</span>
+        <span class="maillage-dest">Nos Services · Contact · Tarifs</span>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- SECTION 06 -->
+<div class="section-wrapper alt">
+<div class="section">
+  <span class="section-badge">06 — Tunnel de Conversion</span>
+  <h2>De la Découverte à la Signature</h2>
+  <div class="divider"></div>
+
+  <div class="tunnel-grid">
+    <div class="tunnel-step">
+      <div class="tunnel-step-number">1</div>
+      <h3>Découverte</h3>
+      <div class="tunnel-row"><strong>Source</strong> Google SEO local, bouche à oreille, réseaux sociaux</div>
+      <div class="tunnel-row"><strong>Page</strong> Accueil / Pages SEO locales (Boston, Miami)</div>
+      <div class="tunnel-row"><strong>Objectif</strong> Capter l'attention, formuler le problème du propriétaire</div>
+      <span class="cta-pill">→ Découvrir nos services</span>
+    </div>
+    <div class="tunnel-step">
+      <div class="tunnel-step-number">2</div>
+      <h3>Intérêt</h3>
+      <div class="tunnel-row"><strong>Source</strong> Navigation interne depuis l'accueil</div>
+      <div class="tunnel-row"><strong>Page</strong> Nos Services · Tarifs & Commission</div>
+      <div class="tunnel-row"><strong>Objectif</strong> Démontrer la valeur, lever les objections tarifaires</div>
+      <span class="cta-pill">→ Télécharger le guide gratuit</span>
+    </div>
+    <div class="tunnel-step">
+      <div class="tunnel-step-number">3</div>
+      <h3>Confiance</h3>
+      <div class="tunnel-row"><strong>Source</strong> Blog, page À Propos, avis clients</div>
+      <div class="tunnel-row"><strong>Page</strong> À Propos · Articles blog · Témoignages</div>
+      <div class="tunnel-row"><strong>Objectif</strong> Créer le lien humain, rassurer sur la fiabilité</div>
+      <span class="cta-pill">→ Lire les témoignages</span>
+    </div>
+    <div class="tunnel-step">
+      <div class="tunnel-step-number">4</div>
+      <h3>Conversion</h3>
+      <div class="tunnel-row"><strong>Source</strong> CTA présents sur toutes les pages</div>
+      <div class="tunnel-row"><strong>Page</strong> Contact & Prise de RDV</div>
+      <div class="tunnel-row"><strong>Objectif</strong> Déclencher la consultation ou la signature</div>
+      <span class="cta-pill">→ Réserver une consultation</span>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- SECTION 07 -->
+<div class="section-wrapper">
+<div class="section">
+  <span class="section-badge">07 — Leviers Marketing</span>
+  <h2>Activation & Fidélisation</h2>
+  <div class="divider"></div>
+
+  <div class="card-grid-2">
+    <div class="levier-card">
+      <span class="levier-icon">📥</span>
+      <h3>Lead Magnet</h3>
+      <p><strong>Guide PDF :</strong> "Les 7 erreurs que font les propriétaires Airbnb sur la East Coast — et comment les éviter." Téléchargeable en échange d'une adresse email. Positionne Les Clés d'Or en expert dès le premier contact.</p>
+    </div>
+    <div class="levier-card">
+      <span class="levier-icon">📅</span>
+      <h3>Prise de RDV</h3>
+      <p>Outil recommandé : <strong>Calendly</strong> (intégration simple, version gratuite suffisante au démarrage). À intégrer sur la page Contact et en CTA flottant sur les pages de services. Message : "Consultation gratuite de 30 min."</p>
+    </div>
+    <div class="levier-card">
+      <span class="levier-icon">⭐</span>
+      <h3>Preuve Sociale</h3>
+      <p>Témoignages propriétaires avec prénom, ville et type de bien. Indicateurs clés (biens gérés, taux d'occupation moyen, note moyenne). Logos de plateformes partenaires (Airbnb, VRBO, Booking).</p>
+    </div>
+    <div class="levier-card">
+      <span class="levier-icon">📝</span>
+      <h3>Formulaire Qualifiant</h3>
+      <p>Champs recommandés : Prénom · Email · Téléphone · Ville du bien · Nombre de biens · Actuellement géré par ? · Message libre. Objectif : qualifier la maturité du prospect avant le premier appel.</p>
+    </div>
+    <div class="levier-card">
+      <span class="levier-icon">✉️</span>
+      <h3>Newsletter</h3>
+      <p>Angle éditorial : <strong>"L'Investisseur Serein"</strong> — conseils mensuels sur la gestion locative courte durée, tendances du marché East Coast, bonnes pratiques pour maximiser son taux d'occupation.</p>
+    </div>
+    <div class="levier-card">
+      <span class="levier-icon">⚡</span>
+      <h3>Automatisation Email</h3>
+      <p><strong>Séquence J+0 → J+7 :</strong> J0 : Envoi du lead magnet. J2 : Email "comment ça marche chez nous". J4 : Témoignage client. J7 : Invitation à réserver une consultation gratuite.</p>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- SECTION 08 -->
+<div class="section-wrapper alt">
+<div class="section">
+  <span class="section-badge">08 — Direction Visuelle</span>
+  <h2>Identité Visuelle & Éditoriale</h2>
+  <div class="divider"></div>
+
+  <div class="palette-grid">
+    <div class="palette-item">
+      <div class="palette-swatch" style="background: #1a3a1a;"></div>
+      <span class="palette-name">Vert Forêt</span>
+      <span class="palette-hex">#1A3A1A</span>
+    </div>
+    <div class="palette-item">
+      <div class="palette-swatch" style="background: #c9a227;"></div>
+      <span class="palette-name">Or Doré</span>
+      <span class="palette-hex">#C9A227</span>
+    </div>
+    <div class="palette-item">
+      <div class="palette-swatch" style="background: #2d5a2d;"></div>
+      <span class="palette-name">Vert Sauge</span>
+      <span class="palette-hex">#2D5A2D</span>
+    </div>
+    <div class="palette-item">
+      <div class="palette-swatch" style="background: #f9f8f5;"></div>
+      <span class="palette-name">Blanc Ivoire</span>
+      <span class="palette-hex">#F9F8F5</span>
+    </div>
+    <div class="palette-item">
+      <div class="palette-swatch" style="background: #1a1a1a;"></div>
+      <span class="palette-name">Noir Charbon</span>
+      <span class="palette-hex">#1A1A1A</span>
+    </div>
+  </div>
+
+  <div class="card-grid-2" style="margin-top: 16px;">
+    <div class="card">
+      <h3>Univers Visuel Recommandé</h3>
+      <ul>
+        <li>Photographies d'intérieurs luxueux, chaleureux et lumineux (salons, chambres impeccables)</li>
+        <li>Portraits professionnels de l'équipe en situation réelle</li>
+        <li>Iconographie épurée style line art or sur fond sombre</li>
+        <li>Typographie mixte serif/sans-serif pour équilibrer prestige et lisibilité</li>
+        <li>Mise en page avec grandes marges et espaces blancs — jamais surchargée</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Directives Éditoriales</h3>
+      <ul>
+        <li>Titres en Playfair Display — imposants, élégants, rassurants</li>
+        <li>Corps de texte en Inter — lisible, moderne, sobre</li>
+        <li>Accents dorés (#C9A227) pour mettre en valeur les éléments clés</li>
+        <li>Zéro jargon technique — toujours formuler en bénéfice propriétaire</li>
+        <li>Ton anglophone assumé pour la clientèle East Coast (bilingue possible)</li>
+      </ul>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- SECTION 09 -->
+<div class="section-wrapper">
+<div class="section">
+  <span class="section-badge">09 — Articles Blog</span>
+  <h2>Plan de Contenu Éditorial</h2>
+  <div class="divider"></div>
+
+  <div class="card-grid-2">
+    <div class="blog-card">
+      <h3>Airbnb à Boston : combien peut rapporter votre appartement en 2025 ?</h3>
+      <div class="blog-meta">
+        <span class="tag tag-green">Prioritaire</span>
+        <span>Cluster : Implantation locale</span>
+      </div>
+      <p style="font-size: 13px; color: #777; margin-top: 4px;">Intention : informationnelle + commerciale — propriétaires curieux du potentiel de leur bien à Boston.</p>
+    </div>
+    <div class="blog-card">
+      <h3>Conciergerie Airbnb Miami : ce que les propriétaires doivent vraiment savoir</h3>
+      <div class="blog-meta">
+        <span class="tag tag-green">Prioritaire</span>
+        <span>Cluster : Implantation locale</span>
+      </div>
+      <p style="font-size: 13px; color: #777; margin-top: 4px;">Intention : informationnelle locale — propriétaires cherchant un prestataire à Miami.</p>
+    </div>
+    <div class="blog-card">
+      <h3>Gestion locative courte durée : déléguer ou gérer soi-même ? Le vrai calcul</h3>
+      <div class="blog-meta">
+        <span class="tag tag-green">Prioritaire</span>
+        <span>Cluster : Gestion Premium</span>
+      </div>
+      <p style="font-size: 13px; color: #777; margin-top: 4px;">Intention : décisionnelle — propriétaires hésitant à confier leur bien.</p>
+    </div>
+    <div class="blog-card">
+      <h3>5 signes que votre bien Airbnb a besoin d'une conciergerie professionnelle</h3>
+      <div class="blog-meta">
+        <span class="tag tag-gold">Moyen</span>
+        <span>Cluster : Confiance & Crédibilité</span>
+      </div>
+      <p style="font-size: 13px; color: #777; margin-top: 4px;">Intention : sensibilisation — propriétaires frustrés par leur gestion actuelle.</p>
+    </div>
+    <div class="blog-card">
+      <h3>Commission conciergerie à 10 % : ce que cela inclut vraiment chez Les Clés d'Or</h3>
+      <div class="blog-meta">
+        <span class="tag tag-gold">Moyen</span>
+        <span>Cluster : Gestion Premium</span>
+      </div>
+      <p style="font-size: 13px; color: #777; margin-top: 4px;">Intention : transactionnelle — prospects comparant les offres de conciergerie.</p>
+    </div>
+    <div class="blog-card">
+      <h3>Réglementation location courte durée East Coast : ce qui change en 2025</h3>
+      <div class="blog-meta">
+        <span class="tag tag-gray">Faible</span>
+        <span>Cluster : Confiance & Crédibilité</span>
+      </div>
+      <p style="font-size: 13px; color: #777; margin-top: 4px;">Intention : informationnelle — propriétaires souhaitant rester conformes à la réglementation.</p>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <span class="footer-brand">Les Clés d'Or Services</span>
+  <span class="footer-mention">Document confidentiel — Usage interne & client uniquement</span>
+  <span class="footer-agency">Produit par AR Digital</span>
+</footer>
+
+</body>
+</html>
