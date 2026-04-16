@@ -1,0 +1,1047 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blueprint Stratégique — VTC Hirondelle</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    line-height: 1.8;
+    color: #1a1a2e;
+    background: #f8f8f6;
+  }
+
+  /* COVER */
+  .cover {
+    min-height: 100vh;
+    background: linear-gradient(145deg, #0d1b2a 0%, #1b3a5c 45%, #0f2a45 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 60px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+  .cover::before {
+    content: '';
+    position: absolute;
+    top: -80px; right: -80px;
+    width: 400px; height: 400px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(100,180,255,0.07) 0%, transparent 70%);
+  }
+  .cover::after {
+    content: '';
+    position: absolute;
+    bottom: -60px; left: -60px;
+    width: 300px; height: 300px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(100,180,255,0.05) 0%, transparent 70%);
+  }
+  .cover-inner {
+    position: relative;
+    z-index: 2;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+  .cover-eyebrow {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 28px;
+  }
+  .cover-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 72px;
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.1;
+    margin-bottom: 16px;
+  }
+  .cover-subtitle {
+    font-size: 17px;
+    color: rgba(255,255,255,0.65);
+    font-weight: 300;
+    margin-bottom: 48px;
+    letter-spacing: 0.5px;
+  }
+  .cover-meta {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+  }
+  .cover-meta-item {
+    text-align: center;
+  }
+  .cover-meta-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.35);
+    margin-bottom: 4px;
+  }
+  .cover-meta-value {
+    font-size: 14px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.85);
+  }
+  .cover-divider {
+    width: 50px;
+    height: 2px;
+    background: rgba(255,255,255,0.25);
+    margin: 0 auto 40px;
+  }
+
+  /* LAYOUT */
+  .section {
+    padding: 70px 60px;
+    page-break-inside: avoid;
+  }
+  .section:nth-child(even) { background: #ffffff; }
+  .section:nth-child(odd) { background: #f8f8f6; }
+
+  .section-badge {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: #1b6ca8;
+    margin-bottom: 10px;
+    display: block;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 34px;
+    font-weight: 700;
+    color: #0d1b2a;
+    margin-bottom: 10px;
+    line-height: 1.25;
+  }
+  .section-intro {
+    font-size: 15px;
+    color: #6b7a8d;
+    max-width: 600px;
+    margin-bottom: 44px;
+    line-height: 1.7;
+  }
+
+  /* CARDS */
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .cards-grid-2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+  .card {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    border: 1px solid rgba(0,0,0,0.04);
+  }
+  .card-icon {
+    font-size: 26px;
+    margin-bottom: 12px;
+  }
+  .card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    font-weight: 600;
+    color: #0d1b2a;
+    margin-bottom: 8px;
+  }
+  .card-text {
+    font-size: 14px;
+    color: #4a5568;
+    line-height: 1.7;
+  }
+
+  /* HIGHLIGHT BOX */
+  .highlight-box {
+    background: linear-gradient(135deg, #0d1b2a 0%, #1b3a5c 100%);
+    border-radius: 16px;
+    padding: 36px 40px;
+    color: #ffffff;
+    margin-bottom: 40px;
+  }
+  .highlight-box .label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.45);
+    margin-bottom: 12px;
+  }
+  .highlight-box .value {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 1.5;
+    color: #ffffff;
+  }
+
+  /* TAGS */
+  .tags-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 8px;
+  }
+  .tag {
+    background: #eef3fa;
+    color: #1b3a5c;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 6px 14px;
+    border-radius: 20px;
+  }
+
+  /* TABLE */
+  .table-wrap {
+    overflow-x: auto;
+    border-radius: 14px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    border: 1px solid rgba(0,0,0,0.06);
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #ffffff;
+  }
+  thead tr {
+    background: #0d1b2a;
+  }
+  thead th {
+    color: rgba(255,255,255,0.85);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 16px 20px;
+    text-align: left;
+  }
+  tbody tr {
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+  }
+  tbody tr:last-child { border-bottom: none; }
+  tbody td {
+    padding: 16px 20px;
+    font-size: 14px;
+    color: #2d3748;
+    line-height: 1.6;
+  }
+  tbody tr:hover { background: #f9fafc; }
+
+  /* BADGE SEO */
+  .badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+  }
+  .badge-fort { background: #d4edda; color: #155724; }
+  .badge-moyen { background: #fff3cd; color: #856404; }
+  .badge-faible { background: #f8d7da; color: #721c24; }
+  .badge-prioritaire { background: #cce5ff; color: #004085; }
+
+  /* TUNNEL */
+  .tunnel-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+  .tunnel-card {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    border: 1px solid rgba(0,0,0,0.04);
+    position: relative;
+  }
+  .tunnel-step {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #1b6ca8;
+    margin-bottom: 10px;
+  }
+  .tunnel-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: #0d1b2a;
+    margin-bottom: 14px;
+  }
+  .tunnel-item {
+    margin-bottom: 8px;
+  }
+  .tunnel-item-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #a0aec0;
+    margin-bottom: 2px;
+  }
+  .tunnel-item-value {
+    font-size: 13px;
+    color: #2d3748;
+    line-height: 1.5;
+  }
+  .tunnel-cta {
+    display: inline-block;
+    margin-top: 14px;
+    background: #eef3fa;
+    color: #1b3a5c;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 7px 14px;
+    border-radius: 8px;
+  }
+
+  /* COULEURS */
+  .palette-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+  }
+  .palette-item {
+    text-align: center;
+    width: 80px;
+  }
+  .palette-swatch {
+    width: 80px;
+    height: 80px;
+    border-radius: 14px;
+    margin-bottom: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+  .palette-name {
+    font-size: 12px;
+    font-weight: 600;
+    color: #2d3748;
+    margin-bottom: 2px;
+  }
+  .palette-hex {
+    font-size: 11px;
+    color: #a0aec0;
+  }
+
+  /* MAILLAGE */
+  .maillage-item {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+    font-size: 14px;
+    color: #2d3748;
+  }
+  .maillage-item:last-child { border-bottom: none; }
+  .maillage-source {
+    font-weight: 600;
+    color: #1b3a5c;
+  }
+  .maillage-arrow {
+    color: #1b6ca8;
+    font-size: 16px;
+    flex-shrink: 0;
+  }
+  .maillage-target {
+    color: #4a5568;
+  }
+
+  /* OBJECTIFS */
+  .objectifs-list {
+    list-style: none;
+    counter-reset: obj-counter;
+  }
+  .objectifs-list li {
+    counter-increment: obj-counter;
+    display: flex;
+    align-items: flex-start;
+    gap: 18px;
+    padding: 18px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+    font-size: 15px;
+    color: #2d3748;
+  }
+  .objectifs-list li:last-child { border-bottom: none; }
+  .obj-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: #d0dce8;
+    min-width: 32px;
+    line-height: 1.2;
+  }
+  .obj-text strong {
+    display: block;
+    font-size: 15px;
+    font-weight: 600;
+    color: #0d1b2a;
+    margin-bottom: 3px;
+  }
+  .obj-text span {
+    font-size: 13px;
+    color: #718096;
+  }
+
+  /* BLOG */
+  .blog-card {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    border: 1px solid rgba(0,0,0,0.04);
+  }
+  .blog-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+  }
+  .blog-card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: #0d1b2a;
+    line-height: 1.4;
+  }
+  .blog-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 8px;
+  }
+  .blog-meta-item {
+    font-size: 12px;
+    color: #718096;
+  }
+  .blog-meta-item strong {
+    color: #2d3748;
+    font-weight: 600;
+  }
+  .blog-meta-sep { color: #cbd5e0; }
+
+  /* LEVIERS */
+  .levier-card {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    border: 1px solid rgba(0,0,0,0.04);
+  }
+  .levier-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #1b6ca8;
+    margin-bottom: 8px;
+  }
+  .levier-value {
+    font-size: 14px;
+    color: #2d3748;
+    line-height: 1.7;
+  }
+
+  /* FOOTER */
+  footer {
+    background: #0d1b2a;
+    padding: 36px 60px;
+    text-align: center;
+    color: rgba(255,255,255,0.35);
+    font-size: 12px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+  }
+  footer strong {
+    color: rgba(255,255,255,0.6);
+    font-weight: 600;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    .cover-title { font-size: 44px; }
+    .cover-meta { gap: 24px; }
+    .section { padding: 48px 24px; }
+    .section-title { font-size: 26px; }
+    .cards-grid, .cards-grid-2, .tunnel-grid {
+      grid-template-columns: 1fr;
+    }
+    footer { padding: 28px 24px; }
+    .highlight-box { padding: 28px 24px; }
+    .highlight-box .value { font-size: 18px; }
+    .palette-grid { gap: 16px; }
+    .blog-card-header { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<section class="cover">
+  <div class="cover-inner">
+    <p class="cover-eyebrow">Blueprint Stratégique — Document Confidentiel</p>
+    <h1 class="cover-title">VTC Hirondelle</h1>
+    <p class="cover-subtitle">Stratégie digitale & positionnement web</p>
+    <div class="cover-divider"></div>
+    <div class="cover-meta">
+      <div class="cover-meta-item">
+        <p class="cover-meta-label">Client</p>
+        <p class="cover-meta-value">Oliver Roper</p>
+      </div>
+      <div class="cover-meta-item">
+        <p class="cover-meta-label">Secteur</p>
+        <p class="cover-meta-value">Transport privé VTC</p>
+      </div>
+      <div class="cover-meta-item">
+        <p class="cover-meta-label">Territoire</p>
+        <p class="cover-meta-value">Nice & Côte d'Azur</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 01 — POSITIONNEMENT -->
+<section class="section">
+  <span class="section-badge">Section 01</span>
+  <h2 class="section-title">Positionnement</h2>
+  <p class="section-intro">La base de toute votre communication digitale : ce que vous êtes, ce que vous promettez, comment vous le dites.</p>
+
+  <div class="highlight-box">
+    <p class="label">Promesse de valeur principale</p>
+    <p class="value">À Nice et sur toute la Côte d'Azur, VTC Hirondelle vous garantit un transport privé ponctuel, confortable et sans stress — à bord d'un SUV hybride premium, avec un chauffeur professionnel disponible pour chaque occasion.</p>
+  </div>
+
+  <div class="cards-grid-2" style="margin-bottom: 24px;">
+    <div class="card">
+      <p class="card-title">Ligne directrice</p>
+      <p class="card-text">Transport premium sans friction — chaque trajet est fluide, ponctuel et personnalisé. Le client ne gère rien, il profite.</p>
+    </div>
+    <div class="card">
+      <p class="card-title">Ton éditorial</p>
+      <p class="card-text"><strong>Rassurant · Professionnel · Chaleureux</strong><br>Un ton direct et humain, qui inspire confiance sans être froid — comme un chauffeur personnel qui vous connaît.</p>
+    </div>
+  </div>
+
+  <div class="cards-grid">
+    <div class="card">
+      <div class="card-icon">🎯</div>
+      <p class="card-title">Disponibilité totale</p>
+      <p class="card-text">Transferts gare, aéroport, événements ou trajets longue distance : VTC Hirondelle s'adapte à chaque besoin, à toute heure.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">🌿</div>
+      <p class="card-title">SUV Hybride haut de gamme</p>
+      <p class="card-text">Un véhicule propre, silencieux et écoresponsable — confort premium et faible empreinte carbone pour les clients exigeants.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">🤝</div>
+      <p class="card-title">Service personnalisé</p>
+      <p class="card-text">Chauffeur unique, suivi individuel, discrétion garantie. Vous parlez à une personne, pas à une plateforme.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">📍</div>
+      <p class="card-title">Ancrage local Côte d'Azur</p>
+      <p class="card-text">Connaissance fine du territoire niçois, des axes, des aéroports et des événements locaux pour anticiper et optimiser chaque trajet.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">🏢</div>
+      <p class="card-title">Partenaire entreprises</p>
+      <p class="card-text">Offre dédiée aux professionnels : facturation, régularité et fiabilité pour les déplacements de collaborateurs ou de clients VIP.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 02 — CLIENT CIBLE -->
+<section class="section">
+  <span class="section-badge">Section 02</span>
+  <h2 class="section-title">Client Cible</h2>
+  <p class="section-intro">Comprendre précisément à qui vous parlez permet d'adapter chaque message, chaque page et chaque offre.</p>
+
+  <div class="cards-grid">
+    <div class="card">
+      <div class="card-icon">👤</div>
+      <p class="card-title">Profil type</p>
+      <p class="card-text">Actif 30–60 ans, cadre ou professionnel indépendant, habitant ou de passage à Nice. Voyage régulièrement, valorise son temps et son confort.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">💡</div>
+      <p class="card-title">Motivations principales</p>
+      <div class="tags-list">
+        <span class="tag">Fiabilité & ponctualité</span>
+        <span class="tag">Confort haut de gamme</span>
+        <span class="tag">Tranquillité d'esprit</span>
+        <span class="tag">Discrétion</span>
+        <span class="tag">Service clé en main</span>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-icon">🚧</div>
+      <p class="card-title">Freins & objections</p>
+      <div class="tags-list">
+        <span class="tag">Prix perçu comme élevé</span>
+        <span class="tag">Manque de visibilité en ligne</span>
+        <span class="tag">Peur du retard ou no-show</span>
+        <span class="tag">Préférence app mobile connue</span>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-icon">✅</div>
+      <p class="card-title">Critères de décision</p>
+      <div class="tags-list">
+        <span class="tag">Avis clients visibles</span>
+        <span class="tag">Facilité de réservation</span>
+        <span class="tag">Tarification claire</span>
+        <span class="tag">Photos du véhicule</span>
+        <span class="tag">Contact direct possible</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 03 — OBJECTIFS DU SITE -->
+<section class="section">
+  <span class="section-badge">Section 03</span>
+  <h2 class="section-title">Objectifs du Site</h2>
+  <p class="section-intro">Les priorités qui guident chaque décision de conception et de rédaction de votre site web.</p>
+
+  <ul class="objectifs-list">
+    <li>
+      <span class="obj-num">01</span>
+      <div class="obj-text">
+        <strong>Conversion — Génération de demandes de devis et réservations</strong>
+        <span>Chaque page doit inciter à l'action : appel, WhatsApp ou formulaire de réservation.</span>
+      </div>
+    </li>
+    <li>
+      <span class="obj-num">02</span>
+      <div class="obj-text">
+        <strong>SEO Local — Être trouvé sur Google à Nice et environs</strong>
+        <span>Optimisation pour les recherches "VTC Nice", "chauffeur aéroport Nice", "transfert gare Nice".</span>
+      </div>
+    </li>
+    <li>
+      <span class="obj-num">03</span>
+      <div class="obj-text">
+        <strong>Réassurance — Rassurer le visiteur dès les premières secondes</strong>
+        <span>Avis clients, photo du chauffeur et du véhicule, certifications : construire la confiance avant la réservation.</span>
+      </div>
+    </li>
+    <li>
+      <span class="obj-num">04</span>
+      <div class="obj-text">
+        <strong>Prise de RDV — Simplifier le parcours de réservation</strong>
+        <span>Un chemin court et sans friction vers la confirmation de trajet.</span>
+      </div>
+    </li>
+    <li>
+      <span class="obj-num">05</span>
+      <div class="obj-text">
+        <strong>Notoriété — Établir VTC Hirondelle comme référence locale</strong>
+        <span>Blog, contenu de qualité et présence cohérente pour renforcer l'image de marque.</span>
+      </div>
+    </li>
+  </ul>
+</section>
+
+<!-- 04 — ARBORESCENCE -->
+<section class="section">
+  <span class="section-badge">Section 04</span>
+  <h2 class="section-title">Arborescence du Site</h2>
+  <p class="section-intro">Structure recommandée pour votre site : chaque page a un rôle précis, un public ciblé et un objectif SEO défini.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Page</th>
+          <th>Framework</th>
+          <th>Mot-clé principal</th>
+          <th>Potentiel SEO</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Accueil</strong></td>
+          <td>AIDA</td>
+          <td>VTC Nice</td>
+          <td><span class="badge badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>Nos Services</strong><br><span style="font-size:12px;color:#718096;">Transferts, mise à dispo, city tour, événementiel, entreprises</span></td>
+          <td>PAS</td>
+          <td>Chauffeur privé Nice</td>
+          <td><span class="badge badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>À Propos</strong></td>
+          <td>BAB</td>
+          <td>VTC Hirondelle Nice</td>
+          <td><span class="badge badge-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>Réserver</strong><br><span style="font-size:12px;color:#718096;">Formulaire de réservation / devis</span></td>
+          <td>AIDA</td>
+          <td>Réserver VTC Nice</td>
+          <td><span class="badge badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>VTC Aéroport Nice — Page SEO Locale</strong></td>
+          <td>PAS</td>
+          <td>VTC aéroport Nice Côte d'Azur</td>
+          <td><span class="badge badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>VTC Cannes & Monaco — Page SEO Locale</strong></td>
+          <td>PAS</td>
+          <td>VTC Cannes Monaco chauffeur</td>
+          <td><span class="badge badge-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>Blog</strong></td>
+          <td>—</td>
+          <td>Conseil transport Côte d'Azur</td>
+          <td><span class="badge badge-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>Contact</strong></td>
+          <td>—</td>
+          <td>Contact VTC Nice</td>
+          <td><span class="badge badge-faible">Faible</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- 05 — COCON SÉMANTIQUE -->
+<section class="section">
+  <span class="section-badge">Section 05</span>
+  <h2 class="section-title">Cocon Sémantique</h2>
+  <p class="section-intro">Organisation thématique du contenu pour maximiser la visibilité sur Google et guider l'internaute naturellement vers la réservation.</p>
+
+  <div class="cards-grid-2" style="margin-bottom: 32px;">
+    <div class="card">
+      <div class="card-icon">🗂️</div>
+      <p class="card-title">Cluster 1 — Transport & Services VTC</p>
+      <p class="card-text">Pages : Accueil → Nos Services → Réserver → Blog (trajets, conseils)<br>Thème central : l'offre globale de VTC Hirondelle.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">📍</div>
+      <p class="card-title">Cluster 2 — SEO Local Côte d'Azur</p>
+      <p class="card-text">Pages : VTC Aéroport Nice → VTC Cannes & Monaco → Articles blog géolocalisés<br>Thème central : la présence locale sur les requêtes géographiques.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">🏢</div>
+      <p class="card-title">Cluster 3 — Confiance & Marque</p>
+      <p class="card-text">Pages : À Propos → Contact → Avis clients → Articles de réassurance<br>Thème central : construire la crédibilité et l'image de marque.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <p class="card-title" style="margin-bottom: 16px;">Logique de maillage interne</p>
+    <div class="maillage-item">
+      <span class="maillage-source">Accueil</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-target">Nos Services, Réserver, VTC Aéroport Nice, À Propos</span>
+    </div>
+    <div class="maillage-item">
+      <span class="maillage-source">Nos Services</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-target">Réserver, VTC Aéroport Nice, VTC Cannes & Monaco</span>
+    </div>
+    <div class="maillage-item">
+      <span class="maillage-source">Pages SEO Locales</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-target">Nos Services, Réserver, Contact</span>
+    </div>
+    <div class="maillage-item">
+      <span class="maillage-source">Articles Blog</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-target">Pages SEO locales, Nos Services, Réserver</span>
+    </div>
+    <div class="maillage-item">
+      <span class="maillage-source">À Propos</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-target">Nos Services, Réserver, Contact</span>
+    </div>
+  </div>
+</section>
+
+<!-- 06 — TUNNEL DE CONVERSION -->
+<section class="section">
+  <span class="section-badge">Section 06</span>
+  <h2 class="section-title">Tunnel de Conversion</h2>
+  <p class="section-intro">Le parcours type de votre futur client, de la première recherche Google jusqu'à la confirmation de sa réservation.</p>
+
+  <div class="tunnel-grid">
+    <div class="tunnel-card">
+      <p class="tunnel-step">Étape 01</p>
+      <p class="tunnel-title">Découverte</p>
+      <div class="tunnel-item">
+        <p class="tunnel-item-label">Source de trafic</p>
+        <p class="tunnel-item-value">Google (SEO local), bouche-à-oreille, Google Maps</p>
+      </div>
+      <div class="tunnel-item">
+        <p class="tunnel-item-label">Page concernée</p>
+        <p class="tunnel-item-value">Accueil, Page SEO Aéroport Nice</p>
+      </div>
+      <span class="tunnel-cta">Découvrir nos services →</span>
+    </div>
+    <div class="tunnel-card">
+      <p class="tunnel-step">Étape 02</p>
+      <p class="tunnel-title">Intérêt</p>
+      <div class="tunnel-item">
+        <p class="tunnel-item-label">Source de trafic</p>
+        <p class="tunnel-item-value">Navigation interne depuis l'accueil ou le blog</p>
+      </div>
+      <div class="tunnel-item">
+        <p class="tunnel-item-label">Page concernée</p>
+        <p class="tunnel-item-value">Nos Services, Articles Blog</p>
+      </div>
+      <span class="tunnel-cta">Voir nos offres →</span>
+    </div>
+    <div class="tunnel-card">
+      <p class="tunnel-step">Étape 03</p>
+      <p class="tunnel-title">Confiance</p>
+      <div class="tunnel-item">
+        <p class="tunnel-item-label">Source de trafic</p>
+        <p class="tunnel-item-value">Navigation vers À Propos, avis clients, photos</p>
+      </div>
+      <div class="tunnel-item">
+        <p class="tunnel-item-label">Page concernée</p>
+        <p class="tunnel-item-value">À Propos, preuves sociales intégrées</p>
+      </div>
+      <span class="tunnel-cta">En savoir plus →</span>
+    </div>
+    <div class="tunnel-card">
+      <p class="tunnel-step">Étape 04</p>
+      <p class="tunnel-title">Conversion</p>
+      <div class="tunnel-item">
+        <p class="tunnel-item-label">Source de trafic</p>
+        <p class="tunnel-item-value">CTA depuis toutes les pages</p>
+      </div>
+      <div class="tunnel-item">
+        <p class="tunnel-item-label">Page concernée</p>
+        <p class="tunnel-item-value">Page Réserver, Contact</p>
+      </div>
+      <span class="tunnel-cta">Réserver maintenant →</span>
+    </div>
+  </div>
+</section>
+
+<!-- 07 — LEVIERS MARKETING -->
+<section class="section">
+  <span class="section-badge">Section 07</span>
+  <h2 class="section-title">Leviers Marketing Recommandés</h2>
+  <p class="section-intro">Les outils et contenus concrets à mettre en place pour convertir vos visiteurs en clients fidèles.</p>
+
+  <div class="cards-grid">
+    <div class="levier-card">
+      <p class="levier-label">Prise de RDV</p>
+      <p class="levier-value"><strong>Outil recommandé :</strong> <strong>Calendly</strong> ou formulaire sur mesure intégré au site. Permettre au client de renseigner date, heure, trajet et nombre de passagers en moins de 2 minutes.</p>
+    </div>
+    <div class="levier-card">
+      <p class="levier-label">Preuve Sociale</p>
+      <p class="levier-value">Intégrer les avis <strong>Google My Business</strong> directement sur le site. Ajouter 3 à 5 témoignages clients ciblés (aéroport, événement, entreprise) avec photo et prénom.</p>
+    </div>
+    <div class="levier-card">
+      <p class="levier-label">Formulaire Qualifiant</p>
+      <p class="levier-value">Champs recommandés : Type de trajet · Date & heure · Lieu de prise en charge · Destination · Nombre de passagers · Bagages · Message libre.</p>
+    </div>
+    <div class="levier-card">
+      <p class="levier-label">Newsletter</p>
+      <p class="levier-value">Angle éditorial : <em>"Les bons plans & conseils transport Côte d'Azur"</em> — événements locaux, astuces aéroport, offres saisonnières. Rythme : 1 email mensuel.</p>
+    </div>
+    <div class="levier-card">
+      <p class="levier-label">Click-to-Action Prioritaires</p>
+      <p class="levier-value">Bouton WhatsApp flottant sur mobile, numéro de téléphone cliquable en header, CTA "Obtenir un devis" en sticky sur desktop.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 08 — DIRECTION VISUELLE -->
+<section class="section">
+  <span class="section-badge">Section 08</span>
+  <h2 class="section-title">Direction Visuelle & Éditoriale</h2>
+  <p class="section-intro">L'identité visuelle de votre site doit refléter le prestige, la Méditerranée et la modernité écoresponsable de VTC Hirondelle.</p>
+
+  <div class="card" style="margin-bottom: 32px;">
+    <p class="card-title" style="margin-bottom: 24px;">Palette Couleurs</p>
+    <div class="palette-grid">
+      <div class="palette-item">
+        <div class="palette-swatch" style="background: #0d1b2a;"></div>
+        <p class="palette-name">Nuit Marine</p>
+        <p class="palette-hex">#0D1B2A</p>
+      </div>
+      <div class="palette-item">
+        <div class="palette-swatch" style="background: #1b6ca8;"></div>
+        <p class="palette-name">Azur Profond</p>
+        <p class="palette-hex">#1B6CA8</p>
+      </div>
+      <div class="palette-item">
+        <div class="palette-swatch" style="background: #c9a84c;"></div>
+        <p class="palette-name">Or Méditerranée</p>
+        <p class="palette-hex">#C9A84C</p>
+      </div>
+      <div class="palette-item">
+        <div class="palette-swatch" style="background: #f5f7fa;"></div>
+        <p class="palette-name">Blanc Glacier</p>
+        <p class="palette-hex">#F5F7FA</p>
+      </div>
+      <div class="palette-item">
+        <div class="palette-swatch" style="background: #4a9e8f;"></div>
+        <p class="palette-name">Vert Hybride</p>
+        <p class="palette-hex">#4A9E8F</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="cards-grid">
+    <div class="card">
+      <div class="card-icon">🌊</div>
+      <p class="card-title">Univers Méditerranéen</p>
+      <p class="card-text">Photos de la Promenade des Anglais, vue mer, lumière dorée de Côte d'Azur. Évoquer l'espace et la légèreté.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">🚙</div>
+      <p class="card-title">Véhicule en Vedette</p>
+      <p class="card-text">Photos professionnelles du SUV hybride : extérieur propre, intérieur soigné. Le véhicule est une preuve visuelle de sérieux.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">👤</div>
+      <p class="card-title">Humanisation du Chauffeur</p>
+      <p class="card-text">Portrait professionnel d'Oliver en uniforme sobre. La photo du chauffeur renforce la confiance et humanise la marque.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">✨</div>
+      <p class="card-title">Typographie Épurée</p>
+      <p class="card-text">Playfair Display pour les titres (premium, élégant), Inter pour le corps (lisible, moderne). Pas de polices fantaisistes.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">🍃</div>
+      <p class="card-title">Touche Écoresponsable</p>
+      <p class="card-text">Icônes feuille et hybride utilisées subtilement. Le vert Hybride (#4A9E8F) souligne l'engagement environnemental sans dominer.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 09 — ARTICLES BLOG -->
+<section class="section">
+  <span class="section-badge">Section 09</span>
+  <h2 class="section-title">Articles Blog Recommandés</h2>
+  <p class="section-intro">Sujets prioritaires pour renforcer votre référencement naturel, démontrer votre expertise locale et attirer vos cibles.</p>
+
+  <div class="cards-grid-2">
+    <div class="blog-card">
+      <div class="blog-card-header">
+        <p class="blog-card-title">Comment se déplacer depuis l'Aéroport Nice Côte d'Azur sans stress ?</p>
+        <span class="badge badge-prioritaire">Prioritaire</span>
+      </div>
+      <div class="blog-meta">
+        <span class="blog-meta-item"><strong>Cluster :</strong> SEO Local</span>
+        <span class="blog-meta-sep">·</span>
+        <span class="blog-meta-item"><strong>Intention :</strong> Informationnelle / commerciale</span>
+      </div>
+    </div>
+    <div class="blog-card">
+      <div class="blog-card-header">
+        <p class="blog-card-title">VTC vs Taxi à Nice : lequel choisir pour votre transfert aéroport ?</p>
+        <span class="badge badge-prioritaire">Prioritaire</span>
+      </div>
+      <div class="blog-meta">
+        <span class="blog-meta-item"><strong>Cluster :</strong> SEO Local</span>
+        <span class="blog-meta-sep">·</span>
+        <span class="blog-meta-item"><strong>Intention :</strong> Comparative / transactionnelle</span>
+      </div>
+    </div>
+    <div class="blog-card">
+      <div class="blog-card-header">
+        <p class="blog-card-title">Organiser un déplacement professionnel à Nice : le guide complet</p>
+        <span class="badge badge-prioritaire">Prioritaire</span>
+      </div>
+      <div class="blog-meta">
+        <span class="blog-meta-item"><strong>Cluster :</strong> Services entreprises</span>
+        <span class="blog-meta-sep">·</span>
+        <span class="blog-meta-item"><strong>Intention :</strong> Informationnelle / B2B</span>
+      </div>
+    </div>
+    <div class="blog-card">
+      <div class="blog-card-header">
+        <p class="blog-card-title">City tour à Nice en SUV hybride : les incontournables de la Côte d'Azur</p>
+        <span class="badge" style="background:#e9ecef;color:#495057;">Moyen</span>
+      </div>
+      <div class="blog-meta">
+        <span class="blog-meta-item"><strong>Cluster :</strong> Services VTC</span>
+        <span class="blog-meta-sep">·</span>
+        <span class="blog-meta-item"><strong>Intention :</strong> Informationnelle / touristique</span>
+      </div>
+    </div>
+    <div class="blog-card">
+      <div class="blog-card-header">
+        <p class="blog-card-title">Mariage, soirée de gala : comment choisir son chauffeur pour un événement ?</p>
+        <span class="badge" style="background:#e9ecef;color:#495057;">Moyen</span>
+      </div>
+      <div class="blog-meta">
+        <span class="blog-meta-item"><strong>Cluster :</strong> Événementiel</span>
+        <span class="blog-meta-sep">·</span>
+        <span class="blog-meta-item"><strong>Intention :</strong> Informationnelle / commerciale</span>
+      </div>
+    </div>
+    <div class="blog-card">
+      <div class="blog-card-header">
+        <p class="blog-card-title">Pourquoi choisir un véhicule hybride pour vos trajets sur la Côte d'Azur ?</p>
+        <span class="badge" style="background:#e9ecef;color:#495057;">Moyen</span>
+      </div>
+      <div class="blog-meta">
+        <span class="blog-meta-item"><strong>Cluster :</strong> Confiance & Marque</span>
+        <span class="blog-meta-sep">·</span>
+        <span class="blog-meta-item"><strong>Intention :</strong> Informationnelle / différenciation</span>
+      </div>
+    </div>
+    <div class="blog-card">
+      <div class="blog-card-header">
+        <p class="blog-card-title">Mise à disposition d'un chauffeur privé à Nice : mode d'emploi</p>
+        <span class="badge" style="background:#f0f0f0;color:#666;">Faible</span>
+      </div>
+      <div class="blog-meta">
+        <span class="blog-meta-item"><strong>Cluster :</strong> Services VTC</span>
+        <span class="blog-meta-sep">·</span>
+        <span class="blog-meta-item"><strong>Intention :</strong> Informationnelle</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p><strong>VTC Hirondelle</strong> — Blueprint Stratégique</p>
+  <p style="margin-top: 6px;">Document confidentiel · Préparé par AR Digital · Réservé à Oliver Roper</p>
+</footer>
+
+</body>
+</html>
