@@ -1,0 +1,961 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blueprint Stratégique — Alex Morgan / BlueTech Solutions</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      line-height: 1.8;
+      color: #1a1a2e;
+      background: #f8f9fb;
+    }
+
+    /* ── COVER ── */
+    .cover {
+      min-height: 100vh;
+      background: linear-gradient(145deg, #0d1b3e 0%, #1a3a6e 45%, #0e4d7a 75%, #0a2c52 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 60px 40px;
+      position: relative;
+    }
+
+    .cover-badge {
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.55);
+      margin-bottom: 28px;
+    }
+
+    .cover-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 68px;
+      font-weight: 700;
+      color: #ffffff;
+      line-height: 1.15;
+      margin-bottom: 18px;
+    }
+
+    .cover-subtitle {
+      font-size: 17px;
+      color: rgba(255,255,255,0.72);
+      margin-bottom: 48px;
+      font-weight: 400;
+    }
+
+    .cover-meta {
+      display: flex;
+      gap: 36px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .cover-meta-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .cover-meta-label {
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+    }
+
+    .cover-meta-value {
+      font-size: 14px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.9);
+    }
+
+    /* ── SECTIONS ── */
+    .section {
+      padding: 70px 60px;
+      page-break-inside: avoid;
+    }
+
+    .section:nth-child(even) {
+      background: #f0f4fa;
+    }
+
+    .section:nth-child(odd) {
+      background: #ffffff;
+    }
+
+    .section-header {
+      margin-bottom: 40px;
+    }
+
+    .section-badge {
+      display: inline-block;
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      font-weight: 600;
+      color: #2563a8;
+      background: #e8f0fc;
+      padding: 5px 14px;
+      border-radius: 20px;
+      margin-bottom: 14px;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 34px;
+      font-weight: 700;
+      color: #0d1b3e;
+      line-height: 1.25;
+    }
+
+    /* ── CARDS ── */
+    .card {
+      background: #ffffff;
+      border-radius: 14px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+      padding: 28px;
+      page-break-inside: avoid;
+    }
+
+    .card-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 17px;
+      font-weight: 600;
+      color: #0d1b3e;
+      margin-bottom: 10px;
+    }
+
+    .card-text {
+      font-size: 14px;
+      color: #4a5568;
+      line-height: 1.7;
+    }
+
+    /* ── GRIDS ── */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 24px;
+    }
+
+    .grid-4 {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      gap: 24px;
+    }
+
+    /* ── HIGHLIGHT BOX ── */
+    .highlight-box {
+      background: linear-gradient(135deg, #0d1b3e 0%, #1a3a6e 100%);
+      border-radius: 14px;
+      padding: 36px;
+      color: #ffffff;
+      margin-bottom: 32px;
+    }
+
+    .highlight-box .label {
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 12px;
+    }
+
+    .highlight-box .value {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      font-weight: 600;
+      color: #ffffff;
+      line-height: 1.5;
+    }
+
+    /* ── LISTS ── */
+    .styled-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .styled-list li {
+      padding: 8px 0;
+      padding-left: 20px;
+      position: relative;
+      font-size: 14px;
+      color: #4a5568;
+      border-bottom: 1px solid #f1f5f9;
+    }
+
+    .styled-list li:last-child {
+      border-bottom: none;
+    }
+
+    .styled-list li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: #2563a8;
+      font-weight: 600;
+    }
+
+    /* ── TABLE ── */
+    .table-wrapper {
+      overflow-x: auto;
+      border-radius: 14px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: #fff;
+      font-size: 14px;
+    }
+
+    thead {
+      background: #0d1b3e;
+      color: #fff;
+    }
+
+    thead th {
+      padding: 16px 20px;
+      text-align: left;
+      font-weight: 600;
+      font-size: 12px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    tbody tr {
+      border-bottom: 1px solid #f1f5f9;
+    }
+
+    tbody tr:last-child {
+      border-bottom: none;
+    }
+
+    tbody td {
+      padding: 14px 20px;
+      color: #4a5568;
+      vertical-align: top;
+    }
+
+    tbody tr:hover {
+      background: #f8f9fb;
+    }
+
+    /* ── SEO BADGES ── */
+    .seo-badge {
+      display: inline-block;
+      padding: 3px 12px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+
+    .seo-fort {
+      background: #dcfce7;
+      color: #166534;
+    }
+
+    .seo-moyen {
+      background: #fef3c7;
+      color: #92400e;
+    }
+
+    .seo-faible {
+      background: #f1f5f9;
+      color: #475569;
+    }
+
+    /* ── TUNNEL STEPS ── */
+    .tunnel-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+
+    .tunnel-step {
+      background: #ffffff;
+      border-radius: 14px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+      padding: 28px;
+      position: relative;
+    }
+
+    .tunnel-step-number {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #2563a8;
+      margin-bottom: 10px;
+    }
+
+    .tunnel-step-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+      font-weight: 600;
+      color: #0d1b3e;
+      margin-bottom: 14px;
+    }
+
+    .tunnel-item-label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #94a3b8;
+      margin-top: 10px;
+      margin-bottom: 3px;
+    }
+
+    .tunnel-item-value {
+      font-size: 13px;
+      color: #4a5568;
+    }
+
+    /* ── COLOR PALETTE ── */
+    .palette-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+      margin-top: 10px;
+    }
+
+    .palette-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .palette-swatch {
+      width: 80px;
+      height: 80px;
+      border-radius: 14px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    .palette-name {
+      font-size: 12px;
+      font-weight: 600;
+      color: #0d1b3e;
+      text-align: center;
+    }
+
+    .palette-hex {
+      font-size: 11px;
+      color: #94a3b8;
+      text-align: center;
+    }
+
+    /* ── MAILLAGE ── */
+    .maillage-row {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+      padding: 10px 0;
+      border-bottom: 1px solid #f1f5f9;
+      font-size: 13px;
+      color: #4a5568;
+    }
+
+    .maillage-row:last-child {
+      border-bottom: none;
+    }
+
+    .maillage-source {
+      font-weight: 600;
+      color: #0d1b3e;
+    }
+
+    .maillage-arrow {
+      color: #2563a8;
+      font-weight: 700;
+      font-size: 16px;
+      flex-shrink: 0;
+    }
+
+    .maillage-dest {
+      color: #4a5568;
+    }
+
+    /* ── PRIORITY BADGES ── */
+    .priority-prioritaire {
+      display: inline-block;
+      padding: 3px 12px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 600;
+      background: #dcfce7;
+      color: #166534;
+    }
+
+    .priority-moyen {
+      display: inline-block;
+      padding: 3px 12px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 600;
+      background: #fef3c7;
+      color: #92400e;
+    }
+
+    .priority-faible {
+      display: inline-block;
+      padding: 3px 12px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 600;
+      background: #f1f5f9;
+      color: #475569;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #0d1b3e;
+      color: rgba(255,255,255,0.5);
+      text-align: center;
+      padding: 36px 40px;
+      font-size: 12px;
+      letter-spacing: 1px;
+    }
+
+    footer strong {
+      color: rgba(255,255,255,0.85);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .cover-title { font-size: 38px; }
+      .cover-meta { gap: 20px; }
+      .section { padding: 40px 24px; }
+      .section-title { font-size: 26px; }
+
+      .grid-2,
+      .grid-3,
+      .grid-4,
+      .tunnel-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .maillage-row {
+        flex-direction: row;
+        flex-wrap: wrap;
+      }
+
+      .maillage-arrow {
+        flex-shrink: 0;
+      }
+
+      .palette-grid {
+        justify-content: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══════════════════════════════ COVER ══════════════════════════════ -->
+<div class="cover">
+  <div class="cover-badge">Blueprint Stratégique · Confidentiel</div>
+  <h1 class="cover-title">Alex Morgan</h1>
+  <p class="cover-subtitle">Blueprint Stratégique — Création de site web</p>
+  <div class="cover-meta">
+    <div class="cover-meta-item">
+      <span class="cover-meta-label">Client</span>
+      <span class="cover-meta-value">Alex Morgan</span>
+    </div>
+    <div class="cover-meta-item">
+      <span class="cover-meta-label">Secteur</span>
+      <span class="cover-meta-value">Bien-être &amp; Thérapie</span>
+    </div>
+    <div class="cover-meta-item">
+      <span class="cover-meta-label">Domaine</span>
+      <span class="cover-meta-value">innovativedesignhub.co</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════ 01 — POSITIONNEMENT ══════════════════════════════ -->
+<section class="section">
+  <div class="section-header">
+    <div class="section-badge">01 — Positionnement</div>
+    <h2 class="section-title">Positionnement &amp; Identité de marque</h2>
+  </div>
+
+  <div class="highlight-box">
+    <div class="label">Promesse de valeur principale</div>
+    <div class="value">Retrouver équilibre et sérénité grâce à un accompagnement personnalisé en massage thérapeutique, aromathérapie et coaching de pleine conscience — pour que chaque séance devienne une étape concrète vers votre mieux-être durable.</div>
+  </div>
+
+  <div class="grid-2" style="margin-bottom: 28px;">
+    <div class="card">
+      <div class="card-title">Ligne directrice de communication</div>
+      <div class="card-text">Un accompagnement chaleureux, ancré dans l'expertise thérapeutique, qui guide chaque client vers une transformation tangible et durable — avec clarté, bienveillance et professionnalisme.</div>
+    </div>
+    <div class="card">
+      <div class="card-title">Ton éditorial</div>
+      <div class="card-text"><strong>Apaisant · Expert · Accessible</strong><br />Un langage doux mais structuré, qui rassure sans jargon, inspire confiance sans distance, et invite naturellement à l'action.</div>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-title">🌿 Triptyque thérapeutique cohérent</div>
+      <div class="card-text">Massage, aromathérapie et pleine conscience forment un écosystème complémentaire qui s'adresse au corps, aux sens et à l'esprit — une approche globale rare chez un seul praticien.</div>
+    </div>
+    <div class="card">
+      <div class="card-title">🎯 Accompagnement sur-mesure</div>
+      <div class="card-text">Chaque client bénéficie d'un espace thérapeutique adapté à ses besoins spécifiques, sans protocole standardisé — une valeur ajoutée décisive dans un marché saturé.</div>
+    </div>
+    <div class="card">
+      <div class="card-title">🤝 Cadre sécurisant et professionnel</div>
+      <div class="card-text">Un environnement confortable et bienveillant qui pose les bases d'une relation de confiance durable — essentiel pour des clients souvent vulnérables ou en quête de soutien.</div>
+    </div>
+    <div class="card">
+      <div class="card-title">📍 Ancrage local fort</div>
+      <div class="card-text">Une présence enracinée dans les communautés côtières méditerranéennes et les vallées intérieures, créant un lien de proximité et de confiance avec la clientèle locale.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════ 02 — CLIENT CIBLE ══════════════════════════════ -->
+<section class="section">
+  <div class="section-header">
+    <div class="section-badge">02 — Client Cible</div>
+    <h2 class="section-title">Portrait du client idéal</h2>
+  </div>
+
+  <div class="grid-2" style="margin-bottom: 24px;">
+    <div class="card">
+      <div class="card-title">Profil type</div>
+      <div class="card-text">30–55 ans · Actif(ve) ou jeune retraité(e) · Stressé(e) par le rythme de vie professionnel ou personnel · Résidant dans les zones côtières méditerranéennes ou les vallées intérieures · Sensible au bien-être et au développement personnel · Ayant déjà essayé des approches conventionnelles sans satisfaction durable.</div>
+    </div>
+    <div class="card">
+      <div class="card-title">Motivations principales</div>
+      <ul class="styled-list">
+        <li>Réduire le stress chronique et la tension physique</li>
+        <li>Retrouver un équilibre émotionnel et corporel</li>
+        <li>S'accorder un moment de soin et de reconnexion à soi</li>
+        <li>Bénéficier d'un accompagnement global, pas seulement symptomatique</li>
+        <li>Trouver un praticien de confiance à proximité</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-title">Freins et objections</div>
+      <ul class="styled-list">
+        <li>Doute sur la légitimité ou les qualifications du praticien</li>
+        <li>Peur de ne pas être « le bon type de client »</li>
+        <li>Incertitude sur le déroulement d'une séance</li>
+        <li>Prix perçus comme élevés sans garantie de résultat</li>
+        <li>Manque de temps ou difficulté à s'organiser</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-title">Critères de décision</div>
+      <ul class="styled-list">
+        <li>Réputation locale et avis clients vérifiables</li>
+        <li>Clarté de l'offre et transparence tarifaire</li>
+        <li>Feeling immédiat avec la personnalité du praticien</li>
+        <li>Facilité de prise de rendez-vous en ligne</li>
+        <li>Site web rassurant, professionnel et épuré</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════ 03 — OBJECTIFS DU SITE ══════════════════════════════ -->
+<section class="section">
+  <div class="section-header">
+    <div class="section-badge">03 — Objectifs du site</div>
+    <h2 class="section-title">Ce que le site doit accomplir</h2>
+  </div>
+
+  <div class="grid-3">
+    <div class="card">
+      <div class="card-title">① Prise de RDV</div>
+      <div class="card-text">Objectif principal. Chaque page doit orienter vers une action de réservation simple, directe et immédiate.</div>
+    </div>
+    <div class="card">
+      <div class="card-title">② SEO local</div>
+      <div class="card-text">Être trouvé sur Google par les habitants des zones méditerranéennes côtières et des vallées intérieures pour des requêtes de proximité.</div>
+    </div>
+    <div class="card">
+      <div class="card-title">③ Réassurance</div>
+      <div class="card-text">Lever les doutes sur les qualifications, le cadre de travail et le déroulement des séances grâce à du contenu rassurant et des preuves sociales.</div>
+    </div>
+    <div class="card">
+      <div class="card-title">④ Conversion</div>
+      <div class="card-text">Transformer les visiteurs en prospects qualifiés via des CTA clairs, un formulaire de contact et un lead magnet adapté.</div>
+    </div>
+    <div class="card">
+      <div class="card-title">⑤ Génération de leads</div>
+      <div class="card-text">Capturer des contacts via un contenu offert en échange d'une adresse e-mail pour maintenir le lien au-delà de la première visite.</div>
+    </div>
+    <div class="card">
+      <div class="card-title">⑥ Notoriété locale</div>
+      <div class="card-text">Asseoir la présence d'Alex Morgan comme référence thérapeutique de confiance dans son bassin de vie.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════ 04 — ARBORESCENCE ══════════════════════════════ -->
+<section class="section">
+  <div class="section-header">
+    <div class="section-badge">04 — Arborescence du site</div>
+    <h2 class="section-title">Structure des pages</h2>
+  </div>
+
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th>Page</th>
+          <th>Framework rédactionnel</th>
+          <th>Mot-clé principal</th>
+          <th>Potentiel SEO</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Accueil</strong></td>
+          <td>AIDA</td>
+          <td>praticien bien-être [ville]</td>
+          <td><span class="seo-badge seo-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>Mes accompagnements</strong><br /><em style="font-size:12px;color:#94a3b8;">(massage · aromathérapie · pleine conscience)</em></td>
+          <td>PAS</td>
+          <td>massage thérapeutique aromathérapie pleine conscience</td>
+          <td><span class="seo-badge seo-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>À propos — Alex Morgan</strong></td>
+          <td>BAB</td>
+          <td>thérapeute bien-être [ville]</td>
+          <td><span class="seo-badge seo-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>Témoignages &amp; résultats</strong></td>
+          <td>AIDA</td>
+          <td>avis thérapeute massage [région]</td>
+          <td><span class="seo-badge seo-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>Blog</strong></td>
+          <td>—</td>
+          <td>bien-être stress relaxation conseils</td>
+          <td><span class="seo-badge seo-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>Contact &amp; Réservation</strong></td>
+          <td>PAS</td>
+          <td>prendre rendez-vous thérapeute [ville]</td>
+          <td><span class="seo-badge seo-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>Page locale — Côte Méditerranéenne</strong></td>
+          <td>AIDA</td>
+          <td>massage bien-être côte méditerranéenne</td>
+          <td><span class="seo-badge seo-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>Page locale — Vallées intérieures</strong></td>
+          <td>AIDA</td>
+          <td>thérapeute bien-être vallées intérieures</td>
+          <td><span class="seo-badge seo-moyen">Moyen</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ══════════════════════════════ 05 — COCON SÉMANTIQUE ══════════════════════════════ -->
+<section class="section">
+  <div class="section-header">
+    <div class="section-badge">05 — Cocon Sémantique</div>
+    <h2 class="section-title">Architecture sémantique &amp; maillage interne</h2>
+  </div>
+
+  <div class="grid-3" style="margin-bottom: 36px;">
+    <div class="card">
+      <div class="card-title">Cluster 1 · Thérapies &amp; Accompagnements</div>
+      <div class="card-text">Page Accompagnements (pilier) · Blog : massage thérapeutique · Blog : aromathérapie · Blog : pleine conscience · Page locale Côte · Page locale Vallées</div>
+    </div>
+    <div class="card">
+      <div class="card-title">Cluster 2 · Bien-être &amp; Gestion du stress</div>
+      <div class="card-text">Blog : stress chronique · Blog : relaxation profonde · Blog : rituels bien-être · Page Accueil · Page Témoignages</div>
+    </div>
+    <div class="card">
+      <div class="card-title">Cluster 3 · Confiance &amp; Choix du praticien</div>
+      <div class="card-text">Page À Propos (pilier) · Page Témoignages · Blog : choisir son thérapeute · Page Contact</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Logique de maillage interne</div>
+    <div style="margin-top: 8px;">
+      <div class="maillage-row">
+        <span class="maillage-source">Accueil</span>
+        <span class="maillage-arrow">→</span>
+        <span class="maillage-dest">Accompagnements · À Propos · Contact · Pages locales</span>
+      </div>
+      <div class="maillage-row">
+        <span class="maillage-source">Page Accompagnements</span>
+        <span class="maillage-arrow">→</span>
+        <span class="maillage-dest">Articles de blog thématiques · Contact · Témoignages</span>
+      </div>
+      <div class="maillage-row">
+        <span class="maillage-source">Articles de blog</span>
+        <span class="maillage-arrow">→</span>
+        <span class="maillage-dest">Page Accompagnements · Contact · Pages locales</span>
+      </div>
+      <div class="maillage-row">
+        <span class="maillage-source">Pages locales</span>
+        <span class="maillage-arrow">→</span>
+        <span class="maillage-dest">Page Accompagnements · Contact · Témoignages</span>
+      </div>
+      <div class="maillage-row">
+        <span class="maillage-source">Témoignages</span>
+        <span class="maillage-arrow">→</span>
+        <span class="maillage-dest">Contact · Accompagnements</span>
+      </div>
+      <div class="maillage-row">
+        <span class="maillage-source">À Propos</span>
+        <span class="maillage-arrow">→</span>
+        <span class="maillage-dest">Contact · Accompagnements · Témoignages</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════ 06 — TUNNEL DE CONVERSION ══════════════════════════════ -->
+<section class="section">
+  <div class="section-header">
+    <div class="section-badge">06 — Tunnel de conversion</div>
+    <h2 class="section-title">De la découverte à la réservation</h2>
+  </div>
+
+  <div class="tunnel-grid">
+    <div class="tunnel-step">
+      <div class="tunnel-step-number">Étape 01</div>
+      <div class="tunnel-step-title">Découverte</div>
+      <div class="tunnel-item-label">Source de trafic</div>
+      <div class="tunnel-item-value">Google (SEO local), bouche à oreille, réseaux sociaux locaux</div>
+      <div class="tunnel-item-label">Page concernée</div>
+      <div class="tunnel-item-value">Accueil · Pages locales</div>
+      <div class="tunnel-item-label">CTA associé</div>
+      <div class="tunnel-item-value">« Découvrez mes accompagnements »</div>
+    </div>
+    <div class="tunnel-step">
+      <div class="tunnel-step-number">Étape 02</div>
+      <div class="tunnel-step-title">Intérêt</div>
+      <div class="tunnel-item-label">Source de trafic</div>
+      <div class="tunnel-item-value">Navigation interne, articles de blog, lead magnet</div>
+      <div class="tunnel-item-label">Page concernée</div>
+      <div class="tunnel-item-value">Page Accompagnements · Blog</div>
+      <div class="tunnel-item-label">CTA associé</div>
+      <div class="tunnel-item-value">« Téléchargez votre guide bien-être offert »</div>
+    </div>
+    <div class="tunnel-step">
+      <div class="tunnel-step-number">Étape 03</div>
+      <div class="tunnel-step-title">Confiance</div>
+      <div class="tunnel-item-label">Source de trafic</div>
+      <div class="tunnel-item-value">Navigation interne, newsletter, relances e-mail</div>
+      <div class="tunnel-item-label">Page concernée</div>
+      <div class="tunnel-item-value">À Propos · Témoignages</div>
+      <div class="tunnel-item-label">CTA associé</div>
+      <div class="tunnel-item-value">« Ils ont franchi le pas — lisez leurs expériences »</div>
+    </div>
+    <div class="tunnel-step">
+      <div class="tunnel-step-number">Étape 04</div>
+      <div class="tunnel-step-title">Conversion</div>
+      <div class="tunnel-item-label">Source de trafic</div>
+      <div class="tunnel-item-value">CTA pages internes, newsletter, relance lead magnet</div>
+      <div class="tunnel-item-label">Page concernée</div>
+      <div class="tunnel-item-value">Contact &amp; Réservation</div>
+      <div class="tunnel-item-label">CTA associé</div>
+      <div class="tunnel-item-value">« Réservez votre première séance »</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════ 07 — LEVIERS MARKETING ══════════════════════════════ -->
+<section class="section">
+  <div class="section-header">
+    <div class="section-badge">07 — Leviers Marketing</div>
+    <h2 class="section-title">Outils &amp; stratégies recommandés</h2>
+  </div>
+
+  <div class="grid-2" style="margin-bottom: 24px;">
+    <div class="card">
+      <div class="card-title">🎁 Lead Magnet</div>
+      <div class="card-text"><strong>« Mon kit anti-stress en 5 rituels »</strong> — Un guide PDF pratique combinant exercices de pleine conscience, gestes d'automassage et recettes aromathérapeutiques. Téléchargeable en échange d'une adresse e-mail. Positionnement : rapide à utiliser, résultat immédiat.</div>
+    </div>
+    <div class="card">
+      <div class="card-title">📅 Prise de rendez-vous</div>
+      <div class="card-text"><strong>Outil recommandé : Calendly ou Doctolib Pro</strong> — Intégration directe sur la page Contact et en bas de la page Accompagnements. Permet la réservation 24h/24 sans échange e-mail, réduisant la friction maximale.</div>
+    </div>
+    <div class="card">
+      <div class="card-title">⭐ Preuve sociale</div>
+      <div class="card-text"><strong>Témoignages texte + prénom + photo</strong> collectés via Google My Business et reproduits sur le site. Idéalement 6 à 8 avis avec résultat concret mentionné (ex : « 3 séances ont changé ma relation au stress »). Format court, authentique.</div>
+    </div>
+    <div class="card">
+      <div class="card-title">📋 Formulaire qualifiant</div>
+      <div class="card-text"><strong>Champs recommandés :</strong> Prénom · E-mail · Téléphone · Motif de consultation (liste déroulante : stress, douleurs, bien-être général, autre) · Disponibilités souhaitées · Comment avez-vous entendu parler de moi ?</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">📧 Newsletter — Angle éditorial</div>
+    <div class="card-text"><strong>Rythme :</strong> 2 fois par mois · <strong>Angle :</strong> « Le rendez-vous bien-être » — conseils pratiques anti-stress, recettes aromathérapeutiques simples, exercices de pleine conscience guidés, coulisses du cabinet. Ton chaleureux, format court (3 minutes de lecture max). Objectif : maintenir le lien et encourager la re-réservation.</div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════ 08 — DIRECTION VISUELLE ══════════════════════════════ -->
+<section class="section">
+  <div class="section-header">
+    <div class="section-badge">08 — Direction Visuelle &amp; Éditoriale</div>
+    <h2 class="section-title">Identité visuelle recommandée</h2>
+  </div>
+
+  <div class="card" style="margin-bottom: 28px;">
+    <div class="card-title">Palette de couleurs</div>
+    <div class="palette-grid">
+      <div class="palette-item">
+        <div class="palette-swatch" style="background: #0d3b6e;"></div>
+        <div class="palette-name">Bleu Méditerranée</div>
+        <div class="palette-hex">#0D3B6E</div>
+      </div>
+      <div class="palette-item">
+        <div class="palette-swatch" style="background: #3a7ca5;"></div>
+        <div class="palette-name">Bleu Lagon</div>
+        <div class="palette-hex">#3A7CA5</div>
+      </div>
+      <div class="palette-item">
+        <div class="palette-swatch" style="background: #e8c4a0;"></div>
+        <div class="palette-name">Sable Chaud</div>
+        <div class="palette-hex">#E8C4A0</div>
+      </div>
+      <div class="palette-item">
+        <div class="palette-swatch" style="background: #f5ede4;"></div>
+        <div class="palette-name">Crème Apaisante</div>
+        <div class="palette-hex">#F5EDE4</div>
+      </div>
+      <div class="palette-item">
+        <div class="palette-swatch" style="background: #2c3e50;"></div>
+        <div class="palette-name">Ardoise Profonde</div>
+        <div class="palette-hex">#2C3E50</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Univers visuel recommandé</div>
+    <ul class="styled-list">
+      <li>Photographies de la côte méditerranéenne : lumière dorée, textures naturelles (eau, sable, pierres)</li>
+      <li>Images de mains en soin, huiles essentielles et plantes aromatiques — authenticité avant tout</li>
+      <li>Typographie épurée : Playfair Display pour les titres (élégance), Inter pour le corps (lisibilité)</li>
+      <li>Espaces blancs généreux évoquant le calme et la respiration — aucun élément surchargé</li>
+      <li>Icônes minimalistes en trait fin pour illustrer les étapes et les services sans surcharge visuelle</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ══════════════════════════════ 09 — ARTICLES BLOG ══════════════════════════════ -->
+<section class="section">
+  <div class="section-header">
+    <div class="section-badge">09 — Articles Blog Recommandés</div>
+    <h2 class="section-title">Stratégie de contenu</h2>
+  </div>
+
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th>Titre de l'article</th>
+          <th>Cluster thématique</th>
+          <th>Intention de recherche</th>
+          <th>Priorité</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>5 rituels d'aromathérapie pour décompresser en moins de 10 minutes</strong></td>
+          <td>Thérapies &amp; Accompagnements</td>
+          <td>Informationnelle — recette pratique</td>
+          <td><span class="priority-prioritaire">Prioritaire</span></td>
+        </tr>
+        <tr>
+          <td><strong>Massage thérapeutique vs massage de détente : quelle différence pour votre corps ?</strong></td>
+          <td>Thérapies &amp; Accompagnements</td>
+          <td>Informationnelle — comparaison</td>
+          <td><span class="priority-prioritaire">Prioritaire</span></td>
+        </tr>
+        <tr>
+          <td><strong>Comment la pleine conscience réduit le stress chronique : ce que dit la science</strong></td>
+          <td>Bien-être &amp; Gestion du stress</td>
+          <td>Informationnelle — réassurance</td>
+          <td><span class="priority-prioritaire">Prioritaire</span></td>
+        </tr>
+        <tr>
+          <td><strong>Pourquoi choisir un thérapeute certifié ? Les bonnes questions à poser</strong></td>
+          <td>Confiance &amp; Choix du praticien</td>
+          <td>Navigationnelle — aide à la décision</td>
+          <td><span class="priority-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>3 exercices de respiration issus de la pleine conscience pour mieux dormir</strong></td>
+          <td>Bien-être &amp; Gestion du stress</td>
+          <td>Informationnelle — besoin immédiat</td>
+          <td><span class="priority-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>Vivre sur la côte méditerranéenne : l'art d'intégrer le bien-être dans son quotidien</strong></td>
+          <td>Bien-être &amp; Gestion du stress</td>
+          <td>Informationnelle — SEO local</td>
+          <td><span class="priority-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>Ma première séance de massage thérapeutique : à quoi s'attendre vraiment ?</strong></td>
+          <td>Confiance &amp; Choix du praticien</td>
+          <td>Informationnelle — levée de frein</td>
+          <td><span class="priority-faible">Faible</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ══════════════════════════════ FOOTER ══════════════════════════════ -->
+<footer>
+  <p><strong>Alex Morgan</strong> · Blueprint Stratégique · Document confidentiel</p>
+  <p style="margin-top: 8px;">Produit par AR Digital · Tous droits réservés · Ce document est destiné exclusivement au client mentionné ci-dessus.</p>
+</footer>
+
+</body>
+</html>
