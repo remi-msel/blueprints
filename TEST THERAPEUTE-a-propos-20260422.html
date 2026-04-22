@@ -1,0 +1,173 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>À propos — Rémi Test</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Inter', sans-serif; background: #f9f7f4; color: #2d2d2d; padding-top: 56px; }
+
+nav.main-nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  background: rgba(42,61,44,0.97); backdrop-filter: blur(8px);
+  height: 56px; display: flex; align-items: center;
+  justify-content: space-between; padding: 0 40px;
+}
+.nav-logo { height: 28px; }
+.nav-links { display: flex; align-items: center; }
+.nav-links a {
+  font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 500;
+  color: rgba(255,255,255,0.85); text-decoration: none; margin: 0 16px;
+  padding-bottom: 2px; border-bottom: 2px solid transparent;
+}
+.nav-links a.active { color: #ffffff; border-bottom: 2px solid #ffffff; }
+.nav-links a:hover { color: #ffffff; }
+
+.page-hero {
+  background: linear-gradient(135deg, #2a3d2c 0%, #4E6E52 60%, #7A9E7E 100%);
+  padding: 80px 60px 64px; color: #fff; text-align: center;
+}
+.page-hero h1 { font-family: 'Playfair Display', serif; font-size: 48px; font-weight: 700; line-height: 1.2; max-width: 760px; margin: 0 auto 20px; }
+.page-hero p { font-size: 17px; line-height: 1.8; opacity: 0.88; max-width: 600px; margin: 0 auto; }
+
+.section { padding: 70px 60px; }
+.section-alt { background: #F2EAD9; }
+.section h2 { font-family: 'Playfair Display', serif; font-size: 34px; font-weight: 700; color: #2a3d2c; margin-bottom: 16px; }
+.section p.body-text { font-size: 15px; line-height: 1.8; color: #555; margin-bottom: 14px; max-width: 720px; }
+
+.card { background: #fff; border-radius: 14px; padding: 28px 28px 32px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+.card h3 { font-family: 'Playfair Display', serif; font-size: 20px; color: #2a3d2c; margin-bottom: 12px; }
+.card p { font-size: 15px; line-height: 1.8; color: #555; }
+.card .icon { font-size: 28px; margin-bottom: 14px; }
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+
+.quote-block {
+  background: #4E6E52; border-radius: 14px; padding: 36px 40px;
+  color: #fff; margin: 0 0 24px;
+}
+.quote-block p { font-family: 'Playfair Display', serif; font-size: 22px; line-height: 1.6; font-style: italic; }
+
+.credentials { display: flex; gap: 24px; flex-wrap: wrap; margin-top: 32px; }
+.credential-item {
+  background: #fff; border-radius: 14px; padding: 24px 28px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06); flex: 1; min-width: 200px; text-align: center;
+}
+.credential-item .num { font-family: 'Playfair Display', serif; font-size: 40px; font-weight: 700; color: #4E6E52; }
+.credential-item .label { font-size: 14px; color: #666; margin-top: 6px; }
+
+.cta-section { background: linear-gradient(135deg, #4E6E52, #2a3d2c); padding: 70px 60px; text-align: center; color: #fff; }
+.cta-section h2 { font-family: 'Playfair Display', serif; font-size: 36px; font-weight: 700; margin-bottom: 16px; }
+.cta-section p { font-size: 16px; opacity: 0.85; max-width: 540px; margin: 0 auto 36px; line-height: 1.8; }
+.btn-light { display: inline-block; background: #F2EAD9; color: #2a3d2c; border-radius: 8px; padding: 16px 36px; font-size: 15px; font-weight: 600; text-decoration: none; }
+
+footer { background: rgba(78,110,82,0.05); border-top: 2px solid #4E6E52; padding: 30px 60px; display: flex; justify-content: space-between; align-items: center; font-size: 13px; color: #888; }
+
+@media (max-width: 768px) {
+  nav.main-nav { padding: 0 16px; }
+  .nav-links { overflow-x: auto; }
+  .nav-links a { font-size: 12px; margin: 0 10px; }
+  .page-hero { padding: 48px 24px; }
+  .page-hero h1 { font-size: 30px; }
+  .section { padding: 48px 24px; }
+  .grid-2 { grid-template-columns: 1fr; }
+  .section h2 { font-size: 26px; }
+  .credentials { flex-direction: column; }
+  .cta-section { padding: 48px 24px; }
+  .cta-section h2 { font-size: 26px; }
+  footer { flex-direction: column; gap: 8px; text-align: center; padding: 20px 24px; }
+}
+</style>
+</head>
+<body>
+
+<nav class="main-nav">
+  <img src="https://i.imgur.com/72UqvFq.png" alt="AR Digital" class="nav-logo">
+  <div class="nav-links">
+    <a href="https://monsite-en-ligne.github.io/blueprints/TEST-THERAPEUTE-20260422.html">Blueprint</a>
+    <a href="https://monsite-en-ligne.github.io/blueprints/TEST-THERAPEUTE-accueil-20260422.html">Accueil</a>
+    <a href="https://monsite-en-ligne.github.io/blueprints/TEST-THERAPEUTE-sophrologie-20260422.html">Sophrologie</a>
+    <a href="https://monsite-en-ligne.github.io/blueprints/TEST-THERAPEUTE-a-propos-20260422.html" class="active">À propos</a>
+    <a href="https://monsite-en-ligne.github.io/blueprints/TEST-THERAPEUTE-sophrologue-paris-20260422.html">Sophrologue Paris</a>
+    <a href="https://monsite-en-ligne.github.io/blueprints/TEST-THERAPEUTE-sophrologie-en-ligne-20260422.html">Sophrologie en ligne</a>
+  </div>
+</nav>
+
+<section class="page-hero">
+  <h1>J'ai vécu ce que vous traversez.</h1>
+  <p>Ancien cadre reconverti, Rémi Test accompagne les actifs stressés avec une expérience qui vient de l'intérieur — pas des manuels.</p>
+</section>
+
+<!-- BEFORE -->
+<section class="section">
+  <h2>Avant de devenir sophrologue, j'étais de l'autre côté</h2>
+  <p class="body-text">Je sais ce que c'est que de courir après le temps, de rentrer épuisé le soir, et de sentir que quelque chose ne va pas — sans vraiment savoir quoi. Cette tension sourde que l'on met sous le tapis parce qu'on n'a pas le choix. Ou du moins, c'est ce qu'on croit.</p>
+  <p class="body-text">C'est ce chemin personnel — fait de prises de conscience, de doutes et d'un vrai tournant de vie — qui m'a conduit à la sophrologie. Et aujourd'hui à vous accompagner.</p>
+  <div class="quote-block">
+    <p>« Parce que le mieux-être ne devrait pas être un luxe, j'ai choisi une approche humaine et accessible — loin du jargon médical, proche de vous. »</p>
+  </div>
+</section>
+
+<!-- AFTER / BRIDGE -->
+<section class="section section-alt">
+  <h2>Une expertise certifiée, au service de votre équilibre</h2>
+  <p class="body-text">Certifié RNCP et fort de 8 ans d'expérience, j'accompagne les actifs stressés, les personnes en burn-out, et tous ceux qui souhaitent retrouver un équilibre durable. Mes séances sont individuelles, en cabinet à Paris ou en visio, et entièrement adaptées à votre rythme et à votre réalité.</p>
+
+  <div class="credentials">
+    <div class="credential-item">
+      <div class="num">8</div>
+      <div class="label">ans d'expérience</div>
+    </div>
+    <div class="credential-item">
+      <div class="num">RNCP</div>
+      <div class="label">Certification reconnue</div>
+    </div>
+    <div class="credential-item">
+      <div class="num">2</div>
+      <div class="label">formats : cabinet & visio</div>
+    </div>
+  </div>
+</section>
+
+<!-- DIFFÉRENCIATION -->
+<section class="section">
+  <h2>Ce qui rend cet accompagnement différent</h2>
+  <div class="grid-2">
+    <div class="card">
+      <div class="icon">🤝</div>
+      <h3>Un vécu partagé</h3>
+      <p>Je ne parle pas du stress professionnel en théorie. Je l'ai traversé. Cette expérience est le socle de chaque séance — elle crée une connexion authentique dès le premier échange.</p>
+    </div>
+    <div class="card">
+      <div class="icon">🏅</div>
+      <h3>Certification RNCP & 8 ans d'expérience</h3>
+      <p>Un cadre sérieux et rassurant, sans froideur clinique. Vous êtes entre les mains d'un professionnel formé, reconnu et expérimenté.</p>
+    </div>
+    <div class="card">
+      <div class="icon">💡</div>
+      <h3>Zéro jargon, 100 % concret</h3>
+      <p>Chaque exercice est expliqué clairement, chaque technique est transférable à votre vie. Vous repartez avec quelque chose d'utilisable dès le lendemain.</p>
+    </div>
+    <div class="card">
+      <div class="icon">📍</div>
+      <h3>Cabinet Paris 11e & visio</h3>
+      <p>Selon votre emploi du temps, vous choisissez le format. Le suivi ne s'interrompt pas lors de vos semaines chargées ou de vos déplacements.</p>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <h2>Parlons de ce que vous traversez</h2>
+  <p>Le premier rendez-vous est sans engagement. C'est l'occasion de vous présenter, d'écouter votre situation et de voir ensemble si l'accompagnement vous correspond.</p>
+  <a href="#" class="btn-light">Prendre rendez-vous</a>
+</section>
+
+<footer>
+  <span>Rémi Test</span>
+  <span>Sophrologue certifié RNCP — Paris 11e</span>
+  <span>test-sophrologue.com</span>
+</footer>
+
+</body>
