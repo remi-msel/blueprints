@@ -1,0 +1,169 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Accueil — Rémi Test</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+  @page { size: A4; margin: 15mm 15mm 20mm 15mm; }
+  body { font-family: 'Inter', sans-serif; font-size: 15px; line-height: 1.8; color: #2E2E2E; background: #fff; }
+  nav { display: flex; align-items: center; justify-content: space-between; padding: 14px 40px; background: #fff; border-bottom: 2px solid #7A9E7E; position: sticky; top: 0; z-index: 100; flex-wrap: wrap; gap: 10px; }
+  .nav-logo img { height: 36px; display: block; }
+  .nav-links { display: flex; gap: 8px; flex-wrap: wrap; }
+  .nav-links a { font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 500; color: #4E7354; text-decoration: none; padding: 5px 12px; border-radius: 20px; transition: background 0.2s; }
+  .nav-links a:hover { background: #e8f0e9; }
+  .nav-links a.active { background: #4E7354; color: #fff; }
+  .page-doc-section { padding: 70px 60px; }
+  .section-header-bar { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; margin-bottom: 32px; page-break-after: avoid; break-after: avoid; }
+  .section-num { font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 600; color: #7A9E7E; background: #f0f7f1; border-radius: 20px; padding: 4px 14px; }
+  .section-title { font-family: 'Playfair Display', serif; font-size: 32px; color: #2E2E2E; }
+  .badge-framework { border-radius: 20px; padding: 3px 10px; font-size: 12px; font-weight: 600; font-family: 'Inter', sans-serif; }
+  .badge-aida { background: #dbeafe; color: #1d4ed8; }
+  .badge-seo { background: #f0f7f1; border: 1px solid #7A9E7E; color: #4E7354; border-radius: 20px; padding: 3px 10px; font-size: 12px; font-weight: 600; font-family: 'Inter', sans-serif; }
+  .seo-card { background: #f4f0ea; border-radius: 14px; padding: 24px 28px; margin-bottom: 28px; page-break-inside: avoid; break-inside: avoid; }
+  .seo-card .seo-label { font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: #7A9E7E; margin-bottom: 6px; }
+  .seo-card .seo-row { display: flex; gap: 10px; align-items: flex-start; margin-bottom: 8px; }
+  .seo-card .seo-tag { font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 600; color: #4E7354; min-width: 120px; }
+  .seo-card p { font-family: 'Inter', sans-serif; font-size: 14px; color: #555; line-height: 1.7; }
+  .content-card { background: #fff; border-radius: 14px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); padding: 28px 32px; margin-bottom: 24px; page-break-inside: avoid; break-inside: avoid; }
+  .block-badge { display: inline-block; background: #e8ddd0; color: #2E2E2E; border-radius: 20px; padding: 3px 12px; font-size: 11px; font-weight: 600; font-family: 'Inter', sans-serif; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 14px; }
+  .content-card h1 { font-family: 'Playfair Display', serif; font-size: 40px; color: #4E7354; margin-bottom: 14px; page-break-after: avoid; break-after: avoid; line-height: 1.25; }
+  .content-card h2 { font-family: 'Playfair Display', serif; font-size: 32px; color: #4E7354; margin-bottom: 14px; page-break-after: avoid; break-after: avoid; line-height: 1.3; }
+  .content-card h3 { font-family: 'Playfair Display', serif; font-size: 22px; color: #2E2E2E; margin-bottom: 10px; page-break-after: avoid; break-after: avoid; }
+  .content-card p { font-family: 'Inter', sans-serif; font-size: 15px; color: #2E2E2E; line-height: 1.8; margin-bottom: 10px; }
+  .content-card p:last-child { margin-bottom: 0; }
+  .content-card .cta-btn { display: inline-block; margin-top: 14px; background: #4E7354; color: #fff; border-radius: 30px; padding: 12px 28px; font-family: 'Inter', sans-serif; font-size: 15px; font-weight: 600; text-decoration: none; letter-spacing: 0.3px; }
+  .content-card ul { padding-left: 20px; margin-top: 8px; }
+  .content-card ul li { font-family: 'Inter', sans-serif; font-size: 15px; line-height: 1.8; color: #2E2E2E; margin-bottom: 4px; }
+  .cards-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-bottom: 24px; }
+  .cards-grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; margin-bottom: 24px; }
+  .cards-grid-3 .content-card, .cards-grid-2 .content-card { margin-bottom: 0; }
+  .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-bottom: 24px; }
+  .testimonial-card { background: #fff; border-radius: 14px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); padding: 28px 32px; page-break-inside: avoid; break-inside: avoid; }
+  .testimonial-card .quote { font-family: 'Playfair Display', serif; font-size: 17px; font-style: italic; color: #2E2E2E; line-height: 1.7; margin-bottom: 14px; }
+  .testimonial-card .author { font-family: 'Inter', sans-serif; font-size: 13px; color: #7A9E7E; font-weight: 600; }
+  footer { background: rgba(122,158,126,0.05); border-top: 2px solid #7A9E7E; padding: 30px 60px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; font-family: 'Inter', sans-serif; font-size: 13px; color: #2E2E2E; }
+  footer span { opacity: 0.8; }
+  @media (max-width: 768px) {
+    .page-doc-section { padding: 24px; }
+    .cards-grid-3, .cards-grid-2, .testimonials-grid { grid-template-columns: 1fr; }
+    .content-card h1 { font-size: 28px; }
+    .content-card h2 { font-size: 26px; }
+    nav { padding: 12px 20px; }
+    footer { padding: 20px 24px; flex-direction: column; text-align: center; }
+  }
+  @media print {
+    nav { display: none; }
+    .content-card { page-break-inside: avoid; break-inside: avoid; }
+    .seo-card { page-break-inside: avoid; break-inside: avoid; }
+    .testimonial-card { page-break-inside: avoid; break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-logo">
+    <a href="https://monsite-en-ligne.github.io/blueprints/TEST THERAPEUTE-20260422.html">
+      <img src="https://i.imgur.com/72UqvFq.png" alt="AR Digital">
+    </a>
+  </div>
+  <div class="nav-links">
+    <a href="https://monsite-en-ligne.github.io/blueprints/TEST THERAPEUTE-20260422.html">Blueprint Stratégique</a>
+    <a href="https://monsite-en-ligne.github.io/blueprints/TEST THERAPEUTE-accueil-20260422.html" class="active">Accueil</a>
+    <a href="https://monsite-en-ligne.github.io/blueprints/TEST THERAPEUTE-sophrologie-paris-20260422.html">Sophrologie Paris</a>
+    <a href="https://monsite-en-ligne.github.io/blueprints/TEST THERAPEUTE-a-propos-20260422.html">À Propos</a>
+    <a href="https://monsite-en-ligne.github.io/blueprints/TEST THERAPEUTE-sophrologie-paris-11-20260422.html">Sophrologie Paris 11</a>
+    <a href="https://monsite-en-ligne.github.io/blueprints/TEST THERAPEUTE-sophrologie-en-ligne-20260422.html">Sophrologie en Ligne</a>
+  </div>
+</nav>
+
+<div class="page-doc-section">
+  <div class="section-header-bar">
+    <span class="section-num">01</span>
+    <span class="section-title">Accueil</span>
+    <span class="badge-framework badge-aida">AIDA</span>
+    <span class="badge-seo">sophrologue Paris</span>
+  </div>
+
+  <div class="seo-card">
+    <div class="seo-label">Métadonnées SEO</div>
+    <div class="seo-row">
+      <span class="seo-tag">Balise titre</span>
+      <p>Sophrologue Paris — Rémi Test, accompagnement stress &amp; burn-out</p>
+    </div>
+    <div class="seo-row">
+      <span class="seo-tag">Meta description</span>
+      <p>Sophrologue certifié RNCP à Paris et en visio. Rémi Test vous accompagne contre le stress, le burn-out et les troubles du sommeil. Séances dès 65€.</p>
+    </div>
+  </div>
+
+  <div class="content-card">
+    <span class="block-badge">Hero — Attention</span>
+    <h1>Vous méritez de souffler, vraiment.</h1>
+    <p>Sophrologue certifié à Paris et en visio, j'accompagne les actifs débordés, les personnes en burn-out et tous ceux qui sentent qu'il est temps de retrouver un équilibre durable — sans bousculer leur quotidien.</p>
+    <a class="cta-btn" href="#">Réserver une séance découverte</a>
+  </div>
+
+  <div class="content-card">
+    <span class="block-badge">Intérêt — Contexte</span>
+    <h2>Un sophrologue qui a vécu ce que vous traversez</h2>
+    <p>Ancien cadre reconverti après avoir lui-même traversé l'épuisement professionnel, Rémi Test ne parle pas de stress depuis un manuel. Il l'a vécu, il en est sorti, et il sait exactement par où commencer pour vous aider à en faire autant.</p>
+    <p>Certifié RNCP et fort de 8 ans d'expérience, il propose une approche humaine, concrète et entièrement adaptée à votre rythme — loin du jargon médical, proche de votre réalité.</p>
+  </div>
+
+  <div class="cards-grid-3">
+    <div class="content-card">
+      <span class="block-badge">Désir — Bénéfice</span>
+      <h3>Gérer le stress professionnel</h3>
+      <p>Des outils concrets pour décompresser durablement, même dans un quotidien chargé.</p>
+    </div>
+    <div class="content-card">
+      <span class="block-badge">Désir — Bénéfice</span>
+      <h3>Sortir du burn-out</h3>
+      <p>Un accompagnement progressif, bienveillant, qui respecte votre énergie disponible.</p>
+    </div>
+    <div class="content-card">
+      <span class="block-badge">Désir — Bénéfice</span>
+      <h3>Retrouver un sommeil réparateur</h3>
+      <p>Des techniques de sophrologie adaptées pour calmer le mental et mieux récupérer la nuit.</p>
+    </div>
+  </div>
+
+  <div class="content-card">
+    <span class="block-badge">Désir — Offre</span>
+    <h2>En cabinet à Paris ou en visio, selon votre confort</h2>
+    <p>Vous choisissez le format qui vous convient le mieux. Séances individuelles de 55 minutes, à 65€, avec des forfaits disponibles pour un accompagnement dans la durée. Pas de contrainte supplémentaire : juste un espace pour vous.</p>
+  </div>
+
+  <div class="testimonials-grid">
+    <div class="testimonial-card">
+      <div class="quote">« Après 6 mois d'épuisement total, Rémi m'a aidée à remettre les pieds sur terre. Sans jamais me brusquer. Je recommande les yeux fermés. »</div>
+      <div class="author">Sophie M. — Responsable marketing, Paris 10e</div>
+    </div>
+    <div class="testimonial-card">
+      <div class="quote">« Ce qui m'a convaincu, c'est son parcours. Il sait ce que c'est d'être cadre et d'avoir tout donné. Les séances en visio sont parfaites pour mon agenda. »</div>
+      <div class="author">Thomas R. — Directeur commercial, Lyon</div>
+    </div>
+    <div class="testimonial-card">
+      <div class="quote">« Je dormais 4h par nuit depuis des mois. En quelques séances, j'ai retrouvé un vrai sommeil. La sophrologie avec Rémi, c'est concret et bienveillant. »</div>
+      <div class="author">Claire D. — Cheffe de projet, Paris 11e</div>
+    </div>
+  </div>
+
+  <div class="content-card">
+    <span class="block-badge">Action — CTA</span>
+    <h2>Prêt à faire le premier pas ?</h2>
+    <p>La première séance découverte est l'occasion de se rencontrer, de parler de votre situation et de voir si la sophrologie est faite pour vous. Sans engagement, sans pression.</p>
+    <a class="cta-btn" href="#">Prendre rendez-vous</a>
+  </div>
+</div>
+
+<footer>
+  <span>Rémi Test</span>
+  <span>Thérapeute · Sophrologie</span>
+  <span>Confidentiel — AR Digital</span>
+</footer>
+</body>
