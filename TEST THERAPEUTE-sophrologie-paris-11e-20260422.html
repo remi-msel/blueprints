@@ -1,0 +1,72 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sophrologie Paris 11e — Rémi Test</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Inter', sans-serif; background: #fafaf8; color: #2a2a2a; padding-top: 56px; }
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(46,74,49,0.97); backdrop-filter: blur(8px); height: 56px; display: flex; align-items: center; padding: 0 40px; justify-content: space-between; }
+  nav img { height: 28px; }
+  .nav-links { display: flex; align-items: center; }
+  .nav-links a { font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.85); text-decoration: none; margin: 0 16px; white-space: nowrap; }
+  .nav-links a.active { color: #fff; border-bottom: 2px solid #fff; padding-bottom: 2px; }
+  @media (max-width: 768px) {
+    nav { padding: 0 16px; }
+    .nav-links { overflow-x: auto; font-size: 12px; }
+    .nav-links a { font-size: 12px; margin: 0 10px; }
+  }
+  .page-wrap { padding: 70px 60px; }
+  .page-header { display: flex; align-items: center; gap: 16px; margin-bottom: 36px; flex-wrap: wrap; }
+  .page-num { font-family: 'Playfair Display', serif; font-size: 48px; font-weight: 700; color: #e8ede8; line-height: 1; }
+  .page-header-info h2 { font-family: 'Playfair Display', serif; font-size: 32px; color: #2E4A31; }
+  .badge-fw { border-radius: 20px; padding: 3px 10px; font-size: 12px; font-weight: 600; display: inline-block; margin-right: 8px; }
+  .badge-local { background: #fce7f3; color: #9d174d; }
+  .badge-seo { background: #f0f5f0; color: #4A6E4E; border-radius: 20px; padding: 3px 10px; font-size: 12px; font-weight: 600; display: inline-block; }
+  .seo-card { background: #f0f5f0; border-radius: 14px; padding: 24px 28px; margin-bottom: 28px; border-left: 4px solid #7A9E7E; }
+  .seo-card .seo-label { font-size: 11px; font-weight: 600; color: #7A9E7E; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; }
+  .seo-card .seo-val { font-family: 'Inter', sans-serif; font-size: 15px; color: #2a2a2a; line-height: 1.6; }
+  .block-card { background: #fff; border-radius: 14px; padding: 28px 32px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); margin-bottom: 24px; page-break-inside: avoid; break-inside: avoid; }
+  .block-badge { display: inline-block; background: rgba(122,158,126,0.12); color: #4A6E4E; border-radius: 20px; padding: 3px 12px; font-size: 12px; font-weight: 600; margin-bottom: 14px; text-transform: uppercase; letter-spacing: 0.5px; }
+  .block-card h1 { font-family: 'Playfair Display', serif; font-size: 40px; color: #2E4A31; margin-bottom: 14px; page-break-after: avoid; break-after: avoid; }
+  .block-card h2 { font-family: 'Playfair Display', serif; font-size: 32px; color: #2E4A31; margin-bottom: 14px; page-break-after: avoid; break-after: avoid; }
+  .block-card h3 { font-family: 'Playfair Display', serif; font-size: 22px; color: #2E4A31; margin-bottom: 10px; }
+  .block-card p { font-size: 15px; line-height: 1.8; color: #3a3a3a; margin-bottom: 10px; }
+  .block-card p:last-child { margin-bottom: 0; }
+  .cta-btn { display: inline-block; background: #4A6E4E; color: #fff; border-radius: 8px; padding: 12px 28px; font-size: 15px; font-weight: 600; margin-top: 14px; text-decoration: none; }
+  .grid-3c { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px; margin-bottom: 24px; }
+  .grid-2c { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 24px; }
+  footer { background: rgba(122,158,126,0.07); border-top: 2px solid #7A9E7E; padding: 30px 60px; display: flex; justify-content: space-between; align-items: center; font-size: 13px; color: #888; }
+  @media (max-width: 768px) {
+    .page-wrap { padding: 24px; }
+    .grid-3c, .grid-2c { grid-template-columns: 1fr; }
+    .block-card h1 { font-size: 28px; }
+    .block-card h2 { font-size: 22px; }
+    footer { flex-direction: column; gap: 8px; text-align: center; padding: 20px; }
+  }
+  @page { size: A4; margin: 15mm 15mm 20mm 15mm; }
+  * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+</style>
+</head>
+<body>
+
+<nav>
+  <img src="https://i.imgur.com/72UqvFq.png" alt="AR Digital">
+  <div class="nav-links">
+    <a href="https://monsite-en-ligne.github.io/blueprints/TEST THERAPEUTE-20260422.html">Blueprint Stratégique</a>
+    <a href="https://monsite-en-ligne.github.io/blueprints/TEST THERAPEUTE-accueil-20260422.html">Accueil</a>
+    <a href="https://monsite-en-ligne.github.io/blueprints/TEST THERAPEUTE-seances-individuelles-20260422.html">Séances individuelles</a>
+    <a href="https://monsite-en-ligne.github.io/blueprints/TEST THERAPEUTE-sophrologie-en-ligne-20260422.html">Sophrologie en ligne</a>
+    <a href="https://monsite-en-ligne.github.io/blueprints/TEST THERAPEUTE-a-propos-20260422.html">À propos</a>
+    <a href="https://monsite-en-ligne.github.io/blueprints/TEST THERAPEUTE-sophrologie-paris-11e-20260422.html" class="active">Paris 11e</a>
+    <a href="https://monsite-en-ligne.github.io/blueprints/TEST THERAPEUTE-sophrologie-paris-12e-20260422.html">Paris 12e</a>
+  </div>
+</nav>
+
+<div class="page-wrap">
+
+  <div class="page-header">
+    <div class="page-num">05
