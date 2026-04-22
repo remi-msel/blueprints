@@ -1,0 +1,153 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sophrologue Paris — Rémi Test</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Inter', sans-serif; background: #f9f7f4; color: #2d2d2d; padding-top: 56px; }
+
+nav.main-nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  background: rgba(42,61,44,0.97); backdrop-filter: blur(8px);
+  height: 56px; display: flex; align-items: center;
+  justify-content: space-between; padding: 0 40px;
+}
+.nav-logo { height: 28px; }
+.nav-links { display: flex; align-items: center; }
+.nav-links a {
+  font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 500;
+  color: rgba(255,255,255,0.85); text-decoration: none; margin: 0 16px;
+  padding-bottom: 2px; border-bottom: 2px solid transparent;
+}
+.nav-links a.active { color: #ffffff; border-bottom: 2px solid #ffffff; }
+.nav-links a:hover { color: #ffffff; }
+
+.page-hero {
+  background: linear-gradient(135deg, #2a3d2c 0%, #4E6E52 60%, #7A9E7E 100%);
+  padding: 80px 60px 64px; color: #fff; text-align: center;
+}
+.page-hero h1 { font-family: 'Playfair Display', serif; font-size: 48px; font-weight: 700; line-height: 1.2; max-width: 780px; margin: 0 auto 20px; }
+.page-hero p { font-size: 17px; line-height: 1.8; opacity: 0.88; max-width: 620px; margin: 0 auto; }
+
+.section { padding: 70px 60px; }
+.section-alt { background: #F2EAD9; }
+.section h2 { font-family: 'Playfair Display', serif; font-size: 34px; font-weight: 700; color: #2a3d2c; margin-bottom: 16px; }
+.section .lead { font-size: 16px; line-height: 1.8; color: #555; max-width: 700px; margin-bottom: 40px; }
+
+.card { background: #fff; border-radius: 14px; padding: 28px 28px 32px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+.card h3 { font-family: 'Playfair Display', serif; font-size: 20px; color: #2a3d2c; margin-bottom: 12px; }
+.card p { font-size: 15px; line-height: 1.8; color: #555; }
+.card .icon { font-size: 28px; margin-bottom: 14px; }
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+
+.testimonial { background: #fff; border-radius: 14px; padding: 28px 32px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); border-left: 4px solid #B5CEB8; }
+.testimonial p { font-size: 15px; line-height: 1.8; color: #444; font-style: italic; margin-bottom: 14px; }
+.testimonial .author { font-size: 13px; font-weight: 600; color: #4E6E52; }
+
+.cta-box { background: #fff; border-radius: 14px; padding: 40px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); text-align: center; }
+.cta-box h2 { font-family: 'Playfair Display', serif; font-size: 28px; color: #2a3d2c; margin-bottom: 14px; }
+.cta-box p { font-size: 15px; line-height: 1.8; color: #555; max-width: 520px; margin: 0 auto 24px; }
+.cta-box .price-tag { font-family: 'Playfair Display', serif; font-size: 36px; font-weight: 700; color: #4E6E52; margin-bottom: 6px; }
+.cta-box .price-sub { font-size: 14px; color: #888; margin-bottom: 24px; }
+.btn-primary { display: inline-block; background: #4E6E52; color: #fff; border-radius: 8px; padding: 14px 32px; font-size: 15px; font-weight: 600; text-decoration: none; }
+
+footer { background: rgba(78,110,82,0.05); border-top: 2px solid #4E6E52; padding: 30px 60px; display: flex; justify-content: space-between; align-items: center; font-size: 13px; color: #888; }
+
+@media (max-width: 768px) {
+  nav.main-nav { padding: 0 16px; }
+  .nav-links { overflow-x: auto; }
+  .nav-links a { font-size: 12px; margin: 0 10px; }
+  .page-hero { padding: 48px 24px; }
+  .page-hero h1 { font-size: 30px; }
+  .section { padding: 48px 24px; }
+  .grid-2 { grid-template-columns: 1fr; }
+  .section h2 { font-size: 26px; }
+  footer { flex-direction: column; gap: 8px; text-align: center; padding: 20px 24px; }
+}
+</style>
+</head>
+<body>
+
+<nav class="main-nav">
+  <img src="https://i.imgur.com/72UqvFq.png" alt="AR Digital" class="nav-logo">
+  <div class="nav-links">
+    <a href="https://monsite-en-ligne.github.io/blueprints/TEST-THERAPEUTE-20260422.html">Blueprint</a>
+    <a href="https://monsite-en-ligne.github.io/blueprints/TEST-THERAPEUTE-accueil-20260422.html">Accueil</a>
+    <a href="https://monsite-en-ligne.github.io/blueprints/TEST-THERAPEUTE-sophrologie-20260422.html">Sophrologie</a>
+    <a href="https://monsite-en-ligne.github.io/blueprints/TEST-THERAPEUTE-a-propos-20260422.html">À propos</a>
+    <a href="https://monsite-en-ligne.github.io/blueprints/TEST-THERAPEUTE-sophrologue-paris-20260422.html" class="active">Sophrologue Paris</a>
+    <a href="https://monsite-en-ligne.github.io/blueprints/TEST-THERAPEUTE-sophrologie-en-ligne-20260422.html">Sophrologie en ligne</a>
+  </div>
+</nav>
+
+<section class="page-hero">
+  <h1>Sophrologue à Paris 11e — Un cabinet au cœur de votre quotidien</h1>
+  <p>À deux pas de Bastille et Nation, un espace calme et confidentiel dédié aux professionnels parisiens qui souhaitent reprendre le contrôle.</p>
+</section>
+
+<!-- INTÉRÊT -->
+<section class="section">
+  <h2>Pourquoi choisir une séance en présentiel ?</h2>
+  <p class="lead">Pour certains, le cabinet représente une vraie coupure — un moment hors du flux, dédié à soi. L'espace physique joue un rôle dans la déconnexion du quotidien et dans la profondeur du lâcher-prise. C'est ce que propose le cabinet du 11e : une pause dans Paris.</p>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="icon">🚇</div>
+      <h3>Facilement accessible</h3>
+      <p>Cabinet situé à Paris 11e, bien desservi par les transports. Métro, vélo, à pied — le rendez-vous s'insère sans effort dans votre trajet ou votre pause déjeuner.</p>
+    </div>
+    <div class="card">
+      <div class="icon">🌿</div>
+      <h3>Un espace pensé pour vous</h3>
+      <p>Un environnement calme, discret et chaleureux. Vous entrez dans une parenthèse — loin des open spaces, des notifications et des sollicitations permanentes.</p>
+    </div>
+    <div class="card">
+      <div class="icon">⭐</div>
+      <h3>8 ans au service des Parisiens</h3>
+      <p>Rémi accompagne depuis 8 ans des professionnels parisiens — cadres, managers, indépendants — qui cherchent à retrouver un équilibre concret et durable.</p>
+    </div>
+    <div class="card">
+      <div class="icon">🔄</div>
+      <h3>Cabinet ou visio, c'est vous qui choisissez</h3>
+      <p>Vous pouvez alterner selon vos semaines. Semaine chargée ? Visio depuis chez vous. Semaine normale ? Vous venez au cabinet. Le suivi ne s'interrompt jamais.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TÉMOIGNAGES -->
+<section class="section section-alt">
+  <h2>Ce qu'en disent les patients du cabinet</h2>
+  <div class="grid-2">
+    <div class="testimonial">
+      <p>« Le cabinet est à 10 minutes de mon bureau. J'y vais le midi, je repars ressourcé pour l'après-midi. Ça change tout de pouvoir venir en présentiel. »</p>
+      <div class="author">Marc D. — Directeur de projet, Paris 12e</div>
+    </div>
+    <div class="testimonial">
+      <p>« J'avais essayé des applications de méditation. Ce n'est pas comparable. Le fait d'être dans un vrai espace avec quelqu'un qui vous guide fait toute la différence. »</p>
+      <div class="author">Camille R. — Chargée de communication, Paris 11e</div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="section">
+  <div class="cta-box">
+    <h2>Votre premier rendez-vous à Paris</h2>
+    <p>Séance individuelle en cabinet Paris 11e. Premier contact sans engagement. Réservation rapide, réponse sous 24h.</p>
+    <div class="price-tag">65 €</div>
+    <div class="price-sub">la séance de 55 minutes</div>
+    <a href="#" class="btn-primary">Réserver au cabinet Paris 11e</a>
+  </div>
+</section>
+
+<footer>
+  <span>Rémi Test</span>
+  <span>Sophrologue certifié RNCP — Paris 11e</span>
+  <span>test-sophrologue.com</span>
+</footer>
+
+</body>
