@@ -1,0 +1,140 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>À Propos — Rémi Test</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+  @page { size: A4; margin: 15mm 15mm 20mm 15mm; }
+  body { font-family: 'Inter', sans-serif; font-size: 15px; line-height: 1.8; color: #2E2E2E; background: #fff; }
+  nav { display: flex; align-items: center; justify-content: space-between; padding: 14px 40px; background: #fff; border-bottom: 2px solid #7A9E7E; position: sticky; top: 0; z-index: 100; flex-wrap: wrap; gap: 10px; }
+  .nav-logo img { height: 36px; display: block; }
+  .nav-links { display: flex; gap: 8px; flex-wrap: wrap; }
+  .nav-links a { font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 500; color: #4E7354; text-decoration: none; padding: 5px 12px; border-radius: 20px; transition: background 0.2s; }
+  .nav-links a:hover { background: #e8f0e9; }
+  .nav-links a.active { background: #4E7354; color: #fff; }
+  .page-doc-section { padding: 70px 60px; }
+  .section-header-bar { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; margin-bottom: 32px; page-break-after: avoid; break-after: avoid; }
+  .section-num { font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 600; color: #7A9E7E; background: #f0f7f1; border-radius: 20px; padding: 4px 14px; }
+  .section-title { font-family: 'Playfair Display', serif; font-size: 32px; color: #2E2E2E; }
+  .badge-framework { border-radius: 20px; padding: 3px 10px; font-size: 12px; font-weight: 600; font-family: 'Inter', sans-serif; }
+  .badge-story { background: #fef9c3; color: #854d0e; }
+  .badge-seo { background: #f0f7f1; border: 1px solid #7A9E7E; color: #4E7354; border-radius: 20px; padding: 3px 10px; font-size: 12px; font-weight: 600; font-family: 'Inter', sans-serif; }
+  .seo-card { background: #f4f0ea; border-radius: 14px; padding: 24px 28px; margin-bottom: 28px; page-break-inside: avoid; break-inside: avoid; }
+  .seo-card .seo-label { font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: #7A9E7E; margin-bottom: 6px; }
+  .seo-card .seo-row { display: flex; gap: 10px; align-items: flex-start; margin-bottom: 8px; }
+  .seo-card .seo-tag { font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 600; color: #4E7354; min-width: 120px; }
+  .seo-card p { font-family: 'Inter', sans-serif; font-size: 14px; color: #555; line-height: 1.7; }
+  .content-card { background: #fff; border-radius: 14px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); padding: 28px 32px; margin-bottom: 24px; page-break-inside: avoid; break-inside: avoid; }
+  .block-badge { display: inline-block; background: #e8ddd0; color: #2E2E2E; border-radius: 20px; padding: 3px 12px; font-size: 11px; font-weight: 600; font-family: 'Inter', sans-serif; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 14px; }
+  .content-card h1 { font-family: 'Playfair Display', serif; font-size: 40px; color: #4E7354; margin-bottom: 14px; page-break-after: avoid; break-after: avoid; line-height: 1.25; }
+  .content-card h2 { font-family: 'Playfair Display', serif; font-size: 32px; color: #4E7354; margin-bottom: 14px; page-break-after: avoid; break-after: avoid; line-height: 1.3; }
+  .content-card h3 { font-family: 'Playfair Display', serif; font-size: 22px; color: #2E2E2E; margin-bottom: 10px; page-break-after: avoid; break-after: avoid; }
+  .content-card p { font-family: 'Inter', sans-serif; font-size: 15px; color: #2E2E2E; line-height: 1.8; margin-bottom: 10px; }
+  .content-card p:last-child { margin-bottom: 0; }
+  .content-card .cta-btn { display: inline-block; margin-top: 14px; background: #4E7354; color: #fff; border-radius: 30px; padding: 12px 28px; font-family: 'Inter', sans-serif; font-size: 15px; font-weight: 600; text-decoration: none; letter-spacing: 0.3px; }
+  .cards-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-bottom: 24px; }
+  .cards-grid-3 .content-card { margin-bottom: 0; }
+  footer { background: rgba(122,158,126,0.05); border-top: 2px solid #7A9E7E; padding: 30px 60px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; font-family: 'Inter', sans-serif; font-size: 13px; color: #2E2E2E; }
+  footer span { opacity: 0.8; }
+  @media (max-width: 768px) {
+    .page-doc-section { padding: 24px; }
+    .cards-grid-3 { grid-template-columns: 1fr; }
+    .content-card h1 { font-size: 28px; }
+    .content-card h2 { font-size: 26px; }
+    nav { padding: 12px 20px; }
+    footer { padding: 20px 24px; flex-direction: column; text-align: center; }
+  }
+  @media print {
+    nav { display: none; }
+    .content-card { page-break-inside: avoid; break-inside: avoid; }
+    .seo-card { page-break-inside: avoid; break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-logo">
+    <a href="https://monsite-en-ligne.github.io/blueprints/TEST THERAPEUTE-20260422.html">
+      <img src="https://i.imgur.com/72UqvFq.png" alt="AR Digital">
+    </a>
+  </div>
+  <div class="nav-links">
+    <a href="https://monsite-en-ligne.github.io/blueprints/TEST THERAPEUTE-20260422.html">Blueprint Stratégique</a>
+    <a href="https://monsite-en-ligne.github.io/blueprints/TEST THERAPEUTE-accueil-20260422.html">Accueil</a>
+    <a href="https://monsite-en-ligne.github.io/blueprints/TEST THERAPEUTE-sophrologie-paris-20260422.html">Sophrologie Paris</a>
+    <a href="https://monsite-en-ligne.github.io/blueprints/TEST THERAPEUTE-a-propos-20260422.html" class="active">À Propos</a>
+    <a href="https://monsite-en-ligne.github.io/blueprints/TEST THERAPEUTE-sophrologie-paris-11-20260422.html">Sophrologie Paris 11</a>
+    <a href="https://monsite-en-ligne.github.io/blueprints/TEST THERAPEUTE-sophrologie-en-ligne-20260422.html">Sophrologie en Ligne</a>
+  </div>
+</nav>
+
+<div class="page-doc-section">
+  <div class="section-header-bar">
+    <span class="section-num">03</span>
+    <span class="section-title">À Propos</span>
+    <span class="badge-framework badge-story">Storytelling</span>
+    <span class="badge-seo">sophrologue certifié RNCP ancien cadre</span>
+  </div>
+
+  <div class="seo-card">
+    <div class="seo-label">Métadonnées SEO</div>
+    <div class="seo-row">
+      <span class="seo-tag">Balise titre</span>
+      <p>Rémi Test — Sophrologue certifié RNCP, ancien cadre reconverti</p>
+    </div>
+    <div class="seo-row">
+      <span class="seo-tag">Meta description</span>
+      <p>Ancien cadre devenu sophrologue certifié RNCP, Rémi Test accompagne actifs et personnes en burn-out depuis 8 ans. Une approche humaine, sans jargon.</p>
+    </div>
+  </div>
+
+  <div class="content-card">
+    <span class="block-badge">Histoire personnelle</span>
+    <h1>J'ai couru après le temps. Longtemps.</h1>
+    <p>Ancien cadre, je sais ce que c'est que de rentrer épuisé le soir, de sentir que quelque chose ne va pas — sans vraiment savoir quoi. Cette tension permanente, cette impression de tenir sans vraiment vivre.</p>
+    <p>C'est ce chemin personnel qui m'a conduit à la sophrologie. Pas un choix de carrière comme un autre : une nécessité, d'abord pour moi, et aujourd'hui pour vous accompagner.</p>
+  </div>
+
+  <div class="content-card">
+    <span class="block-badge">Expertise</span>
+    <h2>Certifié RNCP, 8 ans au service de vos équilibres</h2>
+    <p>Sophrologue certifié RNCP, j'accompagne depuis 8 ans les actifs stressés, les personnes en burn-out et tous ceux qui souhaitent retrouver un équilibre durable. Mes séances sont individuelles — en cabinet à Paris ou en visio — et entièrement adaptées à votre rythme et à votre réalité.</p>
+    <p>La certification et l'expérience sont là pour vous rassurer. Mais ce qui fait vraiment la différence, c'est d'avoir vécu de l'intérieur ce que vous traversez — et d'en être sorti.</p>
+  </div>
+
+  <div class="cards-grid-3">
+    <div class="content-card">
+      <span class="block-badge">Différenciateur</span>
+      <h3>Il a vécu ce que vous vivez</h3>
+      <p>Sa reconversion depuis le monde du cadre n'est pas un détail. C'est la raison pour laquelle il comprend vos contraintes, votre langage et vos blocages réels.</p>
+    </div>
+    <div class="content-card">
+      <span class="block-badge">Différenciateur</span>
+      <h3>Une approche sans jargon</h3>
+      <p>Pas de distance clinique, pas de vocabulaire intimidant. Des séances comme une conversation entre deux personnes qui se comprennent.</p>
+    </div>
+    <div class="content-card">
+      <span class="block-badge">Différenciateur</span>
+      <h3>À votre rythme, toujours</h3>
+      <p>Cabinet à Paris ou visio depuis chez vous. Aucune contrainte supplémentaire. Le mieux-être doit s'adapter à votre vie, pas l'inverse.</p>
+    </div>
+  </div>
+
+  <div class="content-card">
+    <span class="block-badge">Mission</span>
+    <h2>Parce que le mieux-être ne devrait pas être un luxe</h2>
+    <p>J'ai fait le choix d'une approche humaine et accessible — loin du jargon médical, proche de vous. Mon objectif n'est pas de vous accompagner indéfiniment : c'est de vous donner les outils pour avancer seul, avec confiance et à votre propre rythme.</p>
+    <a class="cta-btn" href="#">Prendre rendez-vous avec Rémi</a>
+  </div>
+</div>
+
+<footer>
+  <span>Rémi Test</span>
+  <span>Thérapeute · Sophrologie</span>
+  <span>Confidentiel — AR Digital</span>
+</footer>
+</body>
