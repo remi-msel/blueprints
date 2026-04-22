@@ -1,0 +1,310 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>À propos — Rémi Test</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+@page { size: A4; margin: 15mm 15mm 20mm 15mm; }
+* { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --primary: #7A9E7E;
+  --primary-dark: #4F7A55;
+  --beige-light: #E8DCC8;
+  --beige-warm: #C9B899;
+  --terre: #B5735A;
+  --text-dark: #1a1a1a;
+  --text-light: #6b6b6b;
+  --white: #ffffff;
+}
+body { font-family: 'Inter', sans-serif; font-size: 15px; line-height: 1.8; color: var(--text-dark); background: #f9f7f4; }
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 48px;
+  background: var(--white);
+  border-bottom: 2px solid var(--beige-light);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.nav-logo img { height: 36px; }
+.nav-links { display: flex; gap: 24px; flex-wrap: wrap; }
+.nav-links a {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-dark);
+  text-decoration: none;
+  padding: 4px 0;
+  border-bottom: 2px solid transparent;
+  transition: border-color 0.2s;
+}
+.nav-links a:hover { border-bottom-color: var(--primary); }
+.nav-links a.active { color: var(--primary-dark); border-bottom-color: var(--primary-dark); font-weight: 600; }
+.page-content { padding: 70px 60px; max-width: 1100px; margin: 0 auto; }
+.intro-block {
+  background: var(--beige-light);
+  border-radius: 20px;
+  padding: 72px 60px;
+  margin-bottom: 48px;
+}
+.intro-block h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 48px;
+  font-weight: 700;
+  color: var(--primary-dark);
+  line-height: 1.15;
+  margin-bottom: 24px;
+}
+.intro-block p {
+  font-family: 'Inter', sans-serif;
+  font-size: 17px;
+  color: var(--text-dark);
+  line-height: 1.8;
+  max-width: 680px;
+  margin-bottom: 14px;
+}
+.section-block {
+  background: var(--white);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  border-radius: 14px;
+  padding: 48px 48px;
+  margin-bottom: 32px;
+  page-break-inside: avoid;
+  break-inside: avoid;
+}
+.section-block h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 34px;
+  color: var(--text-dark);
+  margin-bottom: 18px;
+  line-height: 1.25;
+}
+.section-block p {
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  line-height: 1.8;
+  color: var(--text-dark);
+  margin-bottom: 12px;
+}
+.credentials-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin: 24px 0;
+}
+.credential-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 16px 18px;
+  background: #f9f7f4;
+  border-radius: 10px;
+}
+.credential-dot {
+  width: 10px;
+  height: 10px;
+  min-width: 10px;
+  background: var(--primary);
+  border-radius: 50%;
+  margin-top: 7px;
+}
+.credential-text {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--text-dark);
+}
+.cards-grid-3 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 24px;
+  margin: 32px 0;
+}
+.value-card {
+  background: var(--white);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  border-radius: 14px;
+  padding: 32px 28px;
+  page-break-inside: avoid;
+  break-inside: avoid;
+}
+.value-card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  color: var(--primary-dark);
+  margin-bottom: 12px;
+}
+.value-card p {
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  line-height: 1.8;
+  color: var(--text-dark);
+}
+.cta-block {
+  background: linear-gradient(135deg, var(--primary-dark) 0%, #2c3e2d 100%);
+  border-radius: 14px;
+  padding: 52px 48px;
+  text-align: center;
+  margin-bottom: 32px;
+}
+.cta-block h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 34px;
+  color: var(--white);
+  margin-bottom: 16px;
+}
+.cta-block p {
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  color: rgba(255,255,255,0.85);
+  line-height: 1.8;
+  margin-bottom: 8px;
+}
+.btn-primary {
+  display: inline-block;
+  background: var(--primary);
+  color: var(--white);
+  padding: 14px 32px;
+  border-radius: 10px;
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  margin-top: 24px;
+  text-decoration: none;
+  margin-right: 12px;
+}
+.btn-secondary {
+  display: inline-block;
+  background: transparent;
+  color: var(--white);
+  padding: 14px 32px;
+  border-radius: 10px;
+  border: 2px solid rgba(255,255,255,0.5);
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  margin-top: 24px;
+  text-decoration: none;
+}
+footer {
+  background: rgba(122,158,126,0.05);
+  border-top: 2px solid var(--primary);
+  padding: 30px 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  color: var(--text-light);
+  flex-wrap: wrap;
+  gap: 8px;
+}
+@media (max-width: 768px) {
+  nav { padding: 16px 24px; }
+  .page-content { padding: 24px; }
+  .intro-block { padding: 40px 24px; }
+  .intro-block h1 { font-size: 32px; }
+  .section-block { padding: 28px 24px; }
+  .cards-grid-3 { grid-template-columns: 1fr; }
+  .credentials-grid { grid-template-columns: 1fr; }
+  .cta-block { padding: 36px 24px; }
+  .cta-block h2 { font-size: 26px; }
+  footer { flex-direction: column; text-align: center; padding: 24px; }
+}
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-logo">
+    <a href="https://monsite-en-ligne.github.io/blueprints/TEST THERAPEUTE-20260422.html">
+      <img src="https://i.imgur.com/72UqvFq.png" alt="AR Digital">
+    </a>
+  </div>
+  <div class="nav-links">
+    <a href="https://monsite-en-ligne.github.io/blueprints/TEST THERAPEUTE-20260422.html">Blueprint</a>
+    <a href="https://monsite-en-ligne.github.io/blueprints/TEST THERAPEUTE-accueil-20260422.html">Accueil</a>
+    <a href="https://monsite-en-ligne.github.io/blueprints/TEST THERAPEUTE-sophrologie-20260422.html">Sophrologie</a>
+    <a href="https://monsite-en-ligne.github.io/blueprints/TEST THERAPEUTE-a-propos-20260422.html" class="active">À propos</a>
+    <a href="https://monsite-en-ligne.github.io/blueprints/TEST THERAPEUTE-temoignages-20260422.html">Témoignages</a>
+    <a href="https://monsite-en-ligne.github.io/blueprints/TEST THERAPEUTE-contact-20260422.html">Contact</a>
+    <a href="https://monsite-en-ligne.github.io/blueprints/TEST THERAPEUTE-sophrologue-paris-20260422.html">Sophrologue Paris</a>
+    <a href="https://monsite-en-ligne.github.io/blueprints/TEST THERAPEUTE-sophrologue-paris-11-20260422.html">Sophrologue Paris 11</a>
+    <a href="https://monsite-en-ligne.github.io/blueprints/TEST THERAPEUTE-blog-20260422.html">Blog</a>
+  </div>
+</nav>
+
+<div class="page-content">
+
+  <div class="intro-block">
+    <h1>J'ai été vous, avant d'être sophrologue.</h1>
+    <p>Ancien cadre reconverti, je sais ce que c'est que de courir après le temps, de rentrer épuisé le soir, et de sentir que quelque chose ne va pas — sans vraiment savoir quoi.</p>
+    <p>Ce malaise silencieux, cette impression d'être à côté de soi tout en continuant à assurer : je l'ai vécu de l'intérieur. Et pendant longtemps, je n'ai pas su mettre de mots dessus.</p>
+  </div>
+
+  <div class="section-block">
+    <h2>La sophrologie m'a redonné le fil de ma vie.</h2>
+    <p>C'est ce chemin personnel qui m'a conduit à la sophrologie — d'abord comme outil pour moi, puis comme vocation pour accompagner les autres. Quand j'ai découvert ce que ces techniques pouvaient changer au quotidien, je n'ai plus voulu faire autre chose.</p>
+    <p>Aujourd'hui, j'accompagne les actifs stressés, les personnes en burn-out, et tous ceux qui souhaitent retrouver un équilibre durable. Pas comme un thérapeute de l'ombre — mais comme quelqu'un qui a traversé le même chemin que vous.</p>
+  </div>
+
+  <div class="section-block">
+    <h2>Ce qui me qualifie pour vous accompagner</h2>
+    <p>Certifié RNCP et fort de 8 ans d'expérience, j'ai construit une pratique rigoureuse et humaine, loin du jargon médical et des protocoles standardisés. Chaque client est unique : ses séances le sont aussi.</p>
+    <p>Mes séances sont individuelles, en cabinet à Paris 11 ou en visio, et entièrement adaptées à votre rythme et à votre réalité. Parce que le mieux-être ne devrait pas être un luxe, j'ai choisi une approche accessible — proche de vous, pas au-dessus de vous.</p>
+    <div class="credentials-grid">
+      <div class="credential-item">
+        <div class="credential-dot"></div>
+        <span class="credential-text">Certification RNCP reconnue</span>
+      </div>
+      <div class="credential-item">
+        <div class="credential-dot"></div>
+        <span class="credential-text">8 ans d'expérience en sophrologie</span>
+      </div>
+      <div class="credential-item">
+        <div class="credential-dot"></div>
+        <span class="credential-text">Ancien cadre, expertise du monde du travail</span>
+      </div>
+      <div class="credential-item">
+        <div class="credential-dot"></div>
+        <span class="credential-text">Cabinet Paris 11 + séances visio disponibles</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="cards-grid-3">
+    <div class="value-card">
+      <h3>Écoute réelle</h3>
+      <p>Chaque séance commence là où vous en êtes aujourd'hui — pas là où vous devriez être.</p>
+    </div>
+    <div class="value-card">
+      <h3>Pragmatisme</h3>
+      <p>Des outils concrets que vous pouvez utiliser seul, hors séance, dans votre vie réelle.</p>
+    </div>
+    <div class="value-card">
+      <h3>Accessibilité</h3>
+      <p>Un tarif juste, un format flexible, et une présence humaine — pas une relation prestataire.</p>
+    </div>
+  </div>
+
+  <div class="cta-block">
+    <h2>Envie d'en savoir plus avant de vous lancer ?</h2>
+    <p>Rien n'engage à rien. Vous pouvez me contacter pour une première question ou réserver directement votre séance de découverte. Je vous réponds personnellement.</p>
+    <a href="https://monsite-en-ligne.github.io/blueprints/TEST THERAPEUTE-contact-20260422.html" class="btn-primary">Prendre rendez-vous</a>
+    <a href="https://monsite-en-ligne.github.io/blueprints/TEST THERAPEUTE-contact-20260422.html" class="btn-secondary">Me contacter</a>
+  </div>
+
+</div>
+
+<footer>
+  <span>Rémi Test — TEST THERAPEUTE</span>
+  <span>Thérapeute — Sophrologie</span>
+  <span>test-sophrologue.com</span>
+</footer>
+</body>
