@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blueprint Stratégique — ADJ Conciergerie</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    line-height: 1.8;
+    color: #1a2744;
+    background: #ffffff;
+  }
+
+  /* COVER */
+  .cover {
+    min-height: 100vh;
+    background: linear-gradient(145deg, #0d1b3e 0%, #1a2f6e 50%, #0d1b3e 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 60px 40px;
+    position: relative;
+  }
+  .cover::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at center, rgba(212,175,55,0.12) 0%, transparent 70%);
+  }
+  .cover-badge {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #d4af37;
+    margin-bottom: 32px;
+    position: relative;
+  }
+  .cover-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 72px;
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.1;
+    margin-bottom: 16px;
+    position: relative;
+  }
+  .cover-subtitle {
+    font-family: 'Inter', sans-serif;
+    font-size: 18px;
+    color: rgba(255,255,255,0.65);
+    margin-bottom: 48px;
+    font-weight: 300;
+    position: relative;
+  }
+  .cover-meta {
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+    flex-wrap: wrap;
+    position: relative;
+  }
+  .cover-meta-item {
+    text-align: center;
+  }
+  .cover-meta-label {
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #d4af37;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+  .cover-meta-value {
+    font-size: 14px;
+    color: rgba(255,255,255,0.85);
+    font-weight: 400;
+  }
+
+  /* SECTIONS */
+  section {
+    padding: 80px 80px;
+    page-break-inside: avoid;
+  }
+  section:nth-child(even) {
+    background: #f8f9fc;
+  }
+  section:nth-child(odd) {
+    background: #ffffff;
+  }
+
+  .section-badge {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #d4af37;
+    margin-bottom: 12px;
+    display: block;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    font-weight: 700;
+    color: #1a2744;
+    margin-bottom: 48px;
+    line-height: 1.2;
+  }
+
+  /* CARDS */
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  .grid-3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px;
+  }
+  .card {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    border: 1px solid rgba(26,39,68,0.06);
+  }
+  .card-icon {
+    font-size: 22px;
+    margin-bottom: 12px;
+    color: #d4af37;
+  }
+  .card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    font-weight: 600;
+    color: #1a2744;
+    margin-bottom: 10px;
+  }
+  .card-text {
+    font-size: 14px;
+    color: #4a5568;
+    line-height: 1.7;
+  }
+
+  /* HIGHLIGHT BOX */
+  .highlight-box {
+    background: linear-gradient(135deg, #1a2744 0%, #1a2f6e 100%);
+    border-radius: 16px;
+    padding: 36px 40px;
+    margin-bottom: 40px;
+    border-left: 4px solid #d4af37;
+  }
+  .highlight-box p {
+    font-family: 'Playfair Display', serif;
+    font-size: 21px;
+    color: #ffffff;
+    line-height: 1.6;
+    font-style: italic;
+  }
+
+  /* TAG */
+  .tag {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 4px 12px;
+    border-radius: 50px;
+    letter-spacing: 0.5px;
+  }
+  .tag-gold {
+    background: rgba(212,175,55,0.15);
+    color: #b8930a;
+  }
+  .tag-navy {
+    background: rgba(26,39,68,0.08);
+    color: #1a2744;
+  }
+
+  /* BADGE PRIORITÉ */
+  .badge-fort { background: #e8f5e9; color: #2e7d32; font-size: 12px; font-weight: 600; padding: 3px 10px; border-radius: 50px; display: inline-block; }
+  .badge-moyen { background: #fff8e1; color: #f57f17; font-size: 12px; font-weight: 600; padding: 3px 10px; border-radius: 50px; display: inline-block; }
+  .badge-faible { background: #fce4ec; color: #c62828; font-size: 12px; font-weight: 600; padding: 3px 10px; border-radius: 50px; display: inline-block; }
+
+  /* TABLE */
+  .table-wrapper {
+    overflow-x: auto;
+    border-radius: 14px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    border: 1px solid rgba(26,39,68,0.06);
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #ffffff;
+    border-radius: 14px;
+    overflow: hidden;
+  }
+  thead tr {
+    background: #1a2744;
+    color: #ffffff;
+  }
+  thead th {
+    padding: 16px 20px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-align: left;
+  }
+  tbody tr {
+    border-bottom: 1px solid rgba(26,39,68,0.06);
+  }
+  tbody tr:last-child {
+    border-bottom: none;
+  }
+  tbody td {
+    padding: 16px 20px;
+    font-size: 14px;
+    color: #2d3748;
+    vertical-align: middle;
+  }
+  tbody tr:hover {
+    background: #f8f9fc;
+  }
+
+  /* TUNNEL */
+  .tunnel-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    position: relative;
+  }
+  .tunnel-step {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    border: 1px solid rgba(26,39,68,0.06);
+    position: relative;
+    margin: 0 8px;
+  }
+  .tunnel-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    font-weight: 700;
+    color: rgba(212,175,55,0.3);
+    line-height: 1;
+    margin-bottom: 12px;
+  }
+  .tunnel-label {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: #1a2744;
+    margin-bottom: 16px;
+  }
+  .tunnel-detail {
+    font-size: 13px;
+    color: #4a5568;
+    margin-bottom: 6px;
+  }
+  .tunnel-detail strong {
+    color: #1a2744;
+    font-weight: 600;
+  }
+  .tunnel-cta {
+    margin-top: 16px;
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 600;
+    color: #d4af37;
+    border: 1px solid #d4af37;
+    padding: 6px 14px;
+    border-radius: 50px;
+  }
+
+  /* PALETTE */
+  .palette-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 32px;
+  }
+  .palette-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+  .palette-swatch {
+    width: 80px;
+    height: 80px;
+    border-radius: 14px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+  }
+  .palette-name {
+    font-size: 13px;
+    font-weight: 600;
+    color: #1a2744;
+    text-align: center;
+  }
+  .palette-hex {
+    font-size: 11px;
+    color: #a0aec0;
+    text-align: center;
+  }
+
+  /* MAILLAGE */
+  .maillage-item {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 12px;
+    font-size: 14px;
+    color: #2d3748;
+  }
+  .maillage-source {
+    font-weight: 600;
+    color: #1a2744;
+    background: rgba(26,39,68,0.08);
+    padding: 4px 12px;
+    border-radius: 50px;
+  }
+  .maillage-arrow {
+    color: #d4af37;
+    font-size: 16px;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  .maillage-dest {
+    color: #4a5568;
+    background: rgba(212,175,55,0.1);
+    padding: 4px 12px;
+    border-radius: 50px;
+    font-size: 13px;
+  }
+
+  /* LISTE */
+  ul.styled-list {
+    list-style: none;
+    padding: 0;
+  }
+  ul.styled-list li {
+    padding: 8px 0;
+    padding-left: 20px;
+    position: relative;
+    font-size: 14px;
+    color: #4a5568;
+    border-bottom: 1px solid rgba(26,39,68,0.05);
+  }
+  ul.styled-list li:last-child { border-bottom: none; }
+  ul.styled-list li::before {
+    content: '◆';
+    position: absolute;
+    left: 0;
+    color: #d4af37;
+    font-size: 8px;
+    top: 12px;
+  }
+
+  /* FOOTER */
+  footer {
+    background: #1a2744;
+    padding: 40px 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  footer .footer-brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    color: #ffffff;
+    font-weight: 600;
+  }
+  footer .footer-mention {
+    font-size: 12px;
+    color: rgba(255,255,255,0.45);
+    letter-spacing: 1px;
+  }
+  footer .footer-agency {
+    font-size: 12px;
+    color: #d4af37;
+    font-weight: 600;
+    letter-spacing: 1px;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    .cover-title { font-size: 42px; }
+    .cover-meta { gap: 20px; }
+    section { padding: 48px 24px; }
+    .section-title { font-size: 26px; margin-bottom: 32px; }
+    .grid-2, .grid-3, .tunnel-grid {
+      grid-template-columns: 1fr;
+    }
+    .tunnel-step { margin: 0 0 16px 0; }
+    .highlight-box { padding: 24px 20px; }
+    .highlight-box p { font-size: 17px; }
+    footer { padding: 32px 24px; flex-direction: column; text-align: center; }
+    .palette-grid { gap: 16px; }
+  }
+
+  @media print {
+    section { page-break-inside: avoid; }
+    .cover { min-height: auto; padding: 80px 60px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+  <span class="cover-badge">Blueprint Stratégique · Document Confidentiel</span>
+  <h1 class="cover-title">ADJ Conciergerie</h1>
+  <p class="cover-subtitle">Votre feuille de route digitale pour attirer et convertir vos propriétaires</p>
+  <div class="cover-meta">
+    <div class="cover-meta-item">
+      <div class="cover-meta-label">Cliente</div>
+      <div class="cover-meta-value">Amandine Legras</div>
+    </div>
+    <div class="cover-meta-item">
+      <div class="cover-meta-label">Secteur</div>
+      <div class="cover-meta-value">Conciergerie Airbnb</div>
+    </div>
+    <div class="cover-meta-item">
+      <div class="cover-meta-label">Zone</div>
+      <div class="cover-meta-value">Épernay & Alentours</div>
+    </div>
+  </div>
+</div>
+
+<!-- 01 POSITIONNEMENT -->
+<section id="bp-section-01">
+  <span class="section-badge">01 — Positionnement</span>
+  <h2 class="section-title">Ce qui vous rend unique sur le marché</h2>
+
+  <div class="highlight-box">
+    <p>« ADJ Conciergerie prend en charge votre logement à Épernay et ses environs avec le soin d'un propriétaire et la rigueur d'un professionnel — pour que vous perceviez plus, sans vous en occuper. »</p>
+  </div>
+
+  <div class="grid-2" style="margin-bottom: 32px;">
+    <div class="card">
+      <div class="card-title">Ligne directrice de communication</div>
+      <div class="card-text">Expertise terrain locale, accompagnement humain et attentionné, performance locative sans contrainte pour le propriétaire.</div>
+    </div>
+    <div class="card">
+      <div class="card-title">Ton éditorial</div>
+      <div class="card-text"><strong style="color:#d4af37;">Rassurant · Élégant · Concret</strong><br>Un discours chaleureux qui inspire confiance, sans jargon technique, centré sur les bénéfices tangibles ressentis par le propriétaire.</div>
+    </div>
+  </div>
+
+  <div class="grid-3">
+    <div class="card">
+      <div class="card-icon">✦</div>
+      <div class="card-title">Gestion clé en main</div>
+      <div class="card-text">De la rédaction de l'annonce à l'accueil des voyageurs, chaque étape est prise en charge. Le propriétaire n'a rien à faire.</div>
+    </div>
+    <div class="card">
+      <div class="card-icon">✦</div>
+      <div class="card-title">Présence multi-plateformes</div>
+      <div class="card-text">Le bien est diffusé simultanément sur plusieurs plateformes avec une tarification dynamique adaptée aux saisons et événements champenois.</div>
+    </div>
+    <div class="card">
+      <div class="card-icon">✦</div>
+      <div class="card-title">Accueil soigné des voyageurs</div>
+      <div class="card-text">Check-in flexible, petites attentions, séjour sans accroc. Des voyageurs satisfaits génèrent de meilleures notes et plus de réservations.</div>
+    </div>
+    <div class="card">
+      <div class="card-icon">✦</div>
+      <div class="card-title">Réactivité sur les imprévus</div>
+      <div class="card-text">Serrure bloquée, fuite d'eau, problème technique : ADJ intervient vite, sans que le propriétaire ait à se déplacer ou s'inquiéter.</div>
+    </div>
+    <div class="card">
+      <div class="card-icon">✦</div>
+      <div class="card-title">Ancrage local Épernay</div>
+      <div class="card-text">Une connaissance intime du territoire champenois, de ses événements et de sa saisonnalité pour maximiser le taux d'occupation.</div>
+    </div>
+  </div>
+</section>
+
+<!-- 02 CLIENT CIBLE -->
+<section id="bp-section-02">
+  <span class="section-badge">02 — Client Cible</span>
+  <h2 class="section-title">Portrait du propriétaire idéal</h2>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-title">Profil type</div>
+      <div class="card-text">Propriétaire de 35 à 60 ans, résidant à Épernay ou dans un rayon de 30 km. Actif, peu disponible, possède un logement vacant ou déjà mis en location courte durée mais qui souhaite déléguer entièrement. Peut être primo-bailleur ou propriétaire désabusé par la gestion en solo.</div>
+    </div>
+    <div class="card">
+      <div class="card-title">Motivations principales</div>
+      <ul class="styled-list">
+        <li>Générer un revenu complémentaire sans y consacrer du temps</li>
+        <li>Valoriser un bien sous-exploité ou vide</li>
+        <li>Profiter du tourisme champenois sans contrainte</li>
+        <li>Être rassuré que son logement est entre de bonnes mains</li>
+        <li>Obtenir de bonnes notes et une réputation solide sur Airbnb</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-title">Freins et objections</div>
+      <ul class="styled-list">
+        <li>« La commission de 24 % est-elle justifiée ? »</li>
+        <li>« Comment puis-je faire confiance à quelqu'un dans mon logement ? »</li>
+        <li>« Et si les voyageurs abîment quelque chose ? »</li>
+        <li>« Est-ce que ce sera vraiment rentable ? »</li>
+        <li>« Je ne suis pas prêt techniquement / légalement »</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-title">Critères de décision</div>
+      <ul class="styled-list">
+        <li>Transparence sur les tarifs et la commission</li>
+        <li>Preuve de sérieux (avis, photos, exemples concrets)</li>
+        <li>Réactivité et contact humain local</li>
+        <li>Clarté sur les services inclus</li>
+        <li>Facilité à démarrer (pack de mise en service)</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 03 OBJECTIFS DU SITE -->
+<section id="bp-section-03">
+  <span class="section-badge">03 — Objectifs du Site</span>
+  <h2 class="section-title">Ce que le site doit accomplir</h2>
+
+  <div class="grid-3">
+    <div class="card">
+      <div class="card-icon">①</div>
+      <div class="card-title">Génération de leads</div>
+      <div class="card-text">Priorité absolue : transformer chaque visiteur en contact qualifié via des formulaires et CTAs stratégiquement placés.</div>
+    </div>
+    <div class="card">
+      <div class="card-icon">②</div>
+      <div class="card-title">Réassurance</div>
+      <div class="card-text">Lever les doutes des propriétaires hésitants grâce aux preuves sociales, à la transparence tarifaire et au discours de confiance.</div>
+    </div>
+    <div class="card">
+      <div class="card-icon">③</div>
+      <div class="card-title">SEO Local</div>
+      <div class="card-text">Se positionner sur les requêtes « conciergerie Airbnb Épernay » et mots-clés associés pour capter une audience ciblée et qualifiée.</div>
+    </div>
+    <div class="card">
+      <div class="card-icon">④</div>
+      <div class="card-title">Prise de contact / RDV</div>
+      <div class="card-text">Faciliter le passage à l'action avec un parcours fluide vers un appel, un formulaire ou un rendez-vous découverte.</div>
+    </div>
+    <div class="card">
+      <div class="card-icon">⑤</div>
+      <div class="card-title">Notoriété locale</div>
+      <div class="card-text">Asseoir ADJ Conciergerie comme la référence de confiance sur le secteur d'Épernay pour la location courte durée.</div>
+    </div>
+    <div class="card">
+      <div class="card-icon">⑥</div>
+      <div class="card-title">Conversion</div>
+      <div class="card-text">Amener le visiteur à signer ou à demander un devis grâce à un parcours de persuasion structuré et une offre clairement présentée.</div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 ARBORESCENCE -->
+<section id="bp-section-04">
+  <span class="section-badge">04 — Arborescence du Site</span>
+  <h2 class="section-title">Structure des pages et mots-clés cibles</h2>
+
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th>Nom de la page</th>
+          <th>Framework rédactionnel</th>
+          <th>Mot-clé principal</th>
+          <th>Potentiel SEO</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Accueil</strong></td>
+          <td>AIDA</td>
+          <td>conciergerie Airbnb Épernay</td>
+          <td><span class="badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>Nos Services</strong> (page unique détaillant tous les services)</td>
+          <td>PAS</td>
+          <td>gestion locative courte durée Épernay</td>
+          <td><span class="badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>Tarifs</strong></td>
+          <td>BAB</td>
+          <td>commission conciergerie Airbnb Épernay</td>
+          <td><span class="badge-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>À propos</strong></td>
+          <td>AIDA</td>
+          <td>conciergerie location courte durée Champagne</td>
+          <td><span class="badge-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>Page locale — Épernay</strong></td>
+          <td>PAS</td>
+          <td>conciergerie Airbnb Épernay</td>
+          <td><span class="badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>Page locale — Champagne &amp; Alentours</strong></td>
+          <td>PAS</td>
+          <td>conciergerie location saisonnière Marne</td>
+          <td><span class="badge-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>Contact / Devis</strong></td>
+          <td>AIDA</td>
+          <td>conciergerie Airbnb devis gratuit Épernay</td>
+          <td><span class="badge-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>Blog</strong></td>
+          <td>—</td>
+          <td>location courte durée Épernay conseils</td>
+          <td><span class="badge-faible">Faible</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- 05 COCON SÉMANTIQUE -->
+<section id="bp-section-05">
+  <span class="section-badge">05 — Cocon Sémantique</span>
+  <h2 class="section-title">Organisation thématique et maillage interne</h2>
+
+  <div class="grid-2" style="margin-bottom: 40px;">
+    <div class="card">
+      <div class="card-title">Cluster 1 — Gestion Locative & Services</div>
+      <div class="card-text">Thème central : tout ce qui concerne la prise en charge du bien. Regroupe les pages Services, Tarifs et les articles blog sur la gestion.</div>
+    </div>
+    <div class="card">
+      <div class="card-title">Cluster 2 — Territoire & Tourisme Champenois</div>
+      <div class="card-text">Ancrage local fort : pages locales Épernay et Champagne, articles sur la saisonnalité et les événements du territoire (Route du Champagne, vendanges…).</div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-bottom: 8px;">
+    <div class="card-title" style="margin-bottom: 20px;">Logique de maillage interne</div>
+    <div class="maillage-item">
+      <span class="maillage-source">Accueil</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-dest">Nos Services</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-dest">Tarifs</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-dest">Contact / Devis</span>
+    </div>
+    <div class="maillage-item">
+      <span class="maillage-source">Pages locales</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-dest">Nos Services</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-dest">Contact / Devis</span>
+    </div>
+    <div class="maillage-item">
+      <span class="maillage-source">Articles Blog</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-dest">Nos Services</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-dest">Pages locales</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-dest">Contact / Devis</span>
+    </div>
+    <div class="maillage-item">
+      <span class="maillage-source">À propos</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-dest">Nos Services</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-dest">Contact / Devis</span>
+    </div>
+  </div>
+</section>
+
+<!-- 06 TUNNEL DE CONVERSION -->
+<section id="bp-section-06">
+  <span class="section-badge">06 — Tunnel de Conversion</span>
+  <h2 class="section-title">Du premier contact à la signature</h2>
+
+  <div class="tunnel-grid">
+    <div class="tunnel-step">
+      <div class="tunnel-number">01</div>
+      <div class="tunnel-label">Découverte</div>
+      <div class="tunnel-detail"><strong>Source :</strong> Google (SEO local), bouche-à-oreille, réseaux sociaux</div>
+      <div class="tunnel-detail"><strong>Page :</strong> Accueil / Pages locales</div>
+      <div class="tunnel-detail"><strong>Objectif :</strong> Capter l'attention d'un propriétaire en recherche active</div>
+      <span class="tunnel-cta">Découvrir nos services →</span>
+    </div>
+    <div class="tunnel-step">
+      <div class="tunnel-number">02</div>
+      <div class="tunnel-label">Intérêt</div>
+      <div class="tunnel-detail"><strong>Source :</strong> Navigation interne</div>
+      <div class="tunnel-detail"><strong>Page :</strong> Nos Services / Tarifs</div>
+      <div class="tunnel-detail"><strong>Objectif :</strong> Montrer la valeur complète de l'offre et lever les premières objections</div>
+      <span class="tunnel-cta">Estimer mes revenus →</span>
+    </div>
+    <div class="tunnel-step">
+      <div class="tunnel-number">03</div>
+      <div class="tunnel-label">Confiance</div>
+      <div class="tunnel-detail"><strong>Source :</strong> À propos / Avis / Blog</div>
+      <div class="tunnel-detail"><strong>Page :</strong> À propos / Témoignages</div>
+      <div class="tunnel-detail"><strong>Objectif :</strong> Rassurer, humaniser, prouver l'expertise locale</div>
+      <span class="tunnel-cta">Lire les témoignages →</span>
+    </div>
+    <div class="tunnel-step">
+      <div class="tunnel-number">04</div>
+      <div class="tunnel-label">Conversion</div>
+      <div class="tunnel-detail"><strong>Source :</strong> CTAs multiples</div>
+      <div class="tunnel-detail"><strong>Page :</strong> Contact / Devis</div>
+      <div class="tunnel-detail"><strong>Objectif :</strong> Déclencher un appel ou une demande de devis qualifiée</div>
+      <span class="tunnel-cta">Obtenir un devis gratuit →</span>
+    </div>
+  </div>
+</section>
+
+<!-- 07 LEVIERS MARKETING -->
+<section id="bp-section-07">
+  <span class="section-badge">07 — Leviers Marketing Recommandés</span>
+  <h2 class="section-title">Activer la croissance au-delà du site</h2>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-icon">✦</div>
+      <div class="card-title">Lead Magnet</div>
+      <div class="card-text">« Simulateur de revenus locatifs » : un outil ou PDF interactif permettant au propriétaire d'estimer ce que son bien peut rapporter à Épernay avec ADJ. Puissant déclencheur de confiance et de prise de contact.</div>
+    </div>
+    <div class="card">
+      <div class="card-icon">✦</div>
+      <div class="card-title">Prise de RDV</div>
+      <div class="card-text">Intégration de <strong>Calendly</strong> pour un appel découverte gratuit de 20 min. À placer en CTA principal sur la page Contact et en sticky sur mobile. Friction réduite, conversion maximisée.</div>
+    </div>
+    <div class="card">
+      <div class="card-icon">✦</div>
+      <div class="card-title">Preuve Sociale</div>
+      <div class="card-text">Avis Google et témoignages propriétaires mis en avant (avec prénom, ville, type de bien). Captures d'écran d'avis voyageurs Airbnb. Indicateurs chiffrés : taux d'occupation moyen, nombre de biens gérés.</div>
+    </div>
+    <div class="card">
+      <div class="card-icon">✦</div>
+      <div class="card-title">Formulaire Qualifiant</div>
+      <div class="card-text">Champs recommandés : type de bien (appartement / maison / autre), ville, disponibilité actuelle du logement, objectif principal (revenus / délégation totale), message libre. Formulaire en 2 étapes pour réduire l'abandon.</div>
+    </div>
+    <div class="card">
+      <div class="card-icon">✦</div>
+      <div class="card-title">Newsletter</div>
+      <div class="card-text">Angle éditorial : <em>« Le carnet du propriétaire champenois »</em> — conseils saisonniers, actualités réglementation LCD, astuces pour améliorer les notes, événements locaux impactant la demande locative.</div>
+    </div>
+  </div>
+</section>
+
+<!-- 08 DIRECTION VISUELLE -->
+<section id="bp-section-08">
+  <span class="section-badge">08 — Direction Visuelle & Éditoriale</span>
+  <h2 class="section-title">L'identité visuelle du site</h2>
+
+  <div class="grid-2" style="margin-bottom: 48px;">
+    <div class="card">
+      <div class="card-title">Univers visuel recommandé</div>
+      <ul class="styled-list">
+        <li>Fond blanc immaculé (#FFFFFF) comme base dominante</li>
+        <li>Icônes de services en dorée fine (pictogrammes élégants style ligne)</li>
+        <li>Photographies lumineuses d'intérieurs soignés et de la région champenoise</li>
+        <li>Typographie Playfair Display (titres élégants) + Inter (corps sobre)</li>
+        <li>Touches de bleu nuit en CTA, en-têtes et éléments de structure</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-title">Références visuelles</div>
+      <div class="card-text">Le site de référence cité (dreamy-flat-lyon.fr) confirme l'orientation premium : fond blanc, éléments dorés pour les icônes, mise en page aérée. L'identité ADJ reprendra ce code visuel en l'ancrant dans l'univers champenois (effervescence, prestige, authenticité).</div>
+    </div>
+  </div>
+
+  <h3 style="font-family:'Playfair Display',serif; font-size:20px; color:#1a2744; margin-bottom:8px; text-align:center;">Palette de couleurs</h3>
+  <p style="text-align:center; color:#718096; font-size:13px; margin-bottom:0;">Couleurs définies selon les préférences exprimées par la cliente</p>
+
+  <div class="palette-grid">
+    <div class="palette-item">
+      <div class="palette-swatch" style="background:#FFFFFF; border: 2px solid #e2e8f0;"></div>
+      <div class="palette-name">Blanc Pur</div>
+      <div class="palette-hex">#FFFFFF</div>
+    </div>
+    <div class="palette-item">
+      <div class="palette-swatch" style="background:#1a2744;"></div>
+      <div class="palette-name">Bleu Nuit</div>
+      <div class="palette-hex">#1A2744</div>
+    </div>
+    <div class="palette-item">
+      <div class="palette-swatch" style="background:#d4af37;"></div>
+      <div class="palette-name">Or Champenois</div>
+      <div class="palette-hex">#D4AF37</div>
+    </div>
+    <div class="palette-item">
+      <div class="palette-swatch" style="background:#2d4a8a;"></div>
+      <div class="palette-name">Bleu Royal</div>
+      <div class="palette-hex">#2D4A8A</div>
+    </div>
+    <div class="palette-item">
+      <div class="palette-swatch" style="background:#f8f9fc; border: 2px solid #e2e8f0;"></div>
+      <div class="palette-name">Gris Perlé</div>
+      <div class="palette-hex">#F8F9FC</div>
+    </div>
+  </div>
+</section>
+
+<!-- 09 ARTICLES BLOG -->
+<section id="bp-section-09">
+  <span class="section-badge">09 — Articles Blog Recommandés</span>
+  <h2 class="section-title">Contenus pour attirer et convaincre</h2>
+
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th>Titre de l'article</th>
+          <th>Cluster</th>
+          <th>Intention de recherche</th>
+          <th>Priorité</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Combien peut rapporter votre logement à Épernay en location courte durée ?</strong></td>
+          <td>Gestion Locative</td>
+          <td>Informationnelle — estimer revenus LCD Épernay</td>
+          <td><span class="badge-fort">Prioritaire</span></td>
+        </tr>
+        <tr>
+          <td><strong>Conciergerie Airbnb à Épernay : comment bien choisir votre prestataire ?</strong></td>
+          <td>Gestion Locative</td>
+          <td>Comparative — choisir conciergerie Airbnb</td>
+          <td><span class="badge-fort">Prioritaire</span></td>
+        </tr>
+        <tr>
+          <td><strong>Location saisonnière en Champagne : les événements qui boostent votre taux d'occupation</strong></td>
+          <td>Territoire Champenois</td>
+          <td>Informationnelle — saisonnalité tourisme Champagne</td>
+          <td><span class="badge-fort">Prioritaire</span></td>
+        </tr>
+        <tr>
+          <td><strong>Gérer soi-même son Airbnb ou déléguer : ce que disent vraiment les propriétaires</strong></td>
+          <td>Gestion Locative</td>
+          <td>Décisionnelle — autogestion vs conciergerie</td>
+          <td><span class="badge-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>Les incontournables à visiter autour d'Épernay : le guide pour vos voyageurs</strong></td>
+          <td>Territoire Champenois</td>
+          <td>Informationnelle — que faire à Épernay</td>
+          <td><span class="badge-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>Réglementation LCD en 2025 : ce que tout propriétaire doit savoir dans la Marne</strong></td>
+          <td>Gestion Locative</td>
+          <td>Informationnelle — réglementation Airbnb Marne</td>
+          <td><span class="badge-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>5 erreurs qui font chuter vos notes Airbnb (et comment les éviter)</strong></td>
+          <td>Gestion Locative</td>
+          <td>Informationnelle — améliorer avis Airbnb</td>
+          <td><span class="badge-faible">Faible</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">ADJ Conciergerie</div>
+  <div class="footer-mention">Document confidentiel — Usage exclusif client</div>
+  <div class="footer-agency">Réalisé par AR Digital</div>
+</footer>
+
+</body>
+</html>
