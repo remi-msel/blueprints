@@ -1,0 +1,931 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blueprint Stratégique — Ma Conciergerie ZEN</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    line-height: 1.8;
+    color: #2c2420;
+    background: #fdf8f4;
+  }
+
+  /* COVER */
+  .cover {
+    min-height: 100vh;
+    background: linear-gradient(145deg, #3b1f0e 0%, #6b3320 40%, #a0522d 75%, #c47a3a 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 60px 40px;
+    position: relative;
+  }
+  .cover::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at center, rgba(196,122,58,0.15) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .cover-badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.25);
+    color: #f5dfc0;
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    padding: 8px 20px;
+    border-radius: 30px;
+    margin-bottom: 40px;
+  }
+  .cover h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 68px;
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.15;
+    margin-bottom: 16px;
+    letter-spacing: -1px;
+  }
+  .cover-subtitle {
+    font-family: 'Inter', sans-serif;
+    font-size: 17px;
+    color: #f0d0a8;
+    font-weight: 300;
+    letter-spacing: 1px;
+    margin-bottom: 56px;
+  }
+  .cover-meta {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .cover-meta-item {
+    text-align: center;
+  }
+  .cover-meta-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #c47a3a;
+    display: block;
+    margin-bottom: 4px;
+  }
+  .cover-meta-value {
+    font-size: 14px;
+    color: #fdf8f4;
+    font-weight: 500;
+  }
+  .cover-sep {
+    width: 1px;
+    height: 36px;
+    background: rgba(255,255,255,0.2);
+  }
+
+  /* SECTIONS */
+  section {
+    padding: 70px 60px;
+    page-break-inside: avoid;
+  }
+  section:nth-child(even) {
+    background: #fdf8f4;
+  }
+  section:nth-child(odd) {
+    background: #fff9f5;
+  }
+
+  .section-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: #c47a3a;
+    margin-bottom: 10px;
+  }
+  .section-badge {
+    display: inline-block;
+    background: #f5e8d6;
+    color: #8b4513;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    padding: 5px 14px;
+    border-radius: 20px;
+    margin-bottom: 14px;
+  }
+  h2.section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 34px;
+    font-weight: 700;
+    color: #3b1f0e;
+    margin-bottom: 40px;
+    line-height: 1.25;
+  }
+
+  /* CARDS */
+  .card {
+    background: #ffffff;
+    border-radius: 14px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    padding: 28px;
+  }
+  .card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    font-weight: 600;
+    color: #3b1f0e;
+    margin-bottom: 10px;
+  }
+  .card p, .card li {
+    font-size: 14px;
+    color: #5a3e2b;
+    line-height: 1.75;
+  }
+  .card ul {
+    padding-left: 16px;
+  }
+  .card ul li {
+    margin-bottom: 4px;
+  }
+
+  /* GRIDS */
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  .grid-3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px;
+  }
+  .grid-4 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 24px;
+  }
+
+  /* HIGHLIGHT BOX */
+  .highlight-box {
+    background: linear-gradient(135deg, #a0522d 0%, #c47a3a 100%);
+    border-radius: 16px;
+    padding: 36px 40px;
+    color: #fff;
+    margin-bottom: 40px;
+  }
+  .highlight-box .label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #f5dfc0;
+    margin-bottom: 12px;
+    display: block;
+  }
+  .highlight-box p {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 1.5;
+    color: #fff;
+  }
+
+  /* TAGS */
+  .tag {
+    display: inline-block;
+    background: #f5e8d6;
+    color: #8b4513;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 4px 12px;
+    border-radius: 20px;
+    margin: 3px 3px 3px 0;
+  }
+  .tag-green { background: #d4edda; color: #2d6a4f; }
+  .tag-orange { background: #ffe5c2; color: #8b5e00; }
+  .tag-red { background: #fde8e8; color: #9b2335; }
+
+  /* SEO BADGE */
+  .seo-badge {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 12px;
+    white-space: nowrap;
+  }
+  .seo-fort { background: #d4edda; color: #2d6a4f; }
+  .seo-moyen { background: #ffe5c2; color: #8b5e00; }
+  .seo-faible { background: #fde8e8; color: #9b2335; }
+
+  /* TABLE */
+  .table-wrap {
+    overflow-x: auto;
+    border-radius: 14px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    font-size: 14px;
+    min-width: 600px;
+  }
+  thead {
+    background: #3b1f0e;
+    color: #f5dfc0;
+  }
+  thead th {
+    padding: 14px 18px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+  }
+  tbody tr {
+    border-bottom: 1px solid #f0e6d8;
+  }
+  tbody tr:last-child { border-bottom: none; }
+  tbody td {
+    padding: 14px 18px;
+    color: #3b1f0e;
+    vertical-align: top;
+  }
+  tbody tr:hover { background: #fdf3ea; }
+
+  /* TUNNEL */
+  .tunnel-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 0;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+  .tunnel-step {
+    background: #fff;
+    padding: 28px 22px;
+    border-right: 1px solid #f0e6d8;
+    position: relative;
+  }
+  .tunnel-step:last-child { border-right: none; }
+  .tunnel-step-num {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #c47a3a;
+    margin-bottom: 8px;
+  }
+  .tunnel-step h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: #3b1f0e;
+    margin-bottom: 12px;
+  }
+  .tunnel-step p {
+    font-size: 13px;
+    color: #5a3e2b;
+    line-height: 1.65;
+    margin-bottom: 6px;
+  }
+  .tunnel-step .cta-tag {
+    display: inline-block;
+    background: #f5e8d6;
+    color: #8b4513;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 8px;
+    margin-top: 8px;
+  }
+
+  /* COLOR PALETTE */
+  .palette-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  .palette-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+  .palette-swatch {
+    width: 80px;
+    height: 80px;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+  }
+  .palette-name {
+    font-size: 12px;
+    font-weight: 600;
+    color: #3b1f0e;
+    text-align: center;
+  }
+  .palette-hex {
+    font-size: 11px;
+    color: #a0876a;
+    text-align: center;
+  }
+
+  /* MAILLAGE */
+  .maillage-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 12px;
+    font-size: 14px;
+    color: #3b1f0e;
+  }
+  .maillage-from {
+    background: #3b1f0e;
+    color: #f5dfc0;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 4px 12px;
+    border-radius: 8px;
+    white-space: nowrap;
+  }
+  .maillage-arrow {
+    color: #c47a3a;
+    font-size: 18px;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  .maillage-to {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .maillage-to-tag {
+    background: #f5e8d6;
+    color: #8b4513;
+    font-size: 12px;
+    font-weight: 500;
+    padding: 4px 10px;
+    border-radius: 8px;
+    white-space: nowrap;
+  }
+
+  /* PRIORITY BADGE */
+  .priority-badge {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 12px;
+  }
+  .priority-p { background: #d4edda; color: #2d6a4f; }
+  .priority-m { background: #ffe5c2; color: #8b5e00; }
+  .priority-f { background: #fde8e8; color: #9b2335; }
+
+  /* FOOTER */
+  footer {
+    background: #3b1f0e;
+    color: #f5dfc0;
+    text-align: center;
+    padding: 36px 40px;
+    font-size: 13px;
+    letter-spacing: 0.5px;
+  }
+  footer .footer-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    color: #fff;
+    margin-bottom: 8px;
+  }
+  footer .footer-conf {
+    font-size: 11px;
+    color: #c47a3a;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-top: 10px;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    .cover h1 { font-size: 38px; }
+    .cover-meta { gap: 20px; }
+    .cover-sep { display: none; }
+    section { padding: 40px 24px; }
+    h2.section-title { font-size: 26px; }
+    .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+    .tunnel-grid { grid-template-columns: 1fr; }
+    .tunnel-step { border-right: none; border-bottom: 1px solid #f0e6d8; }
+    .tunnel-step:last-child { border-bottom: none; }
+    .highlight-box { padding: 28px 20px; }
+    .highlight-box p { font-size: 18px; }
+    .palette-grid { gap: 16px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+  <div class="cover-badge">Blueprint Stratégique</div>
+  <h1>Ma Conciergerie ZEN</h1>
+  <p class="cover-subtitle">Document de stratégie digitale — Confidentiel</p>
+  <div class="cover-meta">
+    <div class="cover-meta-item">
+      <span class="cover-meta-label">Cliente</span>
+      <span class="cover-meta-value">Marion Dumazer</span>
+    </div>
+    <div class="cover-sep"></div>
+    <div class="cover-meta-item">
+      <span class="cover-meta-label">Secteur</span>
+      <span class="cover-meta-value">Conciergerie & Location courte durée</span>
+    </div>
+    <div class="cover-sep"></div>
+    <div class="cover-meta-item">
+      <span class="cover-meta-label">Zone</span>
+      <span class="cover-meta-value">La Ciotat &amp; alentours</span>
+    </div>
+  </div>
+</div>
+
+<!-- 01 POSITIONNEMENT -->
+<section id="bp-section-01">
+  <div class="section-badge">01</div>
+  <div class="section-label">Positionnement</div>
+  <h2 class="section-title">L'identité stratégique de Ma Conciergerie ZEN</h2>
+
+  <div class="highlight-box">
+    <span class="label">Promesse de valeur principale</span>
+    <p>À La Ciotat et ses environs, Ma Conciergerie ZEN prend soin de votre bien comme si c'était le sien — avec rigueur, discrétion et une sérénité totale pour vous.</p>
+  </div>
+
+  <div class="card" style="margin-bottom: 24px;">
+    <h3>Ligne directrice de communication</h3>
+    <p>Sérénité propriétaire · Excellence opérationnelle · Ancrage local authentique. Chaque message doit rassurer le propriétaire, lui montrer qu'il délègue à quelqu'un de fiable, proche, et investi.</p>
+  </div>
+
+  <div class="card" style="margin-bottom: 40px;">
+    <h3>Ton éditorial</h3>
+    <p><strong>Chaleureux · Professionnel · Rassurant</strong> — Un ton qui inspire confiance dès les premières lignes : ni trop corporate, ni trop informel. On parle à un propriétaire qui a besoin d'être tranquillisé et accompagné, pas vendu à.</p>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <h3>🏡 Proximité terrain réelle</h3>
+      <p>Marion connaît La Ciotat et ses alentours de l'intérieur. Pas une franchise nationale, une personne de confiance disponible localement, réactive et présente.</p>
+    </div>
+    <div class="card">
+      <h3>🤝 Discrétion et sérieux garantis</h3>
+      <p>Chaque bien est traité avec la même attention que sa propre résidence. Un engagement humain, pas une promesse commerciale générique.</p>
+    </div>
+    <div class="card">
+      <h3>✨ Service global clé en main</h3>
+      <p>De la gestion des annonces au ménage, de l'accueil locataire à l'entretien des extérieurs — tout est pris en charge dans une seule relation de confiance.</p>
+    </div>
+    <div class="card">
+      <h3>🌿 Approche ZEN — Zéro stress propriétaire</h3>
+      <p>Le nom dit tout : l'objectif est que le propriétaire n'ait plus à penser à la gestion de son bien. Sérénité totale, rapports clairs, pas de mauvaises surprises.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 02 CLIENT CIBLE -->
+<section id="bp-section-02">
+  <div class="section-badge">02</div>
+  <div class="section-label">Client cible</div>
+  <h2 class="section-title">Le profil du propriétaire idéal</h2>
+
+  <div class="grid-2">
+    <div class="card">
+      <h3>Profil type</h3>
+      <p><strong>35–65 ans</strong>, propriétaire d'une résidence secondaire ou d'un bien locatif à La Ciotat ou dans les communes voisines (Cassis, Aubagne, La Bedoule…). Actif ou retraité, souvent absent ou débordé, il souhaite valoriser son bien sans en gérer la logistique au quotidien.</p>
+    </div>
+    <div class="card">
+      <h3>Motivations principales</h3>
+      <ul>
+        <li>Générer des revenus locatifs sans contraintes</li>
+        <li>Confier son bien à quelqu'un de confiance et de proche</li>
+        <li>Avoir un interlocuteur unique disponible</li>
+        <li>Maintenir son bien en bon état sans y consacrer du temps</li>
+        <li>Proposer une bonne expérience à ses locataires</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Freins &amp; objections</h3>
+      <ul>
+        <li>Peur de perdre le contrôle de son bien</li>
+        <li>Doute sur la fiabilité d'un prestataire externe</li>
+        <li>Inquiétude sur la transparence des coûts</li>
+        <li>Expérience négative passée avec une autre conciergerie</li>
+        <li>Hésitation sur le retour sur investissement</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Critères de décision</h3>
+      <ul>
+        <li>Proximité géographique et disponibilité réelle</li>
+        <li>Clarté des offres et tarification transparente</li>
+        <li>Avis et témoignages de propriétaires locaux</li>
+        <li>Professionnalisme visible dès le site web</li>
+        <li>Facilité de prise de contact et réactivité</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 03 OBJECTIFS DU SITE -->
+<section id="bp-section-03">
+  <div class="section-badge">03</div>
+  <div class="section-label">Objectifs du site</div>
+  <h2 class="section-title">Ce que le site doit accomplir</h2>
+
+  <div class="grid-3">
+    <div class="card">
+      <h3>🎯 1 — Génération de leads</h3>
+      <p>Objectif prioritaire. Chaque page doit inciter le visiteur à prendre contact ou demander un devis via un formulaire qualifiant.</p>
+    </div>
+    <div class="card">
+      <h3>🔍 2 — SEO local</h3>
+      <p>Être trouvé par les propriétaires qui cherchent une conciergerie à La Ciotat, Cassis ou Aubagne sur Google. Visibilité organique durable.</p>
+    </div>
+    <div class="card">
+      <h3>🛡️ 3 — Réassurance</h3>
+      <p>Convaincre un visiteur sceptique grâce aux témoignages, à la présentation de Marion et à la clarté des offres. Le site doit inspirer confiance immédiatement.</p>
+    </div>
+    <div class="card">
+      <h3>📅 4 — Prise de RDV</h3>
+      <p>Intégrer un outil de prise de rendez-vous simple pour convertir les visiteurs intéressés sans friction téléphonique.</p>
+    </div>
+    <div class="card">
+      <h3>💬 5 — Conversion</h3>
+      <p>Transformer le trafic en demandes concrètes. CTA clairs, offres lisibles, parcours fluide du premier scroll jusqu'au formulaire.</p>
+    </div>
+    <div class="card">
+      <h3>🌟 6 — Notoriété locale</h3>
+      <p>Asseoir Ma Conciergerie ZEN comme la référence locale de confiance sur La Ciotat et ses environs via le blog et le SEO de contenu.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 04 ARBORESCENCE -->
+<section id="bp-section-04">
+  <div class="section-badge">04</div>
+  <div class="section-label">Arborescence du site</div>
+  <h2 class="section-title">Structure des pages et stratégie SEO</h2>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Page</th>
+          <th>Framework rédactionnel</th>
+          <th>Mot-clé principal</th>
+          <th>Potentiel SEO</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Accueil</strong></td>
+          <td>AIDA</td>
+          <td>conciergerie location courte durée La Ciotat</td>
+          <td><span class="seo-badge seo-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>Nos Offres & Services</strong></td>
+          <td>BAB</td>
+          <td>gestion locative conciergerie La Ciotat</td>
+          <td><span class="seo-badge seo-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>À Propos — Marion &amp; la ZEN attitude</strong></td>
+          <td>PAS</td>
+          <td>conciergerie sérieuse et fiable La Ciotat</td>
+          <td><span class="seo-badge seo-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>Témoignages &amp; Réalisations</strong></td>
+          <td>AIDA</td>
+          <td>avis conciergerie La Ciotat propriétaires</td>
+          <td><span class="seo-badge seo-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>Page locale — La Ciotat &amp; Cassis</strong></td>
+          <td>PAS</td>
+          <td>conciergerie Airbnb Cassis La Ciotat</td>
+          <td><span class="seo-badge seo-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>Page locale — Aubagne &amp; alentours</strong></td>
+          <td>PAS</td>
+          <td>conciergerie location saisonnière Aubagne</td>
+          <td><span class="seo-badge seo-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>Contact &amp; Devis</strong></td>
+          <td>AIDA</td>
+          <td>devis conciergerie La Ciotat</td>
+          <td><span class="seo-badge seo-faible">Faible</span></td>
+        </tr>
+        <tr>
+          <td><strong>Blog</strong></td>
+          <td>—</td>
+          <td>conseils location saisonnière Provence</td>
+          <td><span class="seo-badge seo-fort">Fort</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- 05 COCON SÉMANTIQUE -->
+<section id="bp-section-05">
+  <div class="section-badge">05</div>
+  <div class="section-label">Cocon sémantique</div>
+  <h2 class="section-title">Architecture thématique &amp; maillage interne</h2>
+
+  <div class="grid-3" style="margin-bottom:40px;">
+    <div class="card">
+      <h3>🏠 Cluster 1 — Gestion locative</h3>
+      <p>Thèmes : gestion annonces, check-in/out, ménage, blanchisserie, intendance. Page pilier : Nos Offres &amp; Services. Articles de blog associés sur l'optimisation Airbnb et la fiscalité location saisonnière.</p>
+    </div>
+    <div class="card">
+      <h3>📍 Cluster 2 — Ancrage local</h3>
+      <p>Thèmes : La Ciotat, Cassis, Aubagne, Provence. Pages piliers : les 2 pages locales SEO. Blog alimenté par des articles sur le marché locatif local et les activités à proximité.</p>
+    </div>
+    <div class="card">
+      <h3>🌿 Cluster 3 — Confiance &amp; Réassurance</h3>
+      <p>Thèmes : avis propriétaires, à propos Marion, home-sitting, services sur mesure. Page pilier : Témoignages. Renforcement via la page À Propos et le formulaire de contact.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Logique de maillage interne</h3>
+    <div style="margin-top: 16px;">
+      <div class="maillage-row">
+        <span class="maillage-from">Accueil</span>
+        <span class="maillage-arrow">→</span>
+        <div class="maillage-to">
+          <span class="maillage-to-tag">Nos Offres</span>
+          <span class="maillage-to-tag">À Propos</span>
+          <span class="maillage-to-tag">Contact</span>
+          <span class="maillage-to-tag">Pages locales</span>
+        </div>
+      </div>
+      <div class="maillage-row">
+        <span class="maillage-from">Nos Offres</span>
+        <span class="maillage-arrow">→</span>
+        <div class="maillage-to">
+          <span class="maillage-to-tag">Contact / Devis</span>
+          <span class="maillage-to-tag">Témoignages</span>
+          <span class="maillage-to-tag">Pages locales</span>
+        </div>
+      </div>
+      <div class="maillage-row">
+        <span class="maillage-from">Pages locales</span>
+        <span class="maillage-arrow">→</span>
+        <div class="maillage-to">
+          <span class="maillage-to-tag">Nos Offres</span>
+          <span class="maillage-to-tag">Contact</span>
+          <span class="maillage-to-tag">Blog (articles locaux)</span>
+        </div>
+      </div>
+      <div class="maillage-row">
+        <span class="maillage-from">Blog</span>
+        <span class="maillage-arrow">→</span>
+        <div class="maillage-to">
+          <span class="maillage-to-tag">Nos Offres</span>
+          <span class="maillage-to-tag">Contact</span>
+          <span class="maillage-to-tag">Pages locales</span>
+        </div>
+      </div>
+      <div class="maillage-row">
+        <span class="maillage-from">Témoignages</span>
+        <span class="maillage-arrow">→</span>
+        <div class="maillage-to">
+          <span class="maillage-to-tag">Nos Offres</span>
+          <span class="maillage-to-tag">Contact</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 06 TUNNEL DE CONVERSION -->
+<section id="bp-section-06">
+  <div class="section-badge">06</div>
+  <div class="section-label">Tunnel de conversion</div>
+  <h2 class="section-title">Du premier clic à la prise de contact</h2>
+
+  <div class="tunnel-grid">
+    <div class="tunnel-step">
+      <div class="tunnel-step-num">Étape 01</div>
+      <h3>Découverte</h3>
+      <p><strong>Source :</strong> Google (SEO local), bouche-à-oreille, réseaux sociaux</p>
+      <p><strong>Page :</strong> Accueil ou Page locale SEO</p>
+      <span class="cta-tag">→ Découvrir nos offres</span>
+    </div>
+    <div class="tunnel-step">
+      <div class="tunnel-step-num">Étape 02</div>
+      <h3>Intérêt</h3>
+      <p><strong>Source :</strong> Navigation interne, blog</p>
+      <p><strong>Page :</strong> Nos Offres &amp; Services</p>
+      <span class="cta-tag">→ Voir les formules</span>
+    </div>
+    <div class="tunnel-step">
+      <div class="tunnel-step-num">Étape 03</div>
+      <h3>Confiance</h3>
+      <p><strong>Source :</strong> Maillage interne, avis Google</p>
+      <p><strong>Page :</strong> À Propos · Témoignages</p>
+      <span class="cta-tag">→ Ils nous font confiance</span>
+    </div>
+    <div class="tunnel-step">
+      <div class="tunnel-step-num">Étape 04</div>
+      <h3>Conversion</h3>
+      <p><strong>Source :</strong> CTA présents sur toutes les pages</p>
+      <p><strong>Page :</strong> Contact &amp; Devis</p>
+      <span class="cta-tag">→ Demander un devis gratuit</span>
+    </div>
+  </div>
+</section>
+
+<!-- 07 LEVIERS MARKETING -->
+<section id="bp-section-07">
+  <div class="section-badge">07</div>
+  <div class="section-label">Leviers marketing recommandés</div>
+  <h2 class="section-title">Activer la croissance digitale</h2>
+
+  <div class="grid-2">
+    <div class="card">
+      <h3>🎁 Lead Magnet</h3>
+      <p><strong>« Guide gratuit : 7 erreurs à éviter quand on confie sa résidence secondaire à La Ciotat »</strong> — Téléchargeable en échange d'un email. Crée de la confiance avant même le premier contact et positionne Marion comme experte locale.</p>
+    </div>
+    <div class="card">
+      <h3>📅 Prise de RDV</h3>
+      <p>Intégration de <strong>Calendly</strong> (version gratuite suffisante au démarrage) avec un créneau dédié de 20 min : <em>« Appel découverte gratuit »</em>. Bouton visible en header et en fin de chaque page offre.</p>
+    </div>
+    <div class="card">
+      <h3>⭐ Preuve sociale</h3>
+      <p>Mettre en avant des <strong>témoignages courts de propriétaires locaux</strong> (prénom + commune + type de bien). Intégrer le widget Google Reviews en page d'accueil. Viser 10 avis Google dans les 3 premiers mois.</p>
+    </div>
+    <div class="card">
+      <h3>📋 Formulaire qualifiant</h3>
+      <p>Champs recommandés : <strong>Prénom / Type de bien / Commune / Nombre de nuits estimé / Services souhaités (cases à cocher) / Message libre</strong>. Permet de préparer la conversation et filtrer les leads sérieux.</p>
+    </div>
+    <div class="card">
+      <h3>📧 Newsletter</h3>
+      <p>Angle éditorial : <strong>« La Lettre ZEN »</strong> — Conseils bimensuels pour propriétaires : optimiser son annonce, préparer son bien pour la saison, actualités du marché locatif à La Ciotat. Fidélise et maintient le lien entre deux saisons.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 08 DIRECTION VISUELLE -->
+<section id="bp-section-08">
+  <div class="section-badge">08</div>
+  <div class="section-label">Direction visuelle &amp; éditoriale</div>
+  <h2 class="section-title">L'identité visuelle de Ma Conciergerie ZEN</h2>
+
+  <div class="card" style="margin-bottom: 40px; text-align: center;">
+    <h3 style="margin-bottom: 24px;">Palette de couleurs — Ambiance Terracotta &amp; Ocre Méditerranéen</h3>
+    <div class="palette-grid">
+      <div class="palette-item">
+        <div class="palette-swatch" style="background: #3b1f0e;"></div>
+        <div class="palette-name">Bois Foncé</div>
+        <div class="palette-hex">#3B1F0E</div>
+      </div>
+      <div class="palette-item">
+        <div class="palette-swatch" style="background: #a0522d;"></div>
+        <div class="palette-name">Terracotta</div>
+        <div class="palette-hex">#A0522D</div>
+      </div>
+      <div class="palette-item">
+        <div class="palette-swatch" style="background: #c47a3a;"></div>
+        <div class="palette-name">Ocre Doré</div>
+        <div class="palette-hex">#C47A3A</div>
+      </div>
+      <div class="palette-item">
+        <div class="palette-swatch" style="background: #e8c99a;"></div>
+        <div class="palette-name">Sable Chaud</div>
+        <div class="palette-hex">#E8C99A</div>
+      </div>
+      <div class="palette-item">
+        <div class="palette-swatch" style="background: #fdf8f4;"></div>
+        <div class="palette-name">Lin Blanc</div>
+        <div class="palette-hex">#FDF8F4</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <h3>Univers visuel recommandé</h3>
+      <ul>
+        <li><strong>Photographies chaleureuses</strong> : intérieurs lumineux, terrasses provençales, linge blanc sur fond terracotta</li>
+        <li><strong>Textures naturelles</strong> : lin, pierre, argile — en fond de sections ou en overlays légers</li>
+        <li><strong>Icônes épurées</strong> au trait fin, cohérentes avec l'ambiance méditerranéenne et artisanale</li>
+        <li><strong>Typographie contrastée</strong> : Playfair Display pour les titres (élégance), Inter pour le corps (lisibilité)</li>
+        <li><strong>Espaces aérés</strong> et mise en page généreuse — cohérent avec la promesse de sérénité du nom ZEN</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Ton éditorial appliqué</h3>
+      <ul>
+        <li><strong>Phrases courtes</strong>, directes, qui vont à l'essentiel</li>
+        <li><strong>Vouvoiement</strong> pour marquer le sérieux et le professionnalisme</li>
+        <li><strong>Champ lexical de la sérénité</strong> : "tranquillité", "confiance", "soin", "rigueur", "disponibilité"</li>
+        <li><strong>Ancrage local visible</strong> : citer La Ciotat, la Méditerranée, la Provence dans les titres et accroches</li>
+        <li><strong>Éviter le jargon</strong> technique de la gestion locative — parler humain</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 09 ARTICLES BLOG -->
+<section id="bp-section-09">
+  <div class="section-badge">09</div>
+  <div class="section-label">Articles blog recommandés</div>
+  <h2 class="section-title">Stratégie de contenu éditorial</h2>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Titre de l'article</th>
+          <th>Cluster</th>
+          <th>Intention de recherche</th>
+          <th>Priorité</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Confier sa résidence secondaire à La Ciotat : ce qu'il faut vérifier avant de choisir une conciergerie</strong></td>
+          <td>Confiance</td>
+          <td>Informationnelle — pré-décision</td>
+          <td><span class="priority-badge priority-p">Prioritaire</span></td>
+        </tr>
+        <tr>
+          <td><strong>Gestion locative Airbnb à La Ciotat : comment maximiser ses revenus en haute saison ?</strong></td>
+          <td>Gestion locative</td>
+          <td>Informationnelle — optimisation</td>
+          <td><span class="priority-badge priority-p">Prioritaire</span></td>
+        </tr>
+        <tr>
+          <td><strong>Check-in autonome ou accueil en personne : quelle option choisir pour ses locataires ?</strong></td>
+          <td>Gestion locative</td>
+          <td>Informationnelle — comparaison</td>
+          <td><span class="priority-badge priority-p">Prioritaire</span></td>
+        </tr>
+        <tr>
+          <td><strong>Location saisonnière à Cassis et La Ciotat : le marché en 2025 et les opportunités pour les propriétaires</strong></td>
+          <td>Ancrage local</td>
+          <td>Informationnelle — marché local</td>
+          <td><span class="priority-badge priority-m">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>Home-sitting et intendance : pourquoi votre résidence secondaire a besoin d'un œil attentif entre deux séjours</strong></td>
+          <td>Gestion locative</td>
+          <td>Informationnelle — sensibilisation</td>
+          <td><span class="priority-badge priority-m">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>5 activités incontournables à recommander à vos locataires autour de La Ciotat</strong></td>
+          <td>Ancrage local</td>
+          <td>Informationnelle — expérience locale</td>
+          <td><span class="priority-badge priority-m">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>Fiscalité location courte durée en PACA : ce que tout propriétaire doit savoir en 2025</strong></td>
+          <td>Confiance</td>
+          <td>Informationnelle — expertise</td>
+          <td><span class="priority-badge priority-f">Faible</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-name">Ma Conciergerie ZEN</div>
+  <p>Marion Dumazer · La Ciotat &amp; alentours · mdcuges.13@gmail.com</p>
+  <p class="footer-conf">Document confidentiel — Produit par AR Digital</p>
+</footer>
+
+</body>
+</html>
