@@ -1,0 +1,1140 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blueprint Stratégique — TESLINE VTC</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    line-height: 1.8;
+    color: #1a1a2e;
+    background: #f9f9fb;
+  }
+
+  /* COVER */
+  .cover {
+    min-height: 100vh;
+    background: linear-gradient(145deg, #0d0d1a 0%, #1a1a3e 40%, #0a1628 70%, #0d1f3c 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 60px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cover::before {
+    content: '';
+    position: absolute;
+    top: -100px;
+    right: -100px;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(180, 150, 80, 0.12) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+
+  .cover::after {
+    content: '';
+    position: absolute;
+    bottom: -80px;
+    left: -80px;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(100, 140, 200, 0.10) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+
+  .cover-badge {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #c4a96a;
+    margin-bottom: 32px;
+    opacity: 0.9;
+  }
+
+  .cover-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 72px;
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.1;
+    margin-bottom: 18px;
+    letter-spacing: -1px;
+  }
+
+  .cover-subtitle {
+    font-size: 17px;
+    color: rgba(255,255,255,0.60);
+    font-weight: 300;
+    margin-bottom: 56px;
+    letter-spacing: 0.5px;
+  }
+
+  .cover-meta {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .cover-meta-item {
+    text-align: center;
+  }
+
+  .cover-meta-label {
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.35);
+    margin-bottom: 4px;
+  }
+
+  .cover-meta-value {
+    font-size: 14px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.85);
+  }
+
+  .cover-meta-sep {
+    width: 1px;
+    height: 36px;
+    background: rgba(255,255,255,0.15);
+  }
+
+  /* SECTIONS */
+  section {
+    padding: 80px 80px;
+    page-break-inside: avoid;
+  }
+
+  section:nth-child(even) {
+    background: #ffffff;
+  }
+
+  section:nth-child(odd) {
+    background: #f9f9fb;
+  }
+
+  .section-header {
+    margin-bottom: 52px;
+  }
+
+  .section-badge {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #c4a96a;
+    margin-bottom: 14px;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 34px;
+    font-weight: 700;
+    color: #0d1f3c;
+    line-height: 1.2;
+  }
+
+  .section-desc {
+    font-size: 15px;
+    color: #6b7280;
+    margin-top: 10px;
+    max-width: 600px;
+  }
+
+  /* CARDS */
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  .grid-3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px;
+  }
+
+  .card {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    border: 1px solid rgba(0,0,0,0.04);
+  }
+
+  .card-icon {
+    font-size: 22px;
+    margin-bottom: 12px;
+  }
+
+  .card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    font-weight: 600;
+    color: #0d1f3c;
+    margin-bottom: 8px;
+  }
+
+  .card-text {
+    font-size: 14px;
+    color: #4b5563;
+    line-height: 1.7;
+  }
+
+  /* HIGHLIGHT BOX */
+  .highlight-box {
+    background: linear-gradient(135deg, #0d1f3c 0%, #1a3460 100%);
+    border-radius: 16px;
+    padding: 40px 48px;
+    color: #ffffff;
+    margin-bottom: 40px;
+  }
+
+  .highlight-box .label {
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #c4a96a;
+    margin-bottom: 12px;
+  }
+
+  .highlight-box .value {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 1.5;
+    color: #ffffff;
+  }
+
+  /* LISTS */
+  ul.styled-list {
+    list-style: none;
+    padding: 0;
+  }
+
+  ul.styled-list li {
+    padding: 10px 0;
+    border-bottom: 1px solid #f0f0f5;
+    font-size: 14px;
+    color: #374151;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  ul.styled-list li:last-child {
+    border-bottom: none;
+  }
+
+  ul.styled-list li::before {
+    content: '→';
+    color: #c4a96a;
+    font-weight: 600;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  /* ARBORESCENCE TABLE */
+  .table-wrap {
+    overflow-x: auto;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+  }
+
+  thead {
+    background: #0d1f3c;
+    color: #ffffff;
+  }
+
+  thead th {
+    padding: 14px 18px;
+    text-align: left;
+    font-weight: 500;
+    font-size: 12px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  tbody tr {
+    border-bottom: 1px solid #f0f0f5;
+  }
+
+  tbody tr:nth-child(even) {
+    background: #f9f9fb;
+  }
+
+  tbody td {
+    padding: 14px 18px;
+    color: #374151;
+    vertical-align: top;
+  }
+
+  .badge-seo {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+  }
+
+  .badge-fort { background: #d1fae5; color: #065f46; }
+  .badge-moyen { background: #fef3c7; color: #92400e; }
+  .badge-faible { background: #fee2e2; color: #991b1b; }
+
+  /* TUNNEL */
+  .tunnel-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    position: relative;
+  }
+
+  .tunnel-step {
+    background: #ffffff;
+    border-radius: 0;
+    padding: 28px 24px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    border: 1px solid rgba(0,0,0,0.04);
+    position: relative;
+  }
+
+  .tunnel-step:first-child { border-radius: 14px 0 0 14px; }
+  .tunnel-step:last-child { border-radius: 0 14px 14px 0; }
+
+  .tunnel-step + .tunnel-step {
+    border-left: none;
+  }
+
+  .tunnel-num {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #c4a96a;
+    margin-bottom: 8px;
+  }
+
+  .tunnel-label {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: #0d1f3c;
+    margin-bottom: 16px;
+  }
+
+  .tunnel-item {
+    font-size: 12px;
+    color: #6b7280;
+    margin-bottom: 6px;
+    line-height: 1.5;
+  }
+
+  .tunnel-item strong {
+    color: #374151;
+    display: block;
+    font-size: 11px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 2px;
+  }
+
+  .tunnel-cta {
+    margin-top: 16px;
+    padding: 8px 14px;
+    background: #0d1f3c;
+    color: #c4a96a;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 600;
+    text-align: center;
+  }
+
+  /* COCON */
+  .cocon-cluster {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    border: 1px solid rgba(0,0,0,0.04);
+    margin-bottom: 24px;
+  }
+
+  .cluster-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    font-weight: 600;
+    color: #0d1f3c;
+    margin-bottom: 14px;
+  }
+
+  .cluster-pages {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+
+  .cluster-page-tag {
+    background: #f0f4ff;
+    color: #1a3460;
+    border-radius: 6px;
+    padding: 5px 12px;
+    font-size: 12px;
+    font-weight: 500;
+  }
+
+  .maillage-title {
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #9ca3af;
+    margin-bottom: 10px;
+    margin-top: 16px;
+  }
+
+  .maillage-link {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    color: #374151;
+    padding: 6px 0;
+    border-bottom: 1px solid #f0f0f5;
+  }
+
+  .maillage-link:last-child { border-bottom: none; }
+
+  .maillage-arrow {
+    color: #c4a96a;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .maillage-dest {
+    color: #1a3460;
+    font-weight: 500;
+  }
+
+  /* PALETTE */
+  .palette-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    justify-content: center;
+    margin-bottom: 40px;
+  }
+
+  .palette-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .palette-swatch {
+    width: 80px;
+    height: 80px;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+  }
+
+  .palette-name {
+    font-size: 12px;
+    font-weight: 600;
+    color: #374151;
+    text-align: center;
+  }
+
+  .palette-hex {
+    font-size: 11px;
+    color: #9ca3af;
+    text-align: center;
+  }
+
+  /* LEVIERS */
+  .levier-row {
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    gap: 0;
+    border-bottom: 1px solid #f0f0f5;
+    padding: 16px 0;
+    align-items: start;
+  }
+
+  .levier-row:last-child { border-bottom: none; }
+
+  .levier-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #c4a96a;
+    padding-right: 20px;
+    padding-top: 2px;
+  }
+
+  .levier-value {
+    font-size: 14px;
+    color: #374151;
+    line-height: 1.7;
+  }
+
+  /* BLOG */
+  .blog-card {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    border: 1px solid rgba(0,0,0,0.04);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .blog-card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: #0d1f3c;
+    line-height: 1.4;
+  }
+
+  .blog-card-meta {
+    font-size: 12px;
+    color: #9ca3af;
+  }
+
+  .blog-card-cluster {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #1a3460;
+    background: #f0f4ff;
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 6px;
+  }
+
+  .priority-tags {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .priority-prioritaire { background: #d1fae5; color: #065f46; padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 600; }
+  .priority-moyen { background: #fef3c7; color: #92400e; padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 600; }
+  .priority-faible { background: #fee2e2; color: #991b1b; padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 600; }
+
+  /* OBJECTIFS */
+  .objectif-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 14px 0;
+    border-bottom: 1px solid #f0f0f5;
+  }
+
+  .objectif-row:last-child { border-bottom: none; }
+
+  .objectif-num {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: #0d1f3c;
+    color: #c4a96a;
+    font-size: 13px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .objectif-text {
+    font-size: 14px;
+    color: #374151;
+    font-weight: 500;
+  }
+
+  .objectif-desc {
+    font-size: 13px;
+    color: #9ca3af;
+    margin-top: 2px;
+  }
+
+  /* FOOTER */
+  footer {
+    background: #0d1f3c;
+    color: rgba(255,255,255,0.45);
+    text-align: center;
+    padding: 32px 40px;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+  }
+
+  footer strong {
+    color: rgba(255,255,255,0.75);
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    .cover-title { font-size: 38px; }
+    .cover-meta { flex-direction: column; gap: 20px; }
+    .cover-meta-sep { width: 40px; height: 1px; }
+
+    section { padding: 48px 24px; }
+
+    .section-title { font-size: 26px; }
+
+    .grid-2, .grid-3 { grid-template-columns: 1fr; }
+
+    .tunnel-grid { grid-template-columns: 1fr; }
+    .tunnel-step:first-child { border-radius: 14px 14px 0 0; }
+    .tunnel-step:last-child { border-radius: 0 0 14px 14px; }
+    .tunnel-step + .tunnel-step { border-left: 1px solid rgba(0,0,0,0.04); border-top: none; }
+
+    .levier-row { grid-template-columns: 1fr; gap: 4px; }
+
+    .highlight-box { padding: 28px 24px; }
+    .highlight-box .value { font-size: 18px; }
+
+    .table-wrap { overflow-x: auto; }
+
+    .palette-grid { gap: 16px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+  <div class="cover-badge">Blueprint Stratégique</div>
+  <h1 class="cover-title">TESLINE VTC</h1>
+  <p class="cover-subtitle">Document de cadrage stratégique — Confidentiel</p>
+  <div class="cover-meta">
+    <div class="cover-meta-item">
+      <div class="cover-meta-label">Client</div>
+      <div class="cover-meta-value">Sarah Lamaille</div>
+    </div>
+    <div class="cover-meta-sep"></div>
+    <div class="cover-meta-item">
+      <div class="cover-meta-label">Secteur</div>
+      <div class="cover-meta-value">Transport VTC</div>
+    </div>
+    <div class="cover-meta-sep"></div>
+    <div class="cover-meta-item">
+      <div class="cover-meta-label">Zone</div>
+      <div class="cover-meta-value">Limoges & région</div>
+    </div>
+  </div>
+</div>
+
+<!-- 01 POSITIONNEMENT -->
+<section id="bp-section-01">
+  <div class="section-header">
+    <span class="section-badge">01 — Positionnement</span>
+    <h2 class="section-title">Positionnement & Identité de marque</h2>
+    <p class="section-desc">Ce que TESLINE VTC incarne, comment elle se positionne et ce qui la distingue sur le marché limousin.</p>
+  </div>
+
+  <div class="highlight-box" style="margin-bottom: 40px;">
+    <div class="label">Promesse de valeur principale</div>
+    <div class="value">« À Limoges et en région, TESLINE VTC vous garantit un transport fiable, discret et confortable — que vous soyez en déplacement professionnel, en route vers une gare ou à l'occasion d'un événement important. »</div>
+  </div>
+
+  <div class="grid-2" style="margin-bottom: 40px;">
+    <div class="card">
+      <div class="card-icon">🧭</div>
+      <div class="card-title">Ligne directrice de communication</div>
+      <div class="card-text">Transport premium sans friction : chaque interaction — réservation, trajet, suivi — doit être fluide, rassurante et sans effort pour le client.</div>
+    </div>
+    <div class="card">
+      <div class="card-icon">🎙️</div>
+      <div class="card-title">Ton éditorial</div>
+      <div class="card-text"><strong>Professionnel · Chaleureux · Rassurant</strong><br>Un ton qui allie la rigueur du service haut de gamme à la proximité humaine d'un chauffeur de confiance basé localement.</div>
+    </div>
+  </div>
+
+  <h3 style="font-family:'Playfair Display',serif; font-size:20px; color:#0d1f3c; margin-bottom:20px;">Piliers de différenciation</h3>
+  <div class="grid-3">
+    <div class="card">
+      <div class="card-icon">⏱️</div>
+      <div class="card-title">Ponctualité garantie</div>
+      <div class="card-text">Un chauffeur qui anticipe, surveille les horaires et s'adapte pour que vous n'attendiez jamais.</div>
+    </div>
+    <div class="card">
+      <div class="card-icon">🤫</div>
+      <div class="card-title">Discrétion & confidentialité</div>
+      <div class="card-text">Un environnement de trajet calme et confidentiel, idéal pour les professionnels et les événements privés.</div>
+    </div>
+    <div class="card">
+      <div class="card-icon">🧩</div>
+      <div class="card-title">Service sur mesure</div>
+      <div class="card-text">Chaque trajet est adapté : horaires, itinéraire, mise à disposition — rien n'est standardisé à l'excès.</div>
+    </div>
+    <div class="card">
+      <div class="card-icon">📍</div>
+      <div class="card-title">Ancrage local fort</div>
+      <div class="card-text">Basée à Limoges, TESLINE VTC connaît la région et intervient rapidement partout en Haute-Vienne.</div>
+    </div>
+    <div class="card">
+      <div class="card-icon">📲</div>
+      <div class="card-title">Réservation simple & rapide</div>
+      <div class="card-text">Un accès immédiat au chauffeur, sans intermédiaire, pour une prise en charge fluide et sans friction.</div>
+    </div>
+  </div>
+</section>
+
+<!-- 02 CLIENT CIBLE -->
+<section id="bp-section-02">
+  <div class="section-header">
+    <span class="section-badge">02 — Client Cible</span>
+    <h2 class="section-title">Profil du client idéal</h2>
+    <p class="section-desc">Comprendre précisément qui réserve, pourquoi, et quels obstacles il faut lever pour le convaincre.</p>
+  </div>
+
+  <div class="grid-2" style="margin-bottom:24px;">
+    <div class="card">
+      <div class="card-title">👤 Profil type</div>
+      <div class="card-text">
+        <strong>Particuliers :</strong> 30–65 ans, actifs ou retraités, ayant besoin d'un transport ponctuel pour une gare, un aéroport ou un événement spécial.<br><br>
+        <strong>Professionnels :</strong> Cadres, commerciaux, dirigeants de PME limousines cherchant un chauffeur fiable pour leurs déplacements d'affaires.
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-title">🎯 Motivations principales</div>
+      <ul class="styled-list" style="margin-top:8px;">
+        <li>Ne pas rater un train ou un vol</li>
+        <li>Voyager confortablement sans conduire</li>
+        <li>Avoir un chauffeur de confiance pour un événement</li>
+        <li>Déléguer les déplacements d'équipe à l'entreprise</li>
+        <li>Eviter le stress du parking et de la circulation</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-title">🚧 Freins & objections</div>
+      <ul class="styled-list" style="margin-top:8px;">
+        <li>« Est-ce que le chauffeur sera vraiment à l'heure ? »</li>
+        <li>« Je ne connais pas ce prestataire, puis-je lui faire confiance ? »</li>
+        <li>« Le tarif est-il transparent, sans mauvaises surprises ? »</li>
+        <li>« Peut-il s'adapter à mes horaires de dernière minute ? »</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-title">✅ Critères de décision</div>
+      <ul class="styled-list" style="margin-top:8px;">
+        <li>Avis clients et réputation locale</li>
+        <li>Clarté des tarifs ou possibilité de devis rapide</li>
+        <li>Facilité de prise de contact et réactivité</li>
+        <li>Qualité et propreté du véhicule</li>
+        <li>Professionnalisme perçu dès la première impression</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 03 OBJECTIFS DU SITE -->
+<section id="bp-section-03">
+  <div class="section-header">
+    <span class="section-badge">03 — Objectifs du Site</span>
+    <h2 class="section-title">Ce que le site doit accomplir</h2>
+    <p class="section-desc">Liste priorisée des objectifs stratégiques du site web de TESLINE VTC.</p>
+  </div>
+
+  <div class="card">
+    <div class="objectif-row">
+      <div class="objectif-num">1</div>
+      <div>
+        <div class="objectif-text">Génération de leads & Conversion</div>
+        <div class="objectif-desc">Inciter chaque visiteur à prendre contact ou réserver directement via le site.</div>
+      </div>
+    </div>
+    <div class="objectif-row">
+      <div class="objectif-num">2</div>
+      <div>
+        <div class="objectif-text">SEO local</div>
+        <div class="objectif-desc">Apparaître en 1ère page Google sur les requêtes VTC à Limoges et en Haute-Vienne.</div>
+      </div>
+    </div>
+    <div class="objectif-row">
+      <div class="objectif-num">3</div>
+      <div>
+        <div class="objectif-text">Réassurance & Crédibilité</div>
+        <div class="objectif-desc">Lever les doutes du visiteur grâce aux avis, à la présentation du véhicule et au profil du chauffeur.</div>
+      </div>
+    </div>
+    <div class="objectif-row">
+      <div class="objectif-num">4</div>
+      <div>
+        <div class="objectif-text">Prise de RDV facilitée</div>
+        <div class="objectif-desc">Offrir un parcours de réservation simple, rapide et sans friction.</div>
+      </div>
+    </div>
+    <div class="objectif-row">
+      <div class="objectif-num">5</div>
+      <div>
+        <div class="objectif-text">Notoriété locale</div>
+        <div class="objectif-desc">Asseoir la réputation de TESLINE VTC comme référence du transport haut de gamme à Limoges.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 ARBORESCENCE -->
+<section id="bp-section-04">
+  <div class="section-header">
+    <span class="section-badge">04 — Arborescence du Site</span>
+    <h2 class="section-title">Structure des pages</h2>
+    <p class="section-desc">Chaque page est pensée pour un objectif précis. Les services individuels sont détaillés à l'intérieur de la page Offres.</p>
+  </div>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Page</th>
+          <th>Framework rédactionnel</th>
+          <th>Mot-clé principal</th>
+          <th>Potentiel SEO</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Accueil</strong></td>
+          <td>AIDA — Attention, Intérêt, Désir, Action</td>
+          <td>VTC Limoges</td>
+          <td><span class="badge-seo badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>Nos Offres</strong><br><small style="color:#9ca3af;">Transferts, Mise à dispo, City tour, Entreprises, Événementiel</small></td>
+          <td>PAS — Problème, Agitation, Solution</td>
+          <td>Chauffeur VTC Limoges services</td>
+          <td><span class="badge-seo badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>À Propos</strong></td>
+          <td>BAB — Before, After, Bridge</td>
+          <td>Chauffeur VTC Limoges particulier</td>
+          <td><span class="badge-seo badge-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>Zone d'intervention — Limoges & Haute-Vienne</strong></td>
+          <td>AIDA — local</td>
+          <td>VTC Haute-Vienne / chauffeur privé Limoges</td>
+          <td><span class="badge-seo badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>Zone d'intervention — Longues distances</strong></td>
+          <td>PAS</td>
+          <td>VTC longue distance depuis Limoges</td>
+          <td><span class="badge-seo badge-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>Contact & Réservation</strong></td>
+          <td>Direct — CTA centré</td>
+          <td>Réserver VTC Limoges</td>
+          <td><span class="badge-seo badge-faible">Faible</span></td>
+        </tr>
+        <tr>
+          <td><strong>Blog</strong></td>
+          <td>Informatif — SEO content</td>
+          <td>Transport VTC Limoges conseils</td>
+          <td><span class="badge-seo badge-moyen">Moyen</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- 05 COCON SÉMANTIQUE -->
+<section id="bp-section-05">
+  <div class="section-header">
+    <span class="section-badge">05 — Cocon Sémantique</span>
+    <h2 class="section-title">Architecture de contenu & maillage interne</h2>
+    <p class="section-desc">Organisation thématique du site pour maximiser l'autorité SEO de TESLINE VTC.</p>
+  </div>
+
+  <div class="cocon-cluster">
+    <div class="cluster-title">🗂️ Cluster 1 — Transport local & régional à Limoges</div>
+    <div class="cluster-pages">
+      <span class="cluster-page-tag">Accueil</span>
+      <span class="cluster-page-tag">Nos Offres</span>
+      <span class="cluster-page-tag">Zone — Limoges & Haute-Vienne</span>
+      <span class="cluster-page-tag">Contact & Réservation</span>
+    </div>
+    <div class="maillage-title">Logique de maillage</div>
+    <div class="maillage-link">
+      <span>Accueil</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-dest">Nos Offres</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-dest">Zone Limoges & Haute-Vienne</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-dest">Contact & Réservation</span>
+    </div>
+    <div class="maillage-link">
+      <span>Zone Limoges & Haute-Vienne</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-dest">Nos Offres (transferts gare/aéroport)</span>
+    </div>
+    <div class="maillage-link">
+      <span>Articles Blog (transport local)</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-dest">Accueil + Zone Limoges</span>
+    </div>
+  </div>
+
+  <div class="cocon-cluster">
+    <div class="cluster-title">🗂️ Cluster 2 — Transport premium & longue distance</div>
+    <div class="cluster-pages">
+      <span class="cluster-page-tag">Zone — Longues distances</span>
+      <span class="cluster-page-tag">Nos Offres (mise à dispo, événementiel)</span>
+      <span class="cluster-page-tag">À Propos</span>
+      <span class="cluster-page-tag">Blog</span>
+    </div>
+    <div class="maillage-title">Logique de maillage</div>
+    <div class="maillage-link">
+      <span>Zone Longues distances</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-dest">Nos Offres (mise à disposition)</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-dest">Contact & Réservation</span>
+    </div>
+    <div class="maillage-link">
+      <span>À Propos</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-dest">Nos Offres</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-dest">Contact & Réservation</span>
+    </div>
+    <div class="maillage-link">
+      <span>Articles Blog (voyages d'affaires, événements)</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-dest">Zone Longues distances + Nos Offres</span>
+    </div>
+  </div>
+</section>
+
+<!-- 06 TUNNEL DE CONVERSION -->
+<section id="bp-section-06">
+  <div class="section-header">
+    <span class="section-badge">06 — Tunnel de Conversion</span>
+    <h2 class="section-title">Du visiteur au client</h2>
+    <p class="section-desc">Les 4 étapes clés pour transformer un inconnu en client fidèle de TESLINE VTC.</p>
+  </div>
+
+  <div class="tunnel-grid">
+    <div class="tunnel-step">
+      <div class="tunnel-num">Étape 01</div>
+      <div class="tunnel-label">Découverte</div>
+      <div class="tunnel-item"><strong>Source de trafic</strong>Google Search / Google Maps / Bouche-à-oreille local</div>
+      <div class="tunnel-item"><strong>Page concernée</strong>Accueil + Zone Limoges & Haute-Vienne</div>
+      <div class="tunnel-cta">« Découvrir nos services »</div>
+    </div>
+    <div class="tunnel-step">
+      <div class="tunnel-num">Étape 02</div>
+      <div class="tunnel-label">Intérêt</div>
+      <div class="tunnel-item"><strong>Source de trafic</strong>Navigation interne, articles de blog</div>
+      <div class="tunnel-item"><strong>Page concernée</strong>Nos Offres + À Propos</div>
+      <div class="tunnel-cta">« Voir toutes nos prestations »</div>
+    </div>
+    <div class="tunnel-step">
+      <div class="tunnel-num">Étape 03</div>
+      <div class="tunnel-label">Confiance</div>
+      <div class="tunnel-item"><strong>Source de trafic</strong>Avis Google, témoignages sur le site</div>
+      <div class="tunnel-item"><strong>Page concernée</strong>À Propos + section avis de l'Accueil</div>
+      <div class="tunnel-cta">« Lire les avis clients »</div>
+    </div>
+    <div class="tunnel-step">
+      <div class="tunnel-num">Étape 04</div>
+      <div class="tunnel-label">Conversion</div>
+      <div class="tunnel-item"><strong>Source de trafic</strong>Navigation directe, retargeting</div>
+      <div class="tunnel-item"><strong>Page concernée</strong>Contact & Réservation</div>
+      <div class="tunnel-cta">« Réserver maintenant »</div>
+    </div>
+  </div>
+</section>
+
+<!-- 07 LEVIERS MARKETING -->
+<section id="bp-section-07">
+  <div class="section-header">
+    <span class="section-badge">07 — Leviers Marketing Recommandés</span>
+    <h2 class="section-title">Actions à mettre en place</h2>
+    <p class="section-desc">Les outils et mécaniques recommandés pour maximiser la conversion et la fidélisation.</p>
+  </div>
+
+  <div class="card">
+    <div class="levier-row">
+      <div class="levier-label">Prise de RDV</div>
+      <div class="levier-value"><strong>Calendly ou Yoplanning</strong> — Intégrer un widget de réservation directement sur la page Contact & Réservation. Le client sélectionne sa date, son horaire et le type de trajet. Couplé à un formulaire de devis pour les trajets complexes.</div>
+    </div>
+    <div class="levier-row">
+      <div class="levier-label">Preuve sociale</div>
+      <div class="levier-value"><strong>Avis Google mis en avant</strong> — Section dédiée sur l'Accueil avec 3 à 5 témoignages clients. Intégrer le widget Google Reviews pour afficher la note en temps réel. Encourager les clients satisfaits à laisser un avis après chaque trajet.</div>
+    </div>
+    <div class="levier-row">
+      <div class="levier-label">Formulaire qualifiant</div>
+      <div class="levier-value">Champs recommandés : <strong>Prénom / Type de trajet (liste déroulante) / Date et heure souhaitées / Lieu de prise en charge / Lieu de destination / Nombre de passagers / Message libre</strong>. Formulaire court, mobile-first, réponse promise sous 2h.</div>
+    </div>
+    <div class="levier-row">
+      <div class="levier-label">Newsletter</div>
+      <div class="levier-value">Angle éditorial : <strong>« Voyager mieux autour de Limoges »</strong> — conseils pratiques, actualités transports locaux, offres saisonnières (Noël, événements régionaux). Fréquence : 1 email par mois maximum.</div>
+    </div>
+  </div>
+</section>
+
+<!-- 08 DIRECTION VISUELLE -->
+<section id="bp-section-08">
+  <div class="section-header">
+    <span class="section-badge">08 — Direction Visuelle & Éditoriale</span>
+    <h2 class="section-title">Identité visuelle recommandée</h2>
+    <p class="section-desc">Un univers élégant, sobre et premium, ancré dans la nuit et le prestige du transport haut de gamme.</p>
+  </div>
+
+  <h3 style="font-family:'Playfair Display',serif; font-size:18px; color:#0d1f3c; margin-bottom:28px;">Palette de couleurs</h3>
+  <div class="palette-grid">
+    <div class="palette-item">
+      <div class="palette-swatch" style="background:#0D1F3C;"></div>
+      <div class="palette-name">Marine Nuit</div>
+      <div class="palette-hex">#0D1F3C</div>
+    </div>
+    <div class="palette-item">
+      <div class="palette-swatch" style="background:#C4A96A;"></div>
+      <div class="palette-name">Or Discret</div>
+      <div class="palette-hex">#C4A96A</div>
+    </div>
+    <div class="palette-item">
+      <div class="palette-swatch" style="background:#F9F9FB;"></div>
+      <div class="palette-name">Blanc Perle</div>
+      <div class="palette-hex">#F9F9FB</div>
+    </div>
+    <div class="palette-item">
+      <div class="palette-swatch" style="background:#4B5563; border: 1px solid #e5e7eb;"></div>
+      <div class="palette-name">Gris Acier</div>
+      <div class="palette-hex">#4B5563</div>
+    </div>
+    <div class="palette-item">
+      <div class="palette-swatch" style="background:#1A3460;"></div>
+      <div class="palette-name">Bleu Nuit</div>
+      <div class="palette-hex">#1A3460</div>
+    </div>
+  </div>
+
+  <h3 style="font-family:'Playfair Display',serif; font-size:18px; color:#0d1f3c; margin-bottom:24px; margin-top:40px;">Univers visuel recommandé</h3>
+  <div class="grid-3">
+    <div class="card">
+      <div class="card-icon">🌃</div>
+      <div class="card-title">Photographie nocturne urbaine</div>
+      <div class="card-text">Limoges de nuit, lumières de ville, véhicule élégant en mouvement. Crée l'atmosphère premium attendue.</div>
+    </div>
+    <div class="card">
+      <div class="card-icon">🚗</div>
+      <div class="card-title">Mise en valeur du Toyota C-HR</div>
+      <div class="card-text">Photos intérieur/extérieur du véhicule, propres et lumineux. Le véhicule est un argument de confiance.</div>
+    </div>
+    <div class="card">
+      <div class="card-icon">👔</div>
+      <div class="card-title">Portrait professionnel de Sarah</div>
+      <div class="card-text">Photo du chauffeur en tenue professionnelle. L'humain derrière le service est un facteur de réassurance fort.</div>
+    </div>
+    <div class="card">
+      <div class="card-icon">🗺️</div>
+      <div class="card-title">Illustrations cartographiques</div>
+      <div class="card-text">Carte stylisée de la région Haute-Vienne pour visualiser la zone d'intervention de manière élégante.</div>
+    </div>
+    <div class="card">
+      <div class="card-icon">✦</div>
+      <div class="card-title">Icônes minimalistes dorées</div>
+      <div class="card-text">Icônes fines en Or Discret (#C4A96A) pour illustrer les services. Renforce la cohérence premium de l'ensemble.</div>
+    </div>
+  </div>
+</section>
+
+<!-- 09 ARTICLES BLOG -->
+<section id="bp-section-09">
+  <div class="section-header">
+    <span class="section-badge">09 — Articles Blog Recommandés</span>
+    <h2 class="section-title">Stratégie de contenu éditorial</h2>
+    <p class="section-desc">Des sujets pensés pour attirer du trafic qualifié et renforcer l'autorité locale de TESLINE VTC.</p>
+  </div>
+
+  <div class="grid-2">
+    <div class="blog-card">
+      <div class="blog-card-cluster">Transport local</div>
+      <div class="blog-card-title">VTC à Limoges : pourquoi choisir un chauffeur privé plutôt qu'un taxi traditionnel ?</div>
+      <div class="blog-card-meta">Intention : comparative — visiteur en phase de décision</div>
+      <div class="priority-tags"><span class="priority-prioritaire">Prioritaire</span></div>
+    </div>
+    <div class="blog-card">
+      <div class="blog-card-cluster">Transport local</div>
+      <div class="blog-card-title">Transfert gare de Limoges-Bénédictins : comment préparer son trajet sereinement ?</div>
+      <div class="blog-card-meta">Intention : informationnelle — SEO local fort</div>
+      <div class="priority-tags"><span class="priority-prioritaire">Prioritaire</span></div>
+    </div>
+    <div class="blog-card">
+      <div class="blog-card-cluster">Transport premium</div>
+      <div class="blog-card-title">Mise à disposition d'un VTC à Limoges : pour quels besoins et à quel tarif ?</div>
+      <div class="blog-card-meta">Intention : transactionnelle — prospect chaud</div>
+      <div class="priority-tags"><span class="priority-prioritaire">Prioritaire</span></div>
+    </div>
+    <div class="blog-card">
+      <div class="blog-card-cluster">Transport premium</div>
+      <div class="blog-card-title">Mariage, soirée de gala, city tour : comment bien choisir son VTC pour un événement à Limoges ?</div>
+      <div class="blog-card-meta">Intention : informationnelle + décision — cible événementielle</div>
+      <div class="priority-tags"><span class="priority-moyen">Moyen</span></div>
+    </div>
+    <div class="blog-card">
+      <div class="blog-card-cluster">Transport premium</div>
+      <div class="blog-card-title">Déplacements professionnels en Haute-Vienne : les avantages d'un VTC pour votre entreprise</div>
+      <div class="blog-card-meta">Intention : informationnelle B2B — cible entreprises</div>
+      <div class="priority-tags"><span class="priority-moyen">Moyen</span></div>
+    </div>
+    <div class="blog-card">
+      <div class="blog-card-cluster">Transport local</div>
+      <div class="blog-card-title">5 bonnes raisons de réserver un VTC plutôt que de conduire jusqu'à l'aéroport</div>
+      <div class="blog-card-meta">Intention : persuasive — visiteur hésitant</div>
+      <div class="priority-tags"><span class="priority-moyen">Moyen</span></div>
+    </div>
+    <div class="blog-card">
+      <div class="blog-card-cluster">Transport premium</div>
+      <div class="blog-card-title">Longue distance depuis Limoges : Paris, Bordeaux, Lyon — comment organiser son trajet en VTC ?</div>
+      <div class="blog-card-meta">Intention : informationnelle + transactionnelle — longue distance</div>
+      <div class="priority-tags"><span class="priority-faible">Faible</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p><strong>TESLINE VTC</strong> — Blueprint Stratégique réalisé par AR Digital</p>
+  <p style="margin-top:6px;">Document confidentiel — Réservé à l'usage exclusif de Sarah Lamaille</p>
+</footer>
+
+</body>
+</html>
