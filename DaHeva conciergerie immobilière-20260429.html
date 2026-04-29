@@ -1,0 +1,1030 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blueprint Stratégique — DaHeva Conciergerie Immobilière</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    line-height: 1.8;
+    color: #1a1a2e;
+    background: #f8f8f6;
+  }
+
+  /* COUVERTURE */
+  .cover {
+    min-height: 100vh;
+    background: linear-gradient(145deg, #0d1b3e 0%, #112255 40%, #1a3370 70%, #1c2e5e 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 60px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+  .cover::before {
+    content: '';
+    position: absolute;
+    top: -80px; left: -80px;
+    width: 340px; height: 340px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(197,160,80,0.18) 0%, transparent 70%);
+  }
+  .cover::after {
+    content: '';
+    position: absolute;
+    bottom: -60px; right: -60px;
+    width: 280px; height: 280px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(197,160,80,0.12) 0%, transparent 70%);
+  }
+  .cover-badge {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #c5a050;
+    margin-bottom: 32px;
+    border: 1px solid rgba(197,160,80,0.4);
+    padding: 8px 20px;
+    border-radius: 30px;
+  }
+  .cover-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 68px;
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.1;
+    margin-bottom: 16px;
+    letter-spacing: -1px;
+  }
+  .cover-subtitle {
+    font-size: 16px;
+    color: rgba(255,255,255,0.65);
+    font-weight: 300;
+    margin-bottom: 52px;
+    letter-spacing: 1px;
+  }
+  .cover-meta {
+    display: flex;
+    gap: 40px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .cover-meta-item {
+    text-align: center;
+  }
+  .cover-meta-item .label {
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #c5a050;
+    display: block;
+    margin-bottom: 4px;
+  }
+  .cover-meta-item .value {
+    font-size: 14px;
+    color: #ffffff;
+    font-weight: 500;
+  }
+
+  /* LAYOUT */
+  .section {
+    padding: 80px 80px;
+    background: #f8f8f6;
+  }
+  .section-alt {
+    background: #ffffff;
+  }
+
+  .section-badge {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #c5a050;
+    background: rgba(197,160,80,0.1);
+    border: 1px solid rgba(197,160,80,0.3);
+    padding: 6px 16px;
+    border-radius: 20px;
+    margin-bottom: 16px;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 34px;
+    font-weight: 700;
+    color: #0d1b3e;
+    margin-bottom: 8px;
+    line-height: 1.2;
+  }
+
+  .section-lead {
+    font-size: 15px;
+    color: #6b7280;
+    margin-bottom: 48px;
+    max-width: 600px;
+  }
+
+  /* CARDS */
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  .grid-3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px;
+  }
+  .grid-4 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 24px;
+  }
+
+  .card {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    page-break-inside: avoid;
+  }
+
+  .card-icon {
+    font-size: 26px;
+    margin-bottom: 14px;
+  }
+  .card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    font-weight: 600;
+    color: #0d1b3e;
+    margin-bottom: 10px;
+  }
+  .card-text {
+    font-size: 14px;
+    color: #4b5563;
+    line-height: 1.7;
+  }
+
+  /* HIGHLIGHT BOX */
+  .highlight-box {
+    background: linear-gradient(135deg, #0d1b3e 0%, #1a3370 100%);
+    border-radius: 18px;
+    padding: 44px 52px;
+    margin-bottom: 48px;
+    border-left: 4px solid #c5a050;
+  }
+  .highlight-box .hl-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #c5a050;
+    margin-bottom: 16px;
+    display: block;
+  }
+  .highlight-box .hl-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    color: #ffffff;
+    line-height: 1.6;
+    font-style: italic;
+  }
+
+  /* LISTE STYLÉE */
+  .styled-list {
+    list-style: none;
+    padding: 0;
+  }
+  .styled-list li {
+    font-size: 14px;
+    color: #4b5563;
+    padding: 10px 0;
+    border-bottom: 1px solid #f0f0f0;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    line-height: 1.6;
+  }
+  .styled-list li:last-child { border-bottom: none; }
+  .styled-list li::before {
+    content: '→';
+    color: #c5a050;
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  /* BADGES PRIORITÉ */
+  .badge {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 4px 12px;
+    border-radius: 20px;
+    letter-spacing: 0.5px;
+  }
+  .badge-fort { background: #d1fae5; color: #065f46; }
+  .badge-moyen { background: #fef3c7; color: #92400e; }
+  .badge-faible { background: #f1f5f9; color: #475569; }
+  .badge-prioritaire { background: #0d1b3e; color: #ffffff; }
+
+  /* TABLEAU */
+  .table-wrap {
+    overflow-x: auto;
+    border-radius: 14px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #ffffff;
+    font-size: 14px;
+  }
+  thead tr {
+    background: #0d1b3e;
+    color: #ffffff;
+  }
+  thead th {
+    padding: 16px 20px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 12px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  tbody tr {
+    border-bottom: 1px solid #f0f0f0;
+  }
+  tbody tr:hover { background: #fafafa; }
+  tbody td {
+    padding: 16px 20px;
+    color: #374151;
+    vertical-align: top;
+  }
+  tbody td:first-child {
+    font-weight: 600;
+    color: #0d1b3e;
+  }
+
+  /* TUNNEL */
+  .tunnel-steps {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 0;
+  }
+  .tunnel-step {
+    background: #ffffff;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    padding: 28px;
+    position: relative;
+  }
+  .tunnel-step:first-child { border-radius: 14px 0 0 14px; }
+  .tunnel-step:last-child { border-radius: 0 14px 14px 0; }
+  .tunnel-step:not(:last-child)::after {
+    content: '›';
+    position: absolute;
+    right: -14px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 28px;
+    color: #c5a050;
+    font-weight: 700;
+    z-index: 2;
+    line-height: 1;
+  }
+  .step-num {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #c5a050;
+    margin-bottom: 10px;
+  }
+  .step-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    font-weight: 600;
+    color: #0d1b3e;
+    margin-bottom: 16px;
+  }
+  .step-detail {
+    font-size: 13px;
+    color: #6b7280;
+    line-height: 1.6;
+    margin-bottom: 6px;
+  }
+  .step-detail strong {
+    color: #374151;
+    font-weight: 600;
+  }
+
+  /* MAILLAGE */
+  .maillage-row {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 14px 0;
+    border-bottom: 1px solid #f0f0f0;
+    font-size: 14px;
+    color: #374151;
+  }
+  .maillage-row:last-child { border-bottom: none; }
+  .maillage-source {
+    font-weight: 600;
+    color: #0d1b3e;
+    background: rgba(13,27,62,0.06);
+    padding: 4px 12px;
+    border-radius: 20px;
+    white-space: nowrap;
+  }
+  .maillage-arrow {
+    color: #c5a050;
+    font-weight: 700;
+    font-size: 16px;
+    flex-shrink: 0;
+  }
+  .maillage-dest {
+    background: rgba(197,160,80,0.1);
+    color: #92400e;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 13px;
+    white-space: nowrap;
+  }
+
+  /* PALETTE COULEURS */
+  .palette-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 24px;
+    margin-top: 32px;
+  }
+  .color-swatch {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+  .color-box {
+    width: 80px;
+    height: 80px;
+    border-radius: 14px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.12);
+  }
+  .color-name {
+    font-size: 13px;
+    font-weight: 600;
+    color: #1a1a2e;
+    text-align: center;
+  }
+  .color-hex {
+    font-size: 11px;
+    color: #9ca3af;
+    text-align: center;
+  }
+
+  /* TAGS */
+  .tag-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 16px;
+  }
+  .tag {
+    font-size: 12px;
+    font-weight: 500;
+    padding: 6px 14px;
+    border-radius: 20px;
+    background: rgba(13,27,62,0.07);
+    color: #0d1b3e;
+  }
+  .tag-gold {
+    background: rgba(197,160,80,0.12);
+    color: #8a6d20;
+  }
+
+  /* TONE */
+  .tone-box {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+  .tone-adj {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: #0d1b3e;
+    margin-bottom: 4px;
+  }
+
+  /* OBJECTIFS */
+  .obj-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 20px 24px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    margin-bottom: 14px;
+  }
+  .obj-rank {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: #c5a050;
+    min-width: 40px;
+    text-align: center;
+  }
+  .obj-text {
+    font-size: 15px;
+    font-weight: 600;
+    color: #0d1b3e;
+  }
+  .obj-desc {
+    font-size: 13px;
+    color: #6b7280;
+    line-height: 1.5;
+  }
+
+  /* CLUSTER */
+  .cluster-box {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+  .cluster-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    font-weight: 600;
+    color: #0d1b3e;
+    margin-bottom: 14px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid #c5a050;
+  }
+
+  /* FOOTER */
+  footer {
+    background: #0d1b3e;
+    color: rgba(255,255,255,0.5);
+    text-align: center;
+    padding: 40px 40px;
+    font-size: 13px;
+    letter-spacing: 0.5px;
+  }
+  footer strong {
+    color: #c5a050;
+  }
+
+  /* PRINT */
+  @media print {
+    .section { padding: 50px 40px; }
+    .cover { min-height: auto; padding: 60px 40px; }
+    .tunnel-steps { grid-template-columns: 1fr 1fr; }
+    .grid-4 { grid-template-columns: 1fr 1fr; }
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    .cover-title { font-size: 38px; }
+    .cover-meta { gap: 20px; }
+    .section { padding: 48px 24px; }
+    .section-title { font-size: 26px; }
+    .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+    .tunnel-steps { grid-template-columns: 1fr; }
+    .tunnel-step:first-child { border-radius: 14px 14px 0 0; }
+    .tunnel-step:last-child { border-radius: 0 0 14px 14px; }
+    .tunnel-step:not(:last-child)::after { display: none; }
+    .highlight-box { padding: 28px 24px; }
+    .highlight-box .hl-text { font-size: 18px; }
+    .palette-grid { gap: 16px; }
+    .maillage-row { flex-wrap: wrap; }
+  }
+</style>
+</head>
+<body>
+
+<!-- COUVERTURE -->
+<div class="cover">
+  <div class="cover-badge">Blueprint Stratégique — Document Confidentiel</div>
+  <div class="cover-title">DaHeva<br>Conciergerie</div>
+  <div class="cover-subtitle">Votre feuille de route digitale personnalisée</div>
+  <div class="cover-meta">
+    <div class="cover-meta-item">
+      <span class="label">Client</span>
+      <span class="value">Dennis Rojas</span>
+    </div>
+    <div class="cover-meta-item">
+      <span class="label">Secteur</span>
+      <span class="value">Conciergerie LCD</span>
+    </div>
+    <div class="cover-meta-item">
+      <span class="label">Zone</span>
+      <span class="value">Lille Métropole</span>
+    </div>
+  </div>
+</div>
+
+<!-- 01 POSITIONNEMENT -->
+<section id="bp-section-01" class="section section-alt">
+  <span class="section-badge">01 — Positionnement</span>
+  <h2 class="section-title">Positionnement stratégique</h2>
+  <p class="section-lead">Le socle identitaire de DaHeva sur le marché lillois de la location courte durée.</p>
+
+  <div class="highlight-box">
+    <span class="hl-label">Promesse de valeur principale</span>
+    <div class="hl-text">« DaHeva libère les propriétaires lillois des contraintes de la location courte durée et valorise leur bien grâce à un accompagnement complet, humain et sans compromis sur la qualité. »</div>
+  </div>
+
+  <div class="card" style="margin-bottom:24px;">
+    <div class="card-title">Ligne directrice de communication</div>
+    <div class="card-text">Expertise terrain locale · Accompagnement premium sur-mesure · Tranquillité d'esprit totale pour le propriétaire</div>
+  </div>
+
+  <div class="card" style="margin-bottom:40px;">
+    <div class="card-title">Ton éditorial</div>
+    <div class="tag-row" style="margin-bottom:14px;">
+      <span class="tag tag-gold">Professionnel</span>
+      <span class="tag tag-gold">Rassurant</span>
+      <span class="tag tag-gold">Humain</span>
+    </div>
+    <div class="card-text">Un discours direct et chaleureux qui inspire confiance, valorise l'expertise locale et parle à des propriétaires qui souhaitent déléguer sans perdre le contrôle.</div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-icon">📍</div>
+      <div class="card-title">Ancrage lillois fort</div>
+      <div class="card-text">Spécialiste du Vieux-Lille et d'Euralille, DaHeva connaît les dynamiques locales (tourisme, affaires, étudiants) mieux que toute agence nationale.</div>
+    </div>
+    <div class="card">
+      <div class="card-icon">🤝</div>
+      <div class="card-title">Accompagnement 360° sans effort</div>
+      <div class="card-text">De la création de l'annonce à la gestion des commentaires, le propriétaire n'a rien à faire. Un interlocuteur unique, une délégation totale.</div>
+    </div>
+    <div class="card">
+      <div class="card-icon">🏆</div>
+      <div class="card-title">Exigence qualité comme boussole</div>
+      <div class="card-text">Zéro compromis sur la propreté, l'accueil et la réactivité. Chaque voyageur vit une expérience mémorable, chaque propriétaire obtient des avis 5 étoiles.</div>
+    </div>
+    <div class="card">
+      <div class="card-icon">📊</div>
+      <div class="card-title">Transparence financière</div>
+      <div class="card-text">Commission claire à 25%, rapports financiers réguliers et tarification dynamique pour maximiser le taux d'occupation et le revenu net du propriétaire.</div>
+    </div>
+    <div class="card">
+      <div class="card-icon">💎</div>
+      <div class="card-title">Relation humaine et personnalisée</div>
+      <div class="card-text">Pas de relation anonyme avec un call-center. Dennis s'implique directement, offrant une proximité et une réactivité que les grandes plateformes ne peuvent pas égaler.</div>
+    </div>
+  </div>
+</section>
+
+<!-- 02 CLIENT CIBLE -->
+<section id="bp-section-02" class="section">
+  <span class="section-badge">02 — Client Cible</span>
+  <h2 class="section-title">Portrait du client idéal</h2>
+  <p class="section-lead">Le propriétaire lillois que DaHeva accompagne au quotidien.</p>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-title">Profil type</div>
+      <ul class="styled-list">
+        <li>30–55 ans, actif, CSP+ ou investisseur immobilier</li>
+        <li>Propriétaire d'un T1 à T3 dans le Vieux-Lille, Euralille ou centre métropole</li>
+        <li>Déjà sur Airbnb ou Booking mais débordé par la gestion quotidienne</li>
+        <li>Ou primo-loueur souhaitant se lancer sans se tromper</li>
+        <li>Valorise son temps et cherche un partenaire de confiance local</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-title">Motivations principales</div>
+      <ul class="styled-list">
+        <li>Générer des revenus complémentaires stables sans s'impliquer</li>
+        <li>Valoriser un bien vide ou sous-exploité</li>
+        <li>Optimiser le taux d'occupation et le prix par nuit</li>
+        <li>Déléguer à quelqu'un de fiable et de local</li>
+        <li>Protéger son bien et obtenir des avis positifs réguliers</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-title">Freins & objections</div>
+      <ul class="styled-list">
+        <li>« Je ne sais pas si je peux faire confiance à une nouvelle conciergerie »</li>
+        <li>« Les 25% de commission semblent élevés »</li>
+        <li>« J'ai peur que mon logement soit mal entretenu »</li>
+        <li>« Je ne sais pas si Airbnb est rentable à Lille »</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-title">Critères de décision</div>
+      <ul class="styled-list">
+        <li>Preuve de sérieux : avis clients, témoignages, résultats concrets</li>
+        <li>Proximité et connaissance du marché lillois</li>
+        <li>Clarté de l'offre et transparence sur les commissions</li>
+        <li>Réactivité et accessibilité de l'interlocuteur</li>
+        <li>Qualité perçue du site web et des visuels de présentation</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 03 OBJECTIFS DU SITE -->
+<section id="bp-section-03" class="section section-alt">
+  <span class="section-badge">03 — Objectifs du Site</span>
+  <h2 class="section-title">Ce que le site doit accomplir</h2>
+  <p class="section-lead">Liste priorisée des missions stratégiques du site web de DaHeva.</p>
+
+  <div class="obj-item">
+    <div class="obj-rank">1</div>
+    <div>
+      <div class="obj-text">Génération de leads qualifiés</div>
+      <div class="obj-desc">Convaincre les propriétaires lillois de contacter DaHeva via un formulaire ou une prise de RDV directe.</div>
+    </div>
+  </div>
+  <div class="obj-item">
+    <div class="obj-rank">2</div>
+    <div>
+      <div class="obj-text">Réassurance & crédibilité</div>
+      <div class="obj-desc">Lever les doutes grâce aux preuves sociales, à la transparence de l'offre et à la mise en avant du profil de Dennis.</div>
+    </div>
+  </div>
+  <div class="obj-item">
+    <div class="obj-rank">3</div>
+    <div>
+      <div class="obj-text">SEO local ciblé</div>
+      <div class="obj-desc">Apparaître sur les recherches Google des propriétaires de Lille, Vieux-Lille et Euralille cherchant une conciergerie Airbnb.</div>
+    </div>
+  </div>
+  <div class="obj-item">
+    <div class="obj-rank">4</div>
+    <div>
+      <div class="obj-text">Conversion & prise de RDV</div>
+      <div class="obj-desc">Transformer les visiteurs en prospects chauds avec un parcours clair : découvrir l'offre → estimer son revenu → prendre RDV.</div>
+    </div>
+  </div>
+  <div class="obj-item">
+    <div class="obj-rank">5</div>
+    <div>
+      <div class="obj-text">Notoriété locale</div>
+      <div class="obj-desc">Installer DaHeva comme la référence conciergerie LCD sur la métropole lilloise via le blog et la présence en ligne.</div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 ARBORESCENCE -->
+<section id="bp-section-04" class="section">
+  <span class="section-badge">04 — Arborescence du Site</span>
+  <h2 class="section-title">Structure des pages</h2>
+  <p class="section-lead">Architecture SEO et éditoriale du site DaHeva.fr — 1 page par offre globale, maximum 2 pages locales.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Page</th>
+          <th>Framework</th>
+          <th>Mot-clé principal</th>
+          <th>Potentiel SEO</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Accueil</td>
+          <td>AIDA</td>
+          <td>conciergerie Airbnb Lille</td>
+          <td><span class="badge badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td>Notre Offre (services & tarifs)</td>
+          <td>PAS</td>
+          <td>gestion location courte durée Lille</td>
+          <td><span class="badge badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td>À propos / Notre histoire</td>
+          <td>BAB</td>
+          <td>conciergerie immobilière Lille avis</td>
+          <td><span class="badge badge-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td>SEO Local — Vieux-Lille</td>
+          <td>AIDA</td>
+          <td>conciergerie Airbnb Vieux-Lille</td>
+          <td><span class="badge badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td>SEO Local — Euralille</td>
+          <td>AIDA</td>
+          <td>gestion Airbnb Euralille</td>
+          <td><span class="badge badge-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td>Estimation de revenus (simulateur)</td>
+          <td>PAS</td>
+          <td>simulateur revenus Airbnb Lille</td>
+          <td><span class="badge badge-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td>Blog / Conseils propriétaires</td>
+          <td>—</td>
+          <td>conseils location courte durée Lille</td>
+          <td><span class="badge badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td>Contact / Prise de RDV</td>
+          <td>—</td>
+          <td>—</td>
+          <td><span class="badge badge-faible">Faible</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- 05 COCON SÉMANTIQUE -->
+<section id="bp-section-05" class="section section-alt">
+  <span class="section-badge">05 — Cocon Sémantique</span>
+  <h2 class="section-title">Clusters thématiques & maillage</h2>
+  <p class="section-lead">Organisation des thématiques pour dominer les résultats Google sur le marché lillois.</p>
+
+  <div class="grid-2" style="margin-bottom:40px;">
+    <div class="cluster-box">
+      <div class="cluster-title">Cluster 1 — Gestion & Délégation LCD</div>
+      <ul class="styled-list">
+        <li>Gestion complète location courte durée Lille</li>
+        <li>Conciergerie Airbnb : comment ça fonctionne ?</li>
+        <li>Pourquoi déléguer sa gestion Airbnb à Lille</li>
+        <li>Check-in automatisé vs accueil personnalisé</li>
+        <li>Tarification dynamique : maximiser ses revenus</li>
+      </ul>
+    </div>
+    <div class="cluster-box">
+      <div class="cluster-title">Cluster 2 — Marché Local Lillois</div>
+      <ul class="styled-list">
+        <li>Investir en LCD dans le Vieux-Lille</li>
+        <li>Louer en courte durée à Euralille : opportunités</li>
+        <li>Réglementation Airbnb à Lille en 2025</li>
+        <li>Rentabilité LCD Lille vs location longue durée</li>
+        <li>Les quartiers les plus rentables pour Airbnb à Lille</li>
+      </ul>
+    </div>
+    <div class="cluster-box">
+      <div class="cluster-title">Cluster 3 — Confiance & Qualité</div>
+      <ul class="styled-list">
+        <li>Comment choisir sa conciergerie Airbnb ?</li>
+        <li>Ménage et entretien : les standards professionnels</li>
+        <li>Avis voyageurs : comment obtenir 5 étoiles</li>
+        <li>Assurance et protection du logement LCD</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Logique de maillage interne</div>
+    <div class="maillage-row">
+      <span class="maillage-source">Accueil</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-dest">Notre Offre</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-dest">Estimation de revenus</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-dest">Contact / RDV</span>
+    </div>
+    <div class="maillage-row">
+      <span class="maillage-source">Pages locales</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-dest">Notre Offre</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-dest">À propos</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-dest">Contact / RDV</span>
+    </div>
+    <div class="maillage-row">
+      <span class="maillage-source">Articles Blog</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-dest">Accueil</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-dest">Notre Offre</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-dest">Estimation de revenus</span>
+    </div>
+    <div class="maillage-row">
+      <span class="maillage-source">À propos</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-dest">Notre Offre</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-dest">Contact / RDV</span>
+    </div>
+  </div>
+</section>
+
+<!-- 06 TUNNEL DE CONVERSION -->
+<section id="bp-section-06" class="section">
+  <span class="section-badge">06 — Tunnel de Conversion</span>
+  <h2 class="section-title">Le parcours du propriétaire</h2>
+  <p class="section-lead">De la première recherche Google à la signature avec DaHeva.</p>
+
+  <div class="tunnel-steps">
+    <div class="tunnel-step">
+      <div class="step-num">Étape 1</div>
+      <div class="step-name">Découverte</div>
+      <div class="step-detail"><strong>Source :</strong> Google (SEO local), bouche-à-oreille, réseaux sociaux</div>
+      <div class="step-detail"><strong>Page :</strong> Accueil ou page locale (Vieux-Lille / Euralille)</div>
+      <div class="step-detail"><strong>CTA :</strong> « Découvrez notre offre » / « Estimez vos revenus »</div>
+    </div>
+    <div class="tunnel-step">
+      <div class="step-num">Étape 2</div>
+      <div class="step-name">Intérêt</div>
+      <div class="step-detail"><strong>Source :</strong> Navigation interne, articles de blog</div>
+      <div class="step-detail"><strong>Page :</strong> Notre Offre, Blog, À propos</div>
+      <div class="step-detail"><strong>CTA :</strong> « Téléchargez le guide gratuit » / « Voir les résultats »</div>
+    </div>
+    <div class="tunnel-step">
+      <div class="step-num">Étape 3</div>
+      <div class="step-name">Confiance</div>
+      <div class="step-detail"><strong>Source :</strong> Avis Google, témoignages sur le site</div>
+      <div class="step-detail"><strong>Page :</strong> À propos, page offre (section témoignages)</div>
+      <div class="step-detail"><strong>CTA :</strong> « Lire les témoignages » / « En savoir plus sur Dennis »</div>
+    </div>
+    <div class="tunnel-step">
+      <div class="step-num">Étape 4</div>
+      <div class="step-name">Conversion</div>
+      <div class="step-detail"><strong>Source :</strong> Formulaire ou lien Calendly</div>
+      <div class="step-detail"><strong>Page :</strong> Contact / Simulateur de revenus</div>
+      <div class="step-detail"><strong>CTA :</strong> « Prendre un RDV gratuit » / « Je confie mon bien »</div>
+    </div>
+  </div>
+</section>
+
+<!-- 07 LEVIERS MARKETING -->
+<section id="bp-section-07" class="section section-alt">
+  <span class="section-badge">07 — Leviers Marketing Recommandés</span>
+  <h2 class="section-title">Accélérer la croissance de DaHeva</h2>
+  <p class="section-lead">Les outils et mécaniques pour attirer, convaincre et fidéliser les propriétaires lillois.</p>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-icon">🎁</div>
+      <div class="card-title">Lead Magnet</div>
+      <div class="card-text">Guide PDF gratuit : « Combien peut rapporter votre logement à Lille en 2025 ? » — Téléchargeable en échange de l'email du propriétaire pour initier la relation de confiance.</div>
+    </div>
+    <div class="card">
+      <div class="card-icon">📅</div>
+      <div class="card-title">Prise de RDV</div>
+      <div class="card-text">Outil recommandé : Calendly (gratuit, simple à intégrer). Proposer un RDV découverte de 20 minutes, sans engagement. CTA visible sur chaque page clé du site.</div>
+    </div>
+    <div class="card">
+      <div class="card-icon">⭐</div>
+      <div class="card-title">Preuve sociale</div>
+      <div class="card-text">Témoignages écrits de propriétaires avec prénom + ville + résultat chiffré si possible. Intégration des avis Google My Business et captures Airbnb/Booking en section dédiée.</div>
+    </div>
+    <div class="card">
+      <div class="card-icon">📝</div>
+      <div class="card-title">Formulaire qualifiant</div>
+      <div class="card-text">Champs recommandés : Prénom — Type de bien (Studio/T1/T2/T3+) — Quartier à Lille — Situation actuelle (déjà en LCD / nouveau propriétaire) — Message libre.</div>
+    </div>
+    <div class="card">
+      <div class="card-icon">📬</div>
+      <div class="card-title">Newsletter</div>
+      <div class="card-text">Angle éditorial : « Les Clés du Propriétaire Lillois » — conseils mensuels sur la réglementation locale, les tendances du marché Airbnb à Lille et les optimisations de revenus.</div>
+    </div>
+  </div>
+</section>
+
+<!-- 08 DIRECTION VISUELLE -->
+<section id="bp-section-08" class="section">
+  <span class="section-badge">08 — Direction Visuelle & Éditoriale</span>
+  <h2 class="section-title">Identité visuelle recommandée</h2>
+  <p class="section-lead">En accord avec les couleurs choisies par le client : Bleu, Or et Blanc. Une palette premium, sobre et distinguée.</p>
+
+  <div class="palette-grid">
+    <div class="color-swatch">
+      <div class="color-box" style="background:#0d1b3e;"></div>
+      <div class="color-name">Bleu Nuit</div>
+      <div class="color-hex">#0D1B3E</div>
+    </div>
+    <div class="color-swatch">
+      <div class="color-box" style="background:#1a3370;"></div>
+      <div class="color-name">Bleu Royal</div>
+      <div class="color-hex">#1A3370</div>
+    </div>
+    <div class="color-swatch">
+      <div class="color-box" style="background:#c5a050;"></div>
+      <div class="color-name">Or Chaud</div>
+      <div class="color-hex">#C5A050</div>
+    </div>
+    <div class="color-swatch">
+      <div class="color-box" style="background:#e8d5a3; border: 1px solid #e0c88a;"></div>
+      <div class="color-name">Or Clair</div>
+      <div class="color-hex">#E8D5A3</div>
+    </div>
+    <div class="color-swatch">
+      <div class="color-box" style="background:#ffffff; border: 1px solid #e5e7eb;"></div>
+      <div class="color-name">Blanc Pur</div>
+      <div class="color-hex">#FFFFFF</div>
+    </div>
+  </div>
+
+  <div style="margin-top:48px;">
+    <div class="card">
+      <div class="card-title">Univers visuel recommandé</div>
+      <ul class="styled-list">
+        <li>Photographies premium d'intérieurs lillois bien décorés, lumineux, avec détails soignés (linge de maison, plantes, lumières tamisées)</li>
+        <li>Silhouette de toits ou architecture du Vieux-Lille en fond de sections (discret, en dégradé)</li>
+        <li>Icônes fines et épurées (style ligne, dorées) pour illustrer les services</li>
+        <li>Typographie à empattement (Playfair Display) pour les titres, sans serif (Inter) pour le corps — contraste luxe/lisibilité</li>
+        <li>Sections alternées : fond bleu nuit + texte blanc / fond blanc + texte bleu nuit. Accents or sur CTAs, séparateurs et badges</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 09 ARTICLES BLOG -->
+<section id="bp-section-09" class="section section-alt">
+  <span class="section-badge">09 — Articles Blog Recommandés</span>
+  <h2 class="section-title">Stratégie éditoriale — 6 articles prioritaires</h2>
+  <p class="section-lead">Pour attirer du trafic qualifié de propriétaires lillois sur Google et installer DaHeva comme référence locale.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Titre de l'article</th>
+          <th>Cluster</th>
+          <th>Intention de recherche</th>
+          <th>Priorité</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Combien rapporte un Airbnb dans le Vieux-Lille en 2025 ?</td>
+          <td>Marché local</td>
+          <td>Informationnelle / commerciale</td>
+          <td><span class="badge badge-prioritaire">Prioritaire</span></td>
+        </tr>
+        <tr>
+          <td>Conciergerie Airbnb à Lille : comment choisir la bonne ?</td>
+          <td>Confiance & qualité</td>
+          <td>Commerciale — comparaison</td>
+          <td><span class="badge badge-prioritaire">Prioritaire</span></td>
+        </tr>
+        <tr>
+          <td>Réglementation location courte durée à Lille : ce qu'il faut savoir en 2025</td>
+          <td>Marché local</td>
+          <td>Informationnelle</td>
+          <td><span class="badge badge-prioritaire">Prioritaire</span></td>
+        </tr>
+        <tr>
+          <td>LCD vs location longue durée à Lille : quelle est la plus rentable ?</td>
+          <td>Gestion & délégation</td>
+          <td>Informationnelle / décisionnelle</td>
+          <td><span class="badge badge-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td>5 erreurs à éviter quand on gère soi-même son Airbnb à Lille</td>
+          <td>Confiance & qualité</td>
+          <td>Informationnelle</td>
+          <td><span class="badge badge-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td>Pourquoi déléguer sa gestion Airbnb à une conciergerie locale ?</td>
+          <td>Gestion & délégation</td>
+          <td>Commerciale — décisionnelle</td>
+          <td><span class="badge badge-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td>Les quartiers de Lille les plus demandés sur Airbnb par les voyageurs</td>
+          <td>Marché local</td>
+          <td>Informationnelle</td>
+          <td><span class="badge badge-faible">Faible</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div style="margin-bottom:8px;"><strong>DaHeva Conciergerie Immobilière</strong> — Blueprint Stratégique</div>
+  <div>Document confidentiel préparé par AR Digital · Réservé à Dennis Rojas · Non diffusable</div>
+</footer>
+
+</body>
+</html>
