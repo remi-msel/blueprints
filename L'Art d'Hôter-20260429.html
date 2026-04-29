@@ -1,0 +1,1051 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blueprint Stratégique — L'Art d'Hôter</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cream: #f1e9dd;
+    --sage: #9ba791;
+    --gold: #c9a96e;
+    --white: #ffffff;
+    --charcoal: #2c2c2c;
+    --light-text: #6b6b6b;
+    --border: #e8e0d4;
+    --rose: #EACECA;
+    --dark-overlay: rgba(44, 40, 34, 0.78);
+  }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    line-height: 1.8;
+    color: var(--charcoal);
+    background: #faf7f3;
+  }
+
+  /* ─── COVER ─── */
+  .cover {
+    min-height: 100vh;
+    background: linear-gradient(160deg, #2c2820 0%, #3e3a2e 40%, #4a5445 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 60px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+  .cover::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 60% 40%, rgba(201,169,110,0.12) 0%, transparent 65%),
+                radial-gradient(ellipse at 20% 80%, rgba(155,167,145,0.15) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .cover-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 36px;
+    opacity: 0.9;
+  }
+  .cover-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 72px;
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.1;
+    margin-bottom: 16px;
+    letter-spacing: -0.5px;
+  }
+  .cover-subtitle {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 400;
+    font-style: italic;
+    color: var(--cream);
+    opacity: 0.85;
+    margin-bottom: 56px;
+  }
+  .cover-meta {
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .cover-meta-item {
+    text-align: center;
+  }
+  .cover-meta-item span {
+    display: block;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 4px;
+    opacity: 0.8;
+  }
+  .cover-meta-item p {
+    font-size: 14px;
+    color: #ffffff;
+    font-weight: 400;
+    opacity: 0.9;
+  }
+  .cover-divider {
+    width: 60px;
+    height: 1px;
+    background: var(--gold);
+    margin: 0 auto 40px;
+    opacity: 0.6;
+  }
+
+  /* ─── SECTIONS ─── */
+  section {
+    padding: 80px 60px;
+    page-break-inside: avoid;
+  }
+  section:nth-child(odd) { background: #faf7f3; }
+  section:nth-child(even) { background: #ffffff; }
+
+  .section-badge {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--sage);
+    border: 1px solid var(--sage);
+    border-radius: 20px;
+    padding: 5px 14px;
+    margin-bottom: 16px;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 34px;
+    font-weight: 700;
+    color: var(--charcoal);
+    margin-bottom: 10px;
+    line-height: 1.2;
+  }
+  .section-intro {
+    font-size: 15px;
+    color: var(--light-text);
+    max-width: 640px;
+    margin-bottom: 44px;
+    line-height: 1.7;
+  }
+
+  /* ─── CARDS ─── */
+  .card {
+    background: #ffffff;
+    border-radius: 14px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    padding: 28px;
+  }
+  .card-icon {
+    font-size: 22px;
+    margin-bottom: 12px;
+    display: block;
+  }
+  .card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--charcoal);
+    margin-bottom: 10px;
+  }
+  .card p, .card li {
+    font-size: 14px;
+    color: var(--light-text);
+    line-height: 1.75;
+  }
+  .card ul { padding-left: 16px; }
+  .card ul li { margin-bottom: 4px; }
+
+  /* ─── GRILLES ─── */
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  .grid-3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px;
+  }
+  .grid-4 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  /* ─── HIGHLIGHT BOX ─── */
+  .highlight-box {
+    background: linear-gradient(135deg, var(--sage) 0%, #7a9070 100%);
+    border-radius: 16px;
+    padding: 36px 40px;
+    color: #ffffff;
+    margin-bottom: 44px;
+  }
+  .highlight-box .hb-label {
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 10px;
+  }
+  .highlight-box .hb-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 600;
+    font-style: italic;
+    line-height: 1.5;
+    color: #ffffff;
+  }
+
+  /* ─── TABLEAU ─── */
+  .table-wrap { overflow-x: auto; }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+    background: #ffffff;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+  thead tr { background: var(--charcoal); }
+  thead th {
+    color: #ffffff;
+    font-weight: 500;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 14px 18px;
+    text-align: left;
+  }
+  tbody tr:nth-child(even) { background: #faf7f3; }
+  tbody td {
+    padding: 14px 18px;
+    color: var(--charcoal);
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+  tbody tr:last-child td { border-bottom: none; }
+
+  .badge-fort { background: #d4edda; color: #276740; border-radius: 20px; padding: 3px 10px; font-size: 12px; font-weight: 600; white-space: nowrap; }
+  .badge-moyen { background: #fff3cd; color: #856404; border-radius: 20px; padding: 3px 10px; font-size: 12px; font-weight: 600; white-space: nowrap; }
+  .badge-faible { background: #f8d7da; color: #842029; border-radius: 20px; padding: 3px 10px; font-size: 12px; font-weight: 600; white-space: nowrap; }
+
+  /* ─── TUNNEL ─── */
+  .tunnel-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 0;
+    background: #ffffff;
+    border-radius: 14px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    overflow: hidden;
+  }
+  .tunnel-step {
+    padding: 28px 22px;
+    border-right: 1px solid var(--border);
+    position: relative;
+  }
+  .tunnel-step:last-child { border-right: none; }
+  .tunnel-step-num {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 10px;
+  }
+  .tunnel-step-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--charcoal);
+    margin-bottom: 14px;
+  }
+  .tunnel-step p {
+    font-size: 13px;
+    color: var(--light-text);
+    line-height: 1.7;
+    margin-bottom: 8px;
+  }
+  .tunnel-step strong {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--charcoal);
+  }
+  .tunnel-cta {
+    display: inline-block;
+    margin-top: 12px;
+    background: var(--cream);
+    color: var(--charcoal);
+    font-size: 12px;
+    font-weight: 600;
+    border-radius: 20px;
+    padding: 5px 12px;
+  }
+
+  /* ─── COCON ─── */
+  .cluster-card {
+    background: #ffffff;
+    border-radius: 14px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    padding: 28px;
+  }
+  .cluster-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--charcoal);
+    margin-bottom: 14px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--cream);
+  }
+  .cluster-tag {
+    display: inline-block;
+    background: #f1e9dd;
+    color: #7a6c58;
+    font-size: 12px;
+    font-weight: 500;
+    border-radius: 20px;
+    padding: 4px 12px;
+    margin: 3px 2px;
+  }
+  .maillage-row {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 14px;
+    color: var(--charcoal);
+  }
+  .maillage-row:last-child { border-bottom: none; }
+  .maillage-from {
+    font-weight: 600;
+    color: var(--sage);
+    min-width: 140px;
+  }
+  .maillage-arrow {
+    color: var(--gold);
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  .maillage-to {
+    color: var(--light-text);
+  }
+
+  /* ─── LEVIERS ─── */
+  .levier-card {
+    background: #ffffff;
+    border-radius: 14px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    padding: 28px;
+  }
+  .levier-card .levier-label {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 8px;
+    font-weight: 600;
+  }
+  .levier-card .levier-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--charcoal);
+    margin-bottom: 10px;
+  }
+  .levier-card p {
+    font-size: 14px;
+    color: var(--light-text);
+    line-height: 1.7;
+  }
+
+  /* ─── PALETTE ─── */
+  .palette-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 28px;
+    margin-top: 10px;
+  }
+  .swatch-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+  .swatch {
+    width: 80px;
+    height: 80px;
+    border-radius: 14px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    border: 1px solid rgba(0,0,0,0.06);
+  }
+  .swatch-name {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--charcoal);
+    text-align: center;
+  }
+  .swatch-hex {
+    font-size: 11px;
+    color: var(--light-text);
+    text-align: center;
+  }
+
+  /* ─── BLOG ─── */
+  .blog-card {
+    background: #ffffff;
+    border-radius: 14px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    padding: 28px;
+  }
+  .blog-card .blog-priority {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .priority-p { color: #276740; }
+  .priority-m { color: #856404; }
+  .priority-f { color: #842029; }
+  .blog-card .blog-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--charcoal);
+    margin-bottom: 8px;
+    line-height: 1.4;
+  }
+  .blog-card p {
+    font-size: 13px;
+    color: var(--light-text);
+    line-height: 1.7;
+  }
+  .blog-tag {
+    display: inline-block;
+    background: var(--cream);
+    color: #7a6c58;
+    font-size: 11px;
+    font-weight: 500;
+    border-radius: 20px;
+    padding: 3px 10px;
+    margin-top: 10px;
+  }
+
+  /* ─── OBJECTIFS ─── */
+  .obj-card {
+    background: #ffffff;
+    border-radius: 14px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    padding: 28px;
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+  }
+  .obj-rank {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--cream);
+    line-height: 1;
+    flex-shrink: 0;
+    min-width: 40px;
+  }
+  .obj-content .obj-title {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--charcoal);
+    margin-bottom: 4px;
+  }
+  .obj-content p {
+    font-size: 13px;
+    color: var(--light-text);
+    line-height: 1.6;
+  }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: var(--charcoal);
+    color: rgba(255,255,255,0.6);
+    text-align: center;
+    padding: 32px 40px;
+    font-size: 13px;
+    line-height: 1.7;
+  }
+  footer strong { color: rgba(255,255,255,0.9); }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 768px) {
+    .cover-title { font-size: 40px; }
+    .cover-subtitle { font-size: 16px; }
+    .cover-meta { gap: 20px; }
+    section { padding: 50px 24px; }
+    .section-title { font-size: 26px; }
+    .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+    .tunnel-grid { grid-template-columns: 1fr; }
+    .tunnel-step { border-right: none; border-bottom: 1px solid var(--border); }
+    .tunnel-step:last-child { border-bottom: none; }
+    .table-wrap { overflow-x: auto; }
+    .highlight-box { padding: 28px 22px; }
+    .highlight-box .hb-text { font-size: 18px; }
+    .palette-grid { gap: 18px; }
+    .maillage-row { flex-direction: row; flex-wrap: wrap; }
+    .maillage-from { min-width: unset; }
+  }
+
+  @media print {
+    section { page-break-inside: avoid; }
+    .cover { min-height: auto; padding: 60px 40px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════
+     COUVERTURE
+════════════════════════════════════════════ -->
+<div class="cover">
+  <p class="cover-label">Blueprint Stratégique · AR Digital</p>
+  <h1 class="cover-title">L'Art d'Hôter</h1>
+  <p class="cover-subtitle">Conciergerie de location courte durée à Vincennes</p>
+  <div class="cover-divider"></div>
+  <div class="cover-meta">
+    <div class="cover-meta-item">
+      <span>Cliente</span>
+      <p>Carole-Anne Mathieu</p>
+    </div>
+    <div class="cover-meta-item">
+      <span>Secteur</span>
+      <p>Conciergerie LCD</p>
+    </div>
+    <div class="cover-meta-item">
+      <span>Zone</span>
+      <p>Vincennes &amp; alentours</p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     01 — POSITIONNEMENT
+════════════════════════════════════════════ -->
+<section id="bp-section-01">
+  <span class="section-badge">01 — Positionnement</span>
+  <h2 class="section-title">Positionnement stratégique</h2>
+  <p class="section-intro">Le socle identitaire de L'Art d'Hôter : ce qui vous rend unique, mémorable et désirable aux yeux de vos clients potentiels.</p>
+
+  <div class="highlight-box">
+    <p class="hb-label">Promesse de valeur principale</p>
+    <p class="hb-text">« L'Art d'Hôter prend soin de votre logement comme du sien propre — pour que vous partiez l'esprit serein et que vos voyageurs vivent un séjour d'exception à deux pas de Paris. »</p>
+  </div>
+
+  <div class="grid-2" style="margin-bottom: 40px;">
+    <div class="card">
+      <span class="card-icon">🧭</span>
+      <h3 class="card-title">Ligne directrice de communication</h3>
+      <p>Accompagnement local premium à taille humaine, fondé sur la rigueur artisanale et la confiance mutuelles entre propriétaire, conciergerie et voyageur.</p>
+    </div>
+    <div class="card">
+      <span class="card-icon">✍️</span>
+      <h3 class="card-title">Ton éditorial</h3>
+      <p><strong>Chaleureux · Rigoureux · Élégant.</strong><br>Un discours sincère et posé, qui rassure sans sur-promettre — comme une hôtesse de maison qui sait exactement ce qu'elle fait et pourquoi elle le fait.</p>
+    </div>
+  </div>
+
+  <h3 style="font-family:'Playfair Display',serif;font-size:20px;margin-bottom:24px;color:var(--charcoal);">Piliers de différenciation</h3>
+  <div class="grid-2">
+    <div class="card">
+      <span class="card-icon">🌿</span>
+      <h3 class="card-title">Expertise de propriétaire vécue</h3>
+      <p>Carole-Anne a elle-même été propriétaire stressée. Elle parle d'égal à égal : aucun discours commercial creux, une empathie authentique et des solutions concrètes.</p>
+    </div>
+    <div class="card">
+      <span class="card-icon">🏡</span>
+      <h3 class="card-title">Ancrage ultra-local Vincennes</h3>
+      <p>Connaissance fine du tissu local, réseau d'artisans qualifiés sur place, réactivité terrain — un avantage concurrentiel fort face aux grandes franchises nationales.</p>
+    </div>
+    <div class="card">
+      <span class="card-icon">✨</span>
+      <h3 class="card-title">Rigueur hôtelière artisanale</h3>
+      <p>Protocole de propreté structuré, linge de maison entretenu, réassort des consommables : un niveau d'exigence digne de l'hôtellerie, à taille humaine et personnalisée.</p>
+    </div>
+    <div class="card">
+      <span class="card-icon">🤝</span>
+      <h3 class="card-title">Offre claire, sans surprise</h3>
+      <p>Un forfait unique à 22 % tout compris — photographie professionnelle offerte à la signature. Pas de grille tarifaire complexe : la transparence comme fondement de la relation.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     02 — CLIENT CIBLE
+════════════════════════════════════════════ -->
+<section id="bp-section-02">
+  <span class="section-badge">02 — Client cible</span>
+  <h2 class="section-title">Profil du propriétaire idéal</h2>
+  <p class="section-intro">Comprendre précisément à qui l'on parle pour construire un discours qui résonne juste dès les premières secondes sur le site.</p>
+
+  <div class="grid-2" style="margin-bottom:24px;">
+    <div class="card">
+      <span class="card-icon">👤</span>
+      <h3 class="card-title">Profil type</h3>
+      <p>Propriétaire de 35 à 60 ans, actif·ve ou en reconversion, vivant à Vincennes ou en région parisienne. Possède un appartement ou studio à valoriser en LCD — parfois résidence secondaire ou bien vacant. Peu de temps disponible, niveau de confort élevé.</p>
+    </div>
+    <div class="card">
+      <span class="card-icon">💡</span>
+      <h3 class="card-title">Motivations principales</h3>
+      <ul>
+        <li>Générer des revenus complémentaires sans friction</li>
+        <li>Déléguer entièrement la gestion opérationnelle</li>
+        <li>Protéger et valoriser son patrimoine immobilier</li>
+        <li>Offrir une vraie expérience à ses voyageurs</li>
+        <li>Trouver un interlocuteur fiable et humain</li>
+      </ul>
+    </div>
+  </div>
+  <div class="grid-2">
+    <div class="card">
+      <span class="card-icon">⚠️</span>
+      <h3 class="card-title">Freins et objections</h3>
+      <ul>
+        <li>Peur de laisser son bien à des inconnus</li>
+        <li>Doute sur le sérieux de la conciergerie</li>
+        <li>Crainte que la commission soit trop élevée</li>
+        <li>Mauvaise expérience passée avec un autre prestataire</li>
+        <li>Méfiance envers une structure jeune / peu connue</li>
+      </ul>
+    </div>
+    <div class="card">
+      <span class="card-icon">✅</span>
+      <h3 class="card-title">Critères de décision</h3>
+      <ul>
+        <li>Transparence tarifaire (pas de frais cachés)</li>
+        <li>Références, avis et preuves concrètes</li>
+        <li>Réactivité perçue dès le premier contact</li>
+        <li>Sentiment d'être compris en tant que propriétaire</li>
+        <li>Ancrage local crédible (équipe sur place)</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     03 — OBJECTIFS DU SITE
+════════════════════════════════════════════ -->
+<section id="bp-section-03">
+  <span class="section-badge">03 — Objectifs du site</span>
+  <h2 class="section-title">Ce que le site doit accomplir</h2>
+  <p class="section-intro">Les objectifs sont priorisés selon leur impact immédiat sur le développement de L'Art d'Hôter.</p>
+
+  <div class="grid-2">
+    <div class="obj-card">
+      <div class="obj-rank">01</div>
+      <div class="obj-content">
+        <p class="obj-title">Génération de leads qualifiés</p>
+        <p>Capter les coordonnées de propriétaires intéressés via formulaire de contact et appel à l'action visible sur chaque page clé.</p>
+      </div>
+    </div>
+    <div class="obj-card">
+      <div class="obj-rank">02</div>
+      <div class="obj-content">
+        <p class="obj-title">Réassurance &amp; confiance</p>
+        <p>Démontrer le sérieux et l'expertise de Carole-Anne dès la première visite : storytelling, parcours fondatrice, transparence tarifaire.</p>
+      </div>
+    </div>
+    <div class="obj-card">
+      <div class="obj-rank">03</div>
+      <div class="obj-content">
+        <p class="obj-title">SEO local — Vincennes &amp; alentours</p>
+        <p>Apparaître en première page sur les requêtes "conciergerie Vincennes", "gestion location courte durée Vincennes" et expressions proches.</p>
+      </div>
+    </div>
+    <div class="obj-card">
+      <div class="obj-rank">04</div>
+      <div class="obj-content">
+        <p class="obj-title">Prise de contact / RDV</p>
+        <p>Faciliter le passage à l'action avec un formulaire qualifiant et, à terme, un outil de prise de RDV en ligne pour un premier échange sans engagement.</p>
+      </div>
+    </div>
+    <div class="obj-card">
+      <div class="obj-rank">05</div>
+      <div class="obj-content">
+        <p class="obj-title">Conversion directe</p>
+        <p>Transformer le visiteur en prospect concret grâce à une page tarification claire et des CTAs cohérents tout au long du parcours.</p>
+      </div>
+    </div>
+    <div class="obj-card">
+      <div class="obj-rank">06</div>
+      <div class="obj-content">
+        <p class="obj-title">Notoriété locale</p>
+        <p>Construire la réputation en ligne de L'Art d'Hôter à Vincennes : blog, visuels de qualité, ancrage territorial fort dans les contenus.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     04 — ARBORESCENCE
+════════════════════════════════════════════ -->
+<section id="bp-section-04">
+  <span class="section-badge">04 — Arborescence du site</span>
+  <h2 class="section-title">Structure des pages</h2>
+  <p class="section-intro">Chaque page répond à un objectif précis. Les services sont présentés au sein d'une page d'offre unique — pas de page individuelle par service.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Page</th>
+          <th>Framework rédactionnel</th>
+          <th>Mot-clé principal</th>
+          <th>Potentiel SEO</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Accueil</strong></td>
+          <td>AIDA</td>
+          <td>conciergerie location courte durée Vincennes</td>
+          <td><span class="badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>Nos services &amp; tarifs</strong></td>
+          <td>PAS</td>
+          <td>gestion location saisonnière Vincennes</td>
+          <td><span class="badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>Notre histoire (À propos)</strong></td>
+          <td>BAB</td>
+          <td>conciergerie Airbnb Vincennes sérieuse</td>
+          <td><span class="badge-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>Tarification</strong></td>
+          <td>AIDA</td>
+          <td>commission conciergerie LCD Vincennes</td>
+          <td><span class="badge-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>Contact</strong></td>
+          <td>PAS</td>
+          <td>confier son logement conciergerie Vincennes</td>
+          <td><span class="badge-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>Page locale — Vincennes &amp; Nogent-sur-Marne</strong></td>
+          <td>AIDA</td>
+          <td>conciergerie Vincennes Nogent-sur-Marne</td>
+          <td><span class="badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>Page locale — Val-de-Marne</strong></td>
+          <td>AIDA</td>
+          <td>conciergerie location courte durée Val-de-Marne</td>
+          <td><span class="badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>Blog</strong></td>
+          <td>—</td>
+          <td>conseils propriétaire location courte durée</td>
+          <td><span class="badge-fort">Fort</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     05 — COCON SÉMANTIQUE
+════════════════════════════════════════════ -->
+<section id="bp-section-05">
+  <span class="section-badge">05 — Cocon sémantique</span>
+  <h2 class="section-title">Architecture du contenu</h2>
+  <p class="section-intro">Deux clusters thématiques structurent la visibilité organique du site, reliés par un maillage interne cohérent.</p>
+
+  <div class="grid-2" style="margin-bottom:40px;">
+    <div class="cluster-card">
+      <h3 class="cluster-title">🌿 Cluster 1 — Gestion LCD locale</h3>
+      <p style="font-size:13px;color:var(--light-text);margin-bottom:14px;">Toutes les pages et articles qui répondent aux requêtes de propriétaires cherchant à déléguer leur bien à Vincennes et dans le Val-de-Marne.</p>
+      <span class="cluster-tag">Accueil</span>
+      <span class="cluster-tag">Nos services &amp; tarifs</span>
+      <span class="cluster-tag">Tarification</span>
+      <span class="cluster-tag">Page locale Vincennes</span>
+      <span class="cluster-tag">Page locale Val-de-Marne</span>
+      <span class="cluster-tag">Articles LCD pratiques</span>
+    </div>
+    <div class="cluster-card">
+      <h3 class="cluster-title">✨ Cluster 2 — Confiance &amp; expertise</h3>
+      <p style="font-size:13px;color:var(--light-text);margin-bottom:14px;">Pages et articles qui construisent la crédibilité de Carole-Anne et répondent aux objections des propriétaires hésitants.</p>
+      <span class="cluster-tag">À propos</span>
+      <span class="cluster-tag">Contact</span>
+      <span class="cluster-tag">Articles conseils propriétaires</span>
+      <span class="cluster-tag">Articles expérience voyageur</span>
+    </div>
+  </div>
+
+  <h3 style="font-family:'Playfair Display',serif;font-size:20px;margin-bottom:20px;color:var(--charcoal);">Logique de maillage interne</h3>
+  <div class="card">
+    <div class="maillage-row">
+      <span class="maillage-from">Accueil</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-to">Nos services &amp; tarifs · À propos · Contact · Pages locales</span>
+    </div>
+    <div class="maillage-row">
+      <span class="maillage-from">Nos services &amp; tarifs</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-to">Tarification · Contact · Articles blog LCD</span>
+    </div>
+    <div class="maillage-row">
+      <span class="maillage-from">Pages locales</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-to">Nos services &amp; tarifs · Tarification · Contact</span>
+    </div>
+    <div class="maillage-row">
+      <span class="maillage-from">Articles blog</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-to">Nos services &amp; tarifs · Tarification · Contact</span>
+    </div>
+    <div class="maillage-row">
+      <span class="maillage-from">À propos</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-to">Nos services &amp; tarifs · Contact</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     06 — TUNNEL DE CONVERSION
+════════════════════════════════════════════ -->
+<section id="bp-section-06">
+  <span class="section-badge">06 — Tunnel de conversion</span>
+  <h2 class="section-title">Du premier contact à la prise de RDV</h2>
+  <p class="section-intro">Quatre étapes structurent le parcours du propriétaire, de la découverte de L'Art d'Hôter jusqu'à la décision de confier son bien.</p>
+
+  <div class="tunnel-grid">
+    <div class="tunnel-step">
+      <p class="tunnel-step-num">Étape 01</p>
+      <h3 class="tunnel-step-title">Découverte</h3>
+      <p><strong>Source :</strong> Google (SEO local), bouche-à-oreille, réseaux sociaux</p>
+      <p><strong>Page :</strong> Accueil / Pages locales</p>
+      <p><strong>Objectif :</strong> Créer une première impression forte, refléter l'univers apaisant et professionnel</p>
+      <span class="tunnel-cta">→ Découvrir nos services</span>
+    </div>
+    <div class="tunnel-step">
+      <p class="tunnel-step-num">Étape 02</p>
+      <h3 class="tunnel-step-title">Intérêt</h3>
+      <p><strong>Source :</strong> Navigation interne depuis l'accueil</p>
+      <p><strong>Page :</strong> Nos services &amp; tarifs</p>
+      <p><strong>Objectif :</strong> Détailler l'offre, lever les doutes sur le périmètre, montrer la valeur du forfait unique</p>
+      <span class="tunnel-cta">→ Voir la tarification</span>
+    </div>
+    <div class="tunnel-step">
+      <p class="tunnel-step-num">Étape 03</p>
+      <h3 class="tunnel-step-title">Confiance</h3>
+      <p><strong>Source :</strong> Page À propos, témoignages, blog</p>
+      <p><strong>Page :</strong> À propos / Tarification</p>
+      <p><strong>Objectif :</strong> Humaniser la relation, prouver l'expertise, rassurer sur la transparence tarifaire</p>
+      <span class="tunnel-cta">→ En savoir plus sur nous</span>
+    </div>
+    <div class="tunnel-step">
+      <p class="tunnel-step-num">Étape 04</p>
+      <h3 class="tunnel-step-title">Conversion</h3>
+      <p><strong>Source :</strong> CTA présents sur toutes les pages</p>
+      <p><strong>Page :</strong> Contact</p>
+      <p><strong>Objectif :</strong> Obtenir le formulaire complété ou la prise de RDV pour un premier appel sans engagement</p>
+      <span class="tunnel-cta">→ Confier mon logement</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     07 — LEVIERS MARKETING
+════════════════════════════════════════════ -->
+<section id="bp-section-07">
+  <span class="section-badge">07 — Leviers marketing recommandés</span>
+  <h2 class="section-title">Outils pour accélérer la croissance</h2>
+  <p class="section-intro">Des leviers concrets, adaptés à une conciergerie en démarrage qui veut construire sa clientèle localement avec rigueur.</p>
+
+  <div class="grid-2">
+    <div class="levier-card">
+      <p class="levier-label">Lead Magnet</p>
+      <h3 class="levier-title">Guide PDF offert : « 7 étapes pour louer son appartement en courte durée à Vincennes »</h3>
+      <p>Un guide pratique et concret téléchargeable en échange d'un email — positionne L'Art d'Hôter comme expert local dès le premier contact et permet de constituer une base de prospects qualifiés.</p>
+    </div>
+    <div class="levier-card">
+      <p class="levier-label">Prise de RDV</p>
+      <h3 class="levier-title">Calendly (gratuit) ou Notion + lien Google Meet</h3>
+      <p>Un premier appel découverte de 20 minutes, sans engagement. Le CTA "Réserver mon appel gratuit" doit apparaître en fin de page Tarification et page Contact pour fluidifier le passage à l'acte.</p>
+    </div>
+    <div class="levier-card">
+      <p class="levier-label">Preuve sociale</p>
+      <h3 class="levier-title">Témoignages texte + note Airbnb / Google</h3>
+      <p>Dès les premiers contrats : collecter des témoignages écrits de propriétaires satisfaits. Intégrer les notes voyageurs des annonces gérées. Photos avant/après du logement préparé — fort impact visuel.</p>
+    </div>
+    <div class="levier-card">
+      <p class="levier-label">Formulaire qualifiant</p>
+      <h3 class="levier-title">Champs recommandés pour le formulaire de contact</h3>
+      <p>Prénom · Email · Téléphone · Ville du bien · Type de bien (studio, T2, T3…) · Situation actuelle (déjà sur Airbnb, pas encore) · Message libre. Envoie automatique vers l'adresse pro de la conciergerie.</p>
+    </div>
+    <div class="levier-card">
+      <p class="levier-label">Newsletter</p>
+      <h3 class="levier-title">Lettre mensuelle : « Les coulisses de l'art d'hôter »</h3>
+      <p>Un email mensuel sobre et chaleureux : conseil du mois pour les propriétaires, actualité LCD locale, retour d'expérience d'un séjour. Ton intime et professionnel, jamais promotionnel.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     08 — DIRECTION VISUELLE
+════════════════════════════════════════════ -->
+<section id="bp-section-08">
+  <span class="section-badge">08 — Direction visuelle &amp; éditoriale</span>
+  <h2 class="section-title">L'identité visuelle du site</h2>
+  <p class="section-intro">Un univers épuré, apaisant, inspiré des champs et de la campagne : matières naturelles, lumière douce, vie ralentie — tout le contraire du digital agressif.</p>
+
+  <h3 style="font-family:'Playfair Display',serif;font-size:20px;margin-bottom:28px;color:var(--charcoal);">Palette de couleurs</h3>
+
+  <div class="palette-grid" style="margin-bottom:50px;">
+    <div class="swatch-item">
+      <div class="swatch" style="background:#f1e9dd;"></div>
+      <p class="swatch-name">Lin doux</p>
+      <p class="swatch-hex">#f1e9dd</p>
+    </div>
+    <div class="swatch-item">
+      <div class="swatch" style="background:#9ba791;"></div>
+      <p class="swatch-name">Sauge</p>
+      <p class="swatch-hex">#9ba791</p>
+    </div>
+    <div class="swatch-item">
+      <div class="swatch" style="background:#c9a96e;"></div>
+      <p class="swatch-name">Dorée ambrée</p>
+      <p class="swatch-hex">#c9a96e</p>
+    </div>
+    <div class="swatch-item">
+      <div class="swatch" style="background:#ffffff;border:1px solid #e0d9d0;"></div>
+      <p class="swatch-name">Blanc pur</p>
+      <p class="swatch-hex">#ffffff</p>
+    </div>
+    <div class="swatch-item">
+      <div class="swatch" style="background:#EACECA;"></div>
+      <p class="swatch-name">Rose poudré</p>
+      <p class="swatch-hex">#EACECA</p>
+    </div>
+  </div>
+
+  <div class="card" style="margin-bottom:24px;background:#faf7f3;">
+    <p style="font-size:13px;color:var(--light-text);line-height:1.8;"><strong style="color:var(--charcoal);">Note sur la dorée :</strong> Nous suggérons le <strong>#c9a96e</strong> (or ambré chaud) comme accent doré. Il s'harmonise naturellement avec le lin (#f1e9dd) et la sauge (#9ba791) sans paraître clinquant. Il peut être utilisé pour les icônes, les traits de séparation, les accents de titres — jamais en grande plage. Le rose poudré (#EACECA) sera réservé à des touches très subtiles (hover, séparateur) pour ne pas déséquilibrer la palette champêtre.</p>
+  </div>
+
+  <h3 style="font-family:'Playfair Display',serif;font-size:20px;margin-bottom:20px;color:var(--charcoal);">Univers visuel recommandé</h3>
+  <div class="grid-3">
+    <div class="card">
+      <span class="card-icon">📸</span>
+      <h3 class="card-title">Photographies artisanales</h3>
+      <p>Repassage de lin blanc, préparation d'un bouquet champêtre, remplissage d'un flacon en verre, disposition d'un panier de bienvenue — le geste soigné, la main humaine visible.</p>
+    </div>
+    <div class="card">
+      <span class="card-icon">🏙️</span>
+      <h3 class="card-title">Vincennes &amp; la Marne</h3>
+      <p>Bois de Vincennes, berges de la Marne, rues calmes du centre — des images libres de droits de haute qualité pour ancrer géographiquement le site.</p>
+    </div>
+    <div class="card">
+      <span class="card-icon">🪟</span>
+      <h3 class="card-title">Intérieurs épurés</h3>
+      <p>Appartements lumineux, linge immaculé, détails soignés (carafe, bougies, plante verte) : montrer l'état du logement tel que le voyageur l'attendrait.</p>
+    </div>
+    <div class="card">
+      <span class="card-icon">🔤</span>
+      <h3 class="card-title">Typographie</h3>
+      <p>Playfair Display pour les titres (charme, élégance), Inter ou Lato pour le corps (lisibilité, sobriété). Jamais plus de 2 familles typographiques sur une même page.</p>
+    </div>
+    <div class="card">
+      <span class="card-icon">🎨</span>
+      <h3 class="card-title">Icônes et pictogrammes</h3>
+      <p>Icônes linéaires fines, style "outline" (pas de remplissage plein), ton crème ou sauge. Une icône claire associée à chaque service pour faciliter la lecture rapide.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     09 — ARTICLES BLOG
+════════════════════════════════════════════ -->
+<section id="bp-section-09">
+  <span class="section-badge">09 — Articles blog recommandés</span>
+  <h2 class="section-title">Stratégie de contenu éditorial</h2>
+  <p class="section-intro">Des articles pensés pour attirer des propriétaires en recherche active, renforcer la crédibilité de L'Art d'Hôter et alimenter le cocon sémantique.</p>
+
+  <div class="grid-2">
+    <div class="blog-card">
+      <p class="blog-priority priority-p">● Prioritaire</p>
+      <h3 class="blog-title">Conciergerie à Vincennes : comment choisir le bon prestataire pour votre location courte durée ?</h3>
+      <p>Intention : informationnelle / comparaison. Guide d'achat pour propriétaires indécis — positionne L'Art d'Hôter comme référence locale.</p>
+      <span class="blog-tag">Cluster 1 — Gestion LCD locale</span>
+    </div>
+    <div class="blog-card">
+      <p class="blog-priority priority-p">● Prioritaire</p>
+      <h3 class="blog-title">Louer son appartement sur Airbnb à Vincennes : les 5 erreurs à éviter en 2025</h3>
+      <p>Intention : informationnelle / préventive. Répond aux peurs du propriétaire débutant et met en valeur l'expertise opérationnelle de la conciergerie.</p>
+      <span class="blog-tag">Cluster 1 — Gestion LCD locale</span>
+    </div>
+    <div class="blog-card">
+      <p class="blog-priority priority-p">● Prioritaire</p>
+      <h3 class="blog-title">Tarification dynamique en location saisonnière : comment maximiser ses revenus à Vincennes ?</h3>
+      <p>Intention : informationnelle / transactionnelle. Explique le service de tarification sans le vendre directement — SEO fort sur requête à intention haute.</p>
+      <span class="blog-tag">Cluster 1 — Gestion LCD locale</span>
+    </div>
+    <div class="blog-card">
+      <p class="blog-priority priority-m">● Moyen</p>
+      <h3 class="blog-title">Accueil des voyageurs Airbnb : les petits détails qui font toute la différence</h3>
+      <p>Intention : inspirationnelle. Présente l'univers de l'hospitalité artisanale (panier de bienvenue, consommables…) — valorise l'approche humaine de L'Art d'Hôter.</p>
+      <span class="blog-tag">Cluster 2 — Confiance &amp; expertise</span>
+    </div>
+    <div class="blog-card">
+      <p class="blog-priority priority-m">● Moyen</p>
+      <h3 class="blog-title">Propriétaire bailleur : location longue durée ou courte durée à Vincennes, que choisir en 2025 ?</h3>
+      <p>Intention : comparaison / décision. Article qui aide un propriétaire hésitant à faire son choix — cible une audience en amont de la décision LCD.</p>
+      <span class="blog-tag">Cluster 1 — Gestion LCD locale</span>
+    </div>
+    <div class="blog-card">
+      <p class="blog-priority priority-m">● Moyen</p>
+      <h3 class="blog-title">Entretien hôtelier en location courte durée : pourquoi la propreté est le premier critère de notation ?</h3>
+      <p>Intention : éducationnelle. Valorise le protocole de nettoyage rigoureux de L'Art d'Hôter et sensibilise les propriétaires à l'enjeu des 5 étoiles.</p>
+      <span class="blog-tag">Cluster 2 — Confiance &amp; expertise</span>
+    </div>
+    <div class="blog-card">
+      <p class="blog-priority priority-f">● Faible</p>
+      <h3 class="blog-title">Nos adresses préférées à Vincennes : ce que nous conseillons à nos voyageurs</h3>
+      <p>Intention : locale / lifestyle. Contenu de marque ancré dans le territoire — renforce l'authenticité locale et fidélise les voyageurs récurrents.</p>
+      <span class="blog-tag">Cluster 2 — Confiance &amp; expertise</span>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FOOTER ─── -->
+<footer>
+  <p><strong>L'Art d'Hôter</strong> — Carole-Anne Mathieu · Vincennes &amp; alentours</p>
+  <p style="margin-top:6px;">Document confidentiel · Blueprint Stratégique produit par <strong>AR Digital</strong> · Tous droits réservés</p>
+</footer>
+
+</body>
+</html>
