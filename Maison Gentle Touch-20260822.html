@@ -1,0 +1,1225 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blueprint Stratégique — Maison Gentle Touch</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --caramel: #D6B28C;
+    --sable: #E9DFD4;
+    --creme: #F6F2EE;
+    --bordeaux: #0D1B2A;
+    --terracotta: #C9846A;
+    --white: #ffffff;
+    --text: #1a1a1a;
+    --text-light: #6b6b6b;
+    --shadow: 0 2px 12px rgba(0,0,0,0.06);
+    --radius: 14px;
+  }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    line-height: 1.8;
+    color: var(--text);
+    background: var(--creme);
+  }
+
+  /* COUVERTURE */
+  .cover {
+    min-height: 100vh;
+    background: linear-gradient(145deg, #0D1B2A 0%, #1a2e42 50%, #0D1B2A 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 60px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cover::before {
+    content: '';
+    position: absolute;
+    top: -100px;
+    right: -100px;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(214,178,140,0.12) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+
+  .cover::after {
+    content: '';
+    position: absolute;
+    bottom: -80px;
+    left: -80px;
+    width: 350px;
+    height: 350px;
+    background: radial-gradient(circle, rgba(201,132,106,0.10) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+
+  .cover-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--caramel);
+    margin-bottom: 32px;
+    opacity: 0.9;
+  }
+
+  .cover-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 72px;
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.1;
+    margin-bottom: 12px;
+  }
+
+  .cover-title span {
+    color: var(--caramel);
+  }
+
+  .cover-subtitle {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-style: italic;
+    color: rgba(255,255,255,0.6);
+    margin-bottom: 56px;
+  }
+
+  .cover-meta {
+    display: flex;
+    gap: 48px;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .cover-meta-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .cover-meta-label {
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--caramel);
+    opacity: 0.8;
+  }
+
+  .cover-meta-value {
+    font-size: 14px;
+    color: rgba(255,255,255,0.85);
+    font-weight: 500;
+  }
+
+  .cover-divider {
+    width: 1px;
+    height: 40px;
+    background: rgba(214,178,140,0.3);
+  }
+
+  /* SECTIONS */
+  section {
+    padding: 80px 60px;
+    page-break-inside: avoid;
+  }
+
+  section:nth-child(even) {
+    background: var(--white);
+  }
+
+  section:nth-child(odd) {
+    background: var(--creme);
+  }
+
+  .section-badge {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--caramel);
+    margin-bottom: 12px;
+    padding: 6px 14px;
+    border: 1px solid var(--caramel);
+    border-radius: 30px;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--bordeaux);
+    margin-bottom: 8px;
+    line-height: 1.2;
+  }
+
+  .section-intro {
+    font-size: 15px;
+    color: var(--text-light);
+    margin-bottom: 48px;
+    max-width: 620px;
+  }
+
+  .section-header {
+    margin-bottom: 48px;
+  }
+
+  /* GRILLES */
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  .grid-3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px;
+  }
+
+  .grid-4 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 24px;
+  }
+
+  /* CARDS */
+  .card {
+    background: var(--white);
+    border-radius: var(--radius);
+    padding: 28px;
+    box-shadow: var(--shadow);
+  }
+
+  .card-on-white {
+    background: var(--creme);
+    border-radius: var(--radius);
+    padding: 28px;
+    box-shadow: var(--shadow);
+  }
+
+  .card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--bordeaux);
+    margin-bottom: 10px;
+  }
+
+  .card-text {
+    font-size: 14px;
+    color: var(--text-light);
+    line-height: 1.7;
+  }
+
+  .card-icon {
+    font-size: 22px;
+    margin-bottom: 12px;
+  }
+
+  /* PROMESSE */
+  .promise-block {
+    background: linear-gradient(135deg, var(--bordeaux) 0%, #1a2e42 100%);
+    border-radius: 20px;
+    padding: 48px;
+    text-align: center;
+    margin-bottom: 40px;
+  }
+
+  .promise-block p {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px;
+    font-style: italic;
+    color: var(--white);
+    line-height: 1.5;
+  }
+
+  .promise-block span {
+    color: var(--caramel);
+  }
+
+  /* TAGS */
+  .tag {
+    display: inline-block;
+    padding: 5px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 500;
+    margin: 4px 4px 4px 0;
+  }
+
+  .tag-caramel {
+    background: rgba(214,178,140,0.2);
+    color: #8B6A42;
+  }
+
+  .tag-terracotta {
+    background: rgba(201,132,106,0.15);
+    color: #8B4A2E;
+  }
+
+  .tag-bordeaux {
+    background: rgba(13,27,42,0.1);
+    color: var(--bordeaux);
+  }
+
+  /* LISTE STYLISÉE */
+  .styled-list {
+    list-style: none;
+    padding: 0;
+  }
+
+  .styled-list li {
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    font-size: 14px;
+    color: var(--text);
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .styled-list li:last-child { border-bottom: none; }
+
+  .styled-list li::before {
+    content: '→';
+    color: var(--caramel);
+    font-weight: 600;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  /* TABLEAU */
+  .table-wrapper {
+    overflow-x: auto;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--white);
+    border-radius: var(--radius);
+    overflow: hidden;
+    font-size: 14px;
+  }
+
+  thead {
+    background: var(--bordeaux);
+    color: var(--white);
+  }
+
+  thead th {
+    padding: 16px 20px;
+    text-align: left;
+    font-weight: 500;
+    font-size: 12px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  tbody tr {
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+  }
+
+  tbody tr:last-child { border-bottom: none; }
+
+  tbody td {
+    padding: 16px 20px;
+    vertical-align: top;
+    color: var(--text);
+    line-height: 1.6;
+  }
+
+  tbody tr:hover { background: rgba(214,178,140,0.06); }
+
+  /* BADGES SEO */
+  .badge-fort {
+    display: inline-block;
+    padding: 3px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    background: rgba(34,139,34,0.12);
+    color: #1a6b1a;
+  }
+
+  .badge-moyen {
+    display: inline-block;
+    padding: 3px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    background: rgba(214,178,140,0.3);
+    color: #7a5a2a;
+  }
+
+  .badge-faible {
+    display: inline-block;
+    padding: 3px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    background: rgba(201,132,106,0.15);
+    color: #8B4A2E;
+  }
+
+  /* TUNNEL */
+  .tunnel-step {
+    background: var(--white);
+    border-radius: var(--radius);
+    padding: 28px;
+    box-shadow: var(--shadow);
+    position: relative;
+    border-top: 3px solid var(--caramel);
+  }
+
+  .tunnel-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 42px;
+    font-weight: 700;
+    color: rgba(214,178,140,0.25);
+    position: absolute;
+    top: 16px;
+    right: 20px;
+    line-height: 1;
+  }
+
+  .tunnel-label {
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--caramel);
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+
+  .tunnel-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--bordeaux);
+    margin-bottom: 14px;
+  }
+
+  .tunnel-info {
+    font-size: 13px;
+    color: var(--text-light);
+    line-height: 1.7;
+  }
+
+  .tunnel-info strong {
+    color: var(--bordeaux);
+    font-weight: 600;
+  }
+
+  .cta-pill {
+    display: inline-block;
+    margin-top: 12px;
+    padding: 7px 16px;
+    background: var(--caramel);
+    color: var(--white);
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+  }
+
+  /* MAILLAGE */
+  .maillage-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+    font-size: 14px;
+  }
+
+  .maillage-row:last-child { border-bottom: none; }
+
+  .maillage-source {
+    font-weight: 600;
+    color: var(--bordeaux);
+    background: rgba(13,27,42,0.07);
+    padding: 4px 12px;
+    border-radius: 6px;
+    white-space: nowrap;
+  }
+
+  .maillage-arrow {
+    color: var(--caramel);
+    font-size: 16px;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .maillage-target {
+    color: var(--text-light);
+    flex-shrink: 0;
+  }
+
+  /* PALETTE */
+  .palette-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    justify-content: center;
+  }
+
+  .palette-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .palette-swatch {
+    width: 80px;
+    height: 80px;
+    border-radius: 16px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+  }
+
+  .palette-name {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--bordeaux);
+    text-align: center;
+  }
+
+  .palette-hex {
+    font-size: 11px;
+    color: var(--text-light);
+    font-family: monospace;
+  }
+
+  /* BLOG CARDS */
+  .blog-card {
+    background: var(--white);
+    border-radius: var(--radius);
+    padding: 28px;
+    box-shadow: var(--shadow);
+    border-left: 4px solid var(--caramel);
+  }
+
+  .blog-card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--bordeaux);
+    margin-bottom: 10px;
+    line-height: 1.4;
+  }
+
+  .blog-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 12px;
+  }
+
+  .blog-meta span {
+    font-size: 11px;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-weight: 500;
+  }
+
+  .blog-cluster {
+    background: rgba(214,178,140,0.2);
+    color: #7a5a2a;
+  }
+
+  .blog-intent {
+    background: rgba(201,132,106,0.12);
+    color: #8B4A2E;
+  }
+
+  /* PRIORITÉ BLOG */
+  .prio-prioritaire {
+    background: rgba(34,139,34,0.12);
+    color: #1a6b1a;
+  }
+
+  .prio-moyen {
+    background: rgba(214,178,140,0.3);
+    color: #7a5a2a;
+  }
+
+  .prio-faible {
+    background: rgba(201,132,106,0.15);
+    color: #8B4A2E;
+  }
+
+  /* HIGHLIGHT */
+  .highlight-box {
+    background: linear-gradient(135deg, rgba(214,178,140,0.15) 0%, rgba(201,132,106,0.1) 100%);
+    border-radius: var(--radius);
+    padding: 28px;
+    border-left: 4px solid var(--caramel);
+    margin-bottom: 32px;
+  }
+
+  .highlight-box p {
+    font-size: 15px;
+    color: var(--bordeaux);
+    line-height: 1.7;
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--bordeaux);
+    color: rgba(255,255,255,0.5);
+    text-align: center;
+    padding: 40px 60px;
+    font-size: 12px;
+    letter-spacing: 1px;
+  }
+
+  footer strong {
+    color: var(--caramel);
+    font-weight: 500;
+  }
+
+  /* SEPARATEUR */
+  .section-divider {
+    width: 48px;
+    height: 3px;
+    background: var(--caramel);
+    border-radius: 2px;
+    margin-bottom: 32px;
+  }
+
+  /* OBJECTIFS */
+  .objectif-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 18px 24px;
+    border-radius: var(--radius);
+    background: var(--white);
+    box-shadow: var(--shadow);
+  }
+
+  .objectif-rank {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: rgba(214,178,140,0.5);
+    min-width: 32px;
+    text-align: center;
+  }
+
+  .objectif-text {
+    font-size: 14px;
+    color: var(--text);
+    line-height: 1.6;
+  }
+
+  .objectif-text strong {
+    color: var(--bordeaux);
+    font-weight: 600;
+    display: block;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    .cover-title { font-size: 38px; }
+    .cover-meta { gap: 20px; }
+    .cover-divider { display: none; }
+
+    section { padding: 48px 24px; }
+    .section-title { font-size: 26px; }
+    .promise-block { padding: 32px 24px; }
+    .promise-block p { font-size: 18px; }
+
+    .grid-2,
+    .grid-3,
+    .grid-4 {
+      grid-template-columns: 1fr;
+    }
+
+    .table-wrapper { overflow-x: auto; }
+
+    .palette-grid { gap: 16px; }
+
+    footer { padding: 32px 24px; }
+
+    .cover { padding: 48px 24px; }
+  }
+
+  @media print {
+    section { page-break-inside: avoid; }
+    .cover { min-height: auto; padding: 60px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- COUVERTURE -->
+<div class="cover">
+  <div class="cover-logo">Blueprint Stratégique · AR Digital</div>
+  <h1 class="cover-title">Maison<br><span>Gentle Touch</span></h1>
+  <p class="cover-subtitle">L'hospitalité comme art de vivre</p>
+  <div class="cover-meta">
+    <div class="cover-meta-item">
+      <span class="cover-meta-label">Cliente</span>
+      <span class="cover-meta-value">Charlotte Dufau</span>
+    </div>
+    <div class="cover-divider"></div>
+    <div class="cover-meta-item">
+      <span class="cover-meta-label">Secteur</span>
+      <span class="cover-meta-value">Conciergerie LCD / LMD</span>
+    </div>
+    <div class="cover-divider"></div>
+    <div class="cover-meta-item">
+      <span class="cover-meta-label">Zone</span>
+      <span class="cover-meta-value">Lyon & Sud-Ouest Lyonnais</span>
+    </div>
+  </div>
+</div>
+
+<!-- 01 POSITIONNEMENT -->
+<section id="bp-section-01">
+  <div class="section-header">
+    <div class="section-badge">01 — Positionnement</div>
+    <h2 class="section-title">L'identité stratégique<br>de Maison Gentle Touch</h2>
+    <p class="section-intro">Ce que vous êtes, ce que vous dites, et comment vous le dites.</p>
+  </div>
+
+  <div class="promise-block">
+    <p>« La <span>sérénité du propriétaire</span> commence là où l'hospitalité du voyageur prend vie — avec chaque détail préparé, chaque confiance honorée. »</p>
+  </div>
+
+  <div class="grid-2" style="margin-bottom: 32px;">
+    <div class="card">
+      <div class="card-title">Ligne directrice de communication</div>
+      <p class="card-text">Hospitalité artisanale & excellence du détail. Maison Gentle Touch se positionne à l'intersection de la rigueur hôtelière et de la chaleur humaine, avec un discours centré sur le soin — du bien, du voyageur, de la relation.</p>
+    </div>
+    <div class="card">
+      <div class="card-title">Ton éditorial</div>
+      <div style="display:flex; gap:8px; flex-wrap:wrap; margin-bottom:12px;">
+        <span class="tag tag-caramel">Chaleureux</span>
+        <span class="tag tag-bordeaux">Exigeant</span>
+        <span class="tag tag-terracotta">Sincère</span>
+      </div>
+      <p class="card-text">Un ton humain et posé, jamais commercial. Les mots évoquent le soin, la confiance, la présence. On ne vend pas un service : on partage une conviction.</p>
+    </div>
+  </div>
+
+  <h3 style="font-family:'Playfair Display',serif; font-size:22px; color:var(--bordeaux); margin-bottom:24px;">Les 4 piliers de différenciation</h3>
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-icon">🏨</div>
+      <div class="card-title">L'ADN hôtelier</div>
+      <p class="card-text">Charlotte Dufau, fondatrice issue de l'hôtellerie haut de gamme. Une expertise terrain rare dans le marché de la conciergerie indépendante, traduite en protocoles concrets.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">🤍</div>
+      <div class="card-title">Le Protocole Gentle Touch</div>
+      <p class="card-text">Un protocole signature de contrôle d'hospitalité — bien au-delà du ménage classique. Chaque logement est préparé selon une méthode structurée, reproductible et exigeante.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">🌿</div>
+      <div class="card-title">La taille humaine assumée</div>
+      <p class="card-text">Une croissance choisie, pas subie. Maison Gentle Touch sélectionne ses propriétaires et ses biens pour maintenir un niveau d'attention impossible à grande échelle.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">🤝</div>
+      <div class="card-title">La confiance comme engagement</div>
+      <p class="card-text">Un bien confié est un patrimoine, pas un actif à optimiser. Cette posture transparente et responsable construit une relation durable avec chaque propriétaire.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 02 CLIENT CIBLE -->
+<section id="bp-section-02">
+  <div class="section-header">
+    <div class="section-badge">02 — Client Cible</div>
+    <h2 class="section-title">Portrait du propriétaire<br>idéal de Maison Gentle Touch</h2>
+    <p class="section-intro">Comprendre à qui l'on s'adresse pour parler juste, au bon moment.</p>
+  </div>
+
+  <div class="grid-2" style="margin-bottom:24px;">
+    <div class="card">
+      <div class="card-title">Profil type</div>
+      <p class="card-text">35–60 ans, propriétaire d'un ou deux biens dans le Sud-Ouest Lyonnais ou l'agglomération de Lyon. Actif, peu disponible, attaché à son bien. Peut être investisseur rationnel ou propriétaire émotionnel (résidence secondaire, héritage familial). A déjà eu une mauvaise expérience avec une autre conciergerie, ou gère lui-même avec épuisement.</p>
+    </div>
+    <div class="card">
+      <div class="card-title">Motivations principales</div>
+      <ul class="styled-list">
+        <li>Générer des revenus locatifs sans charge mentale</li>
+        <li>Confier son bien à quelqu'un de confiance, pas à une plateforme anonyme</li>
+        <li>Protéger son patrimoine et maintenir l'état du logement</li>
+        <li>Offrir une belle expérience à ses voyageurs (valeurs d'hospitalité partagées)</li>
+        <li>Avoir un interlocuteur unique, réactif et transparent</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-title">Freins & objections fréquentes</div>
+      <ul class="styled-list">
+        <li>« 24% c'est plus cher que d'autres — est-ce que ça vaut vraiment ? »</li>
+        <li>« Est-ce qu'ils vont vraiment prendre soin de mon bien ? »</li>
+        <li>« Je ne connais pas encore cette conciergerie — pas d'avis, peu de visibilité »</li>
+        <li>« Je perds le contrôle sur mon logement »</li>
+        <li>« Que se passe-t-il en cas de problème ? »</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-title">Critères de décision</div>
+      <ul class="styled-list">
+        <li>Confiance dans la fondatrice et son parcours</li>
+        <li>Preuve d'un vrai protocole qualité différenciant</li>
+        <li>Transparence sur les revenus et le reporting</li>
+        <li>Proximité géographique et connaissance du terrain</li>
+        <li>Références, avis, cas concrets ou témoignages propriétaires</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 03 OBJECTIFS DU SITE -->
+<section id="bp-section-03">
+  <div class="section-header">
+    <div class="section-badge">03 — Objectifs du Site</div>
+    <h2 class="section-title">Ce que le site doit<br>accomplir pour vous</h2>
+    <p class="section-intro">Une hiérarchie claire pour orienter chaque décision de conception.</p>
+  </div>
+
+  <div style="display:flex; flex-direction:column; gap:16px;">
+    <div class="objectif-item">
+      <div class="objectif-rank">1</div>
+      <div class="objectif-text"><strong>Génération de leads qualifiés</strong>Attirer des propriétaires du Sud-Ouest Lyonnais et de Lyon prêts à confier leur bien — via formulaire de contact ou prise de RDV directe.</div>
+    </div>
+    <div class="objectif-item">
+      <div class="objectif-rank">2</div>
+      <div class="objectif-text"><strong>Réassurance & confiance</strong>Compenser l'absence d'avis initiaux par la force du parcours, du manifeste, des valeurs et du protocole Gentle Touch. Convaincre avant même le premier contact.</div>
+    </div>
+    <div class="objectif-item">
+      <div class="objectif-rank">3</div>
+      <div class="objectif-text"><strong>SEO local</strong>Se positionner sur les requêtes stratégiques du Sud-Ouest Lyonnais et de Lyon pour capter une audience en recherche active de conciergerie.</div>
+    </div>
+    <div class="objectif-item">
+      <div class="objectif-rank">4</div>
+      <div class="objectif-text"><strong>Conversion & prise de RDV</strong>Transformer les visiteurs en prospects qualifiés via des CTA clairs, un simulateur de revenus ou une invitation à l'appel découverte.</div>
+    </div>
+    <div class="objectif-item">
+      <div class="objectif-rank">5</div>
+      <div class="objectif-text"><strong>Notoriété & positionnement de marque</strong>Installer Maison Gentle Touch comme la référence qualitative de la conciergerie de charme dans sa zone géographique.</div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 ARBORESCENCE -->
+<section id="bp-section-04">
+  <div class="section-header">
+    <div class="section-badge">04 — Arborescence du Site</div>
+    <h2 class="section-title">Architecture des pages<br>& stratégie SEO</h2>
+    <p class="section-intro">Chaque page a un rôle précis, un mot-clé stratégique et un framework de persuasion adapté.</p>
+  </div>
+
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th>Page</th>
+          <th>Framework rédactionnel</th>
+          <th>Mot-clé principal</th>
+          <th>Potentiel SEO</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Accueil</strong></td>
+          <td>AIDA</td>
+          <td>conciergerie location courte durée Lyon</td>
+          <td><span class="badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>Notre Offre</strong> (tous les services détaillés à l'intérieur)</td>
+          <td>PAS</td>
+          <td>conciergerie Airbnb Lyon propriétaire</td>
+          <td><span class="badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>Le Protocole Gentle Touch</strong> (méthode ménage & hospitalité)</td>
+          <td>BAB</td>
+          <td>protocole ménage conciergerie hospitalité</td>
+          <td><span class="badge-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>À propos & Manifeste</strong></td>
+          <td>AIDA</td>
+          <td>conciergerie à taille humaine Lyon Charlotte Dufau</td>
+          <td><span class="badge-faible">Faible</span></td>
+        </tr>
+        <tr>
+          <td><strong>Nos Logements</strong> (vitrine des biens accompagnés)</td>
+          <td>AIDA</td>
+          <td>location courte durée Lyon logements sélectionnés</td>
+          <td><span class="badge-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>Page SEO locale — Sud-Ouest Lyonnais</strong></td>
+          <td>PAS</td>
+          <td>conciergerie location courte durée sud-ouest lyonnais</td>
+          <td><span class="badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>Page SEO locale — Lyon & périphérie</strong></td>
+          <td>PAS</td>
+          <td>conciergerie Airbnb Lyon et agglomération</td>
+          <td><span class="badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>Blog</strong></td>
+          <td>—</td>
+          <td>conseils propriétaire location courte durée</td>
+          <td><span class="badge-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>Contact / RDV découverte</strong></td>
+          <td>BAB</td>
+          <td>confier son logement conciergerie Lyon</td>
+          <td><span class="badge-faible">Faible</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- 05 COCON SÉMANTIQUE -->
+<section id="bp-section-05">
+  <div class="section-header">
+    <div class="section-badge">05 — Cocon Sémantique</div>
+    <h2 class="section-title">Architecture thématique<br>& maillage interne</h2>
+    <p class="section-intro">2 clusters thématiques pour structurer l'autorité SEO de maison-gentletouch.fr</p>
+  </div>
+
+  <div class="grid-2" style="margin-bottom:40px;">
+    <div class="card">
+      <div class="card-icon">🏡</div>
+      <div class="card-title">Cluster 1 — Propriétaires</div>
+      <p class="card-text" style="margin-bottom:14px;">Tout ce qui concerne la valorisation du bien, la tranquillité d'esprit et la rentabilité pour le propriétaire.</p>
+      <div>
+        <span class="tag tag-caramel">Notre Offre</span>
+        <span class="tag tag-caramel">Pages SEO locales</span>
+        <span class="tag tag-caramel">Protocole Gentle Touch</span>
+        <span class="tag tag-caramel">Articles blog propriétaires</span>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-icon">✨</div>
+      <div class="card-title">Cluster 2 — Identité & Confiance</div>
+      <p class="card-text" style="margin-bottom:14px;">Tout ce qui construit la crédibilité de la marque, l'histoire de Charlotte et les valeurs de la Maison.</p>
+      <div>
+        <span class="tag tag-terracotta">À propos & Manifeste</span>
+        <span class="tag tag-terracotta">Protocole Gentle Touch</span>
+        <span class="tag tag-terracotta">Nos Logements</span>
+        <span class="tag tag-terracotta">Articles blog hospitalité</span>
+      </div>
+    </div>
+  </div>
+
+  <h3 style="font-family:'Playfair Display',serif; font-size:20px; color:var(--bordeaux); margin-bottom:20px;">Logique de maillage interne</h3>
+  <div class="card">
+    <div class="maillage-row">
+      <span class="maillage-source">Accueil</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-target">Notre Offre, À propos, Pages SEO locales, Contact</span>
+    </div>
+    <div class="maillage-row">
+      <span class="maillage-source">Notre Offre</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-target">Protocole Gentle Touch, Contact / RDV, Pages SEO locales</span>
+    </div>
+    <div class="maillage-row">
+      <span class="maillage-source">Pages SEO locales</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-target">Notre Offre, Contact, Protocole Gentle Touch</span>
+    </div>
+    <div class="maillage-row">
+      <span class="maillage-source">Protocole Gentle Touch</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-target">Notre Offre, À propos, Contact</span>
+    </div>
+    <div class="maillage-row">
+      <span class="maillage-source">À propos & Manifeste</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-target">Notre Offre, Contact, Nos Logements</span>
+    </div>
+    <div class="maillage-row">
+      <span class="maillage-source">Articles Blog</span>
+      <span class="maillage-arrow">→</span>
+      <span class="maillage-target">Notre Offre, Pages SEO locales, Contact</span>
+    </div>
+  </div>
+</section>
+
+<!-- 06 TUNNEL DE CONVERSION -->
+<section id="bp-section-06">
+  <div class="section-header">
+    <div class="section-badge">06 — Tunnel de Conversion</div>
+    <h2 class="section-title">Du premier regard<br>au premier contact</h2>
+    <p class="section-intro">Chaque étape du parcours propriétaire est anticipée et orchestrée.</p>
+  </div>
+
+  <div class="grid-2">
+    <div class="tunnel-step">
+      <div class="tunnel-number">01</div>
+      <div class="tunnel-label">Étape 1</div>
+      <div class="tunnel-title">Découverte</div>
+      <div class="tunnel-info">
+        <strong>Sources :</strong> Google (SEO local), bouche-à-oreille, réseaux sociaux<br><br>
+        <strong>Pages :</strong> Accueil, Pages SEO locales<br><br>
+        <strong>Objectif :</strong> Capter l'attention d'un propriétaire en recherche active
+      </div>
+      <span class="cta-pill">→ Découvrir la Maison</span>
+    </div>
+
+    <div class="tunnel-step">
+      <div class="tunnel-number">02</div>
+      <div class="tunnel-label">Étape 2</div>
+      <div class="tunnel-title">Intérêt</div>
+      <div class="tunnel-info">
+        <strong>Sources :</strong> Navigation interne, blog<br><br>
+        <strong>Pages :</strong> Notre Offre, Protocole Gentle Touch, Nos Logements<br><br>
+        <strong>Objectif :</strong> Qualifier la promesse et nourrir l'envie de confier son bien
+      </div>
+      <span class="cta-pill">→ Voir notre méthode</span>
+    </div>
+
+    <div class="tunnel-step">
+      <div class="tunnel-number">03</div>
+      <div class="tunnel-label">Étape 3</div>
+      <div class="tunnel-title">Confiance</div>
+      <div class="tunnel-info">
+        <strong>Sources :</strong> Navigation interne, témoignages<br><br>
+        <strong>Pages :</strong> À propos & Manifeste, Protocole, avis<br><br>
+        <strong>Objectif :</strong> Lever les objections, ancrer la crédibilité de Charlotte et de la méthode
+      </div>
+      <span class="cta-pill">→ Notre histoire</span>
+    </div>
+
+    <div class="tunnel-step">
+      <div class="tunnel-number">04</div>
+      <div class="tunnel-label">Étape 4</div>
+      <div class="tunnel-title">Conversion</div>
+      <div class="tunnel-info">
+        <strong>Sources :</strong> CTA récurrents sur toutes les pages<br><br>
+        <strong>Pages :</strong> Contact / RDV découverte<br><br>
+        <strong>Objectif :</strong> Déclencher la prise de RDV ou l'envoi du formulaire qualifiant
+      </div>
+      <span class="cta-pill">→ Prendre RDV gratuitement</span>
+    </div>
+  </div>
+</section>
+
+<!-- 07 LEVIERS MARKETING -->
+<section id="bp-section-07">
+  <div class="section-header">
+    <div class="section-badge">07 — Leviers Marketing Recommandés</div>
+    <h2 class="section-title">Les outils pour<br>transformer le trafic en clients</h2>
+    <p class="section-intro">Des leviers concrets, adaptés à votre positionnement premium et à votre zone géographique.</p>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-icon">🎁</div>
+      <div class="card-title">Lead Magnet</div>
+      <p class="card-text">« Les 10 Commandements pour louer son bien sereinement » — un guide PDF downloadable reprenant les valeurs de la Maison, offert en échange d'un email. Format signature, cohérent avec le manifeste.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">📅</div>
+      <div class="card-title">Prise de RDV</div>
+      <p class="card-text">Outil recommandé : <strong>Calendly</strong> intégré sur la page Contact. Appel découverte de 30 min, positionné comme un moment d'échange sans engagement. Intitulé : "Parlez-nous de votre bien".</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">⭐</div>
+      <div class="card-title">Preuve Sociale</div>
+      <p class="card-text">Témoignages propriétaires (texte + photo), avis voyageurs issus des plateformes, capture d'écrans d'échanges positifs. Dès les premiers biens : focus sur la qualité du processus, pas le volume.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">📋</div>
+      <div class="card-title">Formulaire Qualifiant</div>
+      <p class="card-text">Champs recommandés : type de bien, localisation, surface, disponibilité actuelle, situation (déjà sur plateforme ou non), attente principale, nom et email. Objectif : qualifier avant le premier RDV.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">✉️</div>
+      <div class="card-title">Newsletter</div>
+      <p class="card-text">Angle éditorial : "La Lettre de la Maison" — coulisse des séjours, conseils propriétaires, actualités de la conciergerie, portraits de biens. Ton chaleureux, rythme mensuel.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 08 DIRECTION VISUELLE -->
+<section id="bp-section-08">
+  <div class="section-header">
+    <div class="section-badge">08 — Direction Visuelle & Éditoriale</div>
+    <h2 class="section-title">L'identité visuelle<br>de Maison Gentle Touch</h2>
+    <p class="section-intro">Un univers qui respire l'élégance douce, la chaleur artisanale et la confiance.</p>
+  </div>
+
+  <h3 style="font-family:'Playfair Display',serif; font-size:20px; color:var(--bordeaux); margin-bottom:28px; text-align:center;">Palette de couleurs</h3>
+
+  <div class="palette-grid" style="margin-bottom:56px;">
+    <div class="palette-item">
+      <div class="palette-swatch" style="background:#D6B28C;"></div>
+      <div class="palette-name">Caramel Doré</div>
+      <div class="palette-hex">#D6B28C</div>
+    </div>
+    <div class="palette-item">
+      <div class="palette-swatch" style="background:#E9DFD4;"></div>
+      <div class="palette-name">Sable Lin</div>
+      <div class="palette-hex">#E9DFD4</div>
+    </div>
+    <div class="palette-item">
+      <div class="palette-swatch" style="background:#F6F2EE;"></div>
+      <div class="palette-name">Crème Ivoire</div>
+      <div class="palette-hex">#F6F2EE</div>
+    </div>
+    <div class="palette-item">
+      <div class="palette-swatch" style="background:#0D1B2A; border: 1px solid #e0e0e0;"></div>
+      <div class="palette-name">Bleu Nuit</div>
+      <div class="palette-hex">#0D1B2A</div>
+    </div>
+    <div class="palette-item">
+      <div class="palette-swatch" style="background:#C9846A;"></div>
+      <div class="palette-name">Terracotta Rose</div>
+      <div class="palette-hex">#C9846A</div>
+    </div>
+  </div>
+
+  <h3 style="font-family:'Playfair Display',serif; font-size:20px; color:var(--bordeaux); margin-bottom:24px;">Univers visuel recommandé</h3>
+  <div class="grid-3">
+    <div class="card">
+      <div class="card-icon">📸</div>
+      <div class="card-title">Photographie d'intérieur soignée</div>
+      <p class="card-text">Lumière naturelle, textures douces, linge blanc impeccable. Des clichés qui évoquent le confort sans ostentation — l'esthétique d'une maison prête à recevoir.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">🖋️</div>
+      <div class="card-title">Typographie mixte</div>
+      <p class="card-text">Playfair Display pour les titres (élégance classique) et Inter pour le corps (lisibilité moderne). Ce duo incarne la dualité hospitalité-rigueur de la marque.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">🌿</div>
+      <div class="card-title">Détails & objets de soin</div>
+      <p class="card-text">Bougies, plantes, produits d'accueil, serviettes pliées. Des images de détails qui incarnent le protocole Gentle Touch sans avoir à l'expliquer.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">🏘️</div>
+      <div class="card-title">Terroir lyonnais en toile de fond</div>
+      <p class="card-text">Quelques images du territoire — toits de Lyon, collines du Sud-Ouest, quais — pour ancrer la marque dans sa géographie et renforcer le référencement local.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">👤</div>
+      <div class="card-title">Portrait authentique de Charlotte</div>
+      <p class="card-text">Une photo professionnelle mais humaine, en environnement naturel. La fondatrice est le visage de la Maison — sa présence visuelle est un levier de confiance fort.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 09 ARTICLES BLOG -->
+<section id="bp-section-09">
+  <div class="section-header">
+    <div class="section-badge">09 — Articles Blog Recommandés</div>
+    <h2 class="section-title">Stratégie de contenu<br>pour asseoir l'expertise</h2>
+    <p class="section-intro">7 articles pour couvrir les deux clusters thématiques et capter du trafic organique qualifié.</p>
+  </div>
+
+  <div style="display:flex; flex-direction:column; gap:20px;">
+    <div class="blog-card">
+      <div class="blog-card-title">Pourquoi confier son logement à une conciergerie plutôt que de gérer soi-même ? Les vraies questions à se poser</div>
+      <div class="blog-meta">
+        <span class="blog-cluster">🏡 Cluster Propriétaires</span>
+        <span class="blog-intent">Intention : informationnelle</span>
+        <span class="badge-fort prio-prioritaire">Prioritaire</span>
+      </div>
+    </div>
+
+    <div class="blog-card">
+      <div class="blog-card-title">Location courte durée dans le Sud-Ouest Lyonnais : ce que les propriétaires doivent savoir en 2025</div>
+      <div class="blog-meta">
+        <span class="blog-cluster">🏡 Cluster Propriétaires</span>
+        <span class="blog-intent">Intention : informationnelle + locale</span>
+        <span class="badge-fort prio-prioritaire">Prioritaire</span>
+      </div>
+    </div>
+
+    <div class="blog-card">
+      <div class="blog-card-title">Ce que cache vraiment un logement "bien noté" : les coulisses d'une hospitalité réussie</div>
+      <div class="blog-meta">
+        <span class="blog-cluster">✨ Cluster Identité & Confiance</span>
+        <span class="blog-intent">Intention : inspirationnelle</span>
+        <span class="badge-fort prio-prioritaire">Prioritaire</span>
+      </div>
+    </div>
+
+    <div class="blog-card">
+      <div class="blog-card-title">5 détails qui transforment un séjour ordinaire en souvenir mémorable (selon notre protocole Gentle Touch)</div>
+      <div class="blog-meta">
+        <span class="blog-cluster">✨ Cluster Identité & Confiance</span>
+        <span class="blog-intent">Intention : informationnelle + autorité</span>
+        <span class="badge-moyen prio-moyen">Moyen</span>
+      </div>
+    </div>
+
+    <div class="blog-card">
+      <div class="blog-card-title">Comment optimiser les revenus de son Airbnb à Lyon sans sacrifier la qualité d'accueil ?</div>
+      <div class="blog-meta">
+        <span class="blog-cluster">🏡 Cluster Propriétaires</span>
+        <span class="blog-intent">Intention : transactionnelle</span>
+        <span class="badge-fort prio-prioritaire">Prioritaire</span>
+      </div>
+    </div>
+
+    <div class="blog-card">
+      <div class="blog-card-title">Choisir sa conciergerie : les 8 questions à poser avant de signer</div>
+      <div class="blog-meta">
+        <span class="blog-cluster">🏡 Cluster Propriétaires</span>
+        <span class="blog-intent">Intention : comparaison / décision</span>
+        <span class="badge-moyen prio-moyen">Moyen</span>
+      </div>
+    </div>
+
+    <div class="blog-card">
+      <div class="blog-card-title">Location saisonnière ou longue durée : que choisir pour son bien dans l'agglomération lyonnaise ?</div>
+      <div class="blog-meta">
+        <span class="blog-cluster">🏡 Cluster Propriétaires</span>
+        <span class="blog-intent">Intention : informationnelle</span>
+        <span class="badge-faible prio-faible">Faible</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p style="font-size:14px; margin-bottom:8px;"><strong>Maison Gentle Touch</strong> — Blueprint Stratégique</p>
+  <p>Document confidentiel préparé par <strong>AR Digital</strong> · Reproduction interdite sans autorisation</p>
+  <p style="margin-top:8px; font-size:11px; opacity:0.6;">www.maison-gentletouch.fr · Charlotte Dufau · Lyon & Sud-Ouest Lyonnais</p>
+</footer>
+
+</body>
+</html>
