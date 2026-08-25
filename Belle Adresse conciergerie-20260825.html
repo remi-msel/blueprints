@@ -1,0 +1,973 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blueprint Stratégique — Belle Adresse Conciergerie</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    line-height: 1.8;
+    color: #1a1a1a;
+    background: #fafaf8;
+  }
+
+  /* ─── COVER ─── */
+  .cover {
+    min-height: 100vh;
+    background: linear-gradient(145deg, #1c0008 0%, #68112A 45%, #3a0010 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 60px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+  .cover::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 60% 40%, rgba(212,175,99,0.12) 0%, transparent 65%);
+  }
+  .cover-badge {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: rgba(212,175,99,0.85);
+    margin-bottom: 28px;
+    position: relative;
+  }
+  .cover h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 64px;
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.15;
+    margin-bottom: 16px;
+    position: relative;
+  }
+  .cover-sub {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.65);
+    letter-spacing: 1px;
+    margin-bottom: 52px;
+    position: relative;
+  }
+  .cover-meta {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+  .cover-meta-item {
+    text-align: center;
+  }
+  .cover-meta-item span {
+    display: block;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(212,175,99,0.7);
+    margin-bottom: 4px;
+  }
+  .cover-meta-item strong {
+    font-size: 13px;
+    color: rgba(255,255,255,0.88);
+    font-weight: 400;
+  }
+  .cover-divider {
+    width: 1px;
+    height: 30px;
+    background: rgba(255,255,255,0.2);
+  }
+  .cover-line {
+    width: 60px;
+    height: 2px;
+    background: rgba(212,175,99,0.6);
+    margin: 0 auto 40px;
+    position: relative;
+  }
+
+  /* ─── SECTIONS ─── */
+  section {
+    padding: 80px 60px;
+  }
+  section:nth-child(even) {
+    background: #ffffff;
+  }
+  section:nth-child(odd) {
+    background: #fafaf8;
+  }
+
+  .section-badge {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #68112A;
+    background: rgba(104,17,42,0.08);
+    padding: 6px 14px;
+    border-radius: 20px;
+    margin-bottom: 14px;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 10px;
+    line-height: 1.25;
+  }
+  .section-subtitle {
+    font-size: 15px;
+    color: #777;
+    margin-bottom: 48px;
+    max-width: 560px;
+  }
+
+  /* ─── CARDS ─── */
+  .card {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+  .card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin-bottom: 10px;
+  }
+  .card p, .card li {
+    font-size: 14px;
+    color: #555;
+    line-height: 1.75;
+  }
+  .card ul { padding-left: 18px; }
+  .card ul li { margin-bottom: 4px; }
+
+  /* ─── GRIDS ─── */
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  .grid-3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px;
+  }
+  .grid-4 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  /* ─── HIGHLIGHT BOX ─── */
+  .highlight-box {
+    background: linear-gradient(135deg, #68112A 0%, #3a0010 100%);
+    border-radius: 16px;
+    padding: 36px 40px;
+    margin-bottom: 48px;
+    color: #ffffff;
+  }
+  .highlight-box .label {
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: rgba(212,175,99,0.8);
+    margin-bottom: 12px;
+    font-weight: 600;
+  }
+  .highlight-box p {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    line-height: 1.55;
+    color: #ffffff;
+  }
+
+  /* ─── SECONDARY HIGHLIGHT ─── */
+  .highlight-secondary {
+    background: rgba(104,17,42,0.06);
+    border-left: 3px solid #68112A;
+    border-radius: 0 10px 10px 0;
+    padding: 20px 24px;
+    margin-bottom: 12px;
+  }
+  .highlight-secondary p {
+    font-size: 14px;
+    color: #444;
+    line-height: 1.7;
+  }
+  .highlight-secondary strong {
+    color: #68112A;
+  }
+
+  /* ─── TABLE ─── */
+  .table-wrap {
+    overflow-x: auto;
+    border-radius: 14px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #ffffff;
+    font-size: 14px;
+  }
+  thead tr {
+    background: #68112A;
+    color: #ffffff;
+  }
+  thead th {
+    padding: 16px 20px;
+    text-align: left;
+    font-weight: 500;
+    font-size: 13px;
+    letter-spacing: 0.5px;
+  }
+  tbody tr {
+    border-bottom: 1px solid #f0f0f0;
+  }
+  tbody tr:last-child { border-bottom: none; }
+  tbody td {
+    padding: 15px 20px;
+    color: #444;
+    vertical-align: top;
+  }
+  tbody tr:hover { background: #fdf8f9; }
+
+  /* ─── SEO BADGES ─── */
+  .badge-seo {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 20px;
+  }
+  .badge-fort { background: #e8f5e9; color: #2e7d32; }
+  .badge-moyen { background: #fff8e1; color: #f57f17; }
+  .badge-faible { background: #f3f3f3; color: #757575; }
+
+  /* ─── PRIORITY BADGES ─── */
+  .badge-prioritaire { background: #fce4ec; color: #c62828; font-size: 11px; font-weight: 600; padding: 3px 10px; border-radius: 20px; display: inline-block; }
+  .badge-moyen-p { background: #fff8e1; color: #f57f17; font-size: 11px; font-weight: 600; padding: 3px 10px; border-radius: 20px; display: inline-block; }
+  .badge-faible-p { background: #f3f3f3; color: #757575; font-size: 11px; font-weight: 600; padding: 3px 10px; border-radius: 20px; display: inline-block; }
+
+  /* ─── TUNNEL STEPS ─── */
+  .tunnel-steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+  }
+  .tunnel-step {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    position: relative;
+  }
+  .tunnel-step-num {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #68112A;
+    margin-bottom: 10px;
+  }
+  .tunnel-step-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin-bottom: 14px;
+  }
+  .tunnel-step p {
+    font-size: 13px;
+    color: #666;
+    line-height: 1.7;
+    margin-bottom: 8px;
+  }
+  .tunnel-step .cta-tag {
+    display: inline-block;
+    margin-top: 10px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #68112A;
+    background: rgba(104,17,42,0.08);
+    padding: 4px 12px;
+    border-radius: 20px;
+  }
+
+  /* ─── COCON ─── */
+  .cocon-cluster {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    margin-bottom: 24px;
+  }
+  .cocon-cluster-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    font-weight: 600;
+    color: #68112A;
+    margin-bottom: 14px;
+  }
+  .cocon-pages {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+  .cocon-page-tag {
+    background: rgba(104,17,42,0.07);
+    color: #68112A;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 5px 14px;
+    border-radius: 20px;
+  }
+  .maillage-item {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 0;
+    border-bottom: 1px solid #f0f0f0;
+    font-size: 13px;
+    color: #555;
+  }
+  .maillage-item:last-child { border-bottom: none; }
+  .maillage-arrow {
+    color: #68112A;
+    font-size: 14px;
+    flex-shrink: 0;
+  }
+  .maillage-from {
+    font-weight: 600;
+    color: #1a1a1a;
+  }
+
+  /* ─── PALETTE ─── */
+  .palette-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    justify-content: center;
+    margin-top: 32px;
+  }
+  .palette-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+  .palette-swatch {
+    width: 80px;
+    height: 80px;
+    border-radius: 14px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.12);
+  }
+  .palette-name {
+    font-size: 13px;
+    font-weight: 500;
+    color: #1a1a1a;
+    text-align: center;
+  }
+  .palette-hex {
+    font-size: 11px;
+    color: #aaa;
+    text-align: center;
+  }
+
+  /* ─── OBJECTIFS ─── */
+  .objectif-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 22px 24px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+  .objectif-num {
+    min-width: 36px;
+    height: 36px;
+    background: #68112A;
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 600;
+  }
+  .objectif-content strong {
+    font-size: 15px;
+    color: #1a1a1a;
+    display: block;
+    margin-bottom: 4px;
+  }
+  .objectif-content p {
+    font-size: 13px;
+    color: #666;
+    line-height: 1.65;
+  }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: #1c0008;
+    padding: 40px 60px;
+    text-align: center;
+  }
+  footer p {
+    font-size: 13px;
+    color: rgba(255,255,255,0.4);
+    margin-bottom: 4px;
+  }
+  footer strong {
+    color: rgba(212,175,99,0.7);
+  }
+
+  /* ─── PRINT ─── */
+  @media print {
+    section, .card, .tunnel-step, .cocon-cluster, .objectif-item {
+      page-break-inside: avoid;
+    }
+  }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 768px) {
+    section { padding: 48px 24px; }
+    .cover { padding: 60px 24px; }
+    .cover h1 { font-size: 38px; }
+    .cover-meta { flex-direction: column; gap: 20px; }
+    .cover-divider { display: none; }
+    .section-title { font-size: 26px; }
+    .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+    .tunnel-steps { grid-template-columns: 1fr; }
+    .table-wrap { overflow-x: auto; }
+    .highlight-box { padding: 24px; }
+    .highlight-box p { font-size: 18px; }
+    footer { padding: 32px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ─── COVER ─── -->
+<div class="cover">
+  <div class="cover-badge">Blueprint Stratégique — Site Web</div>
+  <h1>Belle Adresse<br>Conciergerie</h1>
+  <div class="cover-line"></div>
+  <div class="cover-sub">Document confidentiel · Préparé par AR Digital</div>
+  <div class="cover-meta">
+    <div class="cover-meta-item">
+      <span>Cliente</span>
+      <strong>Laurence Nawezi</strong>
+    </div>
+    <div class="cover-divider"></div>
+    <div class="cover-meta-item">
+      <span>Secteur</span>
+      <strong>Conciergerie LCD</strong>
+    </div>
+    <div class="cover-divider"></div>
+    <div class="cover-meta-item">
+      <span>Zone</span>
+      <strong>Lille &amp; Hauts-de-France</strong>
+    </div>
+  </div>
+</div>
+
+<!-- ─── 01 POSITIONNEMENT ─── -->
+<section id="bp-section-01">
+  <div class="section-badge">01 — Positionnement</div>
+  <h2 class="section-title">Positionnement stratégique</h2>
+  <p class="section-subtitle">L'identité différenciante de Belle Adresse Conciergerie sur son marché.</p>
+
+  <div class="highlight-box">
+    <div class="label">Promesse de valeur principale</div>
+    <p>« Belle Adresse Conciergerie offre aux propriétaires lillois une expérience d'accompagnement à la hauteur des standards hôteliers — pour des logements valorisés, des voyageurs enchantés et un quotidien simplifié. »</p>
+  </div>
+
+  <div class="highlight-secondary" style="margin-bottom:40px;">
+    <p><strong>Ligne directrice de communication :</strong> Excellence hôtelière à taille humaine — l'art de recevoir au service des propriétaires et des voyageurs des Hauts-de-France.</p>
+  </div>
+
+  <div style="margin-bottom:40px;">
+    <div class="highlight-secondary">
+      <p><strong>Ton éditorial :</strong> Chaleureux · Professionnel · Raffiné</p>
+    </div>
+    <div class="highlight-secondary" style="margin-top:12px;">
+      <p>Un discours qui rassure par sa rigueur, séduit par sa chaleur humaine et inspire confiance par son savoir-faire. Jamais froid, jamais générique : on parle à des propriétaires qui confient quelque chose de précieux.</p>
+    </div>
+  </div>
+
+  <h3 style="font-family:'Playfair Display',serif;font-size:20px;margin-bottom:24px;color:#1a1a1a;">Piliers de différenciation</h3>
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-title">🏨 Savoir-faire hôtelier transposé</div>
+      <p>Laurence apporte des standards d'accueil issus de l'hôtellerie professionnelle — un niveau d'exigence rare dans la conciergerie indépendante à Lille.</p>
+    </div>
+    <div class="card">
+      <div class="card-title">🤝 Relation humaine au cœur du service</div>
+      <p>Une approche centrée sur l'humain, le confort et le bien-être — pour que chaque voyageur se sente réellement chez soi, pas dans un meublé anonyme.</p>
+    </div>
+    <div class="card">
+      <div class="card-title">📍 Ancrage local Lille &amp; Hauts-de-France</div>
+      <p>Connaissance fine du marché local, des attentes des voyageurs régionaux et des spécificités du territoire — un atout que les plateformes nationales ne peuvent pas offrir.</p>
+    </div>
+    <div class="card">
+      <div class="card-title">🎯 Conseils tarifaires personnalisés</div>
+      <p>Analyse du marché et recommandations de prix adaptées au bien — pas de tarification automatisée aveugle, mais une stratégie réfléchie pour maximiser la rentabilité.</p>
+    </div>
+    <div class="card">
+      <div class="card-title">✨ L'art de recevoir comme philosophie</div>
+      <p>Belle Adresse ne gère pas des logements, elle crée des expériences mémorables — une posture premium qui justifie l'engagement des propriétaires les plus exigeants.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ─── 02 CLIENT CIBLE ─── -->
+<section id="bp-section-02">
+  <div class="section-badge">02 — Client cible</div>
+  <h2 class="section-title">Portrait du propriétaire idéal</h2>
+  <p class="section-subtitle">Comprendre à qui l'on s'adresse pour parler le bon langage, au bon moment.</p>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-title">👤 Profil type</div>
+      <ul>
+        <li>35 à 60 ans, actif ou investisseur</li>
+        <li>Propriétaire d'un ou plusieurs biens à Lille ou en Hauts-de-France</li>
+        <li>Déjà en location courte durée ou souhaitant se lancer</li>
+        <li>Manque de temps pour suivre les réservations et l'accueil</li>
+        <li>Sensible à la qualité et à la réputation de son bien en ligne</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-title">💡 Motivations principales</div>
+      <ul>
+        <li>Générer des revenus locatifs sans y consacrer son temps</li>
+        <li>Obtenir de meilleures notes et plus d'avis positifs</li>
+        <li>Confier son bien à quelqu'un de fiable et rigoureux</li>
+        <li>Avoir une interlocutrice unique qui gère tout à sa place</li>
+        <li>Valoriser son patrimoine avec des standards hôteliers</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-title">🚧 Freins et objections</div>
+      <ul>
+        <li>« Je ne veux pas perdre le contrôle sur mon bien »</li>
+        <li>« La commission de 20% me semble élevée »</li>
+        <li>« Je ne connais pas cette conciergerie, est-elle fiable ? »</li>
+        <li>« Que se passe-t-il en cas de dégradation ? »</li>
+        <li>« Je peux m'en occuper moi-même si j'ai du temps »</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-title">✅ Critères de décision</div>
+      <ul>
+        <li>Transparence sur les services inclus et la commission</li>
+        <li>Références, avis clients et preuves de résultats</li>
+        <li>Réactivité et professionnalisme perçus dès le premier contact</li>
+        <li>Proximité géographique et connaissance du marché local</li>
+        <li>Personnalité et valeurs de la conciergerie (confiance humaine)</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ─── 03 OBJECTIFS DU SITE ─── -->
+<section id="bp-section-03">
+  <div class="section-badge">03 — Objectifs du site</div>
+  <h2 class="section-title">Ce que le site doit accomplir</h2>
+  <p class="section-subtitle">Des objectifs classés par priorité stratégique pour orienter chaque décision de conception.</p>
+
+  <div style="display:flex;flex-direction:column;gap:16px;">
+    <div class="objectif-item">
+      <div class="objectif-num">1</div>
+      <div class="objectif-content">
+        <strong>Génération de leads qualifiés</strong>
+        <p>Transformer les visiteurs en propriétaires potentiels via des formulaires et CTA bien placés. Priorité absolue.</p>
+      </div>
+    </div>
+    <div class="objectif-item">
+      <div class="objectif-num">2</div>
+      <div class="objectif-content">
+        <strong>Réassurance et crédibilité</strong>
+        <p>Lever les objections des propriétaires hésitants grâce aux avis, à la biographie de Laurence et à la transparence tarifaire.</p>
+      </div>
+    </div>
+    <div class="objectif-item">
+      <div class="objectif-num">3</div>
+      <div class="objectif-content">
+        <strong>SEO local — Lille &amp; Hauts-de-France</strong>
+        <p>Apparaître en première page sur les requêtes de propriétaires cherchant une conciergerie LCD sur le territoire.</p>
+      </div>
+    </div>
+    <div class="objectif-item">
+      <div class="objectif-num">4</div>
+      <div class="objectif-content">
+        <strong>Prise de rendez-vous / premier contact</strong>
+        <p>Faciliter la prise de contact via un formulaire qualifiant ou un outil de réservation de créneau (appel découverte).</p>
+      </div>
+    </div>
+    <div class="objectif-item">
+      <div class="objectif-num">5</div>
+      <div class="objectif-content">
+        <strong>Notoriété &amp; positionnement premium</strong>
+        <p>Asseoir Belle Adresse comme la référence haut de gamme de la conciergerie indépendante à Lille.</p>
+      </div>
+    </div>
+    <div class="objectif-item">
+      <div class="objectif-num">6</div>
+      <div class="objectif-content">
+        <strong>Nurturing par le contenu</strong>
+        <p>Accompagner les prospects tièdes via le blog et une future newsletter jusqu'à leur décision de confier leur bien.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── 04 ARBORESCENCE ─── -->
+<section id="bp-section-04">
+  <div class="section-badge">04 — Arborescence du site</div>
+  <h2 class="section-title">Structure du site web</h2>
+  <p class="section-subtitle">Chaque page a un rôle précis. Les services détaillés sont regroupés dans une seule page d'offre.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Page</th>
+          <th>Framework rédactionnel</th>
+          <th>Mot-clé principal</th>
+          <th>Potentiel SEO</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Accueil</strong></td>
+          <td>AIDA</td>
+          <td>conciergerie location courte durée Lille</td>
+          <td><span class="badge-seo badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>Offre Propriétaires</strong><br><small style="color:#999;">Réservations, check-in/out, évaluations, conseils tarifaires</small></td>
+          <td>PAS</td>
+          <td>conciergerie Airbnb propriétaire Lille</td>
+          <td><span class="badge-seo badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>À propos — Laurence</strong></td>
+          <td>BAB</td>
+          <td>conciergerie indépendante Hauts-de-France</td>
+          <td><span class="badge-seo badge-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>SEO Local — Lille</strong></td>
+          <td>AIDA</td>
+          <td>conciergerie location saisonnière Lille</td>
+          <td><span class="badge-seo badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>SEO Local — Hauts-de-France</strong></td>
+          <td>AIDA</td>
+          <td>conciergerie Airbnb Hauts-de-France</td>
+          <td><span class="badge-seo badge-moyen">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>Blog</strong></td>
+          <td>—</td>
+          <td>conseils propriétaires location courte durée</td>
+          <td><span class="badge-seo badge-fort">Fort</span></td>
+        </tr>
+        <tr>
+          <td><strong>Contact</strong></td>
+          <td>—</td>
+          <td>contacter conciergerie Lille</td>
+          <td><span class="badge-seo badge-faible">Faible</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ─── 05 COCON SÉMANTIQUE ─── -->
+<section id="bp-section-05">
+  <div class="section-badge">05 — Cocon sémantique</div>
+  <h2 class="section-title">Architecture de contenu &amp; maillage interne</h2>
+  <p class="section-subtitle">Deux clusters thématiques pour renforcer l'autorité SEO et guider les visiteurs naturellement.</p>
+
+  <div class="cocon-cluster">
+    <div class="cocon-cluster-title">Cluster 1 — Conciergerie &amp; services propriétaires</div>
+    <div class="cocon-pages">
+      <span class="cocon-page-tag">Page Accueil</span>
+      <span class="cocon-page-tag">Offre Propriétaires</span>
+      <span class="cocon-page-tag">SEO Local Lille</span>
+      <span class="cocon-page-tag">SEO Local Hauts-de-France</span>
+      <span class="cocon-page-tag">Contact</span>
+    </div>
+    <p style="font-size:13px;color:#666;line-height:1.7;">Ce cluster couvre toutes les intentions de recherche des propriétaires : déléguer, optimiser, confier leur bien. Il concentre la majorité de l'autorité SEO du site.</p>
+  </div>
+
+  <div class="cocon-cluster">
+    <div class="cocon-cluster-title">Cluster 2 — Conseils &amp; expertise location courte durée</div>
+    <div class="cocon-pages">
+      <span class="cocon-page-tag">Blog</span>
+      <span class="cocon-page-tag">À propos</span>
+      <span class="cocon-page-tag">Offre Propriétaires</span>
+    </div>
+    <p style="font-size:13px;color:#666;line-height:1.7;">Ce cluster nourrit les prospects en phase de réflexion avec du contenu expert. Il alimente la confiance et renvoie vers les pages de conversion.</p>
+  </div>
+
+  <h3 style="font-family:'Playfair Display',serif;font-size:20px;margin-bottom:20px;color:#1a1a1a;margin-top:40px;">Logique de maillage interne</h3>
+  <div class="card">
+    <div class="maillage-item">
+      <span class="maillage-from">Accueil</span>
+      <span class="maillage-arrow">→</span>
+      <span>Offre Propriétaires, SEO Lille, Contact</span>
+    </div>
+    <div class="maillage-item">
+      <span class="maillage-from">Offre Propriétaires</span>
+      <span class="maillage-arrow">→</span>
+      <span>Contact, À propos, Articles blog connexes</span>
+    </div>
+    <div class="maillage-item">
+      <span class="maillage-from">Pages SEO Locales</span>
+      <span class="maillage-arrow">→</span>
+      <span>Offre Propriétaires, Contact</span>
+    </div>
+    <div class="maillage-item">
+      <span class="maillage-from">Articles Blog</span>
+      <span class="maillage-arrow">→</span>
+      <span>Offre Propriétaires, Pages SEO Locales, Contact</span>
+    </div>
+    <div class="maillage-item">
+      <span class="maillage-from">À propos</span>
+      <span class="maillage-arrow">→</span>
+      <span>Offre Propriétaires, Contact</span>
+    </div>
+  </div>
+</section>
+
+<!-- ─── 06 TUNNEL DE CONVERSION ─── -->
+<section id="bp-section-06">
+  <div class="section-badge">06 — Tunnel de conversion</div>
+  <h2 class="section-title">Du visiteur inconnu au propriétaire conquis</h2>
+  <p class="section-subtitle">Quatre étapes pour transformer un visiteur curieux en client confiant.</p>
+
+  <div class="tunnel-steps">
+    <div class="tunnel-step">
+      <div class="tunnel-step-num">Étape 1</div>
+      <div class="tunnel-step-title">🔍 Découverte</div>
+      <p><strong>Source :</strong> Google (SEO local), bouche-à-oreille, réseaux sociaux</p>
+      <p><strong>Page :</strong> Accueil ou page SEO Locale</p>
+      <span class="cta-tag">→ "Découvrir l'offre"</span>
+    </div>
+    <div class="tunnel-step">
+      <div class="tunnel-step-num">Étape 2</div>
+      <div class="tunnel-step-title">💡 Intérêt</div>
+      <p><strong>Source :</strong> Navigation interne, blog, page À propos</p>
+      <p><strong>Page :</strong> Offre Propriétaires, À propos</p>
+      <span class="cta-tag">→ "Télécharger le guide"</span>
+    </div>
+    <div class="tunnel-step">
+      <div class="tunnel-step-num">Étape 3</div>
+      <div class="tunnel-step-title">🤝 Confiance</div>
+      <p><strong>Source :</strong> Avis, storytelling Laurence, transparence tarifaire</p>
+      <p><strong>Page :</strong> À propos, Offre, témoignages</p>
+      <span class="cta-tag">→ "Voir les avis clients"</span>
+    </div>
+    <div class="tunnel-step">
+      <div class="tunnel-step-num">Étape 4</div>
+      <div class="tunnel-step-title">✅ Conversion</div>
+      <p><strong>Source :</strong> CTA récurrents, formulaire qualifiant, appel offert</p>
+      <p><strong>Page :</strong> Contact, pop-in formulaire</p>
+      <span class="cta-tag">→ "Obtenir mon audit gratuit"</span>
+    </div>
+  </div>
+</section>
+
+<!-- ─── 07 LEVIERS MARKETING ─── -->
+<section id="bp-section-07">
+  <div class="section-badge">07 — Leviers marketing recommandés</div>
+  <h2 class="section-title">Les outils pour attirer, convaincre et convertir</h2>
+  <p class="section-subtitle">Des dispositifs concrets adaptés à la réalité d'une conciergerie indépendante en phase de lancement.</p>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-title">🎁 Lead Magnet</div>
+      <p><strong>« Guide : 5 erreurs qui font perdre de l'argent aux propriétaires Airbnb à Lille »</strong><br>Un PDF à télécharger en échange de l'email — utile, rassurant, positionne Laurence comme experte locale.</p>
+    </div>
+    <div class="card">
+      <div class="card-title">📅 Prise de RDV</div>
+      <p>Intégrer <strong>Calendly</strong> pour proposer un appel découverte gratuit de 20 minutes. Réduire la friction à zéro : pas de formulaire long, juste un créneau à choisir.</p>
+    </div>
+    <div class="card">
+      <div class="card-title">⭐ Preuve sociale</div>
+      <p>Collecter des <strong>témoignages vidéo ou écrits</strong> de propriétaires satisfaits (même 2 ou 3 solides dès le lancement). Afficher les notes Airbnb des biens accompagnés si possible.</p>
+    </div>
+    <div class="card">
+      <div class="card-title">📋 Formulaire qualifiant</div>
+      <p>Champs recommandés : Prénom / Ville du bien / Type de bien (appartement, maison…) / Situation actuelle (déjà en LCD ? En projet ?) / Message libre. Évite les demandes non sérieuses.</p>
+    </div>
+    <div class="card">
+      <div class="card-title">💌 Newsletter</div>
+      <p>Angle éditorial : <strong>"L'art de louer autrement"</strong> — conseils mensuels pour propriétaires : optimisation, tendances marché Lille, bonnes pratiques d'accueil, retours d'expérience terrain.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ─── 08 DIRECTION VISUELLE ─── -->
+<section id="bp-section-08">
+  <div class="section-badge">08 — Direction visuelle &amp; éditoriale</div>
+  <h2 class="section-title">L'identité visuelle de Belle Adresse</h2>
+  <p class="section-subtitle">Une esthétique raffinée qui reflète l'excellence hôtelière et la chaleur humaine de la marque.</p>
+
+  <div class="highlight-secondary" style="margin-bottom:40px;">
+    <p>La couleur principale <strong>#68112A</strong> (bordeaux profond) transmise par la cliente est utilisée comme fil rouge du site. Elle exprime l'élégance, l'authenticité et la confiance — idéale pour une conciergerie premium. Elle est complétée par une palette de soutien cohérente.</p>
+  </div>
+
+  <div class="palette-grid">
+    <div class="palette-item">
+      <div class="palette-swatch" style="background:#68112A;"></div>
+      <div class="palette-name">Bordeaux Principal</div>
+      <div class="palette-hex">#68112A</div>
+    </div>
+    <div class="palette-item">
+      <div class="palette-swatch" style="background:#D4AF63;"></div>
+      <div class="palette-name">Or Chaud</div>
+      <div class="palette-hex">#D4AF63</div>
+    </div>
+    <div class="palette-item">
+      <div class="palette-swatch" style="background:#1C0008;"></div>
+      <div class="palette-name">Nuit Profonde</div>
+      <div class="palette-hex">#1C0008</div>
+    </div>
+    <div class="palette-item">
+      <div class="palette-swatch" style="background:#FAF7F2;"></div>
+      <div class="palette-name">Blanc Ivoire</div>
+      <div class="palette-hex">#FAF7F2</div>
+    </div>
+    <div class="palette-item">
+      <div class="palette-swatch" style="background:#8D8D8D;border:1px solid #e0e0e0;"></div>
+      <div class="palette-name">Gris Doux</div>
+      <div class="palette-hex">#8D8D8D</div>
+    </div>
+  </div>
+
+  <h3 style="font-family:'Playfair Display',serif;font-size:20px;margin:48px 0 20px;color:#1a1a1a;">Univers visuel recommandé</h3>
+  <div class="grid-3">
+    <div class="card">
+      <div class="card-title">📸 Photographie d'ambiance</div>
+      <p>Intérieurs soignés, linge de lit blanc immaculé, lumière naturelle dorée. Ambiance "maison d'hôtes haut de gamme", pas de photos de stock génériques.</p>
+    </div>
+    <div class="card">
+      <div class="card-title">🔤 Typographie mixte</div>
+      <p>Playfair Display pour les titres (élégance, hôtellerie), Inter pour le corps (lisibilité, modernité). Contraste marqué entre les deux fontes.</p>
+    </div>
+    <div class="card">
+      <div class="card-title">🌿 Textures subtiles</div>
+      <p>Lin, velours, surfaces mate — des textures évoquées par des fonds légèrement crémeux ou des motifs géométriques fins en or sur fond sombre.</p>
+    </div>
+    <div class="card">
+      <div class="card-title">📐 Mise en page aérée</div>
+      <p>Grands espaces blancs, sections bien délimitées, jamais de surcharge visuelle. Le luxe, c'est aussi l'espace et le silence visuel.</p>
+    </div>
+    <div class="card">
+      <div class="card-title">🎯 Icônes fines &amp; élégantes</div>
+      <p>Icônes au trait fin (style outline), dorées ou bordeaux sur fond clair. Éviter les icônes trop épaisses ou colorées qui cassent l'harmonie premium.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ─── 09 ARTICLES BLOG ─── -->
+<section id="bp-section-09">
+  <div class="section-badge">09 — Articles blog recommandés</div>
+  <h2 class="section-title">Stratégie de contenu éditorial</h2>
+  <p class="section-subtitle">Des sujets ciblés pour attirer des propriétaires en recherche active et positionner Belle Adresse comme référence locale.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Titre de l'article</th>
+          <th>Cluster</th>
+          <th>Intention de recherche</th>
+          <th>Priorité</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Conciergerie Airbnb à Lille : pourquoi déléguer change tout pour votre rentabilité</strong></td>
+          <td>Cluster 1</td>
+          <td>Informationnelle / Commerciale</td>
+          <td><span class="badge-prioritaire">Prioritaire</span></td>
+        </tr>
+        <tr>
+          <td><strong>Combien coûte une conciergerie de location courte durée ? Ce qu'il faut vraiment comparer</strong></td>
+          <td>Cluster 1</td>
+          <td>Commerciale / Décision</td>
+          <td><span class="badge-prioritaire">Prioritaire</span></td>
+        </tr>
+        <tr>
+          <td><strong>Location saisonnière à Lille : les quartiers les plus rentables en 2025</strong></td>
+          <td>Cluster 1</td>
+          <td>Informationnelle / Locale</td>
+          <td><span class="badge-prioritaire">Prioritaire</span></td>
+        </tr>
+        <tr>
+          <td><strong>Check-in réussi : les 8 détails qui font la différence entre un avis 4 et un avis 5 étoiles</strong></td>
+          <td>Cluster 2</td>
+          <td>Informationnelle / Expertise</td>
+          <td><span class="badge-moyen-p">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>Comment fixer le bon prix pour votre location Airbnb à Lille selon la saison</strong></td>
+          <td>Cluster 2</td>
+          <td>Informationnelle / Pratique</td>
+          <td><span class="badge-moyen-p">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>Propriétaire et dépassé ? 5 signaux qui montrent qu'il est temps de confier votre bien</strong></td>
+          <td>Cluster 1</td>
+          <td>Émotionnelle / Décision</td>
+          <td><span class="badge-moyen-p">Moyen</span></td>
+        </tr>
+        <tr>
+          <td><strong>L'art de l'accueil hôtelier appliqué à la location courte durée : nos standards chez Belle Adresse</strong></td>
+          <td>Cluster 2</td>
+          <td>Notoriété / Différenciation</td>
+          <td><span class="badge-faible-p">Faible</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ─── FOOTER ─── -->
+<footer>
+  <p><strong>Belle Adresse Conciergerie</strong> — Laurence Nawezi</p>
+  <p>Document confidentiel préparé par AR Digital · Tous droits réservés</p>
+  <p style="margin-top:12px;font-size:11px;color:rgba(255,255,255,0.25);">Ce blueprint est la propriété exclusive de Belle Adresse Conciergerie. Il ne peut être partagé ou reproduit sans autorisation.</p>
+</footer>
+
+</body>
+</html>
